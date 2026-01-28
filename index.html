@@ -253,7 +253,7 @@
                                 d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
                             </path>
                         </svg>
-                        Seguridad Social 2025
+                        Seguridad Social 2025-2026
                     </h3>
                     <p class="text-sm text-dr-slate-600 font-medium leading-relaxed">
                         Se aplica una deducción automática del <span class="text-dr-blue font-bold">5.91%</span> sobre
@@ -464,7 +464,7 @@
          */
 
         const CONFIG = {
-            SMN: 21674.80, // Salario Mínimo Nacional 2025
+            SMN: 21674.80, // Salario Mínimo Nacional 2025 (formato oficial)
             MONTHLY_EXEMPT: 34685.00,
             ANNUAL_EXEMPT: 416220.00,
             TSS_RATES: {
@@ -475,6 +475,11 @@
             TSS_CAPS: {
                 SFS: 10, // 10 * SMN
                 AFP: 20  // 20 * SMN
+            },
+            FREQUENCY_FACTORS: {
+                'SEMANAL': 52.14,    // ~52.14 semanas/año
+                'QUINCENAL': 24,      // 24 quincenas/año  
+                'MENSUAL': 12         // 12 meses/año
             },
             BRACKETS: [
                 { limit: 867123.01, rate: 0.25, fixed: 79776.00, base: 867123.00 },
@@ -542,6 +547,32 @@
             return { sfs, afp, total: sfs + afp };
         };
 
+        const getYearProgress = (date) => {
+            const d = new Date(date + 'T00:00:00');
+            const yearStart = new Date(d.getFullYear(), 0, 1);
+            const yearEnd = new Date(d.getFullYear() + 1, 0, 1);
+            return (d - yearStart) / (yearEnd - yearStart);
+        };
+
+        const calculateISRDGII = (currentTaxableTotal, date, freq) => {
+            const yearProgress = getYearProgress(date);
+            const frequencyFactor = CONFIG.FREQUENCY_FACTORS[freq];
+            
+            if (!frequencyFactor) {
+                console.error('Frecuencia no válida:', freq);
+                return 0;
+            }
+
+            // Proyección anual basada en frecuencia y progreso temporal
+            const projectedAnnual = currentTaxableTotal * frequencyFactor / yearProgress;
+            
+            // Calcular ISR anual sobre proyección
+            const annualISRDue = calculateAnnualISR(projectedAnnual);
+            
+            // Convertir a ISR del período actual
+            return annualISRDue / frequencyFactor;
+        };
+
         const updateDashboard = () => {
             const now = new Date();
             const currentMonthYear = `${now.getMonth() + 1}-${now.getFullYear()}`;
@@ -563,11 +594,14 @@
             elements.mtdIsr.innerText = fmt.format(totalIsr);
             elements.labelMesActual.innerText = now.toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
 
-            const progress = Math.min((totalTaxable / CONFIG.MONTHLY_EXEMPT) * 100, 100);
+            // Proyectar a anual para evaluación de exención (método DGII)
+            const projectedAnnual = totalTaxable * 12;
+            const progress = Math.min((projectedAnnual / CONFIG.ANNUAL_EXEMPT) * 100, 100);
+            
             elements.mtdProgressBar.style.width = `${progress}%`;
-            elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral alcanzado`;
+            elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral anual alcanzado`;
 
-            if (totalTaxable > CONFIG.MONTHLY_EXEMPT) {
+            if (projectedAnnual > CONFIG.ANNUAL_EXEMPT) {
                 elements.mtdStatus.innerText = 'Sujeto a Retención';
                 elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
                 elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
@@ -633,20 +667,12 @@
             const tss = Math.max(0, currentTssTotal - prevTssPaid);
 
             let totalIsrDue = 0;
-            if (currentTaxableTotal > CONFIG.MONTHLY_EXEMPT) {
-                // Determine projection factor based on frequency to estimate annual taxable better
-                // But generally, the MTD approach works by checking if MTD Taxable / (days passed / days in month) > monthly exempt
-                // Simplified: project current taxable to annual based on the progress of the month
-                // Or follow DGII logic: (Accumulated Taxable / Month Progress) * 12
-
-                // For simplicity and common practice in RD: projection = currentTaxableTotal * 12 / (likely number of payments)
-                // However, the standard is usually just * 12 IF it was the full monthly amount.
-                // If it's partial, we project it as if this pace continues.
-
-                // Let's use the most reliable: project the CURRENT accumulation as the annual base.
-                // If freq is weekly, 4.33 weeks. If bi-weekly, 2. But we have the date.
-
-                totalIsrDue = calculateAnnualISR(currentTaxableTotal * 12) / 12;
+            
+            // Método DGII completo: Proyección anual con factor de frecuencia
+            const projectedAnnual = currentTaxableTotal * CONFIG.FREQUENCY_FACTORS[freq];
+            
+            if (projectedAnnual > CONFIG.ANNUAL_EXEMPT) {
+                totalIsrDue = calculateISRDGII(currentTaxableTotal, date, freq);
             }
 
             // Adjust current entry ISR to match cumulative expectation

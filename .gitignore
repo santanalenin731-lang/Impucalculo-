@@ -1,4 +1,16 @@
+# Archivos del sistema macOS
 .DS_Store
+
+# Archivos de imagen
+*.png
 *.PNG
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+
+# Capturas de pantalla
 Captura de pantalla*
+
+# Logs
 server.log
