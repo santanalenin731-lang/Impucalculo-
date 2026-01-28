@@ -547,30 +547,26 @@
             return { sfs, afp, total: sfs + afp };
         };
 
-        const getYearProgress = (date) => {
-            const d = new Date(date + 'T00:00:00');
-            const yearStart = new Date(d.getFullYear(), 0, 1);
-            const yearEnd = new Date(d.getFullYear() + 1, 0, 1);
-            return (d - yearStart) / (yearEnd - yearStart);
-        };
-
-        const calculateISRDGII = (currentTaxableTotal, date, freq) => {
-            const yearProgress = getYearProgress(date);
+        const calculateISRDGII = (currentTaxableTotal, freq, countInMonth) => {
             const frequencyFactor = CONFIG.FREQUENCY_FACTORS[freq];
-            
+
             if (!frequencyFactor) {
                 console.error('Frecuencia no válida:', freq);
                 return 0;
             }
 
-            // Proyección anual basada en frecuencia y progreso temporal
-            const projectedAnnual = currentTaxableTotal * frequencyFactor / yearProgress;
-            
-            // Calcular ISR anual sobre proyección
+            // Factor de proyección: cuántas veces cabe el acumulado actual en un año
+            // Ejemplo: si van 2 pagos semanales, el factor es 52.14 / 2
+            const projectionFactor = frequencyFactor / countInMonth;
+            const projectedAnnual = currentTaxableTotal * projectionFactor;
+
+            console.log(`[Cálculo ISR] Proyectando MTD (${currentTaxableTotal}) x ${projectionFactor.toFixed(2)} = ${projectedAnnual.toFixed(2)} Anual`);
+
+            // Calcular ISR anual sobre la proyección
             const annualISRDue = calculateAnnualISR(projectedAnnual);
-            
-            // Convertir a ISR del período actual
-            return annualISRDue / frequencyFactor;
+
+            // Retornar el ISR total que corresponde al acumulado MTD actual
+            return annualISRDue / projectionFactor;
         };
 
         const updateDashboard = () => {
@@ -594,14 +590,12 @@
             elements.mtdIsr.innerText = fmt.format(totalIsr);
             elements.labelMesActual.innerText = now.toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
 
-            // Proyectar a anual para evaluación de exención (método DGII)
-            const projectedAnnual = totalTaxable * 12;
-            const progress = Math.min((projectedAnnual / CONFIG.ANNUAL_EXEMPT) * 100, 100);
-            
-            elements.mtdProgressBar.style.width = `${progress}%`;
-            elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral anual alcanzado`;
+            const progress = Math.min((totalTaxable / CONFIG.MONTHLY_EXEMPT) * 100, 100);
 
-            if (projectedAnnual > CONFIG.ANNUAL_EXEMPT) {
+            elements.mtdProgressBar.style.width = `${progress}%`;
+            elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral mensual alcanzado`;
+
+            if (totalTaxable > CONFIG.MONTHLY_EXEMPT) {
                 elements.mtdStatus.innerText = 'Sujeto a Retención';
                 elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
                 elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
@@ -667,13 +661,17 @@
             const tss = Math.max(0, currentTssTotal - prevTssPaid);
 
             let totalIsrDue = 0;
-            
-            // Método DGII completo: Proyección anual con factor de frecuencia
-            const projectedAnnual = currentTaxableTotal * CONFIG.FREQUENCY_FACTORS[freq];
-            
-            if (projectedAnnual > CONFIG.ANNUAL_EXEMPT) {
-                totalIsrDue = calculateISRDGII(currentTaxableTotal, date, freq);
+
+            // Lógica solicitada: Solo cobrar ISR sobre el excedente mensual
+            // El límite exento mensual es RD$34,685.00
+            if (currentTaxableTotal > CONFIG.MONTHLY_EXEMPT) {
+                // Si ya pasamos el límite exento del mes, calculamos el ISR sobre el acumulado
+                // Usamos la escala anual proyectando el acumulado actual
+                const countInMonth = prevInMonth.length + 1;
+                const projectedAnnual = currentTaxableTotal * (CONFIG.FREQUENCY_FACTORS[freq] / countInMonth);
+                totalIsrDue = calculateISRDGII(currentTaxableTotal, freq, countInMonth);
             }
+            // Si no hemos pasado los 34,685 en el mes, el ISR acumulado debe ser 0
 
             // Adjust current entry ISR to match cumulative expectation
             const isr = Math.max(0, totalIsrDue - prevIsrPaid);
