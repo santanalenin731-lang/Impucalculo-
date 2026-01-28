@@ -464,9 +464,18 @@
          */
 
         const CONFIG = {
+            SMN: 21674.80, // Salario Mínimo Nacional 2025
             MONTHLY_EXEMPT: 34685.00,
             ANNUAL_EXEMPT: 416220.00,
-            TSS_RATE: 0.0591, // 3.04% SFS + 2.87% AFP
+            TSS_RATES: {
+                SFS: 0.0304,
+                AFP: 0.0287,
+                TOTAL: 0.0591
+            },
+            TSS_CAPS: {
+                SFS: 10, // 10 * SMN
+                AFP: 20  // 20 * SMN
+            },
             BRACKETS: [
                 { limit: 867123.01, rate: 0.25, fixed: 79776.00, base: 867123.00 },
                 { limit: 624329.01, rate: 0.20, fixed: 31216.00, base: 624329.00 },
@@ -527,6 +536,12 @@
             return bracket.fixed + ((annualTaxable - bracket.base) * bracket.rate);
         };
 
+        const calculateTSS = (gross) => {
+            const sfs = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.SFS) * CONFIG.TSS_RATES.SFS;
+            const afp = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.AFP) * CONFIG.TSS_RATES.AFP;
+            return { sfs, afp, total: sfs + afp };
+        };
+
         const updateDashboard = () => {
             const now = new Date();
             const currentMonthYear = `${now.getMonth() + 1}-${now.getFullYear()}`;
@@ -536,7 +551,11 @@
 
             const totalGross = currentMonthRecords.reduce((sum, r) => sum + r.gross, 0);
             const totalIsr = currentMonthRecords.reduce((sum, r) => sum + r.isr, 0);
-            const totalTss = totalGross * CONFIG.TSS_RATE;
+
+            // Calculate TSS correctly considering the cumulative monthly gross for the caps
+            const tssRes = calculateTSS(totalGross);
+            const totalTss = tssRes.total;
+
             const totalTaxable = totalGross - totalTss;
             const totalNet = totalGross - totalTss - totalIsr;
 
@@ -602,18 +621,31 @@
             const prevInMonth = state.records.filter(r => getMonthYear(r.date) === monthYear);
             const prevGross = prevInMonth.reduce((sum, r) => sum + r.gross, 0);
             const prevIsrPaid = prevInMonth.reduce((sum, r) => sum + r.isr, 0);
+            const prevTssPaid = calculateTSS(prevGross).total;
 
             // 2. New Cumulative Totals
             const currentGrossTotal = prevGross + gross;
-            const currentTssTotal = currentGrossTotal * CONFIG.TSS_RATE;
+            const currentTssRes = calculateTSS(currentGrossTotal);
+            const currentTssTotal = currentTssRes.total;
             const currentTaxableTotal = currentGrossTotal - currentTssTotal;
 
-            // 3. Current Entry Values
-            const tss = gross * CONFIG.TSS_RATE;
+            // 3. Current Entry Values (incremental)
+            const tss = Math.max(0, currentTssTotal - prevTssPaid);
 
             let totalIsrDue = 0;
             if (currentTaxableTotal > CONFIG.MONTHLY_EXEMPT) {
-                // Projection to annual to get the correct bracket/rate
+                // Determine projection factor based on frequency to estimate annual taxable better
+                // But generally, the MTD approach works by checking if MTD Taxable / (days passed / days in month) > monthly exempt
+                // Simplified: project current taxable to annual based on the progress of the month
+                // Or follow DGII logic: (Accumulated Taxable / Month Progress) * 12
+
+                // For simplicity and common practice in RD: projection = currentTaxableTotal * 12 / (likely number of payments)
+                // However, the standard is usually just * 12 IF it was the full monthly amount.
+                // If it's partial, we project it as if this pace continues.
+
+                // Let's use the most reliable: project the CURRENT accumulation as the annual base.
+                // If freq is weekly, 4.33 weeks. If bi-weekly, 2. But we have the date.
+
                 totalIsrDue = calculateAnnualISR(currentTaxableTotal * 12) / 12;
             }
 
