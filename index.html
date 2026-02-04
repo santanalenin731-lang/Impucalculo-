@@ -220,17 +220,38 @@
                             </div>
 
                             <!-- Salary Input -->
-                            <div class="space-y-3 relative">
-                                <label for="gross-salary"
-                                    class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">Sueldo
-                                    Bruto Percibido</label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                                        <span class="text-dr-blue font-black text-lg">RD$</span>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-3 relative">
+                                    <label for="gross-salary"
+                                        class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">Sueldo
+                                        Bruto Total</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-dr-blue font-bold text-sm">RD$</span>
+                                        </div>
+                                        <input type="number" id="gross-salary" step="0.01" min="0" placeholder="0.00"
+                                            required
+                                            class="w-full pl-12 pr-4 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-lg font-black text-dr-slate-900 placeholder:text-dr-slate-200 focus:border-dr-blue outline-none transition-all">
                                     </div>
-                                    <input type="number" id="gross-salary" step="0.01" min="0" placeholder="0.00"
-                                        required
-                                        class="w-full pl-16 pr-6 py-5 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-[1.5rem] text-2xl font-black text-dr-slate-900 placeholder:text-dr-slate-200 focus:border-dr-blue focus:ring-8 focus:ring-dr-blue/5 outline-none transition-all">
+                                    <p class="text-[9px] text-dr-slate-400 font-bold uppercase">Total recibido
+                                        (incluyendo incentivos)</p>
+                                </div>
+
+                                <div class="space-y-3 relative">
+                                    <label for="tss-base"
+                                        class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">Base
+                                        Cotizable TSS</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-dr-blue font-bold text-sm">RD$</span>
+                                        </div>
+                                        <input type="number" id="tss-base" step="0.01" min="0" placeholder="Opcional"
+                                            class="w-full pl-12 pr-4 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-lg font-black text-dr-slate-900 placeholder:text-dr-slate-200 focus:border-dr-blue outline-none transition-all">
+                                    </div>
+                                    <p class="text-[9px] text-dr-slate-400 font-bold uppercase">Sueldo base para AFP/ARS
+                                        (Opcional)</p>
                                 </div>
                             </div>
 
@@ -485,6 +506,12 @@
                 { limit: 867123.01, rate: 0.25, fixed: 79776.00, base: 867123.00 },
                 { limit: 624329.01, rate: 0.20, fixed: 31216.00, base: 624329.00 },
                 { limit: 416220.01, rate: 0.15, fixed: 0, base: 416220.00 }
+            ],
+            // Escala Mensual 2025 para cálculos acumulados
+            MONTHLY_BRACKETS: [
+                { limit: 72260.25, rate: 0.25, fixed: 6648.00, base: 72260.25 },
+                { limit: 52027.42, rate: 0.20, fixed: 2601.33, base: 52027.42 },
+                { limit: 34685.00, rate: 0.15, fixed: 0, base: 34685.00 }
             ]
         };
 
@@ -530,43 +557,17 @@
             renderHistory();
         };
 
-        const calculateAnnualISR = (annualTaxable) => {
-            if (annualTaxable <= CONFIG.ANNUAL_EXEMPT) return 0;
-            const bracket = CONFIG.BRACKETS.find(b => annualTaxable >= b.limit);
-            if (!bracket) {
-                // Should only be the first bracket (15%)
-                const b = CONFIG.BRACKETS[2];
-                return (annualTaxable - b.base) * b.rate;
-            }
-            return bracket.fixed + ((annualTaxable - bracket.base) * bracket.rate);
+        const calculateMonthlyISR = (monthlyTaxable) => {
+            if (monthlyTaxable <= CONFIG.MONTHLY_EXEMPT) return 0;
+            const bracket = CONFIG.MONTHLY_BRACKETS.find(b => monthlyTaxable >= b.limit);
+            if (!bracket) return 0;
+            return bracket.fixed + ((monthlyTaxable - bracket.base) * bracket.rate);
         };
 
-        const calculateTSS = (gross) => {
-            const sfs = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.SFS) * CONFIG.TSS_RATES.SFS;
-            const afp = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.AFP) * CONFIG.TSS_RATES.AFP;
+        const calculateTSS = (grossForTSS) => {
+            const sfs = Math.min(grossForTSS, CONFIG.SMN * CONFIG.TSS_CAPS.SFS) * CONFIG.TSS_RATES.SFS;
+            const afp = Math.min(grossForTSS, CONFIG.SMN * CONFIG.TSS_CAPS.AFP) * CONFIG.TSS_RATES.AFP;
             return { sfs, afp, total: sfs + afp };
-        };
-
-        const calculateISRDGII = (currentTaxableTotal, freq, countInMonth) => {
-            const frequencyFactor = CONFIG.FREQUENCY_FACTORS[freq];
-
-            if (!frequencyFactor) {
-                console.error('Frecuencia no válida:', freq);
-                return 0;
-            }
-
-            // Factor de proyección: cuántas veces cabe el acumulado actual en un año
-            // Ejemplo: si van 2 pagos semanales, el factor es 52.14 / 2
-            const projectionFactor = frequencyFactor / countInMonth;
-            const projectedAnnual = currentTaxableTotal * projectionFactor;
-
-            console.log(`[Cálculo ISR] Proyectando MTD (${currentTaxableTotal}) x ${projectionFactor.toFixed(2)} = ${projectedAnnual.toFixed(2)} Anual`);
-
-            // Calcular ISR anual sobre la proyección
-            const annualISRDue = calculateAnnualISR(projectedAnnual);
-
-            // Retornar el ISR total que corresponde al acumulado MTD actual
-            return annualISRDue / projectionFactor;
         };
 
         const updateDashboard = () => {
@@ -580,8 +581,8 @@
             const totalIsr = currentMonthRecords.reduce((sum, r) => sum + r.isr, 0);
 
             // Calculate TSS correctly considering the cumulative monthly gross for the caps
-            const tssRes = calculateTSS(totalGross);
-            const totalTss = tssRes.total;
+            // Note: if records have specific TSS values, we should sum them up
+            const totalTss = currentMonthRecords.reduce((sum, r) => sum + r.tss, 0);
 
             const totalTaxable = totalGross - totalTss;
             const totalNet = totalGross - totalTss - totalIsr;
@@ -641,48 +642,46 @@
 
             const date = elements.dateInput.value;
             const gross = parseFloat(elements.salaryInput.value);
+            const tssBaseInput = document.getElementById('tss-base').value;
+            const tssBase = tssBaseInput ? parseFloat(tssBaseInput) : gross;
             const freq = Array.from(document.getElementsByName('freq')).find(r => r.checked).value.toUpperCase();
 
             const monthYear = getMonthYear(date);
 
-            // 1. Get previous cumulative data for THIS SPECIFIC MONTH
+            // 1. Obtener datos acumulados en el mes actual
             const prevInMonth = state.records.filter(r => getMonthYear(r.date) === monthYear);
             const prevGross = prevInMonth.reduce((sum, r) => sum + r.gross, 0);
+            const prevTssBase = prevInMonth.reduce((sum, r) => sum + (r.tssBase || r.gross), 0);
             const prevIsrPaid = prevInMonth.reduce((sum, r) => sum + r.isr, 0);
-            const prevTssPaid = calculateTSS(prevGross).total;
+            const prevTssPaid = prevInMonth.reduce((sum, r) => sum + r.tss, 0);
 
-            // 2. New Cumulative Totals
+            // 2. Nuevos Totales Acumulados
             const currentGrossTotal = prevGross + gross;
-            const currentTssRes = calculateTSS(currentGrossTotal);
-            const currentTssTotal = currentTssRes.total;
-            const currentTaxableTotal = currentGrossTotal - currentTssTotal;
+            const currentTssBaseTotal = prevTssBase + tssBase;
 
-            // 3. Current Entry Values (incremental)
+            // Calculamos TSS sobre la base correspondiente (con topes)
+            const currentTssRes = calculateTSS(currentTssBaseTotal);
+            const currentTssTotal = currentTssRes.total;
+
+            // 3. Valores de la entrada actual (Diferenciales)
             const tss = Math.max(0, currentTssTotal - prevTssPaid);
 
-            let totalIsrDue = 0;
+            // La base gravable para ISR es el Bruto Total - TSS
+            const currentTaxableTotal = currentGrossTotal - currentTssTotal;
 
-            // Lógica solicitada: Solo cobrar ISR sobre el excedente mensual
-            // El límite exento mensual es RD$34,685.00
-            if (currentTaxableTotal > CONFIG.MONTHLY_EXEMPT) {
-                // Si ya pasamos el límite exento del mes, calculamos el ISR sobre el acumulado
-                // Usamos la escala anual proyectando el acumulado actual
-                const countInMonth = prevInMonth.length + 1;
-                const projectedAnnual = currentTaxableTotal * (CONFIG.FREQUENCY_FACTORS[freq] / countInMonth);
-                totalIsrDue = calculateISRDGII(currentTaxableTotal, freq, countInMonth);
-            }
-            // Si no hemos pasado los 34,685 en el mes, el ISR acumulado debe ser 0
+            // 4. Cálculo de ISR sobre el acumulado mensual (Realidad DGII RD)
+            let totalIsrDue = calculateMonthlyISR(currentTaxableTotal);
 
-            // Adjust current entry ISR to match cumulative expectation
             const isr = Math.max(0, totalIsrDue - prevIsrPaid);
             const net = gross - tss - isr;
 
-            // Save record
+            // Guardar registro con metadata para cálculos futuros
             state.records.unshift({
                 id: Date.now(),
                 date,
                 freq,
                 gross,
+                tssBase, // Guardamos la base para el acumulado
                 tss,
                 isr,
                 net
@@ -694,6 +693,7 @@
             updateDashboard();
             renderHistory();
             elements.salaryInput.value = '';
+            document.getElementById('tss-base').value = '';
 
             // Scroll to dashboard
             document.getElementById('block-resumen').scrollIntoView({ behavior: 'smooth', block: 'center' });
