@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Prestaciones Laborales | InputCálculo RD</title>
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="Calculadora de prestaciones laborales para República Dominicana. Calcula cesantía, preaviso, vacaciones y regalía al salir de tu empresa.">
+    <link rel="icon" type="image/png" href="logo_new.png">
+    <link rel="apple-touch-icon" href="logo_new.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        dr: {
+                            blue: '#0038A8',
+                            red: '#CE1126',
+                            slate: {
+                                50: '#F8FAFC',
+                                100: '#F1F5F9',
+                                200: '#E2E8F0',
+                                800: '#1E293B',
+                                900: '#0F172A'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .neo-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
+        }
+
+        .result-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-dr-slate-900">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center neo-shadow border border-dr-slate-100">
+                    <img src="logo_new.png" alt="Logo" class="w-10 h-10 object-contain"
+                        onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight leading-none">
+                        <span class="text-dr-blue">Input</span><span class="text-dr-red">Cálculo</span> <span
+                            class="text-dr-slate-800">Prestaciones</span>
+                    </h1>
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1 text-dr-slate-600">
+                        República Dominicana 2025-2026
+                    </p>
+                </div>
+            </div>
+            <a href="welcome.html"
+                class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-dr-blue to-dr-red text-white text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 hover:shadow-lg">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                </svg>
+                <span>Inicio</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
+
+        <!-- Calculator Form -->
+        <div id="calculator-section" class="glass rounded-[2rem] p-8 neo-shadow">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-2 h-8 bg-dr-red rounded-full"></div>
+                <h2 class="text-2xl font-extrabold text-dr-slate-800">Calcula tus Prestaciones</h2>
+            </div>
+
+            <form id="prestaciones-form" class="space-y-8">
+
+                <!-- Sección 1: Fechas -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Información Laboral</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fecha-ingreso" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                                Ingreso</label>
+                            <input type="date" id="fecha-ingreso" required
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                        </div>
+                        <div>
+                            <label for="fecha-salida" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                                Salida</label>
+                            <input type="date" id="fecha-salida" required
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                        </div>
+                    </div>
+                    <div id="antiguedad-display" class="p-4 bg-dr-blue/5 rounded-xl hidden">
+                        <p class="text-sm font-bold text-dr-blue">Antigüedad: <span id="antiguedad-text"></span></p>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Salario -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Salario</h3>
+                    <div>
+                        <label for="salario" class="block text-sm font-bold text-dr-slate-700 mb-2">Salario
+                            Mensual</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3.5 text-dr-slate-400 font-bold">RD$</span>
+                            <input type="number" id="salario" step="0.01" min="0" required placeholder="25,000.00"
+                                class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 3: Tipo de Terminación -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Tipo de Terminación</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <label
+                            class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
+                            <input type="radio" name="terminacion" value="renuncia" class="peer hidden" checked>
+                            <div class="flex flex-col gap-2">
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Renuncia
+                                    Voluntaria</span>
+                                <span class="text-xs text-dr-slate-500">Solo derechos adquiridos</span>
+                            </div>
+                        </label>
+                        <label
+                            class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
+                            <input type="radio" name="terminacion" value="despido" class="peer hidden">
+                            <div class="flex flex-col gap-2">
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Despido sin
+                                    Causa</span>
+                                <span class="text-xs text-dr-slate-500">Incluye cesantía + preaviso</span>
+                            </div>
+                        </label>
+                        <label
+                            class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
+                            <input type="radio" name="terminacion" value="causa" class="peer hidden">
+                            <div class="flex flex-col gap-2">
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Despido con
+                                    Causa</span>
+                                <span class="text-xs text-dr-slate-500">Solo derechos adquiridos</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sección 4: Preaviso (condicional) -->
+                <div id="preaviso-section" class="space-y-4 hidden">
+                    <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Preaviso</h3>
+                    <div class="flex items-center gap-4 p-4 bg-dr-slate-50 rounded-xl">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="preaviso-dado"
+                                class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
+                            <span class="text-sm font-bold text-dr-slate-700">¿Se dio el preaviso
+                                correspondiente?</span>
+                        </label>
+                        <div class="ml-auto text-xs text-dr-slate-500">
+                            (7, 14 o 28 días según antigüedad)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 5: Vacaciones -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Vacaciones</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" id="vacaciones-tomadas"
+                                    class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
+                                <span class="text-sm font-bold text-dr-slate-700">¿Tomó vacaciones este año?</span>
+                            </label>
+                        </div>
+                        <div id="dias-vacaciones-container" class="hidden">
+                            <label for="dias-vacaciones" class="block text-sm font-bold text-dr-slate-700 mb-2">Días
+                                tomados</label>
+                            <input type="number" id="dias-vacaciones" min="0" max="18" value="0"
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón Calcular -->
+                <button type="submit"
+                    class="w-full py-4 px-6 bg-gradient-to-r from-dr-blue to-dr-red text-white text-lg font-bold uppercase tracking-widest rounded-2xl transition-all hover:scale-105 hover:shadow-2xl neo-shadow">
+                    Calcular Prestaciones
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section (Hidden by default) -->
+        <div id="results-section" class="hidden mt-8 space-y-6">
+
+            <!-- Summary Card -->
+            <div class="glass rounded-[2rem] p-6 neo-shadow result-card">
+                <h3 class="text-lg font-bold text-dr-slate-800 mb-4">Resumen</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div>
+                        <p class="text-dr-slate-500 font-semibold">Antigüedad</p>
+                        <p class="text-dr-slate-900 font-bold" id="result-antiguedad"></p>
+                    </div>
+                    <div>
+                        <p class="text-dr-slate-500 font-semibold">Salario Diario</p>
+                        <p class="text-dr-slate-900 font-bold" id="result-salario-diario"></p>
+                    </div>
+                    <div>
+                        <p class="text-dr-slate-500 font-semibold">Tipo de Terminación</p>
+                        <p class="text-dr-slate-900 font-bold" id="result-tipo"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakdown Table -->
+            <div class="glass rounded-[2rem] p-6 neo-shadow result-card" style="animation-delay: 0.1s;">
+                <h3 class="text-lg font-bold text-dr-slate-800 mb-4">Desglose de Pagos</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b-2 border-dr-slate-200">
+                                <th class="text-left py-3 font-bold text-dr-slate-700">Concepto</th>
+                                <th class="text-right py-3 font-bold text-dr-slate-700">Días/Base</th>
+                                <th class="text-right py-3 font-bold text-dr-slate-700">Monto (RD$)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-table-body">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="border-t-2 border-dr-slate-800">
+                                <td colspan="2" class="py-4 text-right font-extrabold text-lg text-dr-slate-900">TOTAL A
+                                    RECIBIR</td>
+                                <td class="py-4 text-right font-extrabold text-2xl text-dr-blue" id="result-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Legal Note -->
+            <div class="glass rounded-xl p-4 text-xs text-dr-slate-600 result-card" style="animation-delay: 0.2s;">
+                <p class="font-semibold mb-2">⚖️ Nota Legal</p>
+                <p>Estos cálculos son aproximaciones basadas en el Código de Trabajo de la República Dominicana (Ley
+                    16-92).
+                    Para casos específicos, consulte con un abogado laboral o el Ministerio de Trabajo.</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4 result-card" style="animation-delay: 0.3s;">
+                <button onclick="nuevaConsulta()"
+                    class="flex-1 py-3 px-6 bg-dr-slate-800 text-white font-bold uppercase tracking-wide rounded-xl transition-all hover:bg-dr-slate-700">
+                    Nueva Consulta
+                </button>
+                <a href="welcome.html"
+                    class="flex-1 py-3 px-6 bg-gradient-to-r from-dr-blue to-dr-red text-white font-bold uppercase tracking-wide rounded-xl text-center transition-all hover:scale-105">
+                    Volver a Inicio
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Constants
+        const DIVISORES = {
+            mensual: 23.83,
+            quincenal: 11.91,
+            semanal: 5.5
+        };
+
+        // Format currency
+        const fmt = (n) => new Intl.NumberFormat('es-DO', {
+            style: 'currency',
+            currency: 'DOP',
+            minimumFractionDigits: 2
+        }).format(n);
+
+        // Calculate age in years and months
+        function calculateAntiguedad(inicio, fin) {
+            // Calculate years
+            let years = fin.getFullYear() - inicio.getFullYear();
+
+            // Calculate months
+            let months = fin.getMonth() - inicio.getMonth();
+
+            // Adjust if months is negative
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // If the day of exit is before the day of entry in the same month, subtract one month
+            if (fin.getDate() < inicio.getDate()) {
+                months--;
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+            }
+
+            // Calculate total months
+            const totalMonths = years * 12 + months;
+
+            // Calculate total days
+            const diff = fin - inicio;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            return { years, months, totalMonths, days };
+        }
+
+        // Show/hide conditional sections
+        document.querySelectorAll('[name="terminacion"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const preavisoSection = document.getElementById('preaviso-section');
+                if (e.target.value === 'despido') {
+                    preavisoSection.classList.remove('hidden');
+                } else {
+                    preavisoSection.classList.add('hidden');
+                    document.getElementById('preaviso-dado').checked = false;
+                }
+            });
+        });
+
+        document.getElementById('vacaciones-tomadas').addEventListener('change', (e) => {
+            const container = document.getElementById('dias-vacaciones-container');
+            if (e.target.checked) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('dias-vacaciones').value = 0;
+            }
+        });
+
+        // Update antiguedad display
+        const fechaIngresoInput = document.getElementById('fecha-ingreso');
+        const fechaSalidaInput = document.getElementById('fecha-salida');
+
+        [fechaIngresoInput, fechaSalidaInput].forEach(input => {
+            input.addEventListener('change', () => {
+                const inicio = new Date(fechaIngresoInput.value);
+                const fin = new Date(fechaSalidaInput.value);
+
+                if (fechaIngresoInput.value && fechaSalidaInput.value) {
+                    // Validate dates
+                    if (fin <= inicio) {
+                        alert('⚠️ La fecha de salida debe ser posterior a la fecha de ingreso');
+                        fechaSalidaInput.value = '';
+                        document.getElementById('antiguedad-display').classList.add('hidden');
+                        return;
+                    }
+
+                    const ant = calculateAntiguedad(inicio, fin);
+                    document.getElementById('antiguedad-text').textContent =
+                        `${ant.years} años, ${ant.months} meses`;
+                    document.getElementById('antiguedad-display').classList.remove('hidden');
+                } else {
+                    document.getElementById('antiguedad-display').classList.add('hidden');
+                }
+            });
+        });
+
+        // Main calculation
+        document.getElementById('prestaciones-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const fechaIngreso = new Date(fechaIngresoInput.value);
+            const fechaSalida = new Date(fechaSalidaInput.value);
+
+            // Validate dates
+            if (fechaSalida <= fechaIngreso) {
+                alert('⚠️ La fecha de salida debe ser posterior a la fecha de ingreso');
+                return;
+            }
+
+            const salario = parseFloat(document.getElementById('salario').value);
+            const tipoTerminacion = document.querySelector('[name="terminacion"]:checked').value;
+            const preavisoDado = document.getElementById('preaviso-dado').checked;
+            const vacacionesTomadas = document.getElementById('vacaciones-tomadas').checked;
+            const diasVacacionesTomados = parseInt(document.getElementById('dias-vacaciones').value) || 0;
+
+            // Calculate antiguedad
+            const ant = calculateAntiguedad(fechaIngreso, fechaSalida);
+
+            // Calculate salario diario (always monthly)
+            const salarioDiario = salario / 23.83;
+
+            // Calculate preaviso
+            let diasPreaviso = 0;
+            let montoPreaviso = 0;
+            if (tipoTerminacion === 'despido' && !preavisoDado) {
+                if (ant.totalMonths >= 12) diasPreaviso = 28;
+                else if (ant.totalMonths >= 6) diasPreaviso = 14;
+                else if (ant.totalMonths >= 3) diasPreaviso = 7;
+                montoPreaviso = diasPreaviso * salarioDiario;
+            }
+
+            // Calculate cesantia
+            let diasCesantia = 0;
+            let montoCesantia = 0;
+            if (tipoTerminacion === 'despido') {
+                if (ant.totalMonths < 3) {
+                    diasCesantia = 0;
+                } else if (ant.totalMonths < 6) {
+                    diasCesantia = 6;
+                } else if (ant.totalMonths < 12) {
+                    diasCesantia = 13;
+                } else if (ant.years < 5) {
+                    diasCesantia = 21 * ant.years;
+                    // Fracción
+                    const fraccionMeses = ant.totalMonths % 12;
+                    if (fraccionMeses >= 3) {
+                        diasCesantia += Math.floor(21 * fraccionMeses / 12);
+                    }
+                } else {
+                    diasCesantia = 23 * ant.years;
+                    const fraccionMeses = ant.totalMonths % 12;
+                    if (fraccionMeses >= 3) {
+                        diasCesantia += Math.floor(23 * fraccionMeses / 12);
+                    }
+                }
+                montoCesantia = diasCesantia * salarioDiario;
+            }
+
+            // Calculate vacaciones
+            const diasVacacionesAnuales = ant.years >= 5 ? 18 : (ant.years >= 1 ? 14 : 0);
+            const diasVacacionesPendientes = Math.max(0, diasVacacionesAnuales - diasVacacionesTomados);
+            const montoVacaciones = diasVacacionesPendientes * salarioDiario;
+
+            // Calculate regalia (proportional)
+            const mesesTrabajadosAnio = (fechaSalida.getMonth() + 1); // 1-12
+            const montoRegalia = (salario * mesesTrabajadosAnio) / 12;
+
+            // Total
+            const total = montoPreaviso + montoCesantia + montoVacaciones + montoRegalia;
+
+            // Display results
+            displayResults({
+                antiguedad: `${ant.years} años, ${ant.months} meses`,
+                salarioDiario,
+                tipoTerminacion,
+                preaviso: { dias: diasPreaviso, monto: montoPreaviso },
+                cesantia: { dias: diasCesantia, monto: montoCesantia },
+                vacaciones: { dias: diasVacacionesPendientes, monto: montoVacaciones },
+                regalia: { monto: montoRegalia },
+                total
+            });
+
+            // Scroll to results
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        function displayResults(data) {
+            // Update summary
+            document.getElementById('result-antiguedad').textContent = data.antiguedad;
+            document.getElementById('result-salario-diario').textContent = fmt(data.salarioDiario);
+
+            const tipoTextos = {
+                'renuncia': 'Renuncia Voluntaria',
+                'despido': 'Despido sin Causa',
+                'causa': 'Despido con Causa'
+            };
+            document.getElementById('result-tipo').textContent = tipoTextos[data.tipoTerminacion];
+
+            // Build table
+            const tbody = document.getElementById('results-table-body');
+            tbody.innerHTML = '';
+
+            const rows = [];
+
+            if (data.preaviso.monto > 0) {
+                rows.push({
+                    concepto: 'Preaviso',
+                    dias: `${data.preaviso.dias} días`,
+                    monto: data.preaviso.monto
+                });
+            }
+
+            if (data.cesantia.monto > 0) {
+                rows.push({
+                    concepto: 'Cesantía (Auxilio)',
+                    dias: `${data.cesantia.dias} días`,
+                    monto: data.cesantia.monto
+                });
+            }
+
+            if (data.vacaciones.monto > 0) {
+                rows.push({
+                    concepto: 'Vacaciones',
+                    dias: `${data.vacaciones.dias} días`,
+                    monto: data.vacaciones.monto
+                });
+            }
+
+            rows.push({
+                concepto: 'Regalía Pascual (Proporcional)',
+                dias: 'Año parcial',
+                monto: data.regalia.monto
+            });
+
+            rows.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-dr-slate-100';
+                tr.innerHTML = `
+                    <td class="py-3 font-semibold text-dr-slate-700">${row.concepto}</td>
+                    <td class="py-3 text-right text-dr-slate-600">${row.dias}</td>
+                    <td class="py-3 text-right font-bold text-dr-slate-900">${fmt(row.monto)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Update total
+            document.getElementById('result-total').textContent = fmt(data.total);
+
+            // Show results section
+            document.getElementById('results-section').classList.remove('hidden');
+        }
+
+        function nuevaConsulta() {
+            document.getElementById('prestaciones-form').reset();
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('antiguedad-display').classList.add('hidden');
+            document.getElementById('preaviso-section').classList.add('hidden');
+            document.getElementById('dias-vacaciones-container').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -156,6 +156,17 @@
                 </div>
             </div>
             <div class="hidden md:flex items-center gap-6">
+                <a href="welcome.html"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-dr-blue to-dr-red text-white text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 hover:shadow-lg hover:shadow-dr-blue/30"
+                    aria-label="Volver a la página de inicio">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span>Inicio</span>
+                </a>
+                <div class="w-px h-8 bg-dr-slate-200"></div>
                 <div class="text-right">
                     <p class="text-xs font-bold text-dr-red uppercase tracking-widest leading-none">Ley de
                         Ingresos</p>
@@ -237,11 +248,36 @@
                                         volante de pago.</p>
                                 </div>
 
+                                <!-- Campo de Horas Extras (Opcional) -->
+                                <div class="space-y-3">
+                                    <label for="overtime-amount"
+                                        class="block text-xs font-black text-dr-red uppercase tracking-widest">Horas
+                                        Extras
+                                        (Opcional)</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-dr-red font-bold">RD$</span>
+                                        </div>
+                                        <input type="number" id="overtime-amount" step="0.01" min="0" value="0"
+                                            placeholder="Ej: 4,075.07"
+                                            class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-red/20 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-red outline-none transition-all">
+                                    </div>
+                                    <p class="text-[10px] text-dr-slate-400 font-bold">⚠️ Las horas extras NO se gravan
+                                        con TSS (AFP/ARS) según ley RD. Déjalas en 0 si no aplica.</p>
+                                </div>
+
                                 <!-- Preview de descuentos automáticos -->
                                 <div class="bg-dr-slate-50 rounded-2xl p-5 border border-dr-slate-200">
                                     <h3 class="text-[10px] font-black text-dr-slate-500 uppercase tracking-widest mb-3">
                                         Descuentos Automáticos</h3>
                                     <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-dr-slate-600 font-medium">Base TSS</span>
+                                            <span id="tss-base-preview" class="text-sm font-black text-dr-blue">RD$
+                                                0.00</span>
+                                        </div>
+                                        <div class="h-px bg-dr-slate-200 my-1"></div>
                                         <div class="flex justify-between items-center">
                                             <span class="text-xs text-dr-slate-600 font-medium">AFP (2.87%)</span>
                                             <span id="afp-preview" class="text-sm font-black text-dr-slate-800">RD$
@@ -566,6 +602,42 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Note: Disclaimer Section -->
+            <div
+                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-red/20 bg-dr-red/[0.03] relative overflow-hidden group mt-8">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-dr-red/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-red/10 transition-all duration-700">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    <div
+                        class="w-24 h-24 shrink-0 rounded-[2rem] bg-dr-white flex items-center justify-center neo-shadow border border-dr-slate-100">
+                        <svg class="w-12 h-12 text-dr-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="w-2 h-6 bg-dr-red rounded-full"></span>
+                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Importante: Alcance del
+                                Cálculo</h4>
+                        </div>
+                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
+                            Impucalculo solo procesa las retenciones de ley: <span class="text-dr-blue font-black">ISR,
+                                AFP y ARS</span>.
+                            <br>
+                            <span class="block mt-4 text-sm font-bold text-dr-slate-500 uppercase tracking-wider">
+                                Descuentos corporativos internos (como <span
+                                    class="text-dr-slate-700 underline decoration-dr-red/30 decoration-2 underline-offset-2">cafetería,
+                                    préstamos, cooperativa o seguros adicionales</span>) <span class="text-dr-red">NO
+                                    SON CALCULADOS</span> por este sistema.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -772,6 +844,8 @@
             form: document.getElementById('tax-form'),
             dateInput: document.getElementById('input-date'),
             weeklyIncomeInput: document.getElementById('weekly-income'),
+            overtimeInput: document.getElementById('overtime-amount'),
+            tssBasePreview: document.getElementById('tss-base-preview'),
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
             currentDateDisplay: document.getElementById('current-date-display'),
@@ -789,10 +863,20 @@
             btnClear: document.getElementById('clear-history')
         };
 
-        const calculateTSS = (gross) => {
-            const sfs = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.SFS) * CONFIG.TSS_RATES.SFS;
-            const afp = Math.min(gross, CONFIG.SMN * CONFIG.TSS_CAPS.AFP) * CONFIG.TSS_RATES.AFP;
-            return { sfs, afp };
+        // Cálculo correcto de TSS según ley dominicana (Resolución 72-03 CNSS)
+        // Las horas extras NO se gravan con AFP/ARS
+        const calculateTSS = (grossIncome, overtimeAmount) => {
+            // Base cotizable = Ingreso bruto - Horas extras
+            const tssBase = Math.max(0, grossIncome - overtimeAmount);
+
+            // Aplicar topes mensuales (convertidos a semanal si aplica)
+            const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS; // Tope mensual SFS
+            const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP; // Tope mensual AFP
+
+            const sfs = Math.min(tssBase, sfsCap) * CONFIG.TSS_RATES.SFS;
+            const afp = Math.min(tssBase, afpCap) * CONFIG.TSS_RATES.AFP;
+
+            return { sfs, afp, tssBase };
         };
 
         const calculateMonthlyISR = (monthlyTaxable) => {
@@ -876,32 +960,29 @@
             });
         };
 
-        // Función de cálculo de TSS basada en casos reales
-        // Caso 1: 27,960.95 → AFP: 542.88, ARS: 575.04
-        // Caso 2: 13,122.55 → AFP: 376.62, ARS: 398.92
-        // Derivado: TSS se calcula sobre min(ingreso, 18915.79)
-        const calculateRealTSS = (weeklyIncome) => {
-            const TSS_WEEKLY_CAP = 18915.79; // Tope semanal observado en casos reales
-            const tssBase = Math.min(weeklyIncome, TSS_WEEKLY_CAP);
-            const afp = tssBase * CONFIG.TSS_RATES.AFP;
-            const sfs = tssBase * CONFIG.TSS_RATES.SFS;
-            return { afp, ars: sfs, tssBase };
+        // Preview en tiempo real con exclusión de horas extras
+        const updatePreview = () => {
+            const income = parseFloat(elements.weeklyIncomeInput.value) || 0;
+            const overtime = parseFloat(elements.overtimeInput.value) || 0;
+            const { afp, sfs, tssBase } = calculateTSS(income, overtime);
+
+            elements.tssBasePreview.innerText = fmt.format(tssBase);
+            elements.afpPreview.innerText = fmt.format(afp);
+            elements.arsPreview.innerText = fmt.format(sfs);
         };
 
-        // Preview en tiempo real
-        elements.weeklyIncomeInput.addEventListener('input', () => {
-            const income = parseFloat(elements.weeklyIncomeInput.value) || 0;
-            const { afp, ars } = calculateRealTSS(income);
-            elements.afpPreview.innerText = fmt.format(afp);
-            elements.arsPreview.innerText = fmt.format(ars);
-        });
+        elements.weeklyIncomeInput.addEventListener('input', updatePreview);
+        elements.overtimeInput.addEventListener('input', updatePreview);
 
         elements.form.addEventListener('submit', (e) => {
             e.preventDefault();
             const date = elements.dateInput.value;
             const gross = parseFloat(elements.weeklyIncomeInput.value) || 0;
+            const overtime = parseFloat(elements.overtimeInput.value) || 0;
 
-            const { afp, ars, tssBase } = calculateRealTSS(gross);
+            // Calcular TSS excluyendo horas extras
+            const { afp, sfs, tssBase } = calculateTSS(gross, overtime);
+            const ars = sfs; // Renombrar para consistencia
             const freq = Array.from(document.getElementsByName('freq')).find(r => r.checked).value.toUpperCase();
 
             const monthYear = getMonthYear(date);
@@ -910,7 +991,7 @@
             const prevTss = prevRecords.reduce((sum, r) => sum + (r.afp + r.ars), 0);
             const prevIsr = prevRecords.reduce((sum, r) => sum + r.isr, 0);
 
-            // ISR se calcula sobre el acumulado del mes
+            // ISR se calcula sobre el acumulado del mes (ingreso total neto de TSS)
             const currentMonthTaxable = (prevGross + gross) - (prevTss + (afp + ars));
 
             // Si el acumulado es menor al límite mensual (34,685), ISR es 0
@@ -919,7 +1000,7 @@
             const net = gross - (afp + ars) - isr;
 
             state.records.unshift({
-                id: Date.now(), date, freq, gross, tssBase, afp, ars, isr, net
+                id: Date.now(), date, freq, gross, overtime, tssBase, afp, ars, isr, net
             });
 
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -929,6 +1010,8 @@
 
             // Limpiar formulario
             elements.weeklyIncomeInput.value = '';
+            elements.overtimeInput.value = '0';
+            elements.tssBasePreview.innerText = 'RD$ 0.00';
             elements.afpPreview.innerText = 'RD$ 0.00';
             elements.arsPreview.innerText = 'RD$ 0.00';
 

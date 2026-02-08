@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a InputCálculo | Gestión Fiscal Inteligente RD</title>
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="InputCálculo - La plataforma premium de cálculo fiscal para República Dominicana. Gestión inteligente de ISR, AFP y ARS con precisión normativa 2025-2026.">
+    <link rel="icon" type="image/png" href="logo_new.png">
+    <link rel="apple-touch-icon" href="logo_new.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dr-blue: #0038A8;
+            --dr-red: #CE1126;
+            --dr-dark: #0F172A;
+            --dr-slate: #1E293B;
+            --dr-light: #F8FAFC;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background: var(--dr-dark);
+            color: var(--dr-light);
+        }
+
+        /* Animated Gradient Background */
+        .hero-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg,
+                    #0F172A 0%,
+                    #1E293B 25%,
+                    #0F172A 50%,
+                    #1E293B 75%,
+                    #0F172A 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 56, 168, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(206, 17, 38, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(0, 56, 168, 0.1) 0%, transparent 50%);
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            opacity: 0;
+            animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            margin-bottom: 3rem;
+        }
+
+        .logo-wrapper {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 2.5rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-wrapper img,
+        .logo-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 5px 15px rgba(0, 56, 168, 0.4));
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-title {
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title .brand-name {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dr-red) 0%, var(--dr-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            color: #CBD5E1;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+            margin-top: 3rem;
+        }
+
+        .cta-button button {
+            position: relative;
+            padding: 1.5rem 3.5rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: white;
+            background: linear-gradient(135deg, var(--dr-blue) 0%, var(--dr-red) 100%);
+            border: none;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0, 56, 168, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .cta-button button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(206, 17, 38, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .cta-button button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pulse animation for button */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 40px rgba(0, 56, 168, 0.4),
+                    0 0 0 1px rgba(255, 255, 255, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 10px 40px rgba(206, 17, 38, 0.6),
+                    0 0 0 1px rgba(255, 255, 255, 0.2),
+                    0 0 80px rgba(0, 56, 168, 0.3);
+            }
+        }
+
+        .cta-button button {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .cta-button button:hover {
+            animation: none;
+        }
+
+        /* Services Container & Grid */
+        .services-container {
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dr-blue), var(--dr-red));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 56, 168, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 56, 168, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--dr-blue), var(--dr-red));
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0, 56, 168, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #F8FAFC;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #94A3B8;
+            margin-bottom: 2rem;
+            min-height: 48px;
+        }
+
+        .service-button {
+            position: relative;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: white;
+            background: linear-gradient(135deg, var(--dr-blue) 0%, var(--dr-red) 100%);
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 25px rgba(0, 56, 168, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(206, 17, 38, 0.4);
+        }
+
+        .service-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .button-arrow {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-button:hover .button-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .service-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .service-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            .service-title {
+                font-size: 1.25rem;
+            }
+        }
+
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease 2s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 32px;
+            height: 32px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* Content Section */
+        .content-section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #94A3B8;
+            font-weight: 400;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dr-blue), var(--dr-red));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 56, 168, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--dr-blue), var(--dr-red));
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 56, 168, 0.3);
+        }
+
+        .benefit-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #F8FAFC;
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #94A3B8;
+            font-weight: 400;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 1.5rem;
+            }
+
+            .logo-wrapper {
+                width: 140px;
+                height: 140px;
+                padding: 1.5rem;
+            }
+
+            .cta-button button {
+                padding: 1.25rem 2.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .benefit-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Parallax effect */
+        .parallax-layer {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="hero-background"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <video autoplay loop muted playsinline alt="InputCálculo Logo Animado"
+                    onloadstart="this.playbackRate = 1.0;">
+                    <source src="WhatsApp Video 2026-02-07 at 22.08.24.mp4" type="video/mp4">
+                    <!-- Fallback a imagen si el video no carga -->
+                    <img src="logo_new.png" alt="InputCálculo Logo"
+                        onerror="this.src='https://via.placeholder.com/180/0038A8/FFFFFF?text=IC'">
+                </video>
+            </div>
+        </div>
+
+        <div class="hero-title">
+            <h1>
+                Bienvenido a <span class="brand-name">InputCálculo</span>
+            </h1>
+            <p class="hero-subtitle">Impuestos + Cálculo Inteligente</p>
+        </div>
+
+
+        <div class="services-container">
+            <div class="services-grid">
+                <!-- Service 1: Tax Calculator -->
+                <div class="service-card" data-service="tax">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Calculadora de Impuestos</h3>
+                    <p class="service-description">Calcula tus retenciones TSS e ISR semanales o mensuales con precisión
+                    </p>
+                    <button class="service-button" data-navigate="index.html"
+                        aria-label="Ir a calculadora de impuestos">
+                        <span>CALCULAR IMPUESTOS</span>
+                        <svg class="button-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Service 2: Labor Benefits Calculator -->
+                <div class="service-card" data-service="benefits">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Calculadora de Prestaciones</h3>
+                    <p class="service-description">Calcula tu finiquito laboral al salir de la empresa (renuncia o
+                        despido)</p>
+                    <button class="service-button" data-navigate="prestaciones.html"
+                        aria-label="Ir a calculadora de prestaciones">
+                        <span>CALCULAR PRESTACIONES</span>
+                        <svg class="button-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section parallax-layer" id="content">
+        <div class="container">
+            <div class="section-title">
+                <h2>La Plataforma Fiscal Premium de RD</h2>
+                <p>Gestión inteligente y precisa de tus impuestos</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card" style="transition-delay: 0.1s">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Cálculo Fiscal Preciso</h3>
+                    <p>Algoritmos avanzados que calculan automáticamente tus retenciones de ISR con precisión total,
+                        siguiendo las normativas vigentes de República Dominicana.</p>
+                </div>
+
+                <div class="benefit-card" style="transition-delay: 0.2s">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Gestión TSS Automática</h3>
+                    <p>Control completo de tus aportes a AFP (2.87%) y ARS (3.04%), con aplicación automática de topes
+                        y límites conforme a la ley.</p>
+                </div>
+
+                <div class="benefit-card" style="transition-delay: 0.3s">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Cumplimiento RD 2025-2026</h3>
+                    <p>Sistema actualizado con las últimas regulaciones fiscales de la DGII, garantizando que tus
+                        cálculos siempre cumplan con la normativa vigente.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="cta-button">
+                    <button id="cta-secondary" aria-label="Comenzar a calcular">
+                        <span>COMENZAR AHORA</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth transition to apps
+        function navigateToApp(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }
+
+        // Service button handlers
+        document.querySelectorAll('.service-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const url = this.getAttribute('data-navigate');
+                navigateToApp(url);
+            });
+        });
+
+        // Secondary CTA (if exists)
+        const ctaSecondary = document.getElementById('cta-secondary');
+        if (ctaSecondary) {
+            ctaSecondary.addEventListener('click', () => navigateToApp('index.html'));
+        }
+
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.section-title, .benefit-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect
+        let ticking = false;
+        let lastScrollY = 0;
+
+        function updateParallax() {
+            const scrollY = window.scrollY;
+            const parallaxElements = document.querySelectorAll('.parallax-layer');
+
+            parallaxElements.forEach(el => {
+                const speed = 0.3;
+                const yPos = -(scrollY * speed);
+                el.style.transform = `translateY(${yPos}px)`;
+            });
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+
+        // Smooth scroll for indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Prevent animation replay on back navigation
+        if (performance.navigation.type === 2) {
+            document.querySelectorAll('.logo-container, .hero-title, .cta-button').forEach(el => {
+                el.style.animation = 'none';
+                el.style.opacity = '1';
+            });
+        }
+    </script>
+</body>
+
+</html>
