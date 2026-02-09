@@ -34,6 +34,14 @@
                                 900: '#0F172A'
                             }
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUpCustom 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUpCustom: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                     }
                 }
             }
@@ -69,6 +77,16 @@
                 transform: translateY(0);
             }
         }
+
+        .btn-gradient-blue {
+            background: linear-gradient(135deg, #0038A8, #1E40AF);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 56, 168, 0.4);
+        }
     </style>
 </head>
 
@@ -102,6 +120,16 @@
                 </svg>
                 <span>Inicio</span>
             </a>
+            <button id="btn-sugerencias"
+                class="flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-dr-blue/20 text-dr-blue text-xs font-bold uppercase tracking-widest transition-all hover:bg-dr-blue hover:text-white hover:border-dr-blue hover:scale-105 active:scale-95"
+                aria-label="Dejar sugerencias">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                    </path>
+                </svg>
+                <span>Sugerencias</span>
+            </button>
         </div>
     </header>
 
@@ -567,6 +595,106 @@
         }
     </script>
 
+    <!-- Modal de Sugerencias -->
+    <div id="modal-sugerencias" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-dr-slate-900/40 backdrop-blur-sm transition-opacity"
+            onclick="closeSuggestionsModal()"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="glass relative w-full max-w-lg rounded-[2.5rem] p-8 neo-shadow border border-white animate-slide-up">
+            <button onclick="closeSuggestionsModal()"
+                class="absolute top-6 right-6 text-dr-slate-400 hover:text-dr-red transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-dr-blue/10 flex items-center justify-center text-dr-blue">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                        </path>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-black text-dr-slate-800 tracking-tight">Tu Feedback importa</h2>
+                    <p class="text-xs font-bold text-dr-slate-400 uppercase tracking-widest">Ayúdanos a mejorar
+                        Impucálculo</p>
+                </div>
+            </div>
+
+            <form id="form-sugerencias" class="space-y-6">
+                <div id="feedback-success"
+                    class="hidden p-4 bg-green-50 text-green-700 rounded-2xl border border-green-100 text-center font-bold animate-fade-in">
+                    ¡Gracias! Tu sugerencia ha sido recibida. ✨
+                </div>
+
+                <div class="space-y-4" id="feedback-fields">
+                    <div>
+                        <label
+                            class="block text-[10px] font-black text-dr-slate-400 uppercase tracking-widest mb-2">Nombre
+                            (Opcional)</label>
+                        <input type="text" id="feedback-name" placeholder="Tu nombre"
+                            class="w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-dr-slate-400 uppercase tracking-widest mb-2">Tu
+                            Sugerencia</label>
+                        <textarea id="feedback-message" required rows="4"
+                            placeholder="¿Cómo podemos mejorar la aplicación?"
+                            class="w-full px-5 py-4 bg-white border-2 border-dr-blue/20 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-5 rounded-[1.5rem] btn-gradient-blue text-white font-black text-lg uppercase tracking-widest hover:scale-[1.02] transition-transform">
+                        Enviar Sugerencia
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para el Modal de Sugerencias
+        const suggestionsModal = document.getElementById('modal-sugerencias');
+        const suggestBtn = document.getElementById('btn-sugerencias');
+        const feedbackForm = document.getElementById('form-sugerencias');
+        const feedbackFields = document.getElementById('feedback-fields');
+        const feedbackSuccess = document.getElementById('feedback-success');
+
+        function openSuggestionsModal() {
+            suggestionsModal.classList.remove('hidden');
+            suggestionsModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            feedbackFields.classList.remove('hidden');
+            feedbackSuccess.classList.add('hidden');
+            feedbackForm.reset();
+        }
+
+        function closeSuggestionsModal() {
+            suggestionsModal.classList.add('hidden');
+            suggestionsModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        if (suggestBtn) {
+            suggestBtn.addEventListener('click', openSuggestionsModal);
+        }
+
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                feedbackFields.classList.add('hidden');
+                feedbackSuccess.classList.remove('hidden');
+                setTimeout(() => {
+                    closeSuggestionsModal();
+                }, 2500);
+            });
+        }
+    </script>
 </body>
 
 </html>

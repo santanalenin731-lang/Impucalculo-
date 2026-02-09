@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a InputCálculo | Gestión Fiscal Inteligente RD</title>
+    <title>Impucálculo | Cálculo de Impuestos y Prestaciones Laborales RD</title>
 
     <!-- Meta/SEO -->
     <meta name="description"
-        content="InputCálculo - La plataforma premium de cálculo fiscal para República Dominicana. Gestión inteligente de ISR, AFP y ARS con precisión normativa 2025-2026.">
+        content="Impucálculo - Plataforma moderna para cálculo de impuestos y prestaciones laborales en República Dominicana. Calcula ISR, AFP, ARS y prestaciones de forma precisa y fácil.">
     <link rel="icon" type="image/png" href="logo_new.png">
     <link rel="apple-touch-icon" href="logo_new.png">
 
@@ -24,11 +24,15 @@
         }
 
         :root {
-            --dr-blue: #0038A8;
-            --dr-red: #CE1126;
-            --dr-dark: #0F172A;
-            --dr-slate: #1E293B;
-            --dr-light: #F8FAFC;
+            --color-primary-red: #CE1126;
+            --color-secondary-blue: #0038A8;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #F8FAFC;
+            --color-bg-gray: #F1F5F9;
+            --color-text-dark: #1E293B;
+            --color-text-gray: #64748B;
+            --color-text-light: #94A3B8;
+            --color-border: #E2E8F0;
         }
 
         html {
@@ -37,64 +41,22 @@
 
         body {
             font-family: 'Outfit', sans-serif;
+            background-color: #F8FAFC;
+            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-size: 32px 32px;
+            color: var(--color-text-dark);
             overflow-x: hidden;
-            background: var(--dr-dark);
-            color: var(--dr-light);
         }
 
-        /* Animated Gradient Background */
-        .hero-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg,
-                    #0F172A 0%,
-                    #1E293B 25%,
-                    #0F172A 50%,
-                    #1E293B 75%,
-                    #0F172A 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        /* Glass effect matching calculator */
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .hero-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 56, 168, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(206, 17, 38, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(0, 56, 168, 0.1) 0%, transparent 50%);
-            animation: pulseGlow 8s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
+        .neo-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
         }
 
         /* Hero Section */
@@ -104,55 +66,41 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            position: relative;
-        }
-
-        .logo-container {
-            opacity: 0;
-            animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-            margin-bottom: 3rem;
-        }
-
-        .logo-wrapper {
-            width: 180px;
-            height: 180px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 2.5rem;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
 
-        .logo-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.1) 50%,
-                    transparent 70%);
-            animation: shimmer 3s infinite;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
         }
 
-        @keyframes shimmer {
-            0% {
-                transform: rotate(0deg);
-            }
+        .logo-container {
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
 
-            100% {
-                transform: rotate(360deg);
-            }
+        .logo-wrapper {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .logo-wrapper:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px -10px rgba(0, 56, 168, 0.25);
         }
 
         .logo-wrapper img,
@@ -160,94 +108,127 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 5px 15px rgba(0, 56, 168, 0.4));
+            filter: drop-shadow(0 4px 12px rgba(0, 56, 168, 0.1));
         }
 
         @keyframes fadeInScale {
-            0% {
+            from {
                 opacity: 0;
                 transform: scale(0.8);
             }
 
-            100% {
+            to {
                 opacity: 1;
                 transform: scale(1);
             }
         }
 
         .hero-title {
-            opacity: 0;
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
 
         .hero-title h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
-            line-height: 1.2;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--color-text-dark);
             margin-bottom: 1rem;
         }
 
-        .hero-title .brand-name {
+        .brand-name {
             display: inline-block;
-            background: linear-gradient(135deg, var(--dr-red) 0%, var(--dr-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 900;
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: -0.5rem;
+            margin-bottom: 2rem;
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            font-weight: 300;
-            color: #CBD5E1;
-            letter-spacing: 0.02em;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            color: var(--color-text-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
         }
 
         @keyframes fadeInUp {
-            0% {
+            from {
                 opacity: 0;
                 transform: translateY(30px);
             }
 
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .cta-button {
-            opacity: 0;
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
             margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
         }
 
-        .cta-button button {
+        .btn {
             position: relative;
-            padding: 1.5rem 3.5rem;
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-weight: 800;
+            padding: 1.25rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: white;
-            background: linear-gradient(135deg, var(--dr-blue) 0%, var(--dr-red) 100%);
+            letter-spacing: 0.05em;
             border: none;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 40px rgba(0, 56, 168, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
             overflow: hidden;
         }
 
-        .cta-button button::before {
+        .btn-primary {
+            background: var(--color-primary-red);
+            color: white;
+            box-shadow: 0 10px 30px rgba(206, 17, 38, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #B30F20;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(206, 17, 38, 0.35);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary-blue);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 56, 168, 0.25);
+        }
+
+        .btn-secondary:hover {
+            background: #002D8A;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 56, 168, 0.35);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -260,78 +241,90 @@
             transition: width 0.6s, height 0.6s;
         }
 
-        .cta-button button:hover::before {
+        .btn:hover::before {
             width: 300px;
             height: 300px;
         }
 
-        .cta-button button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(206, 17, 38, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
-        }
-
-        .cta-button button:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .cta-button button span {
+        .btn span {
             position: relative;
             z-index: 1;
         }
 
-        /* Pulse animation for button */
-        @keyframes pulse {
-
-            0%,
-            100% {
-                box-shadow: 0 10px 40px rgba(0, 56, 168, 0.4),
-                    0 0 0 1px rgba(255, 255, 255, 0.1);
-            }
-
-            50% {
-                box-shadow: 0 10px 40px rgba(206, 17, 38, 0.6),
-                    0 0 0 1px rgba(255, 255, 255, 0.2),
-                    0 0 80px rgba(0, 56, 168, 0.3);
-            }
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .cta-button button {
-            animation: pulse 2s ease-in-out infinite;
+        .btn:hover .btn-icon {
+            transform: translateX(5px);
         }
 
-        .cta-button button:hover {
-            animation: none;
+        /* Services Section */
+        .services-section {
+            padding: 6rem 2rem;
+            background: var(--color-bg-white);
         }
 
-        /* Services Container & Grid */
-        .services-container {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
             opacity: 0;
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
-            margin-top: 3rem;
-            width: 100%;
-            max-width: 900px;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section-header.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-gray);
+            font-weight: 400;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 2px solid var(--color-border);
+            border-radius: 1.5rem;
             padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(30px);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
+        }
+
+        .service-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-card::before {
@@ -340,11 +333,11 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--dr-blue), var(--dr-red));
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secondary-blue), var(--color-primary-red));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .service-card:hover::before {
@@ -352,22 +345,20 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 56, 168, 0.3);
-            box-shadow: 0 30px 80px rgba(0, 56, 168, 0.25);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-8px);
+            border-color: var(--color-secondary-blue);
+            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.15);
         }
 
         .service-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--dr-blue), var(--dr-red));
-            border-radius: 1.5rem;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--color-secondary-blue), var(--color-primary-red));
+            border-radius: 1.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 15px 40px rgba(0, 56, 168, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -381,102 +372,168 @@
             color: white;
         }
 
-        .service-title {
+        .service-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--color-text-dark);
             margin-bottom: 1rem;
-            color: #F8FAFC;
         }
 
-        .service-description {
-            font-size: 0.95rem;
+        .service-card p {
+            font-size: 1rem;
             line-height: 1.6;
-            color: #94A3B8;
-            margin-bottom: 2rem;
-            min-height: 48px;
+            color: var(--color-text-gray);
         }
 
-        .service-button {
-            position: relative;
-            padding: 1rem 2rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: white;
-            background: linear-gradient(135deg, var(--dr-blue) 0%, var(--dr-red) 100%);
-            border: none;
-            border-radius: 1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 25px rgba(0, 56, 168, 0.3);
+        /* Trust Section */
+        .trust-section {
+            padding: 6rem 2rem;
+            background: var(--color-bg-light);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .trust-card {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .trust-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .trust-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-top: auto;
+            justify-content: center;
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .service-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(206, 17, 38, 0.4);
+        .trust-card:hover .trust-icon {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.2);
         }
 
-        .service-button span {
-            position: relative;
-            z-index: 1;
+        .trust-icon svg {
+            width: 50px;
+            height: 50px;
+            color: var(--color-secondary-blue);
         }
 
-        .button-arrow {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
+        .trust-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
         }
 
-        .service-button:hover .button-arrow {
-            transform: translateX(5px);
+        .trust-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--color-text-gray);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .service-card {
-                padding: 2rem;
-            }
-
-            .service-icon {
-                width: 70px;
-                height: 70px;
-            }
-
-            .service-icon svg {
-                width: 35px;
-                height: 35px;
-            }
-
-            .service-title {
-                font-size: 1.25rem;
-            }
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
         }
 
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        /* Scroll indicator */
+        .cta-content.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--color-text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-gray);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem 2rem;
+            background: var(--color-bg-gray);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: grayscale(0.3);
+            opacity: 0.8;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
-            bottom: 3rem;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
-            animation: fadeIn 1s ease 2s forwards, bounce 2s ease-in-out 2s infinite;
+            animation: fadeIn 1s ease 1s forwards, bounce 2s ease-in-out 1s infinite;
+            z-index: 1;
         }
 
         .scroll-indicator svg {
             width: 32px;
             height: 32px;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--color-text-light);
         }
 
         @keyframes fadeIn {
@@ -497,200 +554,128 @@
             }
         }
 
-        /* Content Section */
-        .content-section {
-            min-height: 100vh;
-            padding: 5rem 2rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #94A3B8;
-            font-weight: 400;
-        }
-
-        /* Benefits Grid */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: translateY(50px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--dr-blue), var(--dr-red));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .benefit-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .benefit-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 56, 168, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 56, 168, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--dr-blue), var(--dr-red));
-            border-radius: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 56, 168, 0.3);
-        }
-
-        .benefit-icon svg {
-            width: 32px;
-            height: 32px;
-            color: white;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #F8FAFC;
-        }
-
-        .benefit-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #94A3B8;
-            font-weight: 400;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero-section {
-                padding: 1.5rem;
-            }
-
-            .logo-wrapper {
-                width: 140px;
-                height: 140px;
-                padding: 1.5rem;
-            }
-
-            .cta-button button {
-                padding: 1.25rem 2.5rem;
-            }
-
-            .content-section {
                 padding: 3rem 1.5rem;
             }
 
-            .benefits-grid {
+            .logo-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .services-section,
+            .trust-section,
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .benefit-card {
-                padding: 2rem;
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
-        /* Parallax effect */
-        .parallax-layer {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        @media (max-width: 480px) {
+            .hero-title h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="hero-background"></div>
-
     <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-        <div class="logo-container">
-            <div class="logo-wrapper">
-                <video autoplay loop muted playsinline alt="InputCálculo Logo Animado"
-                    onloadstart="this.playbackRate = 1.0;">
-                    <source src="WhatsApp Video 2026-02-07 at 22.08.24.mp4" type="video/mp4">
-                    <!-- Fallback a imagen si el video no carga -->
-                    <img src="logo_new.png" alt="InputCálculo Logo"
-                        onerror="this.src='https://via.placeholder.com/180/0038A8/FFFFFF?text=IC'">
-                </video>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="logo-wrapper">
+                    <video autoplay loop muted playsinline onloadstart="this.playbackRate = 1.0;">
+                        <source src="WhatsApp Video 2026-02-07 at 22.08.24.mp4" type="video/mp4">
+                        <img src="logo_new.png" alt="Impucálculo Logo">
+                    </video>
+                </div>
+            </div>
+
+            <div class="hero-title">
+                <h1>
+                    Cálculo de Impuestos y Prestaciones<br>
+                    con <span class="brand-name"><span style="color: #CE1126;">Impu</span><span
+                            style="color: #0038A8;">cálculo</span></span>
+                </h1>
+                <div class="hero-tagline">
+                    <span style="color: #0038A8;">GESTIÓN FISCAL</span> <span style="color: #CE1126;">RD
+                        2025-2026</span>
+                </div>
+                <p class="hero-subtitle">
+                    La plataforma moderna y precisa para gestionar tus impuestos y prestaciones laborales en República
+                    Dominicana
+                </p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <span>Ir a Impucálculo</span>
+                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="prestaciones.html" class="btn btn-secondary">
+                    <span>Ir a Impucálculo Prestaciones</span>
+                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
             </div>
         </div>
 
-        <div class="hero-title">
-            <h1>
-                Bienvenido a <span class="brand-name">InputCálculo</span>
-            </h1>
-            <p class="hero-subtitle">Impuestos + Cálculo Inteligente</p>
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
         </div>
+    </section>
 
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header" data-scroll-reveal>
+                <h2>¿Qué puedes calcular?</h2>
+                <p>Herramientas precisas para tus necesidades fiscales y laborales</p>
+            </div>
 
-        <div class="services-container">
             <div class="services-grid">
-                <!-- Service 1: Tax Calculator -->
-                <div class="service-card" data-service="tax">
+                <!-- Card 1: Impuestos -->
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.1s;">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -698,21 +683,51 @@
                             </path>
                         </svg>
                     </div>
-                    <h3 class="service-title">Calculadora de Impuestos</h3>
-                    <p class="service-description">Calcula tus retenciones TSS e ISR semanales o mensuales con precisión
-                    </p>
-                    <button class="service-button" data-navigate="index.html"
-                        aria-label="Ir a calculadora de impuestos">
-                        <span>CALCULAR IMPUESTOS</span>
-                        <svg class="button-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg>
-                    </button>
+                    <h3>Impuestos</h3>
+                    <p>Cálculo completo de tus impuestos mensuales y anuales con precisión normativa</p>
                 </div>
 
-                <!-- Service 2: Labor Benefits Calculator -->
-                <div class="service-card" data-service="benefits">
+                <!-- Card 2: ISR -->
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.2s;">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>ISR</h3>
+                    <p>Impuesto Sobre la Renta calculado automáticamente según tu escala salarial</p>
+                </div>
+
+                <!-- Card 3: ARS -->
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.3s;">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>ARS</h3>
+                    <p>Aporte al Seguro de Salud calculado con tope máximo según normativa vigente</p>
+                </div>
+
+                <!-- Card 4: AFP -->
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.4s;">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>AFP</h3>
+                    <p>Aporte al Fondo de Pensiones con aplicación automática de límites legales</p>
+                </div>
+
+                <!-- Card 5: Prestaciones -->
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.5s;">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -720,167 +735,152 @@
                             </path>
                         </svg>
                     </div>
-                    <h3 class="service-title">Calculadora de Prestaciones</h3>
-                    <p class="service-description">Calcula tu finiquito laboral al salir de la empresa (renuncia o
-                        despido)</p>
-                    <button class="service-button" data-navigate="prestaciones.html"
-                        aria-label="Ir a calculadora de prestaciones">
-                        <span>CALCULAR PRESTACIONES</span>
-                        <svg class="button-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <h3>Prestaciones Laborales</h3>
+                    <p>Cálculo de finiquito laboral: cesantía, preaviso, vacaciones y regalía pascual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="section-header" data-scroll-reveal>
+                <h2>¿Por qué elegir Impucálculo?</h2>
+                <p>Confiabilidad y precisión para República Dominicana</p>
+            </div>
+
+            <div class="trust-grid">
+                <!-- Trust 1: Precision -->
+                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.1s;">
+                    <div class="trust-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Precisión Total</h3>
+                    <p>Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo
+                        dominicano</p>
+                </div>
+
+                <!-- Trust 2: Ease of Use -->
+                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.2s;">
+                    <div class="trust-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Facilidad de Uso</h3>
+                    <p>Interface intuitiva y moderna que te permite calcular tus impuestos y prestaciones en segundos
+                    </p>
+                </div>
+
+                <!-- Trust 3: Adaptado a RD -->
+                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.3s;">
+                    <div class="trust-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Adaptado a RD</h3>
+                    <p>100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-scroll-reveal>
+                <h2>Comienza a calcular ahora</h2>
+                <p>Accede a nuestras herramientas y gestiona tus finanzas con confianza</p>
+
+                <div class="cta-buttons">
+                    <a href="index.html" class="btn btn-primary">
+                        <span>Calcular Impuestos</span>
+                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="scroll-indicator">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
-                </path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content-section parallax-layer" id="content">
-        <div class="container">
-            <div class="section-title">
-                <h2>La Plataforma Fiscal Premium de RD</h2>
-                <p>Gestión inteligente y precisa de tus impuestos</p>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-card" style="transition-delay: 0.1s">
-                    <div class="benefit-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                    </a>
+                    <a href="prestaciones.html" class="btn btn-secondary">
+                        <span>Calcular Prestaciones</span>
+                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
-                    </div>
-                    <h3>Cálculo Fiscal Preciso</h3>
-                    <p>Algoritmos avanzados que calculan automáticamente tus retenciones de ISR con precisión total,
-                        siguiendo las normativas vigentes de República Dominicana.</p>
-                </div>
-
-                <div class="benefit-card" style="transition-delay: 0.2s">
-                    <div class="benefit-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Gestión TSS Automática</h3>
-                    <p>Control completo de tus aportes a AFP (2.87%) y ARS (3.04%), con aplicación automática de topes
-                        y límites conforme a la ley.</p>
-                </div>
-
-                <div class="benefit-card" style="transition-delay: 0.3s">
-                    <div class="benefit-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Cumplimiento RD 2025-2026</h3>
-                    <p>Sistema actualizado con las últimas regulaciones fiscales de la DGII, garantizando que tus
-                        cálculos siempre cumplan con la normativa vigente.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <div class="cta-button">
-                    <button id="cta-secondary" aria-label="Comenzar a calcular">
-                        <span>COMENZAR AHORA</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo_new.png" alt="Impucálculo Logo">
+            </div>
+            <p class="footer-text">
+                <strong>Impucálculo</strong> - Cálculo de Impuestos y Prestaciones Laborales
+            </p>
+            <p class="footer-copyright">
+                © 2026 Impucálculo. República Dominicana.
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // Smooth transition to apps
-        function navigateToApp(url) {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            setTimeout(() => {
-                window.location.href = url;
-            }, 500);
-        }
-
-        // Service button handlers
-        document.querySelectorAll('.service-button').forEach(button => {
-            button.addEventListener('click', function () {
-                const url = this.getAttribute('data-navigate');
-                navigateToApp(url);
-            });
-        });
-
-        // Secondary CTA (if exists)
-        const ctaSecondary = document.getElementById('cta-secondary');
-        if (ctaSecondary) {
-            ctaSecondary.addEventListener('click', () => navigateToApp('index.html'));
-        }
-
-
         // Intersection Observer for scroll animations
         const observerOptions = {
-            threshold: 0.2,
+            threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('is-visible');
                 }
             });
         }, observerOptions);
 
-        // Observe elements
-        document.querySelectorAll('.section-title, .benefit-card').forEach(el => {
+        // Observe all elements with data-scroll-reveal
+        document.querySelectorAll('[data-scroll-reveal]').forEach(el => {
             observer.observe(el);
         });
 
-        // Parallax effect
-        let ticking = false;
-        let lastScrollY = 0;
-
-        function updateParallax() {
-            const scrollY = window.scrollY;
-            const parallaxElements = document.querySelectorAll('.parallax-layer');
-
-            parallaxElements.forEach(el => {
-                const speed = 0.3;
-                const yPos = -(scrollY * speed);
-                el.style.transform = `translateY(${yPos}px)`;
+        // Smooth scroll for indicator
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                document.querySelector('.services-section').scrollIntoView({ behavior: 'smooth' });
             });
-
-            ticking = false;
         }
 
-        window.addEventListener('scroll', () => {
-            lastScrollY = window.scrollY;
-
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        });
-
-        // Smooth scroll for indicator
-        document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+        // Smooth page transitions
+        document.querySelectorAll('a[href$=".html"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('http')) {
+                    e.preventDefault();
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                }
+            });
         });
 
         // Prevent animation replay on back navigation
         if (performance.navigation.type === 2) {
-            document.querySelectorAll('.logo-container, .hero-title, .cta-button').forEach(el => {
+            document.querySelectorAll('.logo-container, .hero-title, .cta-buttons').forEach(el => {
                 el.style.animation = 'none';
                 el.style.opacity = '1';
             });
