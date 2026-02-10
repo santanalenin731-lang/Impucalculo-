@@ -665,6 +665,9 @@
         const feedbackFields = document.getElementById('feedback-fields');
         const feedbackSuccess = document.getElementById('feedback-success');
 
+        // REEMPLAZA ESTA URL CON LA DE TU GOOGLE APPS SCRIPT
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweavYg0Hu3kftiPB58R07F4bV0jHInti62LfBk5wx7I_TblYv-vBnMsciKwpTwxHL9/exec';
+
         function openSuggestionsModal() {
             suggestionsModal.classList.remove('hidden');
             suggestionsModal.classList.add('flex');
@@ -687,11 +690,48 @@
         if (feedbackForm) {
             feedbackForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                feedbackFields.classList.add('hidden');
-                feedbackSuccess.classList.remove('hidden');
-                setTimeout(() => {
-                    closeSuggestionsModal();
-                }, 2500);
+
+                // Evitar doble envío
+                const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Enviando...';
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                // Recopilar datos
+                const name = document.getElementById('feedback-name').value;
+                const message = document.getElementById('feedback-message').value;
+
+                // Enviar a Google Sheets
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        message: message,
+                        source: 'Calculadora Prestaciones (prestaciones.html)'
+                    })
+                }).then(() => {
+                    feedbackFields.classList.add('hidden');
+                    feedbackSuccess.classList.remove('hidden');
+                    setTimeout(() => {
+                        closeSuggestionsModal();
+                        // Resetear botón después de cerrar
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }, 2500);
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un error al enviar tu sugerencia.');
+                    // Resetear botón en caso de error
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                });
             });
         }
     </script>
