@@ -38,10 +38,15 @@
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
                         'slide-up': 'slideUpCustom 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         slideUpCustom: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'infinite-scroll': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
                     }
                 }
             }
@@ -96,40 +101,42 @@
     <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 py-4">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div
-                    class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center neo-shadow border border-dr-slate-100">
-                    <img src="logo_new.png" alt="Logo" class="w-10 h-10 object-contain"
+                <div class="w-[100px] h-[100px] flex items-center justify-center">
+                    <img src="logo_new.png" alt="Logo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
                         onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold tracking-tight leading-none">
-                        <span class="text-dr-blue">Input</span><span class="text-dr-red">Cálculo</span> <span
+                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">calculo</span> <span
                             class="text-dr-slate-800">Prestaciones</span>
                     </h1>
-                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1 text-dr-slate-600">
-                        República Dominicana 2025-2026
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
+                        <span class="text-dr-red">República Dominicana</span> <span
+                            class="text-dr-blue">2025-2026</span>
                     </p>
                 </div>
             </div>
-            <a href="welcome.html"
-                class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-dr-blue to-dr-red text-white text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 hover:shadow-lg">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                    </path>
-                </svg>
-                <span>Inicio</span>
-            </a>
-            <button id="btn-sugerencias"
-                class="flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-dr-blue/20 text-dr-blue text-xs font-bold uppercase tracking-widest transition-all hover:bg-dr-blue hover:text-white hover:border-dr-blue hover:scale-105 active:scale-95"
-                aria-label="Dejar sugerencias">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
-                    </path>
-                </svg>
-                <span>Sugerencias</span>
-            </button>
+            <div class="flex items-center gap-4">
+                <a href="welcome.html"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl btn-gradient-blue text-white text-xs font-bold uppercase tracking-widest">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span>Inicio</span>
+                </a>
+                <button id="btn-sugerencias"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-dr-blue/20 text-dr-blue text-xs font-bold uppercase tracking-widest transition-all hover:bg-dr-blue hover:text-white hover:border-dr-blue hover:scale-105 active:scale-95"
+                    aria-label="Dejar sugerencias">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                        </path>
+                    </svg>
+                    <span>Sugerencias</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -252,7 +259,7 @@
 
                 <!-- Botón Calcular -->
                 <button type="submit"
-                    class="w-full py-4 px-6 bg-gradient-to-r from-dr-blue to-dr-red text-white text-lg font-bold uppercase tracking-widest rounded-2xl transition-all hover:scale-105 hover:shadow-2xl neo-shadow">
+                    class="w-full py-4 px-6 bg-dr-blue text-white text-lg font-bold uppercase tracking-widest rounded-2xl transition-all hover:scale-105 hover:shadow-2xl neo-shadow">
                     Calcular Prestaciones
                 </button>
             </form>
@@ -327,7 +334,256 @@
             </div>
         </div>
 
+        <!-- Metodología de Cálculo -->
+        <section id="metodologia" class="mt-32 space-y-16 animate-slide-up" style="animation-delay: 0.4s;">
+            <div class="text-center space-y-4">
+                <div
+                    class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full mb-2">
+                    Derechos Laborales</div>
+                <h2 class="text-4xl font-black text-dr-slate-800 tracking-tight">Metodología de Cálculo</h2>
+                <p class="text-dr-slate-500 font-medium max-w-2xl mx-auto">Conoce los detalles y reglas que aplicamos
+                    para calcular tus prestaciones según el Código de Trabajo Dominicano.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Preaviso -->
+                <div
+                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
+                    <div class="space-y-6">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
+                            1</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Preaviso</h3>
+                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
+                                Días de anticipación o pago equivalente según tiempo laborado:
+                                <br><br>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">7 días</span><span class="text-xs">3 a 6 meses</span>
+                                </span>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">14 días</span><span class="text-xs">6 meses a 1 año</span>
+                                </span>
+                                <span class="flex justify-between">
+                                    <span class="font-bold">28 días</span><span class="text-xs">Más de 1 año</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Cesantía -->
+                <div
+                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
+                    <div class="space-y-6">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
+                            2</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Cesantía</h3>
+                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
+                                Auxilio económico por desahucio (días de salario promedio):
+                                <br><br>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">6 días</span><span class="text-xs">3 a 6 meses</span>
+                                </span>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">13 días</span><span class="text-xs">6 meses a 1 año</span>
+                                </span>
+                                <span class="flex justify-between">
+                                    <span class="font-bold">21 días/año</span><span class="text-xs">Más de 1 año</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Vacaciones -->
+                <div
+                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
+                    <div class="space-y-6">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
+                            3</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Vacaciones</h3>
+                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
+                                Descanso remunerado anual o proporción si no se ha disfrutado:
+                                <br><br>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">14 días</span><span class="text-xs">1 a 5 años</span>
+                                </span>
+                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
+                                    <span class="font-bold">18 días</span><span class="text-xs">Más de 5 años</span>
+                                </span>
+                                <span class="flex justify-between">
+                                    <span class="font-bold pt-2 block text-xs italic text-dr-slate-400">Escala
+                                        proporcional desde los 5 meses</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota Técnica Regalía -->
+            <div
+                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    <div
+                        class="w-24 h-24 shrink-0 rounded-[2rem] bg-dr-white flex items-center justify-center neo-shadow border border-dr-slate-100">
+                        <svg class="w-12 h-12 text-dr-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="w-2 h-6 bg-dr-blue rounded-full"></span>
+                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Salario de Navidad
+                                (Regalía)</h4>
+                        </div>
+                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
+                            Conocido como el "sueldo 13", corresponde a la <span
+                                class="text-dr-blue font-black">duodécima parte (1/12)</span> del total de salarios
+                            ordinarios devengados por el trabajador en el año calendario.
+                            <span
+                                class="block mt-4 text-sm font-bold text-dr-slate-400 uppercase tracking-wider italic">
+                                * Este derecho es irrenunciable y está exento de impuestos.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- Footer Ticker -->
+    <footer class="py-6 glass border-t border-dr-slate-100 mt-20 overflow-hidden relative w-full">
+        <!-- Ticker Wrapper -->
+        <div
+            class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+
+            <!-- Grupo 1 -->
+            <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 animate-infinite-scroll">
+
+                <!-- Item: Logo + Nombre -->
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal
+                            Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin
+                                Santana de Jesus</span></p>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Año -->
+                <div
+                    class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-dr-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
+                    </span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación:
+                        <span class="text-dr-red">2025</span>
+                    </p>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Repetido para llenar espacio -->
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal
+                            Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin
+                                Santana de Jesus</span></p>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Año Repetido -->
+                <div
+                    class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-dr-blue"></span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Gestión Fiscal: <span
+                            class="text-dr-blue">Inteligente</span></p>
+                </div>
+
+            </div>
+
+            <!-- Grupo 2 (Duplicado exacto para el loop infinito) -->
+            <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 animate-infinite-scroll"
+                aria-hidden="true">
+
+                <!-- Item: Logo + Nombre -->
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal
+                            Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin
+                                Santana de Jesus</span></p>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Año -->
+                <div
+                    class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-dr-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
+                    </span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación:
+                        <span class="text-dr-red">2025</span>
+                    </p>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Repetido para llenar espacio -->
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[50px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal
+                            Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin
+                                Santana de Jesus</span></p>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+
+                <!-- Item: Año Repetido -->
+                <div
+                    class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-dr-blue"></span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Gestión Fiscal: <span
+                            class="text-dr-blue">Inteligente</span></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Constants
