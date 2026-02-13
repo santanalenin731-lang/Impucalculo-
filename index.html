@@ -241,7 +241,7 @@
 
                             <div class="space-y-6">
                                 <div class="space-y-3">
-                                    <label for="weekly-income"
+                                    <label for="weekly-income" id="income-label"
                                         class="block text-xs font-black text-dr-blue uppercase tracking-widest">Ingreso
                                         Semanal Bruto</label>
                                     <div class="relative">
@@ -253,7 +253,7 @@
                                             placeholder="Ej: 27,960.95" required
                                             class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue-100 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                                     </div>
-                                    <p class="text-[10px] text-dr-slate-400 font-bold">Monto total semanal según tu
+                                    <p id="income-help" class="text-[10px] text-dr-slate-400 font-bold">Monto total semanal según tu
                                         volante de pago.</p>
                                 </div>
 
@@ -982,6 +982,16 @@
 
         elements.weeklyIncomeInput.addEventListener('input', updatePreview);
         elements.overtimeInput.addEventListener('input', updatePreview);
+
+        // Update labels when frequency changes
+        const freqLabels = { semanal: 'Semanal', quincenal: 'Quincenal', mensual: 'Mensual' };
+        document.querySelectorAll('input[name="freq"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selected = freqLabels[radio.value] || 'Semanal';
+                document.getElementById('income-label').textContent = `Ingreso ${selected} Bruto`;
+                document.getElementById('income-help').textContent = `Monto total ${selected.toLowerCase()} según tu volante de pago.`;
+            });
+        });
 
         elements.form.addEventListener('submit', (e) => {
             e.preventDefault();
