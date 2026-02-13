@@ -14,3 +14,5 @@ Captura de pantalla*
 
 # Logs
 server.log
+autosync.log
+autosync.err
