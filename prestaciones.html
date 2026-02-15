@@ -248,15 +248,20 @@
                 <!-- Sección 4: Preaviso (condicional) -->
                 <div id="preaviso-section" class="space-y-4 hidden">
                     <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Preaviso</h3>
-                    <div class="flex items-center gap-4 p-4 bg-dr-slate-50 rounded-xl">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-dr-slate-50 rounded-xl">
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input type="checkbox" id="preaviso-dado"
                                 class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
-                            <span class="text-sm font-bold text-dr-slate-700">¿El empleador NO dio el preaviso?</span>
+                            <span id="preaviso-label" class="text-sm font-bold text-dr-slate-700">¿El empleador NO dio
+                                el preaviso?</span>
                         </label>
-                        <div class="ml-auto text-xs text-dr-slate-500">
+                        <div class="sm:ml-auto text-xs text-dr-slate-500">
                             (7, 14 o 28 días según antigüedad)
                         </div>
+                    </div>
+                    <div id="preaviso-info" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                        <p class="text-xs font-semibold text-amber-700">⚠️ Si no se dio el preaviso, el monto
+                            correspondiente se <span id="preaviso-accion">descontará</span> del total.</p>
                     </div>
                 </div>
 
@@ -660,13 +665,36 @@
         document.querySelectorAll('[name="terminacion"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const preavisoSection = document.getElementById('preaviso-section');
+                const preavisoLabel = document.getElementById('preaviso-label');
+                const preavisoInfo = document.getElementById('preaviso-info');
+                const preavisoAccion = document.getElementById('preaviso-accion');
+
                 if (e.target.value === 'despido') {
                     preavisoSection.classList.remove('hidden');
+                    preavisoLabel.textContent = '¿El empleador NO dio el preaviso?';
+                    preavisoAccion.textContent = 'sumará al';
+                    preavisoInfo.classList.add('hidden');
+                } else if (e.target.value === 'renuncia') {
+                    preavisoSection.classList.remove('hidden');
+                    preavisoLabel.textContent = '¿El empleado NO dio el preaviso?';
+                    preavisoAccion.textContent = 'descontará del';
+                    preavisoInfo.classList.add('hidden');
                 } else {
                     preavisoSection.classList.add('hidden');
                     document.getElementById('preaviso-dado').checked = false;
+                    preavisoInfo.classList.add('hidden');
                 }
             });
+        });
+
+        // Show info when checkbox changes
+        document.getElementById('preaviso-dado').addEventListener('change', (e) => {
+            const preavisoInfo = document.getElementById('preaviso-info');
+            if (e.target.checked) {
+                preavisoInfo.classList.remove('hidden');
+            } else {
+                preavisoInfo.classList.add('hidden');
+            }
         });
 
         document.getElementById('vacaciones-tomadas').addEventListener('change', (e) => {
@@ -736,11 +764,15 @@
             // Calculate preaviso
             let diasPreaviso = 0;
             let montoPreaviso = 0;
-            if (tipoTerminacion === 'despido' && preavisoDado) {
+            let preavisoEsDeduccion = false;
+            if ((tipoTerminacion === 'despido' || tipoTerminacion === 'renuncia') && preavisoDado) {
                 if (ant.totalMonths >= 12) diasPreaviso = 28;
                 else if (ant.totalMonths >= 6) diasPreaviso = 14;
                 else if (ant.totalMonths >= 3) diasPreaviso = 7;
                 montoPreaviso = diasPreaviso * salarioDiario;
+                if (tipoTerminacion === 'renuncia') {
+                    preavisoEsDeduccion = true;
+                }
             }
 
             // Calculate cesantia
@@ -780,14 +812,15 @@
             const montoRegalia = (salario * mesesTrabajadosAnio) / 12;
 
             // Total
-            const total = montoPreaviso + montoCesantia + montoVacaciones + montoRegalia;
+            const totalPreaviso = preavisoEsDeduccion ? -montoPreaviso : montoPreaviso;
+            const total = totalPreaviso + montoCesantia + montoVacaciones + montoRegalia;
 
             // Display results
             displayResults({
                 antiguedad: `${ant.years} años, ${ant.months} meses`,
                 salarioDiario,
                 tipoTerminacion,
-                preaviso: { dias: diasPreaviso, monto: montoPreaviso },
+                preaviso: { dias: diasPreaviso, monto: montoPreaviso, esDeduccion: preavisoEsDeduccion },
                 cesantia: { dias: diasCesantia, monto: montoCesantia },
                 vacaciones: { dias: diasVacacionesPendientes, monto: montoVacaciones },
                 regalia: { monto: montoRegalia },
@@ -818,9 +851,10 @@
 
             if (data.preaviso.monto > 0) {
                 rows.push({
-                    concepto: 'Preaviso',
+                    concepto: data.preaviso.esDeduccion ? 'Preaviso (Deducción)' : 'Preaviso',
                     dias: `${data.preaviso.dias} días`,
-                    monto: data.preaviso.monto
+                    monto: data.preaviso.esDeduccion ? -data.preaviso.monto : data.preaviso.monto,
+                    esDeduccion: data.preaviso.esDeduccion
                 });
             }
 
@@ -849,10 +883,11 @@
             rows.forEach(row => {
                 const tr = document.createElement('tr');
                 tr.className = 'border-b border-dr-slate-100';
+                const esDeduccion = row.esDeduccion || false;
                 tr.innerHTML = `
-                    <td class="py-3 font-semibold text-dr-slate-700">${row.concepto}</td>
+                    <td class="py-3 font-semibold ${esDeduccion ? 'text-dr-red' : 'text-dr-slate-700'}">${row.concepto}</td>
                     <td class="py-3 text-right text-dr-slate-600">${row.dias}</td>
-                    <td class="py-3 text-right font-bold text-dr-slate-900">${fmt(row.monto)}</td>
+                    <td class="py-3 text-right font-bold ${esDeduccion ? 'text-dr-red' : 'text-dr-slate-900'}">${esDeduccion ? '-' : ''}${fmt(Math.abs(row.monto))}</td>
                 `;
                 tbody.appendChild(tr);
             });
