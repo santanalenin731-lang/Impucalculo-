@@ -252,8 +252,7 @@
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input type="checkbox" id="preaviso-dado"
                                 class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
-                            <span class="text-sm font-bold text-dr-slate-700">¿Se dio el preaviso
-                                correspondiente?</span>
+                            <span class="text-sm font-bold text-dr-slate-700">¿El empleador NO dio el preaviso?</span>
                         </label>
                         <div class="ml-auto text-xs text-dr-slate-500">
                             (7, 14 o 28 días según antigüedad)
@@ -737,7 +736,7 @@
             // Calculate preaviso
             let diasPreaviso = 0;
             let montoPreaviso = 0;
-            if (tipoTerminacion === 'despido' && !preavisoDado) {
+            if (tipoTerminacion === 'despido' && preavisoDado) {
                 if (ant.totalMonths >= 12) diasPreaviso = 28;
                 else if (ant.totalMonths >= 6) diasPreaviso = 14;
                 else if (ant.totalMonths >= 3) diasPreaviso = 7;
