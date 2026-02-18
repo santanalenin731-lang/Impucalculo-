@@ -855,7 +855,10 @@
         const fmt = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' });
         const fmtDate = (d) => {
             const date = new Date(d + 'T00:00:00');
-            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' })
+                .toUpperCase()
+                .replace('.', '')
+                .replace(/ DE /g, ' ');
         };
 
         const getMonthYear = (d) => {
