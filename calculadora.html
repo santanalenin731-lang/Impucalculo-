@@ -197,10 +197,22 @@
                     <p class="text-[10px] text-dr-red mt-1 font-medium">República Dominicana</p>
                 </div>
                 <div class="hidden lg:block w-px h-8 bg-dr-slate-200"></div>
-                <div class="hidden lg:block bg-dr-blue/5 px-4 py-2 rounded-xl">
-                    <span id="current-date-display" class="text-xs font-bold text-dr-blue tracking-tighter uppercase">05
-                        ENE 2025</span>
+                <div class="px-4 py-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10">
+                    <span class="text-xs font-black text-dr-blue tracking-widest uppercase" id="current-date-display">17
+                        FEB 2026</span>
                 </div>
+                <!-- Botón de Ajustes (Sueldo Fijo) -->
+                <button onclick="openFixedSalaryModal()"
+                    class="p-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 hover:bg-dr-blue/10 transition-colors group"
+                    title="Configurar Sueldo Fijo">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor"
+                        class="w-5 h-5 text-dr-blue group-hover:rotate-90 transition-transform duration-500">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
@@ -254,6 +266,7 @@
                                     class="w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue focus:ring-4 focus:ring-dr-blue/5 outline-none transition-all">
                             </div>
 
+
                             <div class="space-y-6">
                                 <div class="space-y-3">
                                     <label for="weekly-income" id="income-label"
@@ -265,7 +278,7 @@
                                             <span class="text-dr-blue font-bold">RD$</span>
                                         </div>
                                         <input type="number" id="weekly-income" step="0.01" min="0"
-                                            placeholder="Ej: 27,960.95" required
+                                            placeholder="Ej: 15,000.00" required
                                             class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue-100 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                                     </div>
                                     <p id="income-help" class="text-[10px] text-dr-slate-400 font-bold">Monto total
@@ -273,24 +286,6 @@
                                         volante de pago.</p>
                                 </div>
 
-                                <!-- Campo de Horas Extras (Opcional) -->
-                                <div class="space-y-3">
-                                    <label for="overtime-amount"
-                                        class="block text-xs font-black text-dr-red uppercase tracking-widest">Horas
-                                        Extras
-                                        (Opcional)</label>
-                                    <div class="relative">
-                                        <div
-                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                            <span class="text-dr-red font-bold">RD$</span>
-                                        </div>
-                                        <input type="number" id="overtime-amount" step="0.01" min="0" value="0"
-                                            placeholder="Ej: 4,075.07"
-                                            class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-red/20 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-red outline-none transition-all">
-                                    </div>
-                                    <p class="text-[10px] text-dr-slate-400 font-bold">⚠️ Las horas extras NO se gravan
-                                        con TSS (AFP/ARS) según ley RD. Déjalas en 0 si no aplica.</p>
-                                </div>
 
                                 <!-- Preview de descuentos automáticos -->
                                 <div class="bg-dr-slate-50 rounded-2xl p-5 border border-dr-slate-200">
@@ -852,7 +847,9 @@
         };
 
         const STORAGE_KEY = 'impucalculo_data_v3';
+        const FIXED_SALARY_KEY = 'impucalculo_fixed_salary';
         let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { records: [] };
+        let fixedSalaryConfig = JSON.parse(localStorage.getItem(FIXED_SALARY_KEY)) || { enabled: false, amount: '' };
 
         const fmt = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' });
         const fmtDate = (d) => {
@@ -869,7 +866,7 @@
             form: document.getElementById('tax-form'),
             dateInput: document.getElementById('input-date'),
             weeklyIncomeInput: document.getElementById('weekly-income'),
-            overtimeInput: document.getElementById('overtime-amount'),
+
             tssBasePreview: document.getElementById('tss-base-preview'),
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
@@ -888,20 +885,125 @@
             btnClear: document.getElementById('clear-history')
         };
 
+        // Lógica del Modal Sueldo Fijo
+        function openFixedSalaryModal() {
+            const modal = document.getElementById('modal-sueldo-fijo');
+            const input = document.getElementById('modal-fixed-salary-input');
+
+            if (modal && input) {
+                // Cargar valor actual
+                input.value = fixedSalaryConfig.amount || '';
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                // Enfocar input si está vacío
+                if (!input.value) {
+                    setTimeout(() => input.focus(), 100);
+                }
+            }
+        }
+
+        function closeFixedSalaryModal() {
+            const modal = document.getElementById('modal-sueldo-fijo');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function saveFixedSalary() {
+            const input = document.getElementById('modal-fixed-salary-input');
+            const amount = parseFloat(input.value);
+
+            if (amount && amount > 0) {
+                fixedSalaryConfig = { enabled: true, amount: amount };
+                localStorage.setItem(FIXED_SALARY_KEY, JSON.stringify(fixedSalaryConfig));
+
+                // Actualizar interfaz principal
+                // indicator removed
+
+                // Cerrar modal
+                closeFixedSalaryModal();
+
+                // Recalcular si hay datos
+                if (elements.weeklyIncomeInput.value) {
+                    updatePreview();
+                }
+            } else {
+                alert('Por favor introduce un monto válido mayor a 0 para activar el sueldo fijo, o presiona Eliminar.');
+            }
+        }
+
+        function deleteFixedSalary() {
+            fixedSalaryConfig = { enabled: false, amount: '' };
+            localStorage.setItem(FIXED_SALARY_KEY, JSON.stringify(fixedSalaryConfig));
+            // indicator removed
+            closeFixedSalaryModal();
+            if (elements.weeklyIncomeInput.value) {
+                updatePreview();
+            }
+        }
+
+
         // Cálculo correcto de TSS según ley dominicana (Resolución 72-03 CNSS)
         // Las horas extras NO se gravan con AFP/ARS
-        const calculateTSS = (grossIncome, overtimeAmount) => {
-            // Base cotizable = Ingreso bruto - Horas extras
-            const tssBase = Math.max(0, grossIncome - overtimeAmount);
+        // freq: solo se usa para prorratear cuando hay sueldo fijo mensual
+        const calculateTSS = (grossIncome, fixedSalary = null, freq = 'MENSUAL') => {
+            // Aplicar topes mensuales
+            const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS;
+            const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP;
 
-            // Aplicar topes mensuales (convertidos a semanal si aplica)
-            const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS; // Tope mensual SFS
-            const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP; // Tope mensual AFP
+            if (fixedSalary !== null) {
+                // Sueldo fijo es MENSUAL → prorratear usando la fórmula anualizada para precisión
+                // Semanal: (Mensual * 12) / 52
+                // Quincenal: (Mensual * 12) / 24
 
-            const sfs = Math.min(tssBase, sfsCap) * CONFIG.TSS_RATES.SFS;
-            const afp = Math.min(tssBase, afpCap) * CONFIG.TSS_RATES.AFP;
+                // Calcular TSS mensual completo
+                const monthlySfs = Math.min(fixedSalary, sfsCap) * CONFIG.TSS_RATES.SFS;
+                const monthlyAfp = Math.min(fixedSalary, afpCap) * CONFIG.TSS_RATES.AFP;
 
-            return { sfs, afp, tssBase };
+                let sfs, afp, tssBase;
+
+                if (freq === 'SEMANAL') {
+                    sfs = (monthlySfs * 12) / 52;
+                    afp = (monthlyAfp * 12) / 52;
+                    tssBase = (fixedSalary * 12) / 52;
+                } else if (freq === 'QUINCENAL') {
+                    sfs = (monthlySfs * 12) / 24;
+                    afp = (monthlyAfp * 12) / 24;
+                    tssBase = (fixedSalary * 12) / 24;
+                } else {
+                    // Mensual
+                    sfs = monthlySfs;
+                    afp = monthlyAfp;
+                    tssBase = fixedSalary;
+                }
+
+                return { sfs, afp, tssBase };
+            } else {
+                // Sin sueldo fijo → el ingreso bruto ya es del período (semanal/quincenal/mensual)
+                const tssBase = grossIncome;
+                // Nota: Sin sueldo fijo, los topes se aplican directamente al periodo actual, 
+                // lo cual es una aproximación si el ingreso varía mucho. 
+                // Pero es el comportamiento estándar si no hay sueldo base definido.
+                // Ajustamos los topes a la frecuencia para ser consistentes
+
+                let sfsCapAdj = sfsCap;
+                let afpCapAdj = afpCap;
+
+                if (freq === 'SEMANAL') {
+                    sfsCapAdj = (sfsCap * 12) / 52;
+                    afpCapAdj = (afpCap * 12) / 52;
+                } else if (freq === 'QUINCENAL') {
+                    sfsCapAdj = (sfsCap * 12) / 24;
+                    afpCapAdj = (afpCap * 12) / 24;
+                }
+
+                const sfs = Math.min(tssBase, sfsCapAdj) * CONFIG.TSS_RATES.SFS;
+                const afp = Math.min(tssBase, afpCapAdj) * CONFIG.TSS_RATES.AFP;
+                return { sfs, afp, tssBase };
+            }
         };
 
         const calculateMonthlyISR = (monthlyTaxable) => {
@@ -985,11 +1087,20 @@
             });
         };
 
-        // Preview en tiempo real con exclusión de horas extras
+        // Obtener frecuencia seleccionada
+        const getSelectedFreq = () => {
+            const radio = Array.from(document.getElementsByName('freq')).find(r => r.checked);
+            return radio ? radio.value.toUpperCase() : 'SEMANAL';
+        };
+
+        // Preview en tiempo real
         const updatePreview = () => {
             const income = parseFloat(elements.weeklyIncomeInput.value) || 0;
-            const overtime = parseFloat(elements.overtimeInput.value) || 0;
-            const { afp, sfs, tssBase } = calculateTSS(income, overtime);
+            const fixedAmt = parseFloat(fixedSalaryConfig.amount) || 0;
+            // Si el monto es 0 o inválido, tratamos como si no hubiera sueldo fijo (usando null para fallback)
+            const fixedSalary = (fixedSalaryConfig.enabled && fixedAmt > 0) ? fixedAmt : null;
+            const freq = getSelectedFreq();
+            const { afp, sfs, tssBase } = calculateTSS(income, fixedSalary, freq);
 
             elements.tssBasePreview.innerText = fmt.format(tssBase);
             elements.afpPreview.innerText = fmt.format(afp);
@@ -997,7 +1108,8 @@
         };
 
         elements.weeklyIncomeInput.addEventListener('input', updatePreview);
-        elements.overtimeInput.addEventListener('input', updatePreview);
+
+
 
         // Update labels when frequency changes
         const freqLabels = { semanal: 'Semanal', quincenal: 'Quincenal', mensual: 'Mensual' };
@@ -1006,6 +1118,7 @@
                 const selected = freqLabels[radio.value] || 'Semanal';
                 document.getElementById('income-label').textContent = `Ingreso ${selected} Bruto`;
                 document.getElementById('income-help').textContent = `Monto total ${selected.toLowerCase()} según tu volante de pago.`;
+                updatePreview(); // Recalcular TSS con nueva frecuencia
             });
         });
 
@@ -1013,12 +1126,14 @@
             e.preventDefault();
             const date = elements.dateInput.value;
             const gross = parseFloat(elements.weeklyIncomeInput.value) || 0;
-            const overtime = parseFloat(elements.overtimeInput.value) || 0;
+            const fixedAmt = parseFloat(fixedSalaryConfig.amount) || 0;
+            // Si el monto es 0 o inválido, tratamos como si no hubiera sueldo fijo
+            const fixedSalary = (fixedSalaryConfig.enabled && fixedAmt > 0) ? fixedAmt : null;
+            const freq = getSelectedFreq();
 
-            // Calcular TSS excluyendo horas extras
-            const { afp, sfs, tssBase } = calculateTSS(gross, overtime);
+            // Calcular TSS prorrateado según frecuencia
+            const { afp, sfs, tssBase } = calculateTSS(gross, fixedSalary, freq);
             const ars = sfs; // Renombrar para consistencia
-            const freq = Array.from(document.getElementsByName('freq')).find(r => r.checked).value.toUpperCase();
 
             const monthYear = getMonthYear(date);
             const prevRecords = state.records.filter(r => getMonthYear(r.date) === monthYear);
@@ -1035,7 +1150,7 @@
             const net = gross - (afp + ars) - isr;
 
             state.records.unshift({
-                id: Date.now(), date, freq, gross, overtime, tssBase, afp, ars, isr, net
+                id: Date.now(), date, freq, gross, tssBase, afp, ars, isr, net
             });
 
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -1045,7 +1160,7 @@
 
             // Limpiar formulario
             elements.weeklyIncomeInput.value = '';
-            elements.overtimeInput.value = '0';
+
             elements.tssBasePreview.innerText = 'RD$ 0.00';
             elements.afpPreview.innerText = 'RD$ 0.00';
             elements.arsPreview.innerText = 'RD$ 0.00';
@@ -1059,12 +1174,21 @@
             renderHistory();
         });
 
+        // Gestión de historial de cálculos
+        function clearHistory() {
+            localStorage.removeItem(STORAGE_KEY);
+            // NO borramos la configuración de sueldo fijo (para que el usuario no tenga que reescribirlo)
+            // Pero sí queremos que el modal salte de nuevo para confirmar.
+            // Usamos sessionStorage para forzar la apertura del modal en la recarga.
+            sessionStorage.setItem('force_salary_modal', 'true');
+
+            // Recargamos la página
+            location.reload();
+        }
+
         elements.btnClear.addEventListener('click', () => {
             if (confirm('¿Eliminar todo el historial?')) {
-                state.records = [];
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-                updateDashboard();
-                renderHistory();
+                clearHistory();
             }
         });
 
@@ -1073,12 +1197,83 @@
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
             elements.currentDateDisplay.innerText = fmtDate(today);
+
+            // Restaurar indicador (ya no existe)
+
+
+            // Mostrar modal de sueldo fijo si:
+            // 1. No existe configuración (Usuario nuevo)
+            // 2. Se forzó la apertura desde "Limpiar Todo" (sessionStorage)
+            if (!localStorage.getItem(FIXED_SALARY_KEY) || sessionStorage.getItem('force_salary_modal')) {
+                // Limpiar la bandera de forzado
+                sessionStorage.removeItem('force_salary_modal');
+
+                // Marcar como visto (para consistencia)
+                localStorage.setItem('impucalculo_fixed_salary_seen', '1');
+
+                // Abrir modal con delay
+                setTimeout(() => openFixedSalaryModal(), 500);
+            }
+
             updateDashboard();
             renderHistory();
         };
 
         window.onload = initMain;
     </script>
+
+
+    <!-- Modal de Sueldo Fijo -->
+    <div id="modal-sueldo-fijo" class="fixed inset-0 z-[150] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-dr-slate-900/40 backdrop-blur-sm transition-opacity"
+            onclick="closeFixedSalaryModal()"></div>
+
+        <!-- Modal Content -->
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 space-y-6 z-10">
+            <button onclick="closeFixedSalaryModal()"
+                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-dr-slate-100 hover:bg-dr-slate-200 transition-colors">
+                <span class="text-dr-slate-500 text-lg">✕</span>
+            </button>
+
+            <div class="text-center space-y-2">
+                <h3 class="text-lg font-black">
+                    <span class="text-dr-blue">¿Cobras</span> <span class="text-dr-red">Horas Extras</span><span
+                        class="text-dr-blue">?</span>
+                </h3>
+                <p class="text-xs text-dr-slate-500 font-bold leading-relaxed">
+                    Si te pagan horas extras, introduce tu <span class="text-dr-blue font-black">sueldo base fijo
+                        mensual</span> <span class="text-dr-red font-black">(sin extras)</span>. Así, ARS y AFP se
+                    calcularán correctamente sobre tu salario base.
+                </p>
+            </div>
+
+            <!-- Input -->
+            <div class="space-y-2">
+                <label class="block text-xs font-black text-dr-blue uppercase tracking-widest">Sueldo Fijo Mensual <span
+                        class="text-dr-red">(Sin Extras)</span></label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <span class="text-dr-blue font-bold">RD$</span>
+                    </div>
+                    <input type="number" id="modal-fixed-salary-input" step="0.01" min="0" placeholder="Ej: 15,000.00"
+                        class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue/30 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="flex gap-3">
+                <button type="button" onclick="deleteFixedSalary()"
+                    class="flex-1 py-3 rounded-2xl border-2 border-dr-red/30 text-dr-red text-xs font-black uppercase tracking-widest hover:bg-dr-red/5 transition-colors">
+                    Eliminar
+                </button>
+                <button type="button" onclick="saveFixedSalary()"
+                    class="flex-1 py-3 rounded-2xl bg-dr-blue text-white text-xs font-black uppercase tracking-widest hover:bg-dr-blue-600 transition-colors shadow-lg">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Sugerencias -->
     <div id="modal-sugerencias" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
