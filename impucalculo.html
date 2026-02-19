@@ -735,6 +735,7 @@
         const elements = {
             form: document.getElementById('tax-form'),
             dateInput: document.getElementById('input-date'),
+            displayDate: document.getElementById('display-date'), /* Added display element */
             salaryInput: document.getElementById('gross-salary'),
 
             mtdNet: document.getElementById('mtd-net'),
@@ -749,10 +750,20 @@
         };
 
         // Initialize state
+        const updateDateDisplay = () => {
+            const isoDate = elements.dateInput.value;
+            if (isoDate) {
+                const [y, m, d] = isoDate.split('-');
+                elements.displayDate.value = `${d}/${m}/${y}`;
+            } else {
+                elements.displayDate.value = '';
+            }
+        };
+
         const init = () => {
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
-
+            updateDateDisplay(); /* Init update */
             updateDashboard();
             renderHistory();
         };
