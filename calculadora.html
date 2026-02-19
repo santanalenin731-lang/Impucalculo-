@@ -871,6 +871,8 @@
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
 
+            displayDate: document.getElementById('display-date'), /* Added display element */
+
             mtdAfp: document.getElementById('mtd-afp'),
             mtdArs: document.getElementById('mtd-ars'),
             mtdIsr: document.getElementById('mtd-isr'),
@@ -1168,11 +1170,25 @@
             document.getElementById('block-resumen').scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
-        elements.dateInput.addEventListener('change', () => {
+        // Date Display Logic
+        const updateDateDisplay = () => {
+            const isoDate = elements.dateInput.value;
+            if (isoDate) {
+                const [y, m, d] = isoDate.split('-');
+                elements.displayDate.value = `${d}/${m}/${y}`;
+            } else {
+                elements.displayDate.value = '';
+            }
+        };
 
+        elements.dateInput.addEventListener('change', () => {
+            updateDateDisplay();
             updateDashboard();
             renderHistory();
         });
+
+        /* Sync on input also for immediate feedback on some browsers */
+        elements.dateInput.addEventListener('input', updateDateDisplay);
 
         // Gestión de historial de cálculos
         function clearHistory() {
@@ -1196,6 +1212,7 @@
         const initMain = () => {
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
+            updateDateDisplay(); /* Initial update */
 
 
             // Restaurar indicador (ya no existe)
