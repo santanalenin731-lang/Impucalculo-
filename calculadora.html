@@ -1034,14 +1034,10 @@
             elements.mtdProgressBar.style.width = `${progress}%`;
             elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral mensual alcanzado`;
 
-            if (totalTaxable > CONFIG.MONTHLY_EXEMPT) {
-                elements.mtdStatus.innerText = 'Sujeto a Retención';
-                elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
-                elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
-            } else {
-                elements.mtdStatus.innerText = 'Exento de ISR';
-                elements.mtdStatus.classList.replace('text-dr-red', 'text-dr-blue');
-                elements.mtdProgressBar.classList.replace('bg-dr-red', 'bg-dr-blue');
+            elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
+            elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
+        } else {
+            elements.mtdProgressBar.classList.replace('bg-dr-red', 'bg-dr-blue');
             }
         };
 
