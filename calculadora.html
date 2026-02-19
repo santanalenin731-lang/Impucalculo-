@@ -1033,10 +1033,10 @@
             elements.mtdProgressBar.style.width = `${progress}%`;
             elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral mensual alcanzado`;
 
-            elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
-            elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
-        } else {
-            elements.mtdProgressBar.classList.replace('bg-dr-red', 'bg-dr-blue');
+            if (totalTaxable > CONFIG.MONTHLY_EXEMPT) {
+                elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
+            } else {
+                elements.mtdProgressBar.classList.replace('bg-dr-red', 'bg-dr-blue');
             }
         };
 
