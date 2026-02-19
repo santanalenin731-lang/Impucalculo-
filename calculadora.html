@@ -197,11 +197,7 @@
                     <p class="text-[10px] text-dr-red mt-1 font-medium">República Dominicana</p>
                 </div>
                 <div class="hidden lg:block w-px h-8 bg-dr-slate-200"></div>
-                <div
-                    class="px-2 sm:px-4 py-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 whitespace-nowrap flex-shrink-0">
-                    <span class="text-[10px] sm:text-xs font-black text-dr-blue tracking-widest uppercase"
-                        id="current-date-display">17 FEB 2026</span>
-                </div>
+
                 <!-- Botón de Ajustes (Sueldo Fijo) -->
                 <button onclick="openFixedSalaryModal()"
                     class="flex-shrink-0 p-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 hover:bg-dr-blue/10 transition-colors group"
@@ -874,7 +870,7 @@
             tssBasePreview: document.getElementById('tss-base-preview'),
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
-            currentDateDisplay: document.getElementById('current-date-display'),
+
             mtdAfp: document.getElementById('mtd-afp'),
             mtdArs: document.getElementById('mtd-ars'),
             mtdIsr: document.getElementById('mtd-isr'),
@@ -1173,7 +1169,7 @@
         });
 
         elements.dateInput.addEventListener('change', () => {
-            elements.currentDateDisplay.innerText = fmtDate(elements.dateInput.value);
+
             updateDashboard();
             renderHistory();
         });
@@ -1200,7 +1196,7 @@
         const initMain = () => {
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
-            elements.currentDateDisplay.innerText = fmtDate(today);
+
 
             // Restaurar indicador (ya no existe)
 

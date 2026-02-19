@@ -178,10 +178,7 @@
                     <p class="text-[10px] text-dr-red mt-1 font-medium">República Dominicana</p>
                 </div>
                 <div class="w-px h-8 bg-dr-slate-200"></div>
-                <div class="bg-dr-blue/5 px-4 py-2 rounded-xl">
-                    <span id="current-date-display" class="text-xs font-bold text-dr-blue tracking-tighter uppercase">05
-                        ENE 2025</span>
-                </div>
+
             </div>
         </div>
     </header>
@@ -739,7 +736,7 @@
             form: document.getElementById('tax-form'),
             dateInput: document.getElementById('input-date'),
             salaryInput: document.getElementById('gross-salary'),
-            currentDateDisplay: document.getElementById('current-date-display'),
+
             mtdNet: document.getElementById('mtd-net'),
             mtdIsr: document.getElementById('mtd-isr'),
             mtdProgressBar: document.getElementById('mtd-progress-bar'),
@@ -755,7 +752,7 @@
         const init = () => {
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
-            elements.currentDateDisplay.innerText = fmtDate(today);
+
             updateDashboard();
             renderHistory();
         };
