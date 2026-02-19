@@ -256,11 +256,31 @@
                             <!-- Date Selection -->
                             <div class="space-y-3">
                                 <label for="input-date"
-                                    class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">Fecha
+                                    class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest pl-1">Fecha
                                     de
                                     Pago</label>
-                                <input type="date" id="input-date" required
-                                    class="w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue focus:ring-4 focus:ring-dr-blue/5 outline-none transition-all">
+                                <div class="relative group">
+                                    <!-- Custom Display Input (Visible) -->
+                                    <div
+                                        class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-20">
+                                        <svg class="w-5 h-5 text-dr-blue" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="display-date" readonly
+                                        class="w-full pl-12 pr-4 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-lg font-bold text-dr-slate-900 focus:border-dr-blue outline-none transition-all cursor-pointer group-hover:border-dr-blue/30"
+                                        placeholder="DD/MM/YYYY">
+
+                                    <!-- Actual Date Input (Invisible but Clickable) -->
+                                    <input type="date" id="input-date" required
+                                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                </div>
+                                <p class="text-[10px] font-bold text-dr-slate-400 pl-1 uppercase tracking-wider">
+                                    Formato: Día / Mes / Año
+                                </p>
                             </div>
 
 
