@@ -432,38 +432,7 @@
             color: var(--color-text-gray);
         }
 
-        .service-card.custom-bg {
-            background: none !important;
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
 
-        .service-card.custom-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(0, 56, 168, 0.7), rgba(0, 20, 60, 0.85)), var(--card-image);
-            background-size: cover;
-            background-position: center;
-            border-radius: 1.5rem;
-            z-index: 1;
-        }
-
-        .service-card.custom-bg>* {
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-card.custom-bg h3,
-        .service-card.custom-bg p {
-            color: white !important;
-        }
-
-        .service-card.custom-bg .service-icon {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
 
         /* Trust Section */
         .trust-section {
@@ -754,8 +723,7 @@
 
             <div class="services-grid">
                 <!-- Card 1: Impuestos -->
-                <div class="service-card custom-bg" data-scroll-reveal
-                    style="transition-delay: 0.1s; --card-image: url('TU_IMAGEN_AQUI.jpg');">
+                <div class="service-card" data-scroll-reveal style="transition-delay: 0.1s;">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
