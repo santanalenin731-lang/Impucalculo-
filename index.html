@@ -432,6 +432,39 @@
             color: var(--color-text-gray);
         }
 
+        .service-card.custom-bg {
+            background: none !important;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card.custom-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 56, 168, 0.7), rgba(0, 20, 60, 0.85)), var(--card-image);
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+            z-index: 1;
+        }
+
+        .service-card.custom-bg>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card.custom-bg h3,
+        .service-card.custom-bg p {
+            color: white !important;
+        }
+
+        .service-card.custom-bg .service-icon {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
         /* Trust Section */
         .trust-section {
             padding: 6rem 2rem;
