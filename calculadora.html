@@ -196,8 +196,6 @@
                         Ingresos</p>
                     <p class="text-[10px] text-dr-red mt-1 font-medium">República Dominicana</p>
                 </div>
-                <div class="hidden lg:block w-px h-8 bg-dr-slate-200"></div>
-
                 <!-- Botón de Ajustes (Sueldo Fijo) -->
                 <button onclick="openFixedSalaryModal()"
                     class="flex-shrink-0 p-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 hover:bg-dr-blue/10 transition-colors group"
@@ -223,9 +221,7 @@
                     <div class="tilt-content">
                         <div class="flex items-center gap-3 mb-8">
                             <div class="w-2 h-8 bg-dr-red rounded-full"></div>
-                            <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-red">Registro</span>
-                                <span class="text-dr-blue">de Ingreso</span>
-                            </h2>
+                            <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Registro de Ingreso</h2>
                         </div>
 
                         <form id="tax-form" class="space-y-8">
@@ -258,31 +254,11 @@
                             <!-- Date Selection -->
                             <div class="space-y-3">
                                 <label for="input-date"
-                                    class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest pl-1">Fecha
+                                    class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">Fecha
                                     de
                                     Pago</label>
-                                <div class="relative group">
-                                    <!-- Custom Display Input (Visible) -->
-                                    <div
-                                        class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-20">
-                                        <svg class="w-5 h-5 text-dr-blue" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <input type="text" id="display-date" readonly
-                                        class="w-full pl-12 pr-4 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-lg font-bold text-dr-slate-900 focus:border-dr-blue outline-none transition-all cursor-pointer group-hover:border-dr-blue/30"
-                                        placeholder="DD/MM/YYYY">
-
-                                    <!-- Actual Date Input (Invisible but Clickable) -->
-                                    <input type="date" id="input-date" required
-                                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                                </div>
-                                <p class="text-[10px] font-bold text-dr-slate-400 pl-1 uppercase tracking-wider">
-                                    Formato: Día / Mes / Año
-                                </p>
+                                <input type="date" id="input-date" required
+                                    class="w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue focus:ring-4 focus:ring-dr-blue/5 outline-none transition-all">
                             </div>
 
 
@@ -306,7 +282,29 @@
                                 </div>
 
 
-
+                                <!-- Preview de descuentos automáticos -->
+                                <div class="bg-dr-slate-50 rounded-2xl p-5 border border-dr-slate-200">
+                                    <h3 class="text-[10px] font-black text-dr-slate-500 uppercase tracking-widest mb-3">
+                                        Descuentos Automáticos</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-dr-slate-600 font-medium">Base TSS</span>
+                                            <span id="tss-base-preview" class="text-sm font-black text-dr-blue">RD$
+                                                0.00</span>
+                                        </div>
+                                        <div class="h-px bg-dr-slate-200 my-1"></div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-dr-slate-600 font-medium">AFP (2.87%)</span>
+                                            <span id="afp-preview" class="text-sm font-black text-dr-slate-800">RD$
+                                                0.00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-dr-slate-600 font-medium">ARS (3.04%)</span>
+                                            <span id="ars-preview" class="text-sm font-black text-dr-slate-800">RD$
+                                                0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <button type="submit"
@@ -328,7 +326,7 @@
                                 d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
                             </path>
                         </svg>
-                        <span class="text-dr-red">Seguridad Social</span> <span class="text-dr-blue">2025-2026</span>
+                        Seguridad Social 2025-2026
                     </h3>
                     <p class="text-sm text-dr-slate-600 font-medium leading-relaxed">
                         Se aplica una deducción automática del <span class="text-dr-blue font-bold">5.91%</span> sobre
@@ -368,9 +366,8 @@
                                                 d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                                         </svg>
                                     </div>
-                                    <h2 class="text-xl font-extrabold tracking-tight"><span
-                                            class="text-dr-red">Resumen</span> <span class="text-dr-blue">del Mes
-                                            Actual</span></h2>
+                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Resumen del Mes
+                                        Actual</h2>
                                 </div>
                                 <span id="label-mes-actual"
                                     class="px-4 py-2 bg-dr-blue text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-dr-blue/20">FEBRERO
@@ -383,16 +380,16 @@
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="text-xs font-black text-dr-slate-400 uppercase tracking-widest">AFP
                                             Acumulado</span>
-                                        <span id="mtd-afp" class="text-lg font-black text-dr-blue">RD$ 0.00</span>
+                                        <span id="mtd-afp" class="text-lg font-black text-dr-slate-800">RD$ 0.00</span>
                                     </div>
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="text-xs font-black text-dr-slate-400 uppercase tracking-widest">ARS
                                             Acumulado</span>
-                                        <span id="mtd-ars" class="text-lg font-black text-dr-blue">RD$ 0.00</span>
+                                        <span id="mtd-ars" class="text-lg font-black text-dr-slate-800">RD$ 0.00</span>
                                     </div>
                                     <div class="h-px bg-dr-slate-200 mb-4"></div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-xs font-black text-dr-slate-800 uppercase tracking-widest">ISR
+                                        <span class="text-xs font-black text-dr-red uppercase tracking-widest">ISR
                                             Retenido</span>
                                         <span id="mtd-isr" class="text-lg font-black text-dr-red">RD$ 0.00</span>
                                     </div>
@@ -417,8 +414,10 @@
                         <!-- Progress Limit -->
                         <div class="space-y-4 pt-12">
                             <div class="flex items-center justify-between">
-                                <span class="text-sm font-bold text-dr-slate-600">Proximidad al Límite Exento
+                                <span class="text-xs font-bold text-dr-slate-600">Proximidad al Límite Exento
                                     (Mensual)</span>
+                                <span class="text-[10px] font-black text-dr-slate-400 uppercase tracking-widest">RD$
+                                    34,685.00</span>
                             </div>
                             <div
                                 class="h-4 w-full bg-dr-slate-100 rounded-full overflow-hidden border border-dr-slate-200 p-1">
@@ -427,8 +426,11 @@
                                     style="width: 0%"></div>
                             </div>
                             <div class="flex justify-between">
-                                <p id="mtd-progress-text" class="text-xs font-bold text-dr-slate-400">0% del umbral
+                                <p id="mtd-progress-text" class="text-[10px] font-bold text-dr-slate-400">0% del umbral
                                     alcanzado</p>
+                                <p id="mtd-status"
+                                    class="text-[10px] font-black text-dr-blue uppercase tracking-widest animate-pulse">
+                                    Exento de ISR</p>
                             </div>
                         </div>
                     </div>
@@ -448,9 +450,8 @@
                                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
                                     </div>
-                                    <h2 class="text-xl font-extrabold tracking-tight"><span
-                                            class="text-dr-red">Cronología</span> <span class="text-dr-blue">de
-                                            Cálculos</span></h2>
+                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Cronología de
+                                        Cálculos</h2>
                                 </div>
                                 <button id="clear-history"
                                     class="px-5 py-2.5 bg-dr-red text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-dr-red/20">Limpiar
@@ -505,8 +506,7 @@
                 <div
                     class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full mb-2">
                     Transparencia Fiscal</div>
-                <h2 class="text-4xl font-black tracking-tight"><span class="text-dr-red">Metodología</span> <span
-                        class="text-dr-blue">de Cálculo Fiscal</span></h2>
+                <h2 class="text-4xl font-black text-dr-slate-800 tracking-tight">Metodología de Cálculo Fiscal</h2>
                 <p class="text-dr-slate-500 font-medium max-w-2xl mx-auto">Entiende el proceso detallado que realiza el
                     sistema para garantizar que tus retenciones de ISR y TSS cumplan con las normativas actuales.</p>
             </div>
@@ -688,7 +688,7 @@
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
                     </span>
                     <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación:
-                        <span class="text-dr-red">2025</span>
+                        <span class="text-dr-red">2025-2026</span>
                     </p>
                 </div>
 
@@ -746,7 +746,7 @@
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
                     </span>
                     <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación:
-                        <span class="text-dr-red">2025</span>
+                        <span class="text-dr-red">2025-2026</span>
                     </p>
                 </div>
 
@@ -755,7 +755,7 @@
 
                 <!-- Item: Repetido para llenar espacio -->
                 <div class="flex items-center gap-4">
-                    <img src="logo_new.png" alt="Logo" class="h-[50px] w-auto object-contain drop-shadow-md">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
                     <div>
                         <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal
                             Premium</p>
@@ -778,6 +778,40 @@
             </div>
         </div>
     </footer>
+    <!-- Footer Contact Row -->
+    <div style="background:#fff; border-top:1px solid #E2E8F0; padding:1.5rem 2rem;">
+        <div
+            style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+            <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo. República Dominicana.</p>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                <a href="mailto:info@impucalculo.com"
+                    style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
+                    <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    info@impucalculo.com
+                </a>
+                <a href="https://www.tiktok.com/@impucalculo?_r=1&_t=ZS-948TiwhKlT3" target="_blank"
+                    rel="noopener noreferrer"
+                    style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                    </svg>
+                    @impucalculo
+                </a>
+                <a href="privacidad.html"
+                    style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
+                    <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    Privacidad
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Templates -->
     <template id="row-template">
@@ -849,10 +883,7 @@
         const fmt = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' });
         const fmtDate = (d) => {
             const date = new Date(d + 'T00:00:00');
-            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' })
-                .toUpperCase()
-                .replace('.', '')
-                .replace(/ DE /g, ' ');
+            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
         };
 
         const getMonthYear = (d) => {
@@ -868,9 +899,7 @@
             tssBasePreview: document.getElementById('tss-base-preview'),
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
-
-            displayDate: document.getElementById('display-date'), /* Added display element */
-
+            currentDateDisplay: document.getElementById('current-date-display'),
             mtdAfp: document.getElementById('mtd-afp'),
             mtdArs: document.getElementById('mtd-ars'),
             mtdIsr: document.getElementById('mtd-isr'),
@@ -878,6 +907,7 @@
             mtdTaxable: document.getElementById('mtd-taxable'),
             mtdProgressBar: document.getElementById('mtd-progress-bar'),
             mtdProgressText: document.getElementById('mtd-progress-text'),
+            mtdStatus: document.getElementById('mtd-status'),
             labelMesActual: document.getElementById('label-mes-actual'),
             historyRows: document.getElementById('history-rows'),
             emptyState: document.getElementById('empty-state'),
@@ -1039,8 +1069,12 @@
             elements.mtdProgressText.innerText = `${progress.toFixed(1)}% del umbral mensual alcanzado`;
 
             if (totalTaxable > CONFIG.MONTHLY_EXEMPT) {
+                elements.mtdStatus.innerText = 'Sujeto a Retención';
+                elements.mtdStatus.classList.replace('text-dr-blue', 'text-dr-red');
                 elements.mtdProgressBar.classList.replace('bg-dr-blue', 'bg-dr-red');
             } else {
+                elements.mtdStatus.innerText = 'Exento de ISR';
+                elements.mtdStatus.classList.replace('text-dr-red', 'text-dr-blue');
                 elements.mtdProgressBar.classList.replace('bg-dr-red', 'bg-dr-blue');
             }
         };
@@ -1163,25 +1197,11 @@
             document.getElementById('block-resumen').scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
-        // Date Display Logic
-        const updateDateDisplay = () => {
-            const isoDate = elements.dateInput.value;
-            if (isoDate) {
-                const [y, m, d] = isoDate.split('-');
-                elements.displayDate.value = `${d}/${m}/${y}`;
-            } else {
-                elements.displayDate.value = '';
-            }
-        };
-
         elements.dateInput.addEventListener('change', () => {
-            updateDateDisplay();
+            elements.currentDateDisplay.innerText = fmtDate(elements.dateInput.value);
             updateDashboard();
             renderHistory();
         });
-
-        /* Sync on input also for immediate feedback on some browsers */
-        elements.dateInput.addEventListener('input', updateDateDisplay);
 
         // Gestión de historial de cálculos
         function clearHistory() {
@@ -1205,8 +1225,7 @@
         const initMain = () => {
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
-            updateDateDisplay(); /* Initial update */
-
+            elements.currentDateDisplay.innerText = fmtDate(today);
 
             // Restaurar indicador (ya no existe)
 
