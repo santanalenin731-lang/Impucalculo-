@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impucálculo | Conversor de Divisas en Tiempo Real RD</title>
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="Conversor de divisas en tiempo real. Calcula el cambio de Dólar (USD), Euro (EUR) a Peso Dominicano (DOP) de forma instantánea.">
+    <link rel="icon" type="image/png" href="logo_new.png">
+    <link rel="apple-touch-icon" href="logo_new.png">
+
+    <meta name="keywords"
+        content="conversor de divisas rd, dolar a peso, euro a peso, tasa del dolar rd, republica dominicana, calculo de monedas">
+    <meta name="author" content="Impucálculo">
+    <link rel="canonical" href="https://impucalculo.com/divisas.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://impucalculo.com/divisas.html">
+    <meta property="og:title" content="Impucálculo | Conversor de Divisas en Tiempo Real RD">
+    <meta property="og:description"
+        content="Conversor de divisas en tiempo real. Calcula el cambio de Dólar (USD), Euro (EUR) a Peso Dominicano (DOP) de forma instantánea.">
+    <meta property="og:image" content="https://impucalculo.com/logo_new.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://impucalculo.com/divisas.html">
+    <meta property="twitter:title" content="Impucálculo | Conversor de Divisas en Tiempo Real RD">
+    <meta property="twitter:description"
+        content="Conversor de divisas en tiempo real. Calcula el cambio de Dólar (USD), Euro (EUR) a Peso Dominicano (DOP) de forma instantánea.">
+    <meta property="twitter:image" content="https://impucalculo.com/logo_new.png">
+
+    <!-- Fonts & Scripts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        dr: {
+                            blue: '#0038A8',
+                            red: '#CE1126',
+                            white: '#FFFFFF',
+                            slate: {
+                                50: '#F8FAFC',
+                                100: '#F1F5F9',
+                                200: '#E2E8F0',
+                                800: '#1E293B',
+                                900: '#0F172A'
+                            }
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'infinite-scroll': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --dr-blue: #0038A8;
+            --dr-red: #CE1126;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .neo-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 56, 168, 0.15);
+        }
+
+        .btn-gradient-blue {
+            background: linear-gradient(135deg, #0038A8, #1E40AF);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 56, 168, 0.4);
+        }
+
+        .btn-gradient-red {
+            background: linear-gradient(135deg, #CE1126, #990B1B);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient-red:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(206, 17, 38, 0.4);
+        }
+
+        .parallax-block {
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: transform, opacity;
+        }
+
+        .scroll-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tilt-card {
+            transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .tilt-card:hover {
+            box-shadow: 0 30px 60px -15px rgba(0, 56, 168, 0.25);
+        }
+
+        .tilt-content {
+            transform: translateZ(30px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0038A8;
+        }
+        
+        .currency-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230038A8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+        }
+    </style>
+    <!-- Firebase Analytics -->
+    <script type="module" src="js/firebase-analytics.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans text-dr-slate-900">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <a href="index.html"
+                class="flex items-center gap-4 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                aria-label="Ir a Inicio">
+                <div class="w-[100px] h-[100px] flex items-center justify-center">
+                    <img src="logo_new.png" alt="Logo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
+                        onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold tracking-tight leading-none">
+                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">calculo</span>
+                    </h1>
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
+                        <span class="text-dr-blue">Herramientas</span> <span class="text-dr-red">Financieras</span>
+                    </p>
+                </div>
+            </a>
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="calculadora.html"
+                    class="hidden md:flex flex-shrink-0 p-2 text-[10px] md:text-xs font-bold text-dr-blue uppercase tracking-widest hover:bg-dr-blue/5 rounded-xl transition-colors">
+                    Calculadora Fiscal
+                </a>
+                <a href="prestaciones.html"
+                    class="hidden md:flex flex-shrink-0 p-2 text-[10px] md:text-xs font-bold text-dr-red uppercase tracking-widest hover:bg-dr-red/5 rounded-xl transition-colors">
+                    Prestaciones Laborales
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+            <!-- Left Column: Input Panel -->
+            <div class="md:col-span-5 space-y-8 parallax-block">
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
+                    <div class="tilt-content">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-2 h-8 bg-dr-blue rounded-full"></div>
+                            <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Datos de Conversión</h2>
+                        </div>
+
+                        <form id="currency-form" class="space-y-8">
+                            
+                            <div class="space-y-6">
+                                <!-- Monto -->
+                                <div class="space-y-3">
+                                    <label for="amount"
+                                        class="block text-xs font-black text-dr-blue uppercase tracking-widest">Monto a Convertir</label>
+                                    <div class="relative">
+                                        <input type="number" id="amount" step="0.01" min="0" value="100.00"
+                                            placeholder="Ej: 100.00" required
+                                            class="w-full px-5 py-4 bg-white border-2 border-dr-blue-100 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <!-- Moneda Origen -->
+                                <div class="space-y-3">
+                                    <label for="from-currency"
+                                        class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">De</label>
+                                    <select id="from-currency" required
+                                        class="currency-select w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue focus:ring-4 focus:ring-dr-blue/5 outline-none transition-all">
+                                        <option value="USD">🇺🇸 Dólar Estadounidense (USD)</option>
+                                        <option value="EUR">🇪🇺 Euro (EUR)</option>
+                                        <option value="DOP">🇩🇴 Peso Dominicano (DOP)</option>
+                                        <option value="CAD">🇨🇦 Dólar Canadiense (CAD)</option>
+                                        <option value="GBP">🇬🇧 Libra Esterlina (GBP)</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Botón Invertir -->
+                                <div class="flex justify-center -my-3 relative z-10">
+                                    <button type="button" id="swap-currencies" class="w-10 h-10 bg-white border border-dr-slate-200 rounded-full flex items-center justify-center shadow-md hover:bg-dr-slate-50 transition-colors text-dr-blue hover:text-dr-red focus:outline-none" title="Invertir monedas">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Moneda Destino -->
+                                <div class="space-y-3">
+                                    <label for="to-currency"
+                                        class="block text-xs font-black text-dr-slate-400 uppercase tracking-widest">A</label>
+                                    <select id="to-currency" required
+                                        class="currency-select w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue focus:ring-4 focus:ring-dr-blue/5 outline-none transition-all">
+                                        <option value="DOP" selected>🇩🇴 Peso Dominicano (DOP)</option>
+                                        <option value="USD">🇺🇸 Dólar Estadounidense (USD)</option>
+                                        <option value="EUR">🇪🇺 Euro (EUR)</option>
+                                        <option value="CAD">🇨🇦 Dólar Canadiense (CAD)</option>
+                                        <option value="GBP">🇬🇧 Libra Esterlina (GBP)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-5 rounded-[1.5rem] btn-gradient-blue text-white font-black text-lg uppercase tracking-widest flex justify-center items-center gap-2">
+                                <span>Convertir Moneda</span>
+                                <svg class="w-5 h-5 animate-spin hidden" id="loading-spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Rate Note -->
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-dr-red opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-700"></div>
+                    <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-dr-slate-800">
+                        <svg class="w-4 h-4 text-dr-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Nota sobre las tasas
+                    </h3>
+                    <p class="text-xs text-dr-slate-500 font-medium leading-relaxed">
+                        Las tasas mostradas son actualizadas automáticamente en tiempo real utilizando promedios del mercado de divisas (Forex). <br><br>
+                        Estas tasas son estrictamente informativas y pueden diferir ligeramente de la tasa oficial del banco o agencia de remesas utilizada.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Results & History -->
+            <div class="md:col-span-7 space-y-12">
+
+                <!-- Resultado -->
+                <div class="parallax-block scroll-reveal">
+                    <div class="glass rounded-[2rem] p-8 neo-shadow border border-white overflow-hidden relative tilt-card">
+                        <div class="tilt-content">
+                            <div class="absolute top-0 right-0 p-8 opacity-[0.03]">
+                                <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-.95-2.32-1.81h-1.7c.07 1.78 1.12 2.93 2.8 3.33V19h2.33v-1.66c1.64-.32 2.94-1.43 2.94-3.03 0-2.14-1.53-2.78-3.67-3.17z"/>
+                                </svg>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 relative z-10">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-dr-red/10 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-dr-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Resultado de la Conversión</h2>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-dr-slate-50/50 rounded-2xl p-6 border border-dr-slate-100">
+                                    <p class="text-sm font-black text-dr-slate-400 uppercase tracking-widest text-center mb-1">Total</p>
+                                    
+                                    <div class="text-center py-6">
+                                        <p id="conversion-equation" class="text-sm font-bold text-dr-slate-500 mb-2 invisible">
+                                            <span id="amount-disp">100.00</span> <span id="from-disp" class="text-dr-blue">USD</span> = 
+                                        </p>
+                                        <p id="result-amount" class="text-5xl md:text-6xl font-black text-dr-slate-800 break-words tracking-tighter transition-all">0.00</p>
+                                        <p id="to-disp" class="text-lg font-black text-dr-red uppercase tracking-widest mt-2 invisible">DOP</p>
+                                    </div>
+
+                                    <div class="h-px bg-dr-slate-200 my-4"></div>
+                                    
+                                    <div class="flex justify-between items-center px-4">
+                                        <span class="text-xs font-bold text-dr-slate-500">Tasa Aplicada:</span>
+                                        <span id="applied-rate" class="text-sm font-black text-dr-blue">1 USD = 0.00 DOP</span>
+                                    </div>
+                                    <div class="flex justify-between items-center px-4 mt-2">
+                                        <span class="text-[10px] font-bold text-dr-slate-400">Última actualización:</span>
+                                        <span id="last-update" class="text-[10px] font-bold text-dr-slate-500">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Cards Alternativas -->
+                <div class="grid grid-cols-1 gap-4 parallax-block scroll-reveal">
+                    <!-- USD/EUR a DOP Rápidos -->
+                    <div class="glass rounded-[2rem] p-6 neo-shadow border border-white">
+                        <h4 class="text-xs font-black text-dr-blue uppercase tracking-widest mb-4">Tasas Rápidas Mercado Libre</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇺🇸 USD a DOP</span>
+                                <span id="quick-usd" class="font-black text-dr-slate-800">Cargando...</span>
+                            </div>
+                            <div class="h-px bg-dr-slate-100"></div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇪🇺 EUR a DOP</span>
+                                <span id="quick-eur" class="font-black text-dr-slate-800">Cargando...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Ticker -->
+    <footer class="py-6 glass border-t border-dr-slate-100 mt-20 overflow-hidden relative w-full">
+        <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 animate-infinite-scroll">
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin Santana de Jesus</span></p>
+                    </div>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+                <div class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-dr-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
+                    </span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación: <span class="text-dr-red">2025-2026</span></p>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+                <!-- Replica de relleno -->
+                 <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin Santana de Jesus</span></p>
+                    </div>
+                </div>
+            </div>
+             <!-- Replica 2 -->
+             <div class="flex items-center justify-center md:justify-start [&_div]:mx-8 animate-infinite-scroll">
+                <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin Santana de Jesus</span></p>
+                    </div>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+                <div class="px-6 py-2 bg-dr-white neo-shadow rounded-xl border border-dr-slate-100 flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-dr-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-dr-red"></span>
+                    </span>
+                    <p class="text-xs font-black text-dr-slate-800 uppercase tracking-tighter">Año de Implementación: <span class="text-dr-red">2025-2026</span></p>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-dr-slate-200"></div>
+                 <div class="flex items-center gap-4">
+                    <img src="logo_new.png" alt="Logo" class="h-[100px] w-auto object-contain drop-shadow-md">
+                    <div>
+                        <p class="text-[10px] font-bold text-dr-slate-400 uppercase tracking-[0.2em]">Plataforma Fiscal Premium</p>
+                        <p class="text-sm font-extrabold text-dr-slate-800">Creado por: <span class="text-dr-blue">Lenin Santana de Jesus</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Footer Contact Row -->
+    <div style="background:#fff; border-top:1px solid #E2E8F0; padding:1.5rem 2rem;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+            <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo. República Dominicana.</p>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                <a href="mailto:info@impucalculo.com" style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
+                    <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    info@impucalculo.com
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Formateador de moneda Domicana
+        const formatter = new Intl.NumberFormat('es-DO', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+
+        // Elements
+        const form = document.getElementById('currency-form');
+        const amountInput = document.getElementById('amount');
+        const fromSelect = document.getElementById('from-currency');
+        const toSelect = document.getElementById('to-currency');
+        const swapBtn = document.getElementById('swap-currencies');
+        
+        const resultAmount = document.getElementById('result-amount');
+        const conversionEquation = document.getElementById('conversion-equation');
+        const amountDisp = document.getElementById('amount-disp');
+        const fromDisp = document.getElementById('from-disp');
+        const toDisp = document.getElementById('to-disp');
+        const appliedRate = document.getElementById('applied-rate');
+        const lastUpdate = document.getElementById('last-update');
+        const spinner = document.getElementById('loading-spinner');
+        
+        let exhangeRates = {};
+
+        // Invertir monedas
+        swapBtn.addEventListener('click', () => {
+            const temp = fromSelect.value;
+            fromSelect.value = toSelect.value;
+            toSelect.value = temp;
+            if(Object.keys(exhangeRates).length > 0) calculate();
+        });
+
+        async function fetchExchangeRates() {
+            try {
+                // Fetching from a free open public api (ExchangeRate-API)
+                // Base is USD for this free tier
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                
+                if(data && data.rates) {
+                    exhangeRates = data.rates;
+                    
+                    // Actualizar fecha
+                    const date = new Date(data.time_last_update_utc);
+                    lastUpdate.textContent = date.toLocaleString('es-DO', { 
+                        dateStyle: 'medium', 
+                        timeStyle: 'short' 
+                    });
+
+                    // Update Quick Rates
+                    if(exhangeRates['DOP']) {
+                        document.getElementById('quick-usd').textContent = 'RD$ ' + formatter.format(exhangeRates['DOP']);
+                        if(exhangeRates['EUR']) {
+                            // EUR to DOP = (1 / EUR) * DOP
+                            const eurToDop = (1 / exhangeRates['EUR']) * exhangeRates['DOP'];
+                            document.getElementById('quick-eur').textContent = 'RD$ ' + formatter.format(eurToDop);
+                        }
+                    }
+
+                    // Perform initial calculation if we have rates
+                    calculate();
+                } else {
+                    throw new Error("Datos inválidos");
+                }
+            } catch (error) {
+                console.error("No se pudieron cargar las tasas de cambio: ", error);
+                resultAmount.textContent = "Error";
+                appliedRate.textContent = "Servicio no disponible momentáneamente.";
+            }
+        }
+
+        function calculate() {
+            if(Object.keys(exhangeRates).length === 0) return; // Not loaded yet
+            
+            const amount = parseFloat(amountInput.value);
+            if(isNaN(amount) || amount < 0) return;
+
+            const from = fromSelect.value;
+            const to = toSelect.value;
+
+            // Converter a USD primero y luego a la moneda de destino
+            let amountInUSD = amount;
+            if(from !== 'USD') {
+                amountInUSD = amount / exhangeRates[from];
+            }
+            
+            const result = amountInUSD * exhangeRates[to];
+
+            // Tasa base unitaria
+            let unitInUSD = 1;
+            if(from !== 'USD') unitInUSD = 1 / exhangeRates[from];
+            const unitResult = unitInUSD * exhangeRates[to];
+
+            // UI Update
+            amountDisp.textContent = formatter.format(amount);
+            fromDisp.textContent = from;
+            toDisp.textContent = to;
+            
+            resultAmount.textContent = formatter.format(result);
+            appliedRate.textContent = `1 ${from} = ${formatter.format(unitResult)} ${to}`;
+            
+            conversionEquation.classList.remove('invisible');
+            toDisp.classList.remove('invisible');
+            
+            // Animation flash
+            resultAmount.style.opacity = '0.5';
+            setTimeout(() => { resultAmount.style.opacity = '1'; }, 100);
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            spinner.classList.remove('hidden');
+            setTimeout(() => {
+                calculate();
+                spinner.classList.add('hidden');
+            }, 300); // Simulate tiny network delay for visual UX feedback
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Init
+        fetchExchangeRates();
+
+    </script>
+</body>
+
+</html>
