@@ -11,6 +11,8 @@
 # Excepciones: imágenes necesarias para el sitio
 !logo_new.png
 !app_demo.png
+!icon-192.png
+!icon-512.png
 
 # Capturas de pantalla
 Captura de pantalla*
@@ -19,3 +21,6 @@ Captura de pantalla*
 server.log
 autosync.log
 autosync.err
+
+# Documentación interna
+sistema.md

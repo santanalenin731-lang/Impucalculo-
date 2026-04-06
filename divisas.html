@@ -169,6 +169,12 @@
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0038A8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 
 <body class="min-h-screen flex flex-col font-sans text-dr-slate-900">
@@ -351,15 +357,20 @@
                 <div class="grid grid-cols-1 gap-4 parallax-block scroll-reveal">
                     <!-- USD/EUR a DOP Rápidos -->
                     <div class="glass rounded-[2rem] p-6 neo-shadow border border-white">
-                        <h4 class="text-xs font-black text-dr-blue uppercase tracking-widest mb-4">Tasas Rápidas Mercado Libre</h4>
+                        <h4 class="text-xs font-black text-dr-blue uppercase tracking-widest mb-4">Tasas de Cambio del Día</h4>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇺🇸 USD a DOP</span>
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2" id="label-quick-usd">🇺🇸 USD Oficial (Venta)</span>
                                 <span id="quick-usd" class="font-black text-dr-slate-800">Cargando...</span>
                             </div>
                             <div class="h-px bg-dr-slate-100"></div>
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇪🇺 EUR a DOP</span>
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2" id="label-quick-usd-compra">🇺🇸 USD Oficial (Compra)</span>
+                                <span id="quick-usd-compra" class="font-black text-dr-slate-800">Cargando...</span>
+                            </div>
+                            <div class="h-px bg-dr-slate-100"></div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇪🇺 EUR (Mercado) a DOP</span>
                                 <span id="quick-eur" class="font-black text-dr-slate-800">Cargando...</span>
                             </div>
                         </div>
@@ -478,7 +489,7 @@
             try {
                 // Fetching from a free open public api (ExchangeRate-API)
                 // Base is USD for this free tier
-                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const response = await fetch('https://script.google.com/macros/s/AKfycbwzmJ4lWBE9n6RUTIsdK7GB0-m-kE5XSHSAs2Ue6fq8ky1DUAjtl81k5_jZC8ZaoIpJYA/exec');
                 const data = await response.json();
                 
                 if(data && data.rates) {
@@ -493,10 +504,22 @@
 
                     // Update Quick Rates
                     if(exhangeRates['DOP']) {
-                        document.getElementById('quick-usd').textContent = 'RD$ ' + formatter.format(exhangeRates['DOP']);
+                        const isOfficial = !!exhangeRates['DOP_VENTA'];
+                        const usdRate = isOfficial ? exhangeRates['DOP_VENTA'] : exhangeRates['DOP'];
+                        const usdVentaStr = 'RD$ ' + formatter.format(usdRate) + (isOfficial ? ' (Oficial)' : '');
+                        
+                        document.getElementById('quick-usd').textContent = usdVentaStr;
+                        if(!isOfficial) {
+                            document.getElementById('label-quick-usd').textContent = '🇺🇸 USD a DOP (Global)';
+                            document.getElementById('quick-usd-compra').parentElement.style.display = 'none';
+                            document.getElementById('quick-usd-compra').parentElement.nextElementSibling.style.display = 'none';
+                        } else {
+                            document.getElementById('quick-usd-compra').textContent = 'RD$ ' + formatter.format(exhangeRates['DOP_COMPRA']) + ' (Oficial)';
+                        }
+                        
                         if(exhangeRates['EUR']) {
-                            // EUR to DOP = (1 / EUR) * DOP
-                            const eurToDop = (1 / exhangeRates['EUR']) * exhangeRates['DOP'];
+                            // EUR to DOP = (1 / EUR) * DOP (Usando Venta oficial o global)
+                            const eurToDop = (1 / exhangeRates['EUR']) * usdRate;
                             document.getElementById('quick-eur').textContent = 'RD$ ' + formatter.format(eurToDop);
                         }
                     }
@@ -581,6 +604,44 @@
         // Init
         fetchExchangeRates();
 
+    </script>
+    <!-- PWA Install Button & Service Worker Registration -->
+    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; left: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
+        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+        <span>Instalar App</span>
+    </div>
+
+    <script>
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+        
+        // PWA Install Prompt Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwa-install-container');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'flex';
+        });
+
+        installBtn.addEventListener('click', (e) => {
+            installBtn.style.display = 'none';
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                deferredPrompt = null;
+            });
+        });
     </script>
 </body>
 
