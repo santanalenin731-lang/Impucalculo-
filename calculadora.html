@@ -82,8 +82,8 @@
         }
 
         body {
-            background-color: #F8FAFC;
-            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-color: #F1F5F9;
+            background-image: radial-gradient(circle at 2px 2px, #CBD5E1 1px, transparent 0);
             background-size: 32px 32px;
         }
 
@@ -226,7 +226,6 @@
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
                     <div class="tilt-content">
                         <div class="flex items-center gap-3 mb-8">
-                            <div class="w-2 h-8 bg-dr-red rounded-full"></div>
                             <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Registro de Ingreso</h2>
                         </div>
 
@@ -323,15 +322,7 @@
 
                 <!-- Ad/Info Card -->
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white relative overflow-hidden group">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-dr-blue opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-700">
-                    </div>
                     <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-dr-blue">
-                        <svg class="w-5 h-5 text-dr-red" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                            </path>
-                        </svg>
                         Seguridad Social 2025-2026
                     </h3>
                     <p class="text-sm text-dr-slate-600 font-medium leading-relaxed">
@@ -363,15 +354,6 @@
                             <div
                                 class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 relative z-10">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-dr-blue/10 flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-dr-blue" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-                                        </svg>
-                                    </div>
                                     <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Resumen del Mes
                                         Actual</h2>
                                 </div>
@@ -449,13 +431,6 @@
                         <div class="tilt-content">
                             <div class="p-8 border-b border-dr-slate-100 flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-xl bg-dr-slate-100 flex items-center justify-center text-dr-slate-400">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
                                     <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Cronología de
                                         Cálculos</h2>
                                 </div>
@@ -606,7 +581,6 @@
                     </div>
                     <div>
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="w-2 h-6 bg-dr-blue rounded-full"></span>
                             <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Nota Técnica: Tope TSS
                                 Observado</h4>
                         </div>
@@ -641,7 +615,6 @@
                     </div>
                     <div>
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="w-2 h-6 bg-dr-red rounded-full"></span>
                             <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Importante: Alcance del
                                 Cálculo</h4>
                         </div>
@@ -790,7 +763,7 @@
             style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
             <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo. República Dominicana.</p>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
-                <a href="mailto:info@impucalculo.com"
+                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo de contacto para enviarnos un mensaje:', 'info@impucalculo.com');"
                     style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
                     <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"

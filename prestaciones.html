@@ -76,8 +76,8 @@
 
     <style>
         body {
-            background-color: #F8FAFC;
-            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-color: #F1F5F9;
+            background-image: radial-gradient(circle at 2px 2px, #CBD5E1 1px, transparent 0);
             background-size: 32px 32px;
         }
 
@@ -167,7 +167,6 @@
         <!-- Calculator Form -->
         <div id="calculator-section" class="glass rounded-[2rem] p-8 neo-shadow">
             <div class="flex items-center gap-3 mb-8">
-                <div class="w-2 h-8 bg-dr-red rounded-full"></div>
                 <h2 class="text-2xl font-extrabold tracking-tight"><span class="text-dr-red">Calcula</span> <span
                         class="text-dr-blue">tus Prestaciones</span></h2>
             </div>
@@ -469,16 +468,8 @@
                     class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
                 </div>
                 <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
-                    <div
-                        class="w-24 h-24 shrink-0 rounded-[2rem] bg-dr-white flex items-center justify-center neo-shadow border border-dr-slate-100">
-                        <svg class="w-12 h-12 text-dr-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                        </svg>
-                    </div>
                     <div>
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="w-2 h-6 bg-dr-blue rounded-full"></span>
                             <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Salario de Navidad
                                 (Regalía)</h4>
                         </div>
@@ -626,7 +617,7 @@
             style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
             <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo. República Dominicana.</p>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
-                <a href="mailto:info@impucalculo.com"
+                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo de contacto para enviarnos un mensaje:', 'info@impucalculo.com');"
                     style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
                     <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"

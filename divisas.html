@@ -82,8 +82,8 @@
         }
 
         body {
-            background-color: #F8FAFC;
-            background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
+            background-color: #F1F5F9;
+            background-image: radial-gradient(circle at 2px 2px, #CBD5E1 1px, transparent 0);
             background-size: 32px 32px;
         }
 
@@ -218,9 +218,8 @@
             <div class="md:col-span-5 space-y-8 parallax-block">
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
                     <div class="tilt-content">
-                        <div class="flex items-center gap-3 mb-8">
-                            <div class="w-2 h-8 bg-dr-blue rounded-full"></div>
-                            <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Datos de Conversión</h2>
+                        <div class="mb-8">
+                            <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-blue">Datos de</span> <span class="text-dr-red">Conversión</span></h2>
                         </div>
 
                         <form id="currency-form" class="space-y-8">
@@ -231,8 +230,8 @@
                                     <label for="amount"
                                         class="block text-xs font-black text-dr-blue uppercase tracking-widest">Monto a Convertir</label>
                                     <div class="relative">
-                                        <input type="number" id="amount" step="0.01" min="0" value="100.00"
-                                            placeholder="Ej: 100.00" required
+                                        <input type="number" id="amount" step="0.01" min="0" value="1"
+                                            placeholder="Ej: 1.00" required
                                             class="w-full px-5 py-4 bg-white border-2 border-dr-blue-100 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                                     </div>
                                 </div>
@@ -288,15 +287,12 @@
                 </div>
 
                 <!-- Rate Note -->
-                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-dr-red opacity-5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-700"></div>
-                    <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-dr-slate-800">
-                        <svg class="w-4 h-4 text-dr-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        Nota sobre las tasas
+                <div class="bg-white rounded-[2rem] p-8 neo-shadow border border-dr-slate-100 relative group">
+                    <h3 class="text-sm font-black tracking-wide mb-3 uppercase">
+                        <span class="text-dr-red">Nota sobre</span> <span class="text-dr-blue">las tasas</span>
                     </h3>
-                    <p class="text-xs text-dr-slate-500 font-medium leading-relaxed">
-                        Las tasas mostradas son actualizadas automáticamente en tiempo real utilizando promedios del mercado de divisas (Forex). <br><br>
-                        Estas tasas son estrictamente informativas y pueden diferir ligeramente de la tasa oficial del banco o agencia de remesas utilizada.
+                    <p class="text-xs text-dr-slate-500 font-medium leading-[1.8]">
+                        Utilizamos tecnología avanzada para sincronizar las tasas directamente con las entidades financieras en tiempo real. A diferencia de antiguos sistemas de actualización diaria, <strong>nuestra infraestructura revolucionaria extrae automáticamente los valores oficiales</strong> de Compra y Venta (como los definidos por el Banco de Reservas y el Banco Central de la RD). Nuestro motor de alta velocidad actualiza la data <strong>cada hora</strong> de forma ininterrumpida, asegurando que recibas siempre una información fidedigna, asombrosamente rápida y 100% confiable.
                     </p>
                 </div>
             </div>
@@ -308,20 +304,9 @@
                 <div class="parallax-block scroll-reveal">
                     <div class="glass rounded-[2rem] p-8 neo-shadow border border-white overflow-hidden relative tilt-card">
                         <div class="tilt-content">
-                            <div class="absolute top-0 right-0 p-8 opacity-[0.03]">
-                                <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-.95-2.32-1.81h-1.7c.07 1.78 1.12 2.93 2.8 3.33V19h2.33v-1.66c1.64-.32 2.94-1.43 2.94-3.03 0-2.14-1.53-2.78-3.67-3.17z"/>
-                                </svg>
-                            </div>
-
                             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 relative z-10">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-dr-red/10 flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-dr-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Resultado de la Conversión</h2>
+                                    <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-red">Resultado de la</span> <span class="text-dr-blue">Conversión</span></h2>
                                 </div>
                             </div>
 
@@ -331,9 +316,9 @@
                                     
                                     <div class="text-center py-6">
                                         <p id="conversion-equation" class="text-sm font-bold text-dr-slate-500 mb-2 invisible">
-                                            <span id="amount-disp">100.00</span> <span id="from-disp" class="text-dr-blue">USD</span> = 
+                                            <span id="amount-disp">1.00</span> <span id="from-disp" class="text-dr-blue">USD</span> = 
                                         </p>
-                                        <p id="result-amount" class="text-5xl md:text-6xl font-black text-dr-slate-800 break-words tracking-tighter transition-all">0.00</p>
+                                        <p id="result-amount" class="text-5xl md:text-6xl font-black text-dr-slate-800 break-words tracking-tighter transition-all [text-shadow:_0px_4px_12px_rgba(0,0,0,0.2)] hover:scale-105 hover:[text-shadow:_0px_8px_16px_rgba(0,0,0,0.25)] relative transform">0.00</p>
                                         <p id="to-disp" class="text-lg font-black text-dr-red uppercase tracking-widest mt-2 invisible">DOP</p>
                                     </div>
 
@@ -357,7 +342,7 @@
                 <div class="grid grid-cols-1 gap-4 parallax-block scroll-reveal">
                     <!-- USD/EUR a DOP Rápidos -->
                     <div class="glass rounded-[2rem] p-6 neo-shadow border border-white">
-                        <h4 class="text-xs font-black text-dr-blue uppercase tracking-widest mb-4">Tasas de Cambio del Día</h4>
+                        <h4 class="text-xs font-black uppercase tracking-widest mb-4"><span class="text-dr-blue">Tasas de Cambio</span> <span class="text-dr-red">del Día</span></h4>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
                                 <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2" id="label-quick-usd">🇺🇸 USD Oficial (Venta)</span>
@@ -368,10 +353,10 @@
                                 <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2" id="label-quick-usd-compra">🇺🇸 USD Oficial (Compra)</span>
                                 <span id="quick-usd-compra" class="font-black text-dr-slate-800">Cargando...</span>
                             </div>
-                            <div class="h-px bg-dr-slate-100"></div>
-                            <div class="flex justify-between items-center">
-                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2">🇪🇺 EUR (Mercado) a DOP</span>
-                                <span id="quick-eur" class="font-black text-dr-slate-800">Cargando...</span>
+                            <div class="h-px bg-dr-slate-100" id="extra-rate-divider" style="display: none;"></div>
+                            <div class="flex justify-between items-center" id="extra-rate-container" style="display: none;">
+                                <span class="font-bold text-dr-slate-600 text-sm flex items-center gap-2" id="label-extra-rate">🇪🇺 EUR (Mercado) a DOP</span>
+                                <span id="extra-rate-value" class="font-black text-dr-slate-800">Cargando...</span>
                             </div>
                         </div>
                     </div>
@@ -444,7 +429,7 @@
         <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
             <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo. República Dominicana.</p>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
-                <a href="mailto:info@impucalculo.com" style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
+                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo de contacto para enviarnos un mensaje:', 'info@impucalculo.com');" style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:#64748B; font-weight:600; font-size:0.85rem;">
                     <svg width="14" height="14" fill="none" stroke="#0038A8" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     info@impucalculo.com
                 </a>
@@ -482,8 +467,43 @@
             const temp = fromSelect.value;
             fromSelect.value = toSelect.value;
             toSelect.value = temp;
+            updateDynamicRatesUI();
             if(Object.keys(exhangeRates).length > 0) calculate();
         });
+
+        function updateDynamicRatesUI() {
+            if(Object.keys(exhangeRates).length === 0) return;
+            const from = fromSelect.value;
+            const to = toSelect.value;
+            
+            const extraCurrency = [from, to].find(c => c !== 'USD' && c !== 'DOP');
+            
+            const extraContainer = document.getElementById('extra-rate-container');
+            const extraDivider = document.getElementById('extra-rate-divider');
+            
+            if(extraCurrency && exhangeRates[extraCurrency]) {
+                const labels = {
+                    'EUR': '🇪🇺 EUR (Mercado) a DOP',
+                    'CAD': '🇨🇦 CAD (Mercado) a DOP',
+                    'GBP': '🇬🇧 GBP (Mercado) a DOP'
+                };
+                
+                document.getElementById('label-extra-rate').textContent = labels[extraCurrency] || `${extraCurrency} a DOP`;
+                
+                const usdRate = window.cachedUsdRate || exhangeRates['DOP_VENTA'] || exhangeRates['DOP'];
+                const rateToDop = (1 / exhangeRates[extraCurrency]) * usdRate;
+                document.getElementById('extra-rate-value').textContent = 'RD$ ' + formatter.format(rateToDop);
+                
+                extraContainer.style.display = 'flex';
+                extraDivider.style.display = 'block';
+            } else {
+                extraContainer.style.display = 'none';
+                extraDivider.style.display = 'none';
+            }
+        }
+
+        fromSelect.addEventListener('change', updateDynamicRatesUI);
+        toSelect.addEventListener('change', updateDynamicRatesUI);
 
         async function fetchExchangeRates() {
             try {
@@ -517,11 +537,8 @@
                             document.getElementById('quick-usd-compra').textContent = 'RD$ ' + formatter.format(exhangeRates['DOP_COMPRA']) + ' (Oficial)';
                         }
                         
-                        if(exhangeRates['EUR']) {
-                            // EUR to DOP = (1 / EUR) * DOP (Usando Venta oficial o global)
-                            const eurToDop = (1 / exhangeRates['EUR']) * usdRate;
-                            document.getElementById('quick-eur').textContent = 'RD$ ' + formatter.format(eurToDop);
-                        }
+                        window.cachedUsdRate = usdRate;
+                        updateDynamicRatesUI();
                     }
 
                     // Perform initial calculation if we have rates
