@@ -226,7 +226,7 @@
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
                     <div class="tilt-content">
                         <div class="flex items-center gap-3 mb-8">
-                            <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Registro de Ingreso</h2>
+                            <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-blue">Registro de</span> <span class="text-dr-red">Ingreso</span></h2>
                         </div>
 
                         <form id="tax-form" class="space-y-8">
@@ -319,20 +319,6 @@
                         </form>
                     </div>
                 </div>
-
-                <!-- Ad/Info Card -->
-                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white relative overflow-hidden group">
-                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-dr-blue">
-                        Seguridad Social 2025-2026
-                    </h3>
-                    <p class="text-sm text-dr-slate-600 font-medium leading-relaxed">
-                        Se aplica una deducción automática del <span class="text-dr-blue font-bold">5.91%</span> sobre
-                        el
-                        sueldo bruto:
-                        <br>• <span class="font-bold text-dr-slate-800">3.04%</span> Seguro Familiar de Salud (ARS)
-                        <br>• <span class="font-bold text-dr-slate-800">2.87%</span> Adm. de Fondos de Pensiones (AFP)
-                    </p>
-                </div>
             </div>
 
             <!-- Right Column: Results & History -->
@@ -354,8 +340,7 @@
                             <div
                                 class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 relative z-10">
                                 <div class="flex items-center gap-3">
-                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Resumen del Mes
-                                        Actual</h2>
+                                    <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-red">Resumen del Mes</span> <span class="text-dr-blue">Actual</span></h2>
                                 </div>
                                 <span id="label-mes-actual"
                                     class="px-4 py-2 bg-dr-blue text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-dr-blue/20">FEBRERO
@@ -431,8 +416,7 @@
                         <div class="tilt-content">
                             <div class="p-8 border-b border-dr-slate-100 flex items-center justify-between">
                                 <div class="flex items-center gap-3">
-                                    <h2 class="text-xl font-extrabold text-dr-slate-800 tracking-tight">Cronología de
-                                        Cálculos</h2>
+                                    <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-blue">Cronología de</span> <span class="text-dr-red">Cálculos</span></h2>
                                 </div>
                                 <button id="clear-history"
                                     class="px-5 py-2.5 bg-dr-red text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-dr-red/20">Limpiar
@@ -563,6 +547,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Nota Técnica TSS -->
@@ -592,6 +577,35 @@
                                 class="block mt-4 text-sm font-bold text-dr-slate-400 uppercase tracking-wider italic">
                                 * Valor determinado mediante estudio de casos reales en el sector privado y normativa
                                 vigente de topes de cotización.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seguridad Social -->
+            <div
+                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] relative overflow-hidden group mt-8">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    <div
+                        class="w-24 h-24 shrink-0 rounded-[2rem] bg-dr-white flex items-center justify-center neo-shadow border border-dr-slate-100">
+                        <svg class="w-12 h-12 text-dr-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Seguridad Social 2025-2026</h4>
+                        </div>
+                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
+                            Se aplica una deducción automática del <span class="text-dr-blue font-black">5.91%</span> sobre el sueldo bruto:
+                            <span class="block mt-2">
+                                <span class="font-bold text-dr-slate-800">3.04%</span> Seguro Familiar de Salud (ARS) <br>
+                                <span class="font-bold text-dr-slate-800">2.87%</span> Adm. de Fondos de Pensiones (AFP)
                             </span>
                         </p>
                     </div>
@@ -1425,7 +1439,7 @@
         }
     </script>
     <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; left: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
+    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
         <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
         <span>Instalar App</span>
     </div>
@@ -1462,6 +1476,11 @@
             });
         });
     </script>
+    <!-- Botón directo de Ko-fi -->
+    <a href="https://ko-fi.com/lenin_santana" target="_blank" rel="noopener noreferrer" class="neo-shadow hover:-translate-y-1 hover:shadow-lg transition-transform" style="position: fixed; bottom: 20px; left: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; display: flex; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif; text-decoration: none;">
+        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-2.062 1.543-5.26 1.848-5.26 1.848l-.066-6.664H20.57s1.849 1.144 1.393 3.474a3.86 3.86 0 01-3.072 1.342z"></path></svg>
+        <span>Apóyame (Ko-fi)</span>
+    </a>
 </body>
 
 </html>

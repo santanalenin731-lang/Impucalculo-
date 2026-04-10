@@ -5,32 +5,36 @@
  */
 
 function doGet(e) {
-  var limitMinutes = 60; // Configurar a 60 minutos = 1 hr de caché
+  var limitMinutes = 60; // Cache de 1 hora
   var cache = CacheService.getScriptCache();
   var cachedData = cache.get("tasas_impucalculo");
   
   if (cachedData != null) {
-      // Devolver los datos desde la memoria caché acelerada
       return responderJSON(cachedData);
   }
 
-  // 1. Obtener la Tasa Base Global (Para monedas secundarias como EUR, CAD, GBP)
-  var globalData = {};
+  var globalData = {
+    rates: {},
+    banks: [],
+    provider: "Impucalculo Scraper Proxy x Multi-Source"
+  };
+
+  // 1. Tasa Base Global (Para monedas secundarias como EUR, CAD, GBP)
   try {
       var globalRatesUrl = 'https://open.er-api.com/v6/latest/USD';
       var globalResponse = UrlFetchApp.fetch(globalRatesUrl, { muteHttpExceptions: true });
-      globalData = JSON.parse(globalResponse.getContentText());
+      var tempGlobal = JSON.parse(globalResponse.getContentText());
+      globalData.rates = tempGlobal.rates || {};
   } catch (error) {
-      globalData = { result: "error_global", rates: {} };
+      console.error("Error Global Rates: " + error);
   }
   
-  // 2. Extraer Tasa de Dólar Oficial BCRD
+  // 2. Extraer Tasa de Dólar Oficial BCRD (Prioridad Alta)
   try {
      var bcrdUrl = 'https://www.bancentral.gov.do/';
      var bcrdResponse = UrlFetchApp.fetch(bcrdUrl, { muteHttpExceptions: true });
      var bcrdHtml = bcrdResponse.getContentText();
      
-     // Buscar y hacer coincidir "Compra" seguido del h5 numérico en HTML
      var compraMatch = bcrdHtml.match(/<small>Compra<\/small>[\s\S]*?<h5>\s*([\d.]+)\s*<\/h5>/i);
      var ventaMatch = bcrdHtml.match(/<small>Venta<\/small>[\s\S]*?<h5>\s*([\d.]+)\s*<\/h5>/i);
      
@@ -40,23 +44,40 @@ function doGet(e) {
      if (ventaMatch && ventaMatch[1]) {
        var bcrdVenta = parseFloat(ventaMatch[1]);
        globalData.rates['DOP_VENTA'] = bcrdVenta;
-       // Sobrescribir DOP global con la Venta oficial dominicana (la que le interesa al usuario comúnmente)
        globalData.rates['DOP'] = bcrdVenta; 
      }
   } catch (error) {
-      // Si el banco central no responde, usaremos la global (fallback)
       globalData.bcrd_error = error.toString();
   }
+
+  // 3. Obtener listado de Bancos via LiveDolar (Agregador)
+  try {
+    var liveResp = UrlFetchApp.fetch('https://livedolar.do/api/rates', { 
+      muteHttpExceptions: true,
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    });
+    var liveData = JSON.parse(liveResp.getContentText());
+    
+    // La API retorna un array directamente
+    if (liveData && Array.isArray(liveData)) {
+      globalData.banks = liveData.map(function(bank) {
+        return {
+          n: bank.display_name || bank.bank_name,
+          c: parseFloat(bank.buy),
+          v: parseFloat(bank.sell)
+        };
+      });
+    }
+  } catch (error) {
+    globalData.banks_error = error.toString();
+  }
   
-  // 3. Forzar hora de actualización con Date()
   var currentDate = new Date();
   globalData.time_last_update_utc = currentDate.toUTCString();
-  globalData.provider = "Impucalculo Scraper Proxy x BCRD";
   
   var finalOutput = JSON.stringify(globalData);
-  
-  // Almacenar en caché masivo por X minutos
-  cache.put("tasas_impucalculo", finalOutput, limitMinutes * 60);
+  // Cambiamos la clave del caché para forzar la actualización inmediata
+  cache.put("tasas_multi_v1", finalOutput, limitMinutes * 60);
   
   return responderJSON(finalOutput);
 }
