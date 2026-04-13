@@ -1,119 +1,665 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual ISR en RD | Entiende tus retenciones salariales</title>
-    <meta name="description" content="Guía completa sobre el Impuesto Sobre la Renta (ISR) en República Dominicana. Aprende cómo se calcula y cuáles son las escalas vigentes para 2025.">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../logo_new.png">
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        :root { --blue: #0038A8; --red: #CE1126; --text: #1E293B; --gray: #64748B; --bg: #F1F5F9; }
-        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
-        .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.4); }
-        .container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
-        .back-link { display: inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color: var(--gray); font-weight:700; margin-bottom: 2rem; transition: color 0.3s; }
-        .back-link:hover { color: var(--blue); }
-        h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--text); }
-        .meta { font-size: 0.9rem; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
-        .content { font-size: 1.15rem; }
-        .content p { margin-bottom: 1.5rem; }
-        .content h2 { font-size: 2rem; font-weight: 800; margin: 2.5rem 0 1rem; color: var(--blue); }
-        .table-container { 
-            overflow-x: auto; 
-            margin: 2.5rem 0; 
-            border: 1px solid rgba(255, 255, 255, 0.5); 
-            border-radius: 2rem; 
-            background: #fff;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 
-                0 20px 40px -15px rgba(0, 0, 0, 0.12),
-                0 30px 60px -20px rgba(0, 56, 168, 0.08);
-        }
-        .table-container:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 40px 80px -15px rgba(0, 0, 0, 0.18),
-                0 50px 100px -20px rgba(0, 56, 168, 0.1);
-            border-color: rgba(0, 56, 168, 0.1);
-        }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 1.5rem; text-align: left; border-bottom: 1px solid #F1F5F9; }
-        th { background: #F8FAFC; font-weight: 800; color: var(--blue); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
-        .cta-box { margin-top: 4rem; padding: 3rem; border-radius: 2rem; text-align: center; border: 1px solid rgba(0,56,168,0.1); }
-        .btn { display: inline-block; padding: 1.25rem 2.5rem; border-radius: 1rem; background: var(--blue); color: #fff; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,56,168,0.2); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,56,168,0.3); }
-        footer { margin-top: 5rem; padding: 3rem; text-align: center; border-top: 1px solid #E2E8F0; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISR República Dominicana 2026: Tabla Oficial DGII y Cómo Calcularlo | Impucálculo</title>
+  <meta name="description" content="Guía completa del ISR en República Dominicana 2026. Tabla oficial DGII actualizada, escala progresiva, ejemplos reales con salarios dominicanos y calculadora gratuita de sueldo neto.">
+  <meta name="keywords" content="ISR republica dominicana 2026, tabla ISR DGII 2026, calcular ISR RD, impuesto sobre la renta dominicano, sueldo neto republica dominicana, exento ISR RD 34685">
+  <link rel="canonical" href="https://impucalculo.com/blog/isr-dominicano-guia.html">
+  <link rel="icon" type="image/png" href="../logo_new.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ISR República Dominicana 2026: Tabla Oficial DGII y Cómo Calcularlo | Impucálculo">
+  <meta property="og:description" content="Tabla oficial DGII 2026, escalas progresivas, ejemplos reales con salarios dominicanos y calculadora gratuita de sueldo neto.">
+  <meta property="og:url" content="https://impucalculo.com/blog/isr-dominicano-guia.html">
+  <meta property="og:image" content="https://impucalculo.com/logo_new.png">
+  <meta property="og:site_name" content="Impucálculo">
+  <meta property="article:published_time" content="2026-04-01">
+  <meta property="article:modified_time" content="2026-04-13">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ISR República Dominicana 2026 | Tabla DGII y Cómo Calcularlo">
+  <meta name="twitter:description" content="Tabla oficial DGII 2026, 4 ejemplos reales y calculadora gratuita para saber exactamente cuánto ISR te descuentan.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ISR República Dominicana 2026: Tabla Oficial DGII y Cómo Calcularlo",
+    "description": "Guía completa del ISR en RD con tabla DGII 2026, escalas progresivas, ejemplos reales y calculadora gratuita.",
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-13",
+    "author": { "@type": "Organization", "name": "Impucálculo" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Impucálculo",
+      "url": "https://impucalculo.com",
+      "logo": { "@type": "ImageObject", "url": "https://impucalculo.com/logo_new.png" }
+    },
+    "mainEntityOfPage": "https://impucalculo.com/blog/isr-dominicano-guia.html"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Desde qué salario se paga ISR en República Dominicana?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Todo empleado cuyo salario neto mensual (después de descontar AFP 2.87% y ARS 3.04%) supere RD$34,685 está sujeto a retención de ISR. Ese equivale a un salario bruto aproximado de RD$36,886 mensuales. Si ganas menos de ese monto neto, estás completamente exento y no se te debe retener ningún ISR." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué me descuentan ISR si creo que gano poco?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El umbral exento de RD$34,685 mensuales lleva congelado desde 2017 sin ajuste por inflación. Muchos trabajadores que antes no pagaban ISR ahora sí lo pagan porque sus salarios aumentaron con la inflación pero el límite exento no se actualizó. Es un tema debatido activamente en el Congreso Nacional." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Las horas extras pagan ISR en RD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. A diferencia de los descuentos de TSS (AFP y ARS), que no incluyen horas extras en su base de cálculo, el ISR sí grava las horas extras. Se suman al salario ordinario para determinar el ingreso anual proyectado y ubicarte en el tramo correspondiente de la escala DGII." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿La regalía pascual (sueldo 13) paga ISR?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, hasta el límite legal. La regalía pascual está exenta de ISR hasta la duodécima parte (1/12) del total de salarios ordinarios devengados durante el año. Si recibes una regalía mayor a ese monto, solo el excedente estaría sujeto a ISR." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿El ISR se calcula sobre mi salario bruto o neto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sobre el neto de TSS. Primero se restan los aportes obligatorios de Seguridad Social: AFP (2.87%) y ARS (3.04%), que suman 5.91% de tu salario bruto. Sobre el resultado de esa resta se aplica la escala progresiva del ISR. Nunca se calcula sobre el salario bruto directamente." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo recuperar el ISR pagado de más?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, si tienes gastos educativos deducibles según la Ley 179-09. Debes registrar tus facturas con NCF en la Oficina Virtual de la DGII antes de la fecha límite (usualmente febrero). El exceso retenido se acredita en tu declaración." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si mi empleador no retiene el ISR correctamente?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El empleador es el agente de retención responsable ante la DGII. Si retiene de menos, la empresa asume la diferencia y puede recibir multas. Si retiene de más, el trabajador tiene derecho a solicitar la devolución. Si notas discrepancias, puedes usar Impucálculo para verificar el monto correcto." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo sé en qué tramo del ISR estoy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiplica tu salario mensual neto (después de TSS) por 12 para obtener tu ingreso anual. Si ese resultado es menor a RD$416,220 estás exento. Entre RD$416,220 y RD$624,329 pagas 15% del excedente. Entre RD$624,329 y RD$867,123 pagas 20%. Por encima de RD$867,123 pagas 25%." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #0038A8;
+      --red:     #CE1126;
+      --text:    #1E293B;
+      --gray:    #64748B;
+      --light:   #94A3B8;
+      --bg:      #F1F5F9;
+      --white:   #FFFFFF;
+      --border:  #E2E8F0;
+      --blue-10: rgba(0,56,168,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(241,245,249,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px; gap: 16px;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 900; text-decoration: none; color: var(--text); letter-spacing: -0.02em; flex-shrink: 0; }
+    .nav-logo span:first-child { color: var(--red); }
+    .nav-logo span:last-child  { color: var(--blue); }
+    .nav-back { font-size: 0.875rem; font-weight: 600; color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff; font-weight: 700; font-size: 0.875rem; padding: 9px 20px; border-radius: 0.75rem; text-decoration: none; white-space: nowrap; box-shadow: 0 6px 16px rgba(0,56,168,0.25); transition: all 0.3s; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,56,168,0.35); }
+
+    /* LAYOUT */
+    .container { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.825rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--blue); }
+    .breadcrumb .sep { color: var(--light); }
+
+    /* HEADER */
+    .art-meta { font-size: 0.825rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 1rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 1.25rem; }
+    .art-lead { font-size: 1.15rem; color: var(--gray); max-width: 700px; margin-bottom: 2.5rem; line-height: 1.7; }
+
+    /* KEY BOX */
+    .key-box { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border-radius: 2rem; overflow: hidden; margin-bottom: 3.5rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px var(--blue-10); }
+    @media(max-width:600px){ .key-box { grid-template-columns: repeat(2,1fr); } }
+    .key-item { background: rgba(255,255,255,0.9); padding: 1.5rem 1rem; text-align: center; }
+    .key-val { display: block; font-size: 1.6rem; font-weight: 900; color: var(--blue); line-height: 1; margin-bottom: 0.4rem; }
+    .key-lbl { font-size: 0.7rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* CONTENT TYPOGRAPHY */
+    .content { font-size: 1.05rem; }
+    .content p { margin-bottom: 1.4rem; color: var(--text); }
+    .content p strong { color: var(--text); font-weight: 700; }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: var(--blue); margin: 2.5rem 0 1rem; letter-spacing: -0.02em; line-height: 1.2; }
+    h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 1.75rem 0 0.75rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.4rem; }
+    ul li, ol li { margin-bottom: 0.6rem; }
+    li strong { color: var(--text); font-weight: 700; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+    /* TABLES (elevación 3D) */
+    .tbl-wrap { overflow-x: auto; margin: 2rem 0; border-radius: 2rem; background: var(--white); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.08); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .tbl-wrap:hover { transform: translateY(-6px); box-shadow: 0 36px 72px -15px rgba(0,0,0,0.14), 0 50px 90px -20px rgba(0,56,168,0.12); }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: #F8FAFC; color: var(--blue); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 1.25rem 1.5rem; text-align: left; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #F8FAFC; }
+    tbody td { padding: 1.1rem 1.5rem; color: var(--text); font-size: 0.94rem; }
+    tbody td:first-child { font-weight: 600; }
+
+    /* RATE BADGES */
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.04em; }
+    .badge-green  { background: rgba(22,163,74,0.1);    color: #16A34A; }
+    .badge-blue   { background: rgba(0,56,168,0.1);     color: var(--blue); }
+    .badge-orange { background: rgba(234,88,12,0.1);    color: #EA580C; }
+    .badge-red    { background: rgba(206,17,38,0.1);    color: var(--red); }
+
+    /* STEP BOXES */
+    .step-box { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 2rem; padding: 2rem 2.25rem; margin-bottom: 1.25rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.08); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .step-box:hover { transform: translateY(-5px); box-shadow: 0 36px 72px -15px rgba(0,0,0,0.14), 0 50px 90px -20px rgba(0,56,168,0.12); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--blue); color: #fff; border-radius: 50%; font-weight: 900; font-size: 1rem; margin-bottom: 1rem; }
+    .step-box h3 { margin-top: 0; color: var(--blue); }
+
+    /* EXAMPLE BOXES */
+    .ex-box { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 2rem; padding: 2rem 2.25rem; margin-bottom: 1.75rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.08); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .ex-box:hover { transform: translateY(-6px); box-shadow: 0 36px 72px -15px rgba(0,0,0,0.14), 0 50px 90px -20px rgba(0,56,168,0.12); }
+    .ex-label { font-size: 0.75rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; }
+    .ex-title { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; }
+    .ex-note  { font-size: 0.9rem; color: var(--gray); margin-bottom: 1.25rem; font-style: italic; }
+    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; }
+    .calc-row:last-of-type { border-bottom: none; }
+    .calc-lbl { color: var(--gray); }
+    .calc-val { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .calc-total { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.25rem; border-radius: 1rem; margin-top: 1rem; background: rgba(0,56,168,0.06); border: 1px solid rgba(0,56,168,0.15); }
+    .total-lbl { font-weight: 800; color: var(--blue); font-size: 0.9375rem; }
+    .total-val { font-size: 1.4rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .net-row   { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.25rem; border-radius: 0.75rem; margin-top: 0.6rem; background: rgba(22,163,74,0.06); border: 1px solid rgba(22,163,74,0.2); }
+    .net-lbl   { font-weight: 700; color: #16A34A; font-size: 0.9rem; }
+    .net-val   { font-size: 1.3rem; font-weight: 900; color: #16A34A; }
+
+    /* ALERT / INFO BOXES */
+    .alert-box { background: rgba(255,209,102,0.12); border: 1px solid rgba(255,180,0,0.3); border-radius: 1rem; padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.9375rem; }
+    .alert-box strong { color: #92400E; }
+    .alert-box p { color: #78350F; margin-bottom: 0; }
+    .info-box  { background: rgba(0,56,168,0.05); border: 1px solid rgba(0,56,168,0.15); border-radius: 1rem; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .info-box p { color: var(--text); margin-bottom: 0; font-size: 0.9375rem; }
+    .info-box a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .info-box a:hover { text-decoration: underline; }
+
+    /* INCOME LIST */
+    .income-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0; }
+    @media(max-width:560px){ .income-grid { grid-template-columns: 1fr; } }
+    .income-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1.1rem; border-radius: 1rem; font-size: 0.9375rem; font-weight: 600; }
+    .income-item.yes { background: rgba(22,163,74,0.07); border: 1px solid rgba(22,163,74,0.2); color: #166534; }
+    .income-item.no  { background: rgba(206,17,38,0.06);  border: 1px solid rgba(206,17,38,0.18);  color: #991B1B; }
+    .income-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* FORMULA BOX */
+    .formula-box { background: rgba(255,255,255,0.9); border: 1px solid rgba(0,56,168,0.2); border-radius: 1.5rem; padding: 1.75rem 2rem; text-align: center; margin: 1.75rem 0; box-shadow: 0 10px 30px -10px rgba(0,56,168,0.12); }
+    .formula-text { font-size: 1.4rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .formula-sub  { font-size: 0.875rem; color: var(--gray); margin-top: 0.5rem; }
+
+    /* CTA BLOCK */
+    .cta-block { margin: 3.5rem 0; padding: 3.5rem 2.5rem; border-radius: 2rem; text-align: center; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.1); }
+    .cta-block h2 { color: var(--text); margin-bottom: 0.75rem; margin-top: 0; }
+    .cta-block p { color: var(--gray); max-width: 500px; margin: 0 auto 2rem; font-size: 1.05rem; }
+    .btn { display: inline-block; background: var(--blue); color: #fff; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 1.1rem 2.5rem; border-radius: 1rem; text-decoration: none; box-shadow: 0 10px 24px rgba(0,56,168,0.25); transition: all 0.3s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(0,56,168,0.35); }
+    .btn-red { background: var(--red); box-shadow: 0 10px 24px rgba(206,17,38,0.25); }
+    .btn-red:hover { box-shadow: 0 18px 36px rgba(206,17,38,0.4); }
+
+    /* FAQ ACCORDION */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 1.2rem 0; cursor: pointer; list-style: none; font-weight: 700; color: var(--text); font-size: 1rem; transition: color 0.2s; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q:hover { color: var(--blue); }
+    .faq-q::after { content: '+'; font-size: 1.6rem; font-weight: 300; color: var(--blue); flex-shrink: 0; line-height: 1; transition: transform 0.3s; }
+    details[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a { color: var(--gray); padding: 0 0 1.25rem; line-height: 1.78; font-size: 0.9375rem; }
+
+    /* ARTICLE NAV */
+    .art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; }
+    @media(max-width:520px){ .art-nav { grid-template-columns: 1fr; } }
+    .art-nav-link { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 1.5rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 10px 24px -8px rgba(0,0,0,0.08); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .art-nav-link:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,56,168,0.15); border-color: rgba(0,56,168,0.2); }
+    .art-nav-link.prev { text-align: left; }
+    .art-nav-link.next { text-align: right; }
+    .nav-dir { font-size: 0.72rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
+    .nav-ttl { font-weight: 700; color: var(--text); font-size: 0.9375rem; }
+
+    /* FOOTER */
+    footer { margin-top: 5rem; padding: 3rem 1.5rem; border-top: 1px solid var(--border); text-align: center; }
+    .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; list-style: none; margin-bottom: 1.5rem; }
+    .foot-links a { color: var(--gray); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+    .foot-links a:hover { color: var(--blue); }
+    .foot-copy { font-size: 0.85rem; color: var(--light); }
+
+    /* RESPONSIVE */
+    @media(max-width:640px){
+      .step-box, .ex-box { padding: 1.5rem; }
+      .cta-block { padding: 2.5rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../blog.html" class="back-link">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Volver al Blog
-        </a>
-        
-        <article>
-            <div class="meta">Fiscal</div>
-            <h1>Entendiendo el <span style="color: var(--blue);">ISR</span>: Manual para el Usuario de <span style="color: var(--red);">Impu</span><span style="color: var(--blue);">cálculo</span></h1>
-            
-            <div class="content">
-                <p>Si alguna vez has mirado tu volante de pago y te has preguntado por qué el monto final es significativamente menor a tu sueldo bruto, la respuesta principal suele ser el <strong>Impuesto Sobre la Renta (ISR)</strong>.</p>
-                
-                <p>En República Dominicana, el ISR es un impuesto progresivo que se aplica a los ingresos de las personas físicas. No todos pagan lo mismo, y existe una escala que determina cuánto te corresponde aportar al estado.</p>
-                
-                <h2>La Escala Exenta</h2>
-                <p>Lo primero que debes saber es que existe un "monto exento". Si ganas menos de un monto específico al año (actualmente RD$ 416,220.00), no te corresponde pagar ISR. Este es un alivio para los salarios más bajos del mercado.</p>
-                
-                <h2>Las 3 Escalas Gravables</h2>
-                <p>Si tus ingresos superan el monto exento, el excedente se grava según tres niveles de porcentaje:</p>
-                
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Renta Anual</th>
-                                <th>Tasa de Impuesto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Hasta RD$ 416,220.00</td>
-                                <td>Exento</td>
-                            </tr>
-                            <tr>
-                                <td>De RD$ 416,220.01 a RD$ 624,329.00</td>
-                                <td>15% del excedente de RD$ 416,220.01</td>
-                            </tr>
-                            <tr>
-                                <td>De RD$ 624,329.01 a RD$ 867,123.00</td>
-                                <td>RD$ 31,216.00 + 20% del excedente de RD$ 624,329.01</td>
-                            </tr>
-                            <tr>
-                                <td>Más de RD$ 867,123.01</td>
-                                <td>RD$ 79,776.00 + 25% del excedente de RD$ 867,123.01</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <h2>¿Cómo se aplica a mi sueldo mensual?</h2>
-                <p>Es importante notar que el cálculo se hace sobre tu <strong>Sueldo Neto tras descuentos de Seguridad Social (TSS)</strong>. Es decir, primero se resta el 3.04% de ARS y el 2.87% de AFP, y sobre lo que queda, se aplica la escala del ISR.</p>
-                
-                <p>En <span style="color: var(--red);">Impu</span><span style="color: var(--blue);">cálculo</span>, mantenemos estos valores actualizados según las disposiciones anuales de la DGII para que no tengas que preocuparte por las matemáticas.</p>
-            </div>
-
-            <div class="cta-box glass">
-                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800;">¿Quieres ver tu cálculo desglosado?</h3>
-                <p style="margin-bottom: 2rem; color: var(--gray);">Descubre exactamente cuánto te descuentan y por qué.</p>
-                <a href="../calculadora.html" class="btn">Calcular mi Sueldo Neto</a>
-            </div>
-        </article>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a href="https://impucalculo.com" class="nav-logo" aria-label="Impucálculo inicio">
+        <span>Impu</span><span>cálculo</span>
+      </a>
+      <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver al Blog
+      </a>
+      <a href="../calculadora.html" class="nav-cta" aria-label="Calcular sueldo neto ahora">Calcular Ahora</a>
     </div>
+  </nav>
 
-    <footer>
-        <p style="color: var(--gray); font-size: 0.9rem;">© 2026 Impucálculo · República Dominicana</p>
-    </footer>
+  <main>
+    <div class="container">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="https://impucalculo.com">Impucálculo</a>
+        <span class="sep">›</span>
+        <a href="../blog.html">Blog</a>
+        <span class="sep">›</span>
+        <span>ISR 2026</span>
+      </nav>
+
+      <article>
+
+        <!-- HEADER -->
+        <div class="art-meta">Fiscal · DGII 2025–2026</div>
+        <h1>ISR en <span style="color:var(--blue)">República Dominicana</span> 2026: Tabla Oficial DGII y Cómo Calcularlo</h1>
+        <p class="art-lead">Cada mes te descuentan ISR sin explicarte por qué ni cuánto. Esta guía usa la tabla oficial de la DGII para mostrarte exactamente en qué tramo estás y cuánto pagas — con cálculos reales y paso a paso.</p>
+
+        <!-- KEY BOX -->
+        <div class="key-box" role="region" aria-label="Datos clave del ISR 2026">
+          <div class="key-item"><span class="key-val">RD$34,685</span><span class="key-lbl">Salario exento/mes</span></div>
+          <div class="key-item"><span class="key-val" style="color:var(--red)">15%</span><span class="key-lbl">Primer tramo</span></div>
+          <div class="key-item"><span class="key-val">5.91%</span><span class="key-lbl">TSS antes del ISR</span></div>
+          <div class="key-item"><span class="key-val" style="color:var(--red)">2017</span><span class="key-lbl">Último ajuste exento</span></div>
+        </div>
+
+        <div class="content">
+
+          <!-- SECCIÓN 1: QUÉ ES -->
+          <h2 id="que-es">¿Qué es el ISR y Quién Está Obligado a Pagarlo?</h2>
+          <p>El <strong>Impuesto Sobre la Renta (ISR)</strong> es el impuesto que grava los ingresos que obtienes por tu trabajo. En términos simples: el estado dominicano toma una parte de lo que ganas como contribución fiscal, y ese porcentaje crece progresivamente mientras más alto es tu salario. No es un número fijo —es una escala.</p>
+          <p>En el caso de los trabajadores asalariados en la República Dominicana, el ISR funciona así: <strong>tú no lo pagas directamente a la DGII</strong>. Lo paga tu empleador en tu nombre, actuando como <em>agente de retención</em> autorizado. Cada mes, antes de depositar tu sueldo, la empresa descuenta el ISR que te corresponde y lo transfiere a la Dirección General de Impuestos Internos.</p>
+
+          <h3>¿Quién está obligado a pagar ISR?</h3>
+          <p>Todo empleado asalariado cuyo <strong>ingreso neto mensual supere RD$34,685</strong> —después de los descuentos de Seguridad Social— está sujeto a retención de ISR. Si tu salario neto está por debajo de ese umbral, estás completamente exento y no debes recibir ningún descuento por este concepto.</p>
+          <ul>
+            <li><strong>Base legal:</strong> Ley 11-92, Código Tributario de la República Dominicana, Artículo 296 y siguientes.</li>
+            <li><strong>Periodicidad:</strong> Mensual, descontado directamente en nómina por el empleador.</li>
+            <li><strong>Órgano recaudador:</strong> Dirección General de Impuestos Internos (DGII).</li>
+            <li><strong>Aplica a:</strong> Salarios, comisiones fijas, bonificaciones regulares y horas extras.</li>
+          </ul>
+          <div class="info-box">
+            <p>El ISR de personas físicas asalariadas en RD es un impuesto <strong>retenido en la fuente</strong>. Esto significa que el trabajador <em>nunca maneja ese dinero</em>: sale antes de llegar a tu cuenta. De ahí la importancia de verificar que tu volante de pago refleje exactamente el monto correcto.</p>
+          </div>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 2: TABLA DGII -->
+          <h2 id="tabla-dgii">Tabla ISR 2026 — Oficial DGII: Escala Progresiva Completa</h2>
+          <p>El ISR en República Dominicana funciona por tramos: <strong>no pagas el mismo porcentaje sobre todo tu salario</strong>. Solo el monto que excede el límite de cada tramo está sujeto a la tasa de ese tramo. Es lo que se llama un impuesto progresivo. La siguiente tabla es la vigente para el año fiscal 2026, publicada por la DGII:</p>
+
+          <div class="tbl-wrap">
+            <table aria-label="Tabla ISR 2026 oficial DGII">
+              <thead>
+                <tr>
+                  <th>Renta Anual Neta</th>
+                  <th>Equivalente Mensual</th>
+                  <th>Tasa</th>
+                  <th>ISR a Pagar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hasta RD$416,220.00</td>
+                  <td>Hasta RD$34,685/mes</td>
+                  <td><span class="badge badge-green">EXENTO 0%</span></td>
+                  <td>RD$0.00</td>
+                </tr>
+                <tr>
+                  <td>RD$416,220.01 – RD$624,329.00</td>
+                  <td>RD$34,685 – RD$52,027/mes</td>
+                  <td><span class="badge badge-blue">15%</span></td>
+                  <td>15% del excedente sobre RD$416,220.01</td>
+                </tr>
+                <tr>
+                  <td>RD$624,329.01 – RD$867,123.00</td>
+                  <td>RD$52,027 – RD$72,260/mes</td>
+                  <td><span class="badge badge-orange">20%</span></td>
+                  <td>RD$31,216 + 20% del excedente sobre RD$624,329.01</td>
+                </tr>
+                <tr>
+                  <td>RD$867,123.01 en adelante</td>
+                  <td>Más de RD$72,260/mes</td>
+                  <td><span class="badge badge-red">25%</span></td>
+                  <td>RD$79,776 + 25% del excedente sobre RD$867,123.01</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.825rem; color:var(--gray); margin-top:-1rem; margin-bottom:1.75rem;"><em>Fuente: DGII — Vigente del 1 de enero al 31 de diciembre de 2026.</em></p>
+
+          <p>Nótalo bien: si entras al tramo del 15%, <strong>no pagas 15% de todo tu salario anual</strong>. Pagas 15% únicamente del monto que excede los RD$416,220. El resto está exento. Esta es la mecánica progresiva que muchos trabajadores dominicanos no entienden —y que produce los cálculos incorrectos cuando el empleador o el propio trabajador lo hacen a mano.</p>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 3: CÓMO SE CALCULA -->
+          <h2 id="calculo-paso-a-paso">Cómo se Calcula el ISR Paso a Paso</h2>
+          <p>El ISR no se calcula directamente sobre tu salario bruto. El Código Tributario establece un orden específico de descuentos que debes respetar para llegar a la base imponible correcta. Seguir este orden es la diferencia entre un cálculo legal y uno erróneo.</p>
+
+          <div class="step-box">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Paso 1 — Descontar la TSS del salario bruto</h3>
+            <p>Antes de que el ISR entre en el cálculo, se descuentan obligatoriamente los aportes a la Seguridad Social (TSS). Estos son:</p>
+            <ul>
+              <li><strong>AFP (Administradora de Fondos de Pensiones):</strong> 2.87% del salario bruto</li>
+              <li><strong>ARS (Administradora de Riesgos de Salud):</strong> 3.04% del salario bruto</li>
+            </ul>
+            <div class="formula-box">
+              <div class="formula-text">Salario Bruto × 5.91% = TSS total</div>
+              <p class="formula-sub">TSS = AFP (2.87%) + ARS (3.04%) — sobre el salario bruto mensual</p>
+            </div>
+            <p>El resultado de restar la TSS al salario bruto se llama <strong>Base Imponible Mensual</strong>. Es el punto de partida real para el ISR.</p>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Paso 2 — Anualizar la base imponible</h3>
+            <p>La escala DGII opera en términos <strong>anuales</strong>, no mensuales. Por eso, una vez que tienes la base imponible mensual, debes proyectarla al año:</p>
+            <div class="formula-box">
+              <div class="formula-text">Base Mensual × 12 = Renta Anual Proyectada</div>
+              <p class="formula-sub">Esta cifra es la que se compara contra los tramos de la tabla DGII</p>
+            </div>
+            <p>Este paso es crucial. Si alguien te intenta calcular el ISR aplicando los porcentajes directamente sobre el salario mensual sin anualizar, el resultado será incorrecto. La ley opera anualmente.</p>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>Paso 3 — Aplicar la escala progresiva y mensualizar</h3>
+            <p>Con la Renta Anual Proyectada en mano, identificas en cuál tramo de la tabla DGII caes y calculas el ISR anual:</p>
+            <ul>
+              <li>Si está por debajo de RD$416,220 → ISR anual = RD$0</li>
+              <li>Si está en el tramo del 15% → ISR anual = (Renta Anual − 416,220) × 15%</li>
+              <li>Si está en tramo del 20% → ISR anual = RD$31,216 + (Renta Anual − 624,329) × 20%</li>
+              <li>Si está en tramo del 25% → ISR anual = RD$79,776 + (Renta Anual − 867,123) × 25%</li>
+            </ul>
+            <p>Finalmente, divides el ISR anual entre 12 para obtener la <strong>retención mensual</strong> que aparece en tu volante de pago.</p>
+          </div>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 4: EJEMPLOS -->
+          <h2 id="ejemplos-reales">4 Ejemplos Reales con Salarios Dominicanos</h2>
+          <p>Cuatro casos concretos para que puedas identificar el tuyo y verificar que estás recibiendo el descuento correcto.</p>
+
+          <!-- EJEMPLO 1 -->
+          <div class="ex-box" id="ejemplo-1">
+            <div class="ex-label">Ejemplo 1 · Exento de ISR</div>
+            <div class="ex-title">Carlos — Salario RD$30,000 brutos</div>
+            <p class="ex-note">Carlos trabaja en una empresa de distribución. Con RD$30,000 brutos, el cálculo demuestra por qué está exento de ISR aunque le descuenten TSS.</p>
+            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$30,000.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">TSS total (30,000 × 5.91%)</span><span class="calc-val">− RD$1,773.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$28,227.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$338,724.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Comparación con exento DGII</span><span class="calc-val">RD$338,724 &lt; RD$416,220</span></div>
+            <div class="calc-total"><span class="total-lbl">ISR MENSUAL</span><span class="total-val">RD$0.00 — EXENTO</span></div>
+            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL</span><span class="net-val">RD$28,227.00</span></div>
+          </div>
+
+          <!-- EJEMPLO 2 -->
+          <div class="ex-box" id="ejemplo-2">
+            <div class="ex-label">Ejemplo 2 · Tramo 15%</div>
+            <div class="ex-title">Altagracia — Salario RD$50,000 brutos</div>
+            <p class="ex-note">Altagracia es analista contable. Su salario supera el exento mensual de RD$34,685 neto. Cae en el primer tramo gravable del ISR al 15%.</p>
+            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$50,000.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">TSS total (50,000 × 5.91%)</span><span class="calc-val">− RD$2,955.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$47,045.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$564,540.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Excedente sobre RD$416,220</span><span class="calc-val">RD$148,320.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">ISR anual (148,320 × 15%)</span><span class="calc-val">RD$22,248.00</span></div>
+            <div class="calc-total"><span class="total-lbl">ISR MENSUAL (÷ 12)</span><span class="total-val">RD$1,854.00</span></div>
+            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL (50,000 − TSS − ISR)</span><span class="net-val">RD$45,191.00</span></div>
+            <div class="info-box" style="margin-top:1rem;margin-bottom:0">
+              <p>Altagracia paga el <strong>15% solo del excedente</strong> (RD$148,320), no de sus RD$564,540 anuales completos. Esa distinción le ahorra RD$62,000 anuales vs. un cálculo erróneo que aplique el 15% sobre toda la renta.</p>
+            </div>
+          </div>
+
+          <!-- EJEMPLO 3 -->
+          <div class="ex-box" id="ejemplo-3">
+            <div class="ex-label">Ejemplo 3 · Tramo 25%</div>
+            <div class="ex-title">Franklyn — Salario RD$80,000 brutos</div>
+            <p class="ex-note">Franklyn es gerente de operaciones. Con RD$80,000 brutos, su renta anual supera el tramo del 20% y entra en el tramo del 25%, el más alto de la escala.</p>
+            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$80,000.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">TSS total (80,000 × 5.91%)</span><span class="calc-val">− RD$4,728.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$75,272.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$903,264.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Cuota fija (tramo 25%)</span><span class="calc-val">RD$79,776.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Excedente sobre RD$867,123 × 25%</span><span class="calc-val">RD$9,035.25</span></div>
+            <div class="calc-row"><span class="calc-lbl">ISR anual total</span><span class="calc-val">RD$88,811.25</span></div>
+            <div class="calc-total"><span class="total-lbl">ISR MENSUAL (÷ 12)</span><span class="total-val">RD$7,401.00</span></div>
+            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL (80,000 − TSS − ISR)</span><span class="net-val">RD$67,871.00</span></div>
+          </div>
+
+          <!-- EJEMPLO 4 -->
+          <div class="ex-box" id="ejemplo-4">
+            <div class="ex-label">Ejemplo 4 · Tramo 25% avanzado</div>
+            <div class="ex-title">Rosibel — Salario RD$120,000 brutos</div>
+            <p class="ex-note">Rosibel es directora de finanzas. En el tramo del 25%, el ISR representa una fracción significativa del salario. Aquí se ve el peso real de la escala más alta.</p>
+            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$120,000.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">TSS total (120,000 × 5.91%)</span><span class="calc-val">− RD$7,092.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$112,908.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$1,354,896.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Cuota fija (tramo 25%)</span><span class="calc-val">RD$79,776.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Excedente sobre RD$867,123 × 25%</span><span class="calc-val">RD$121,943.25</span></div>
+            <div class="calc-row"><span class="calc-lbl">ISR anual total</span><span class="calc-val">RD$201,719.25</span></div>
+            <div class="calc-total"><span class="total-lbl">ISR MENSUAL (÷ 12)</span><span class="total-val">RD$16,810.00</span></div>
+            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL (120,000 − TSS − ISR)</span><span class="net-val">RD$96,098.00</span></div>
+            <div class="alert-box" style="margin-top:1rem;margin-bottom:0">
+              <strong>📊 Perspectiva:</strong>
+              <p>Rosibel entrega aproximadamente el 20% de su salario bruto entre TSS e ISR combinados. El ISR solo representa RD$16,810 de RD$120,000 — un 14% efectivo de su salario bruto. La escala progresiva protege los tramos bajos aunque el total parezca alto.</p>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <p>¿Prefieres el cálculo automático? <a href="../calculadora.html">La Calculadora de Impucálculo</a> hace el desglose completo —TSS y ISR— en segundos. Solo ingresa tu salario bruto y obtienes el sueldo neto exacto, gratis y sin registrarte.</p>
+          </div>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 5: QUÉ INGRESOS INCLUYE -->
+          <h2 id="que-incluye-isr">¿Qué Ingresos Incluye el ISR en Nómina?</h2>
+          <p>No todo lo que recibes de tu empleador entra en la base de cálculo del ISR. Conocer qué está gravado y qué está exento puede marcar una diferencia importante en tu planificación financiera mensual.</p>
+
+          <div class="income-grid" role="list" aria-label="Ingresos gravados y exentos de ISR">
+            <div class="income-item yes" role="listitem"><span class="income-icon">✅</span> Salario base mensual</div>
+            <div class="income-item yes" role="listitem"><span class="income-icon">✅</span> Comisiones fijas regulares</div>
+            <div class="income-item yes" role="listitem"><span class="income-icon">✅</span> Bonificaciones regulares</div>
+            <div class="income-item yes" role="listitem"><span class="income-icon">✅</span> Horas extras trabajadas</div>
+            <div class="income-item no"  role="listitem"><span class="income-icon">❌</span> Regalía pascual (hasta 1/12)</div>
+            <div class="income-item no"  role="listitem"><span class="income-icon">❌</span> Viáticos debidamente justificados</div>
+            <div class="income-item no"  role="listitem"><span class="income-icon">❌</span> Indemnizaciones laborales legales</div>
+            <div class="income-item no"  role="listitem"><span class="income-icon">❌</span> Beneficios en especie documentados</div>
+          </div>
+
+          <h3>El Caso Especial de las Horas Extras</h3>
+          <p>Aquí hay una distinción técnica que pocos trabajadores dominicanos conocen: las <strong>horas extras sí pagan ISR, pero no pagan TSS</strong>. Esto significa que cuando calculas el ISR, debes incluirlas en la base imponible. Pero cuando calculas los aportes de AFP y ARS, las horas extras no entran en la base de la TSS.</p>
+          <p>La práctica incorrecta de algunos empleadores es excluir las horas extras de la base del ISR porque las excluyen de la TSS. Son dos bases diferentes con reglas diferentes —y la DGII considera gravables para ISR las horas extras que forman parte regular del ingreso mensual del trabajador.</p>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 6: EXENTO CONGELADO -->
+          <h2 id="exento-congelado">El Exento Congelado desde 2017: El Problema que Nadie Resuelve</h2>
+          <p>El umbral exento del ISR —actualmente RD$34,685 mensuales (RD$416,220 anuales)— lleva <strong>casi una década sin actualizarse</strong>. El artículo 327 del Código Tributario dominicano establece claramente que este monto debe ajustarse anualmente por inflación. Sin embargo, cada año desde 2018, la Ley de Presupuesto Nacional ha suspendido ese ajuste automático.</p>
+
+          <h3>¿Qué significa esto en términos concretos?</h3>
+          <p>Si el exento se hubiera ajustado por inflación desde 2017 como manda la ley, en 2026 debería estar aproximadamente en <strong>RD$51,857 mensuales</strong>. En cambio, sigue en RD$34,685. Esa diferencia de RD$17,172 mensuales representa decenas de miles de trabajadores dominicanos que actualmente pagan ISR cuando —de haberse respetado el mandato constitucional del ajuste— no deberían pagarlo.</p>
+          <p>El impacto es directo: un trabajador con salario de RD$42,000 brutos que en 2017 era marginal en el pago del ISR, hoy está firmemente en el tramo del 15%. No porque su poder adquisitivo haya crecido, sino porque la inflación elevó su salario nominal sin que el exento siguiera el mismo camino.</p>
+
+          <div class="alert-box">
+            <strong>⚖️ Estado del Debate:</strong>
+            <p>En el Congreso Nacional se han presentado propuestas para elevar el exento a RD$52,000 mensuales, incluyendo iniciativas legislativas que han sido debatidas pero no aprobadas al cierre de esta guía. Te recomendamos verificar el estado actual en la <a href="https://dgii.gov.do" target="_blank" rel="noopener" style="color:#92400E;font-weight:700">web oficial de la DGII</a>.</p>
+          </div>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 7: REDUCIR ISR -->
+          <h2 id="reducir-isr">¿Puedo Reducir mi ISR Legalmente en República Dominicana?</h2>
+          <p>Sí, y hay mecanismos legales concretos para hacerlo. El más relevante para el trabajador asalariado dominicano es la deducción por gastos educativos, establecida en la <strong>Ley 179-09</strong>.</p>
+
+          <h3>Deducción por Gastos Educativos (Ley 179-09)</h3>
+          <p>Esta ley permite a los trabajadores que superan el exento del ISR deducir ciertos gastos educativos de su base imponible, reduciendo el impuesto a pagar. El proceso funciona así:</p>
+          <ol>
+            <li><strong>Conserva tus facturas con NCF:</strong> Matrícula, mensualidades, libros y útiles escolares (tuyos o de tus dependientes) con comprobante fiscal válido.</li>
+            <li><strong>Regístralas en la Oficina Virtual DGII:</strong> A través del portal dgii.gov.do, en la sección de Gastos Educativos.</li>
+            <li><strong>Fecha límite:</strong> Generalmente durante febrero del año siguiente al que corresponden los gastos.</li>
+            <li><strong>Resultado:</strong> La DGII calcula si el ISR retenido en nómina fue mayor al que correspondía. Si hubo retención en exceso, lo acreditan o devuelven.</li>
+          </ol>
+          <div class="alert-box">
+            <strong>📌 Límite de deducción:</strong>
+            <p>La Ley 179-09 establece un tope máximo del 10% del ingreso gravable total para la deducción. No es ilimitada, pero puede representar un ahorro real de varios miles de pesos anuales para trabajadores en el tramo del 15% o superior.</p>
+          </div>
+
+          <h3>Intereses de Préstamos Hipotecarios</h3>
+          <p>Para personas físicas con declaración jurada anual (que van más allá del régimen de nómina estándar), los intereses de préstamos hipotecarios para vivienda propia pueden ser deducibles bajo ciertas condiciones. Sin embargo, este mecanismo no aplica directamente en la retención mensual de nómina — es un beneficio que se materializa en la declaración anual ante la DGII.</p>
+          <p>Si tienes ingresos adicionales aparte de tu nómina (alquileres, freelance, negocios), considera consultar con un contador certificado para planificar tu declaración anual y maximizar tus deducciones legales.</p>
+
+          <!-- CTA -->
+          <div class="cta-block glass" id="cta">
+            <h2>¿Cuánto ISR te Descuentan a Ti Exactamente?</h2>
+            <p>Ingresa tu salario y <strong>Impucálculo</strong> calcula tu ISR, AFP y ARS en segundos. Gratis, sin registro, 100% privado.</p>
+            <a href="../calculadora.html" class="btn btn-red" aria-label="Ir a la calculadora de sueldo neto">CALCULAR MI SUELDO NETO →</a>
+          </div>
+
+          <!-- ENLACE A PRESTACIONES -->
+          <div class="info-box">
+            <p>¿También necesitas calcular lo que te corresponde si termina tu relación laboral? Lee nuestra guía completa de <a href="prestaciones-laborales-guia.html">Prestaciones Laborales en República Dominicana 2026</a> — cesantía, preaviso, vacaciones y regalía pascual explicados con ejemplos reales y cálculos paso a paso.</p>
+          </div>
+
+          <hr class="divider">
+
+          <!-- SECCIÓN 8: FAQ -->
+          <h2 id="faq">Preguntas Frecuentes sobre el ISR en República Dominicana</h2>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Desde qué salario se paga ISR en República Dominicana?</summary>
+            <p class="faq-a">Todo empleado cuyo salario neto mensual (después de descontar AFP 2.87% y ARS 3.04%) supere <strong>RD$34,685</strong> está sujeto a retención de ISR. Ese equivale a un salario bruto aproximado de RD$36,886 mensuales. Si ganas menos de ese monto neto, estás completamente exento y no se te debe retener ningún ISR. Si notas descuentos de ISR con salario inferior, solicita explicación escrita a tu departamento de nómina.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Por qué me descuentan ISR si creo que gano poco?</summary>
+            <p class="faq-a">El umbral exento de <strong>RD$34,685</strong> mensuales lleva congelado desde 2017 sin ajuste por inflación. Muchos trabajadores que antes no pagaban ISR ahora sí lo pagan porque sus salarios nominales aumentaron con la inflación, pero el límite exento no se actualizó. Si ganas RD$40,000 hoy y en 2018 ganabas RD$30,000, el aumento no necesariamente mejoró tu poder adquisitivo, pero sí te puso dentro del tramo gravable.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Las horas extras pagan ISR en RD?</summary>
+            <p class="faq-a">Sí. A diferencia de los descuentos de TSS (AFP y ARS), que <em>no</em> incluyen horas extras en su base de cálculo, el ISR <strong>sí grava las horas extras</strong>. Se suman al salario ordinario para determinar el ingreso anual proyectado y ubicarte en el tramo correspondiente de la escala DGII. Si recibes horas extras regulares y tu volante no las incluye en la base del ISR, puede haber una subretención que eventualmente la DGII ajuste.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿La regalía pascual (sueldo 13) paga ISR?</summary>
+            <p class="faq-a">No, hasta el límite legal. La regalía pascual está <strong>exenta de ISR</strong> hasta la duodécima parte (1/12) del total de salarios ordinarios devengados durante el año. Si recibes una regalía mayor a ese monto —por ejemplo, si el empleador la aumenta voluntariamente— solo el excedente estaría sujeto a ISR. Este beneficio es irrenunciable según el Código de Trabajo, y la exención fiscal lo hace doblemente ventajoso para el trabajador dominicano.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿El ISR se calcula sobre mi salario bruto o neto?</summary>
+            <p class="faq-a">Sobre el <strong>neto de TSS</strong>. El proceso correcto es: primero se restan AFP (2.87%) + ARS (3.04%) = 5.91% de tu salario bruto. Sobre el resultado de esa resta se aplica la escala progresiva del ISR. Nunca sobre el bruto directamente. Si alguien te calcula el ISR sobre el salario bruto sin descontar antes la TSS, el resultado será incorrecto y generalmente mayor al que corresponde.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Puedo recuperar el ISR pagado de más?</summary>
+            <p class="faq-a">Sí. Si tienes gastos educativos deducibles según la <strong>Ley 179-09</strong>, debes registrar tus facturas con NCF en la Oficina Virtual de la DGII antes de la fecha límite (usualmente febrero del año siguiente). La diferencia entre el ISR retenido y el que correspondía se acredita o devuelve. Para empleados asalariados estándar, el proceso es directo, gratuito y no requiere contador externo para gastos educativos básicos.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Qué pasa si mi empleador no retiene el ISR correctamente?</summary>
+            <p class="faq-a">El empleador es el <strong>agente de retención responsable</strong> ante la DGII. Si retiene de menos, la empresa asume la diferencia y puede recibir cargos y multas por la DGII. Si retiene de más, el trabajador tiene derecho a solicitar la devolución a través del procedimiento correspondiente. Si notas discrepancias habituales entre lo calculado y lo descontado, usa <a href="../calculadora.html">Impucálculo</a> para verificar el monto correcto antes de acudir a tu empleador.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q">¿Cómo sé en qué tramo del ISR estoy?</summary>
+            <p class="faq-a">Multiplica tu salario mensual neto (después de TSS) por 12 para obtener tu renta anual proyectada. Si es menor a <strong>RD$416,220</strong> estás exento. Entre RD$416,220 y RD$624,329 pagas el 15% del excedente. Entre RD$624,329 y RD$867,123 pagas 20% más una cuota fija de RD$31,216. Por encima de RD$867,123 pagas 25% más RD$79,776 de cuota fija. <a href="../calculadora.html">Impucálculo lo calcula automáticamente</a> en segundos.</p>
+          </details>
+
+        </div><!-- /.content -->
+
+        <!-- NAVEGACIÓN ENTRE ARTÍCULOS -->
+        <nav class="art-nav" aria-label="Navegación entre artículos del blog">
+          <a href="guia-uso.html" class="art-nav-link prev">
+            <div class="nav-dir">← Artículo Anterior</div>
+            <div class="nav-ttl">AFP, ARS y Seguridad Social en RD</div>
+          </a>
+          <a href="prestaciones-laborales-guia.html" class="art-nav-link next">
+            <div class="nav-dir">Siguiente Artículo →</div>
+            <div class="nav-ttl">Guía de Prestaciones Laborales 2026</div>
+          </a>
+        </nav>
+
+      </article>
+    </div><!-- /.container -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <ul class="foot-links">
+      <li><a href="../calculadora.html">Calculadora ISR</a></li>
+      <li><a href="../prestaciones.html">Prestaciones</a></li>
+      <li><a href="../divisas.html">Divisas</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../privacidad.html">Privacidad</a></li>
+    </ul>
+    <p class="foot-copy">© 2026 <span style="color:var(--red)">Impu</span><span style="color:var(--blue)">cálculo</span> · Herramientas financieras para la República Dominicana · Ley 11-92, Código Tributario Dominicano</p>
+  </footer>
+
 </body>
 </html>
