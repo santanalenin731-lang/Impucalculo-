@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual ISR en RD | Entiende tus retenciones salariales</title>
+    <meta name="description" content="Guía completa sobre el Impuesto Sobre la Renta (ISR) en República Dominicana. Aprende cómo se calcula y cuáles son las escalas vigentes para 2025.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../logo_new.png">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root { --blue: #0038A8; --red: #CE1126; --text: #1E293B; --gray: #64748B; --bg: #F1F5F9; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+        .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.4); }
+        .container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
+        .back-link { display: inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color: var(--gray); font-weight:700; margin-bottom: 2rem; transition: color 0.3s; }
+        .back-link:hover { color: var(--blue); }
+        h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--text); }
+        .meta { font-size: 0.9rem; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; }
+        .content { font-size: 1.15rem; }
+        .content p { margin-bottom: 1.5rem; }
+        .content h2 { font-size: 2rem; font-weight: 800; margin: 2.5rem 0 1rem; color: var(--blue); }
+        .table-container { 
+            overflow-x: auto; 
+            margin: 2.5rem 0; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 2rem; 
+            background: #fff;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 
+                0 20px 40px -15px rgba(0, 0, 0, 0.12),
+                0 30px 60px -20px rgba(0, 56, 168, 0.08);
+        }
+        .table-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 40px 80px -15px rgba(0, 0, 0, 0.18),
+                0 50px 100px -20px rgba(0, 56, 168, 0.1);
+            border-color: rgba(0, 56, 168, 0.1);
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1.5rem; text-align: left; border-bottom: 1px solid #F1F5F9; }
+        th { background: #F8FAFC; font-weight: 800; color: var(--blue); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        .cta-box { margin-top: 4rem; padding: 3rem; border-radius: 2rem; text-align: center; border: 1px solid rgba(0,56,168,0.1); }
+        .btn { display: inline-block; padding: 1.25rem 2.5rem; border-radius: 1rem; background: var(--blue); color: #fff; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,56,168,0.2); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,56,168,0.3); }
+        footer { margin-top: 5rem; padding: 3rem; text-align: center; border-top: 1px solid #E2E8F0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../blog.html" class="back-link">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al Blog
+        </a>
+        
+        <article>
+            <div class="meta">Fiscal</div>
+            <h1>Entendiendo el <span style="color: var(--blue);">ISR</span>: Manual para el Usuario de <span style="color: var(--red);">Impu</span><span style="color: var(--blue);">cálculo</span></h1>
+            
+            <div class="content">
+                <p>Si alguna vez has mirado tu volante de pago y te has preguntado por qué el monto final es significativamente menor a tu sueldo bruto, la respuesta principal suele ser el <strong>Impuesto Sobre la Renta (ISR)</strong>.</p>
+                
+                <p>En República Dominicana, el ISR es un impuesto progresivo que se aplica a los ingresos de las personas físicas. No todos pagan lo mismo, y existe una escala que determina cuánto te corresponde aportar al estado.</p>
+                
+                <h2>La Escala Exenta</h2>
+                <p>Lo primero que debes saber es que existe un "monto exento". Si ganas menos de un monto específico al año (actualmente RD$ 416,220.00), no te corresponde pagar ISR. Este es un alivio para los salarios más bajos del mercado.</p>
+                
+                <h2>Las 3 Escalas Gravables</h2>
+                <p>Si tus ingresos superan el monto exento, el excedente se grava según tres niveles de porcentaje:</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Renta Anual</th>
+                                <th>Tasa de Impuesto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hasta RD$ 416,220.00</td>
+                                <td>Exento</td>
+                            </tr>
+                            <tr>
+                                <td>De RD$ 416,220.01 a RD$ 624,329.00</td>
+                                <td>15% del excedente de RD$ 416,220.01</td>
+                            </tr>
+                            <tr>
+                                <td>De RD$ 624,329.01 a RD$ 867,123.00</td>
+                                <td>RD$ 31,216.00 + 20% del excedente de RD$ 624,329.01</td>
+                            </tr>
+                            <tr>
+                                <td>Más de RD$ 867,123.01</td>
+                                <td>RD$ 79,776.00 + 25% del excedente de RD$ 867,123.01</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>¿Cómo se aplica a mi sueldo mensual?</h2>
+                <p>Es importante notar que el cálculo se hace sobre tu <strong>Sueldo Neto tras descuentos de Seguridad Social (TSS)</strong>. Es decir, primero se resta el 3.04% de ARS y el 2.87% de AFP, y sobre lo que queda, se aplica la escala del ISR.</p>
+                
+                <p>En <span style="color: var(--red);">Impu</span><span style="color: var(--blue);">cálculo</span>, mantenemos estos valores actualizados según las disposiciones anuales de la DGII para que no tengas que preocuparte por las matemáticas.</p>
+            </div>
+
+            <div class="cta-box glass">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800;">¿Quieres ver tu cálculo desglosado?</h3>
+                <p style="margin-bottom: 2rem; color: var(--gray);">Descubre exactamente cuánto te descuentan y por qué.</p>
+                <a href="../calculadora.html" class="btn">Calcular mi Sueldo Neto</a>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p style="color: var(--gray); font-size: 0.9rem;">© 2026 Impucálculo · República Dominicana</p>
+    </footer>
+</body>
+</html>

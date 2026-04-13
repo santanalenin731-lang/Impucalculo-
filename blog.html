@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Impucálculo | Educación Financiera y Fiscal RD</title>
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="Explora artículos sobre impuestos, prestaciones laborales y finanzas personales en República Dominicana. Todo lo que necesitas saber con Impucálculo.">
+    <link rel="icon" type="image/png" href="logo_new.png">
+    <link rel="apple-touch-icon" href="logo_new.png">
+
+    <meta name="keywords"
+        content="blog finanzas rd, impuestos rd, prestaciones laborales, educacion financiera dominicana, isr rd, tss rd">
+    <meta name="author" content="Impucálculo">
+    <link rel="canonical" href="https://impucalculo.com/blog.html">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary-red: #CE1126;
+            --color-secondary-blue: #0038A8;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #F8FAFC;
+            --color-bg-gray: #F1F5F9;
+            --color-text-dark: #1E293B;
+            --color-text-gray: #64748B;
+            --color-border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--color-bg-gray);
+            background-image: radial-gradient(circle at 2px 2px, #CBD5E1 1px, transparent 0);
+            background-size: 32px 32px;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-title h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+
+        .hero-title p {
+            font-size: 1.25rem;
+            color: var(--color-text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            min-height: 360px;
+            background: white;
+            box-shadow: 
+                0 20px 40px -15px rgba(0, 0, 0, 0.15),
+                0 30px 70px -20px rgba(0, 56, 168, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 40px 80px -15px rgba(0, 0, 0, 0.25),
+                0 50px 100px -20px rgba(0, 56, 168, 0.15);
+            border-color: rgba(0, 56, 168, 0.2);
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-secondary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-card p {
+            color: var(--color-text-gray);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--color-primary-red);
+            transition: gap 0.3s;
+        }
+
+        .blog-card:hover .read-more {
+            gap: 0.8rem;
+        }
+
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.1);
+        }
+
+        /* Footer Icons */
+        .footer-social-btn {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            color: #64748B;
+            text-decoration: none;
+        }
+
+        .footer-social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: var(--color-secondary-blue);
+            color: var(--color-secondary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 2rem 1rem; }
+            .hero-title h1 { font-size: 2.25rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header glass">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center;">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+                <img src="logo_new.png" alt="Logo" style="width: 45px; height: 45px; object-fit: contain;">
+                <span style="font-size: 1.25rem; font-weight: 900; color: #1E293B;">
+                    <span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span>
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="hero-title">
+            <h1>Blog <span style="color: var(--color-primary-red);">Impu</span><span style="color: var(--color-secondary-blue);">cálculo</span></h1>
+            <p>Guías, análisis y consejos para dominar tus finanzas en la República Dominicana.</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Artículo 1 -->
+            <a href="blog/mision-impucalculo.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Institucional</span>
+                    <h3>Por qué creamos Impucálculo</h3>
+                    <p>Nuestra misión: transparencia fiscal y herramientas gratuitas para todos los dominicanos.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 2 -->
+            <a href="blog/guia-uso.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Tutorial</span>
+                    <h3>Guía de Uso para tus Finanzas</h3>
+                    <p>Aprende a sacar el máximo provecho de nuestras calculadoras de ISR, prestaciones y divisas.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 3 -->
+            <a href="blog/prestaciones-laborales-guia.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral</span>
+                    <h3>Guía de Prestaciones Laborales</h3>
+                    <p>Todo sobre el preaviso, cesantía y liquidación según el Código de Trabajo de RD.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 4 -->
+            <a href="blog/isr-dominicano-guia.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Fiscal</span>
+                    <h3>Manual del ISR en RD</h3>
+                    <p>Entiende las escalas del Impuesto Sobre la Renta y cómo afectan tu salario mensual.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:4rem 2rem 2.5rem; margin-top:5rem;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div style="text-align:center; margin-bottom:3rem;">
+                <p style="font-size:1.1rem; font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Impucálculo</p>
+                <p style="font-size:0.85rem; color:#64748B; margin:0;">Cálculo de Impuestos y Prestaciones · República Dominicana</p>
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:3rem; color:#64748B;">
+                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo:', 'info@impucalculo.com');" class="footer-social-btn" title="Correo">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@impucalculo" target="_blank" class="footer-social-btn" title="TikTok">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                </a>
+                <a href="privacidad.html" class="footer-social-btn" title="Privacidad">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </a>
+                <a href="https://ko-fi.com/lenin_santana" target="_blank" class="footer-social-btn" title="Ko-fi">
+                    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-2.062 1.543-5.26 1.848-5.26 1.848l-.066-6.664H20.57s1.849 1.144 1.393 3.474a3.86 3.86 0 01-3.072 1.342z"></path></svg>
+                </a>
+            </div>
+            <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; text-align:center;">
+                <p style="font-size:0.8rem; color:#94A3B8; margin:0;">© 2026 Impucálculo · República Dominicana</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
