@@ -9,7 +9,7 @@
 *.jpeg
 *.JPEG
 # Excepciones: imágenes necesarias para el sitio
-!logo_new.png
+!logo_new.webp
 !app_demo.png
 !icon-192.png
 !icon-512.png

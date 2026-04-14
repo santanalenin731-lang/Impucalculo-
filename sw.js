@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v5';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v5';
+const CACHE_NAME = 'impucalculo-v6';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v6';
 
 const STATIC_ASSETS = [
     '/',
@@ -8,7 +8,7 @@ const STATIC_ASSETS = [
     '/prestaciones.html',
     '/divisas.html',
     '/manifest.json',
-    '/logo_new.png',
+    '/logo_new.webp',
     '/icon-192.png',
     '/icon-512.png'
 ];
