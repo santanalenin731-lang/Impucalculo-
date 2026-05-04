@@ -229,52 +229,63 @@
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
         }
 
+        /* ─── Hero CTA Buttons — cuadrados y monocromáticos ─── */
         .btn {
             position: relative;
-            padding: 1.25rem 2.5rem;
-            font-size: 1rem;
-            font-weight: 700;
+            width: 150px;
+            height: 150px;
+            padding: 1.25rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: none;
-            border-radius: 1rem;
+            letter-spacing: 0.08em;
+            border: 2px solid #CBD5E1;
+            border-radius: 1.25rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
             overflow: hidden;
+            /* Default: monocromático neutro */
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(8px);
+            color: #64748B;
+            box-shadow: 0 4px 16px -4px rgba(0,0,0,0.08);
         }
 
-        .btn-primary {
-            background: var(--color-primary-red);
-            color: white;
-            box-shadow: 0 10px 30px rgba(206, 17, 38, 0.25);
+        .btn:hover {
+            transform: translateY(-6px) scale(1.04);
+            color: #fff;
+            border-color: transparent;
         }
 
-        .btn-primary:hover {
-            background: #B30F20;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(206, 17, 38, 0.35);
+        /* Calcular mi Sueldo → rojo al hover */
+        .btn-sueldo:hover {
+            background: #CE1126;
+            box-shadow: 0 16px 40px rgba(206,17,38,0.35);
         }
 
-        .btn-secondary {
-            background: var(--color-secondary-blue);
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 56, 168, 0.25);
+        /* Calcular Prestaciones → azul al hover */
+        .btn-prestaciones:hover {
+            background: #0038A8;
+            box-shadow: 0 16px 40px rgba(0,56,168,0.35);
         }
 
-        .btn-secondary:hover {
-            background: #002D8A;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 56, 168, 0.35);
+        /* Convertir Divisas → negro al hover */
+        .btn-divisas:hover {
+            background: #1E293B;
+            box-shadow: 0 16px 40px rgba(30,41,59,0.4);
         }
 
         .btn:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
         }
 
+        /* Ripple effect */
         .btn::before {
             content: '';
             position: absolute;
@@ -283,31 +294,35 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.25);
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.55s ease, height 0.55s ease;
         }
 
         .btn:hover::before {
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
         }
 
-        .btn span {
+        .btn-label {
             position: relative;
             z-index: 1;
+            line-height: 1.2;
+            text-align: center;
         }
 
         .btn-icon {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
             position: relative;
             z-index: 1;
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+            opacity: 0.55;
         }
 
         .btn:hover .btn-icon {
-            transform: translateX(5px);
+            transform: scale(1.15);
+            opacity: 1;
         }
 
         /* Services Section */
@@ -680,6 +695,225 @@
             max-height: 300px;
             margin: 1rem 0 0;
         }
+
+        /* =============================================
+           BLOG CAROUSEL SECTION
+        ============================================= */
+        .blog-carousel-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #fff 0%, #F1F5F9 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-carousel-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E2E8F0 20%, #E2E8F0 80%, transparent);
+        }
+
+        .blog-carousel-header {
+            text-align: center;
+            padding: 0 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-carousel-header .eyebrow {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #CE1126;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin: 0 0 0.75rem;
+        }
+
+        .blog-carousel-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: #1E293B;
+            margin: 0 0 0.75rem;
+            line-height: 1.15;
+        }
+
+        .blog-carousel-header p {
+            font-size: 1rem;
+            color: #64748B;
+            margin: 0;
+        }
+
+        /* Track wrapper — clip overflow */
+        .carousel-viewport {
+            width: 100%;
+            overflow: hidden;
+            cursor: default;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+
+        /* The scrolling strip — will hold 2× cards for seamless loop */
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            will-change: transform;
+            animation: carouselScroll 70s linear infinite;
+        }
+
+        .carousel-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes carouselScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* Reduce-motion override also needs the new duration */
+        @media (prefers-reduced-motion: no-preference) {
+            .carousel-track { animation-duration: 70s; }
+        }
+
+        /* ── Blog card: idéntica a blog.html ── */
+        .blog-card {
+            flex: 0 0 320px;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 2rem;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+            box-shadow:
+                0 20px 40px -15px rgba(0,0,0,0.15),
+                0 30px 70px -20px rgba(0,56,168,0.10);
+            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow:
+                0 40px 80px -15px rgba(0,0,0,0.25),
+                0 50px 100px -20px rgba(0,56,168,0.15);
+            border-color: rgba(0,56,168,0.2);
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #0038A8;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            color: #1E293B;
+        }
+
+        .blog-card p {
+            color: #64748B;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #CE1126;
+            transition: gap 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .blog-card:hover .read-more {
+            gap: 0.8rem;
+        }
+
+        /* Blog section CTA button */
+        .blog-carousel-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 0 2rem;
+        }
+
+        .btn-blog-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #0038A8;
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 2.25rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 30px rgba(0,56,168,0.25);
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        .btn-blog-cta:hover {
+            background: #002D8A;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(0,56,168,0.35);
+        }
+
+        .btn-blog-cta svg {
+            transition: transform 0.25s ease;
+        }
+
+        .btn-blog-cta:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Responsive card widths */
+        @media (max-width: 900px) {
+            .blog-card { flex: 0 0 280px; }
+        }
+        @media (max-width: 540px) {
+            .blog-card { flex: 0 0 260px; min-height: 240px; }
+            .carousel-track { gap: 1rem; }
+            .blog-card-content { padding: 1.5rem; }
+            .blog-card h3 { font-size: 1.15rem; }
+        }
+
+        /* Respect reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-track {
+                animation: none;
+                flex-wrap: wrap;
+                width: auto;
+                overflow-x: auto;
+                justify-content: center;
+                padding: 0 2rem;
+            }
+            .carousel-viewport {
+                -webkit-mask-image: none;
+                mask-image: none;
+                overflow-x: auto;
+            }
+        }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
@@ -728,23 +962,28 @@
             </div>
 
             <div class="cta-buttons">
-                <a href="calculadora.html" class="btn btn-primary">
-                    <span>Calcular mi Sueldo</span>
-                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                <!-- Calcular mi Sueldo: rojo al hover -->
+                <a href="calculadora.html" class="btn btn-sueldo" id="btn-sueldo">
+                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                     </svg>
+                    <span class="btn-label">Calcular mi Sueldo</span>
                 </a>
-                <a href="prestaciones.html" class="btn btn-secondary">
-                    <span>Calcular Prestaciones</span>
-                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+
+                <!-- Calcular Prestaciones: azul al hover -->
+                <a href="prestaciones.html" class="btn btn-prestaciones" id="btn-prestaciones">
+                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
+                    <span class="btn-label">Calcular Prestaciones</span>
                 </a>
-                <a href="divisas.html" class="btn btn-secondary" style="background: #1E293B; box-shadow: 0 10px 30px rgba(30, 41, 59, 0.25);" onmouseover="this.style.background='#0F172A'" onmouseout="this.style.background='#1E293B'">
-                    <span>Convertir Divisas</span>
-                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+
+                <!-- Convertir Divisas: negro al hover -->
+                <a href="divisas.html" class="btn btn-divisas" id="btn-divisas">
+                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
+                    <span class="btn-label">Convertir Divisas</span>
                 </a>
             </div>
 
@@ -898,56 +1137,96 @@
     <!-- Trust Section -->
     <section class="trust-section">
         <div class="container">
-            <div class="section-header" data-scroll-reveal>
-                <h2><span style="color:#0038A8;">¿Por qué elegir</span> <span style="color:#CE1126;">Impucálculo?</span>
-                </h2>
-                <p>Confiabilidad y precisión para República Dominicana</p>
-            </div>
 
-            <div class="trust-grid">
-                <!-- Trust 1: Precision -->
-                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.1s;">
-                    <div class="trust-icon" style="background:rgba(0,56,168,0.07);">
-                        <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
-                            style="width:50px;height:50px;">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3>Precisión Total</h3>
-                    <p>Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo
-                        dominicano</p>
+            <!-- 2-col layout: imagen | contenido -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;" class="trust-layout">
+
+                <!-- Columna izquierda: imagen -->
+                <div data-scroll-reveal style="border-radius:2rem; box-shadow:0 30px 70px -20px rgba(0,56,168,0.18); line-height:0; flex-shrink:0;">
+                    <img
+                        src="Picture /pomelli_creative_image_9_16_0504-2.png"
+                        alt="Dominicano usando Impucálculo en su teléfono"
+                        style="width:100%; height:auto; display:block; border-radius:2rem;"
+                        loading="lazy">
                 </div>
 
-                <!-- Trust 2: Ease of Use -->
-                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.2s;">
-                    <div class="trust-icon" style="background:rgba(206,17,38,0.07);">
-                        <svg fill="none" stroke="var(--color-primary-red)" stroke-width="2" viewBox="0 0 24 24"
-                            style="width:50px;height:50px;">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                <!-- Columna derecha: título + tarjetas -->
+                <div>
+                    <div class="section-header" data-scroll-reveal style="text-align:left; margin-bottom:3rem;">
+                        <h2><span style="color:#0038A8;">¿Por qué elegir</span> <span style="color:#CE1126;">Impucálculo?</span>
+                        </h2>
+                        <p>Confiabilidad y precisión para República Dominicana</p>
                     </div>
-                    <h3>En 30 segundos</h3>
-                    <p>Ingresa tu salario y obtén tu desglose completo de ISR, AFP, ARS y neto al instante. Sin
-                        fórmulas, sin errores.</p>
+
+                    <div class="trust-grid" style="grid-template-columns:1fr; gap:1.5rem;">
+                        <!-- Trust 1: Precision -->
+                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.1s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
+                            <div class="trust-icon" style="background:rgba(0,56,168,0.07); flex-shrink:0;">
+                                <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
+                                    style="width:50px;height:50px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Precisión Total</h3>
+                                <p>Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo
+                                    dominicano</p>
+                            </div>
+                        </div>
+
+                        <!-- Trust 2: Ease of Use -->
+                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.2s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
+                            <div class="trust-icon" style="background:rgba(206,17,38,0.07); flex-shrink:0;">
+                                <svg fill="none" stroke="var(--color-primary-red)" stroke-width="2" viewBox="0 0 24 24"
+                                    style="width:50px;height:50px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>En 30 segundos</h3>
+                                <p>Ingresa tu salario y obtén tu desglose completo de ISR, AFP, ARS y neto al instante. Sin
+                                    fórmulas, sin errores.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trust 3: Adaptado a RD -->
+                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.3s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
+                            <div class="trust-icon" style="background:rgba(0,56,168,0.07); flex-shrink:0;">
+                                <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
+                                    style="width:50px;height:50px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Adaptado a RD</h3>
+                                <p>100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Trust 3: Adaptado a RD -->
-                <div class="trust-card" data-scroll-reveal style="transition-delay: 0.3s;">
-                    <div class="trust-icon" style="background:rgba(0,56,168,0.07);">
-                        <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
-                            style="width:50px;height:50px;">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3>Adaptado a RD</h3>
-                    <p>100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026</p>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- Responsive: trust-layout a 1 col en mobile -->
+    <style>
+        @media (max-width: 768px) {
+            .trust-layout {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            .trust-layout > div:first-child img {
+                max-height: none !important;
+                height: auto !important;
+            }
+        }
+    </style>
+
+
 
 
 
@@ -1064,6 +1343,33 @@
         </div>
     </section>
 
+    <!-- =============================================
+         BLOG CAROUSEL SECTION
+    ============================================= -->
+    <section class="blog-carousel-section" id="blog-preview">
+        <div class="blog-carousel-header">
+            <p class="eyebrow">Desde el Blog</p>
+            <h2><span style="color:#0038A8;">Guías y recursos</span> <span style="color:#CE1126;">para tu bolsillo</span></h2>
+            <p>Artículos educativos sobre fiscalidad, salarios y derechos laborales en RD</p>
+        </div>
+
+        <!-- Carousel viewport -->
+        <div class="carousel-viewport" id="carouselViewport">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- JS inserts cards × 2 for infinite loop -->
+            </div>
+        </div>
+
+        <div class="blog-carousel-footer">
+            <a href="blog.html" class="btn-blog-cta">
+                <span>Explorar todos los artículos</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -1073,25 +1379,23 @@
                 <p>Ya lo viste. Ahora descúbrelo tú mismo — es gratis.</p>
 
                 <div class="cta-buttons">
-                    <a href="calculadora.html" class="btn btn-primary">
-                        <span>Calcular Impuestos</span>
-                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
+                    <a href="calculadora.html" class="btn btn-sueldo">
+                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
+                        <span class="btn-label">Calcular Impuestos</span>
                     </a>
-                    <a href="prestaciones.html" class="btn btn-secondary">
-                        <span>Calcular Prestaciones</span>
-                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
+                    <a href="prestaciones.html" class="btn btn-prestaciones">
+                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
+                        <span class="btn-label">Calcular Prestaciones</span>
                     </a>
-                    <a href="divisas.html" class="btn btn-secondary" style="background: #1E293B; box-shadow: 0 10px 30px rgba(30, 41, 59, 0.25);" onmouseover="this.style.background='#0F172A'" onmouseout="this.style.background='#1E293B'">
-                        <span>Convertir Divisas</span>
-                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <a href="divisas.html" class="btn btn-divisas">
+                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
+                        <span class="btn-label">Convertir Divisas</span>
                     </a>
                 </div>
             </div>
@@ -1231,6 +1535,156 @@
                 }
             });
         });
+
+        /* =============================================
+           BLOG CAROUSEL — INFINITE AUTO-SCROLL
+        ============================================= */
+        (function initBlogCarousel() {
+            const blogArticles = [
+                {
+                    title: 'ISR en República Dominicana 2026: Guía Completa',
+                    category: 'Fiscal',
+                    tagClass: 'tag-fiscal',
+                    date: '13 abril 2026',
+                    excerpt: 'Todo sobre el Impuesto Sobre la Renta: tabla DGII actualizada, cálculo paso a paso y 4 ejemplos reales con salarios dominicanos.',
+                    slug: 'blog/isr-dominicano-guia.html',
+                    gradient: 'linear-gradient(135deg,#0038A8 0%,#1E50C8 50%,#CE1126 100%)',
+                    iconPath: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z'
+                },
+                {
+                    title: 'Prestaciones Laborales RD: Cálculo y Derechos 2026',
+                    category: 'Laboral',
+                    tagClass: 'tag-laboral',
+                    date: '13 abril 2026',
+                    excerpt: 'Preaviso, cesantía, vacaciones y regalía pascual explicados con fórmulas del Código de Trabajo y ejemplos reales.',
+                    slug: 'blog/prestaciones-laborales-guia.html',
+                    gradient: 'linear-gradient(135deg,#CE1126 0%,#E83550 50%,#0038A8 100%)',
+                    iconPath: 'M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z'
+                },
+                {
+                    title: 'Tasa de Cambio Dólar–Peso Dominicano 2026',
+                    category: 'Divisas',
+                    tagClass: 'tag-divisas',
+                    date: '20 abril 2026',
+                    excerpt: 'Compara las tasas de +30 bancos y agentes de cambio. Aprende a sacar el mejor provecho al cambio de dólares en RD.',
+                    slug: 'blog/tasa-cambio-dolar-rd.html',
+                    gradient: 'linear-gradient(135deg,#1E293B 0%,#334155 55%,#0038A8 100%)',
+                    iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                },
+                {
+                    title: 'Regalía Pascual en República Dominicana 2026',
+                    category: 'Laboral',
+                    tagClass: 'tag-laboral',
+                    date: '20 abril 2026',
+                    excerpt: 'Todo sobre el sueldo 13: cuánto es, cuándo se paga, cómo calcular el proporcional y qué pasa en renuncia o despido.',
+                    slug: 'blog/regalia-pascual-rd.html',
+                    gradient: 'linear-gradient(135deg,#CE1126 0%,#E53E1A 45%,#F59E0B 100%)',
+                    iconPath: 'M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7'
+                },
+                {
+                    title: 'Bonificación Laboral RD: Ley 16-92 Explicada',
+                    category: 'Laboral',
+                    tagClass: 'tag-laboral',
+                    date: '29 abril 2026',
+                    excerpt: 'El 10% de utilidades netas, topes de 45 y 60 días, cálculo proporcional y por qué no paga TSS — todo con la ley en mano.',
+                    slug: 'blog/bonificacion-beneficios-rd.html',
+                    gradient: 'linear-gradient(135deg,#0038A8 0%,#0052D4 50%,#059669 100%)',
+                    iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                },
+                {
+                    title: 'TSS, AFP y ARS en RD: Guía Definitiva 2026',
+                    category: 'Fiscal',
+                    tagClass: 'tag-fiscal',
+                    date: '29 abril 2026',
+                    excerpt: 'Descuentos de Seguridad Social desglosados: quién paga qué, topes de cotización, maternidad e IDOPPRIL.',
+                    slug: 'blog/tss-afp-ars-guia.html',
+                    gradient: 'linear-gradient(135deg,#0038A8 0%,#7C3AED 60%,#CE1126 100%)',
+                    iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+                },
+                {
+                    title: 'Cómo Calcular tu Sueldo Neto en RD — Guía de Uso',
+                    category: 'Educación',
+                    tagClass: 'tag-educacion',
+                    date: '13 abril 2026',
+                    excerpt: 'Guía práctica para usar Impucálculo: ISR, TSS, prestaciones y divisas paso a paso. Incluye Pro Tips de ahorro fiscal.',
+                    slug: 'blog/guia-uso-v2.html',
+                    gradient: 'linear-gradient(135deg,#475569 0%,#64748B 55%,#0038A8 100%)',
+                    iconPath: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
+                },
+                {
+                    title: 'Misión Impucálculo: Transparencia Fiscal para RD',
+                    category: 'Educación',
+                    excerpt: 'Cómo funciona el spread, dónde cambiar dólares, remesas y el impacto en tu ISR si cobras en USD.',
+                    slug: 'blog/tasa-cambio-dolar-rd.html'
+                },
+                {
+                    title: 'Regalía Pascual RD 2026: Cuánto Te Toca',
+                    category: 'Prestaciones',
+                    excerpt: 'Cuándo se paga el sueldo 13, cómo calcular la regalía proporcional y si paga ISR o TSS según la Ley 16-92.',
+                    slug: 'blog/regalia-pascual-rd.html'
+                },
+                {
+                    title: 'Bonificación en RD 2026',
+                    category: 'Laboral',
+                    excerpt: 'Todo sobre la participación en los beneficios: quiénes califican, plazos legales y topes de 45 o 60 días de salario.',
+                    slug: 'blog/bonificacion-beneficios-rd.html'
+                },
+                {
+                    title: 'Guía de TSS: AFP y ARS en RD',
+                    category: 'Seguridad Social',
+                    excerpt: 'Entiende tus descuentos de seguridad social, los porcentajes de AFP y ARS, y cómo verificar tus aportes como trabajador.',
+                    slug: 'blog/tss-afp-ars-guia.html'
+                },
+                {
+                    title: 'Guía de Uso para tus Finanzas',
+                    category: 'Tutorial',
+                    excerpt: 'Aprende a sacar el máximo provecho de nuestras calculadoras de ISR, prestaciones y divisas.',
+                    slug: 'blog/guia-uso-v2.html'
+                },
+                {
+                    title: 'Por qué creamos Impucálculo',
+                    category: 'Institucional',
+                    excerpt: 'Nuestra misión: transparencia fiscal y herramientas gratuitas para todos los dominicanos.',
+                    slug: 'blog/mision-impucalculo.html'
+                }
+            ];
+
+            function buildCard(article) {
+                const a = document.createElement('a');
+                a.className = 'blog-card glass';
+                a.href = article.slug;
+                a.innerHTML = `
+                    <div class="blog-card-content">
+                        <span class="blog-card-tag">${article.category}</span>
+                        <h3>${article.title}</h3>
+                        <p>${article.excerpt}</p>
+                        <div class="read-more">
+                            <span>Leer más</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>`;
+                return a;
+            }
+
+            const track = document.getElementById('carouselTrack');
+            const viewport = document.getElementById('carouselViewport');
+            if (!track || !viewport) return;
+
+            // Render cards × 2 for seamless infinite loop
+            [...blogArticles, ...blogArticles].forEach(article => {
+                track.appendChild(buildCard(article));
+            });
+
+            // Pause on hover over viewport or any card
+            viewport.addEventListener('mouseenter', () => track.classList.add('paused'));
+            viewport.addEventListener('mouseleave', () => track.classList.remove('paused'));
+
+            // Pause on touch (mobile)
+            viewport.addEventListener('touchstart', () => track.classList.add('paused'),  { passive: true });
+            viewport.addEventListener('touchend',   () => track.classList.remove('paused'), { passive: true });
+        })();
 
         // Prevent animation replay on back navigation
         if (performance.navigation.type === 2) {
