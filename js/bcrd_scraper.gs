@@ -50,7 +50,9 @@ function doGet(e) {
       globalData.bcrd_error = error.toString();
   }
 
-  // 3. Obtener listado de Bancos via LiveDolar (Agregador)
+  // 3. Obtener listado de Bancos via LiveDolar (Agregador 1)
+  var banksMap = {};
+
   try {
     var liveResp = UrlFetchApp.fetch('https://livedolar.do/api/rates', { 
       muteHttpExceptions: true,
@@ -58,19 +60,50 @@ function doGet(e) {
     });
     var liveData = JSON.parse(liveResp.getContentText());
     
-    // La API retorna un array directamente
     if (liveData && Array.isArray(liveData)) {
-      globalData.banks = liveData.map(function(bank) {
-        return {
-          n: bank.display_name || bank.bank_name,
+      liveData.forEach(function(bank) {
+        var name = bank.display_name || bank.bank_name;
+        banksMap[name] = {
+          n: name,
           c: parseFloat(bank.buy),
-          v: parseFloat(bank.sell)
+          v: parseFloat(bank.sell),
+          s: "LiveDolar"
         };
       });
     }
   } catch (error) {
-    globalData.banks_error = error.toString();
+    globalData.livedolar_error = error.toString();
   }
+
+  // 4. Fuente Redundante: Scrape Directo Banco Popular (API Interna)
+  // Esto asegura que el banco más grande de RD esté presente aunque el agregador falle.
+  try {
+    var bpdUrl = "https://popularenlinea.com/_api/web/lists/getbytitle('Rates')/items?$filter=ItemID%20eq%20'1'";
+    var bpdResp = UrlFetchApp.fetch(bpdUrl, {
+      muteHttpExceptions: true,
+      headers: { "Accept": "application/json;odata=verbose" }
+    });
+    var bpdData = JSON.parse(bpdResp.getContentText());
+    
+    if (bpdData && bpdData.d && bpdData.d.results && bpdData.d.results.length > 0) {
+      var item = bpdData.d.results[0];
+      var bpdName = "Banco Popular";
+      // Si ya existe en el mapa, el dato directo del banco suele ser más fresco o confiable
+      banksMap[bpdName] = {
+        n: bpdName,
+        c: parseFloat(item.DollarBuyRate),
+        v: parseFloat(item.DollarSellRate),
+        s: "BPD-Direct"
+      };
+    }
+  } catch (error) {
+    globalData.bpd_direct_error = error.toString();
+  }
+
+  // Convertir el mapa a un array para la respuesta
+  globalData.banks = Object.keys(banksMap).map(function(key) {
+    return banksMap[key];
+  });
   
   var currentDate = new Date();
   globalData.time_last_update_utc = currentDate.toUTCString();

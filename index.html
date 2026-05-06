@@ -621,6 +621,22 @@
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .hero-main-container {
+                flex-direction: column !important;
+                gap: 2rem !important;
+                padding: 0 1rem;
+            }
+            .hero-stats-right {
+                text-align: center !important;
+                align-items: center !important;
+                gap: 1.5rem !important;
+            }
+            .hero-visual-left {
+                max-width: 100% !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 3rem 1.5rem;
@@ -754,22 +770,13 @@
             mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
         }
 
-        /* The scrolling strip — will hold 2× cards for seamless loop */
+        /* The scrolling strip — will hold cards and move step by step */
         .carousel-track {
             display: flex;
             gap: 1.5rem;
             width: max-content;
             will-change: transform;
-            animation: carouselScroll 70s linear infinite;
-        }
-
-        .carousel-track.paused {
-            animation-play-state: paused;
-        }
-
-        @keyframes carouselScroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Reduce-motion override also needs the new duration */
@@ -987,13 +994,37 @@
                 </a>
             </div>
 
-            <!-- Hero Visual Image -->
-            <div class="hero-visual" style="margin-top: 5rem; opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; display: flex; justify-content: center;">
-                <img src="Picture /Pic .PNG" alt="Usa Impucálculo en tu móvil" style="max-width: 600px; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0, 56, 168, 0.15)); pointer-events: none;">
+            <!-- Hero Visual Area: Image Left + Stats Right -->
+            <div class="hero-main-container" style="margin-top: 5rem; display: flex; align-items: center; justify-content: center; gap: 5rem; opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;">
+                
+                <!-- Left: Image -->
+                <div class="hero-visual-left" style="flex: 1; max-width: 600px; line-height: 0;">
+                    <img src="Picture /Pic 2.jpg" alt="Usa Impucálculo en tu móvil" style="width: 100%; height: auto; border-radius: 2rem; box-shadow: 0 40px 100px -20px rgba(0, 56, 168, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.15);">
+                </div>
+
+                <!-- Right: Stats Vertical -->
+                <div class="hero-stats-right" style="display: flex; flex-direction: column; gap: 2.5rem; text-align: left;">
+                    <div class="stat-item">
+                        <p style="font-size: 1.75rem; font-weight: 900; color: #0038A8; margin: 0;">100% RD</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Normativa DGII 2025–2026</p>
+                    </div>
+                    <div class="stat-item">
+                        <p style="font-size: 1.75rem; font-weight: 900; color: #CE1126; margin: 0;">&lt; 30 seg</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Resultado instantáneo</p>
+                    </div>
+                    <div class="stat-item">
+                        <p style="font-size: 1.75rem; font-weight: 900; color: #0038A8; margin: 0;">0 datos</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Enviados a servidores</p>
+                    </div>
+                    <div class="stat-item">
+                        <p style="font-size: 1.75rem; font-weight: 900; color: #CE1126; margin: 0;">Gratis</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Sin registro, sin tarjeta</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="scroll-indicator" style="bottom: 1rem;">
+        <div class="scroll-indicator" style="bottom: 1rem; cursor: pointer;">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
                 </path>
@@ -1001,38 +1032,6 @@
         </div>
     </section>
 
-    <!-- Stats Row -->
-    <section style="background:#fff; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0; padding:2rem 2rem;">
-        <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:3rem;">
-            <div style="text-align:center;">
-                <p style="font-size:1.75rem; font-weight:900; color:#0038A8; margin:0;">100% RD</p>
-                <p
-                    style="font-size:0.8rem; font-weight:600; color:#64748B; margin:0.25rem 0 0; text-transform:uppercase; letter-spacing:0.08em;">
-                    Normativa DGII 2025–2026</p>
-            </div>
-            <div style="width:1px; background:#E2E8F0; display:none;" class="stat-sep"></div>
-            <div style="text-align:center;">
-                <p style="font-size:1.75rem; font-weight:900; color:#CE1126; margin:0;">&lt; 30 seg</p>
-                <p
-                    style="font-size:0.8rem; font-weight:600; color:#64748B; margin:0.25rem 0 0; text-transform:uppercase; letter-spacing:0.08em;">
-                    Resultado instantáneo</p>
-            </div>
-            <div style="width:1px; background:#E2E8F0; display:none;" class="stat-sep"></div>
-            <div style="text-align:center;">
-                <p style="font-size:1.75rem; font-weight:900; color:#0038A8; margin:0;">0 datos</p>
-                <p
-                    style="font-size:0.8rem; font-weight:600; color:#64748B; margin:0.25rem 0 0; text-transform:uppercase; letter-spacing:0.08em;">
-                    Enviados a servidores</p>
-            </div>
-            <div style="width:1px; background:#E2E8F0; display:none;" class="stat-sep"></div>
-            <div style="text-align:center;">
-                <p style="font-size:1.75rem; font-weight:900; color:#CE1126; margin:0;">Gratis</p>
-                <p
-                    style="font-size:0.8rem; font-weight:600; color:#64748B; margin:0.25rem 0 0; text-transform:uppercase; letter-spacing:0.08em;">
-                    Sin registro, sin tarjeta</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Services Section -->
     <section class="services-section">
@@ -1142,7 +1141,7 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;" class="trust-layout">
 
                 <!-- Columna izquierda: imagen -->
-                <div data-scroll-reveal style="border-radius:2rem; box-shadow:0 30px 70px -20px rgba(0,56,168,0.18); line-height:0; flex-shrink:0;">
+                <div data-scroll-reveal style="border-radius:2rem; box-shadow: 0 40px 100px -20px rgba(0, 56, 168, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.15); line-height:0; flex-shrink:0;">
                     <img
                         src="Picture /pomelli_creative_image_9_16_0504-2.png"
                         alt="Dominicano usando Impucálculo en su teléfono"
@@ -1672,18 +1671,47 @@
             const viewport = document.getElementById('carouselViewport');
             if (!track || !viewport) return;
 
-            // Render cards × 2 for seamless infinite loop
-            [...blogArticles, ...blogArticles].forEach(article => {
+            // Render cards (no cloning needed for this discrete step logic, or just a few for buffer)
+            blogArticles.forEach(article => {
                 track.appendChild(buildCard(article));
             });
 
-            // Pause on hover over viewport or any card
-            viewport.addEventListener('mouseenter', () => track.classList.add('paused'));
-            viewport.addEventListener('mouseleave', () => track.classList.remove('paused'));
+            let currentIndex = 0;
+            const cardWidth = 320; // from CSS
+            const gap = 24; // 1.5rem
+            const step = cardWidth + gap;
 
-            // Pause on touch (mobile)
-            viewport.addEventListener('touchstart', () => track.classList.add('paused'),  { passive: true });
-            viewport.addEventListener('touchend',   () => track.classList.remove('paused'), { passive: true });
+            function updateCarousel() {
+                const viewportWidth = viewport.offsetWidth;
+                // Offset to center the card: (viewport / 2) - (card / 2)
+                const centerOffset = (viewportWidth / 2) - (cardWidth / 2);
+                const targetX = - (currentIndex * step) + centerOffset;
+                
+                track.style.transform = `translateX(${targetX}px)`;
+            }
+
+            let isPaused = false;
+            
+            function nextSlide() {
+                if (isPaused) return;
+                currentIndex++;
+                if (currentIndex >= blogArticles.length) {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+
+            // Initial position
+            window.addEventListener('resize', updateCarousel);
+            setTimeout(updateCarousel, 100);
+
+            // Interval: 2 seconds pause + animation time
+            let interval = setInterval(nextSlide, 2600);
+
+            viewport.addEventListener('mouseenter', () => isPaused = true);
+            viewport.addEventListener('mouseleave', () => isPaused = false);
+            viewport.addEventListener('touchstart', () => isPaused = true, { passive: true });
+            viewport.addEventListener('touchend',   () => isPaused = false, { passive: true });
         })();
 
         // Prevent animation replay on back navigation
