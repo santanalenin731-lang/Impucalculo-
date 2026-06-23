@@ -195,26 +195,36 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Fecha Ingreso -->
                         <div class="relative group">
-                            <label for="fecha-ingreso" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                            <label for="display-ingreso" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
                                 Ingreso</label>
-                            <div class="relative">
-                                <input type="text" id="display-ingreso" readonly
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
-                                    placeholder="DD/MM/YYYY">
+                            <div class="relative flex items-center">
+                                <input type="text" id="display-ingreso"
+                                    class="w-full px-4 py-3 pr-12 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
+                                    placeholder="DD/MM/YYYY" maxlength="10">
+                                <button type="button" class="absolute right-3 p-1.5 text-dr-slate-400 hover:text-dr-blue transition-colors focus:outline-none" onclick="document.getElementById('fecha-ingreso').showPicker()">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
                                 <input type="date" id="fecha-ingreso" required
-                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                                    class="absolute right-3 w-5 h-5 opacity-0 pointer-events-none">
                             </div>
                         </div>
                         <!-- Fecha Salida -->
                         <div class="relative group">
-                            <label for="fecha-salida" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                            <label for="display-salida" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
                                 Salida</label>
-                            <div class="relative">
-                                <input type="text" id="display-salida" readonly
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
-                                    placeholder="DD/MM/YYYY">
+                            <div class="relative flex items-center">
+                                <input type="text" id="display-salida"
+                                    class="w-full px-4 py-3 pr-12 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
+                                    placeholder="DD/MM/YYYY" maxlength="10">
+                                <button type="button" class="absolute right-3 p-1.5 text-dr-slate-400 hover:text-dr-blue transition-colors focus:outline-none" onclick="document.getElementById('fecha-salida').showPicker()">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
                                 <input type="date" id="fecha-salida" required
-                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                                    class="absolute right-3 w-5 h-5 opacity-0 pointer-events-none">
                             </div>
                         </div>
                     </div>
@@ -685,6 +695,67 @@
             }
         };
 
+        // Auto-format DD/MM/YYYY on text inputs and sync to date inputs
+        const setupDateInputSync = (displayInput, hiddenInput) => {
+            displayInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 8) value = value.slice(0, 8);
+                
+                let formattedValue = '';
+                if (value.length > 0) {
+                    formattedValue = value.slice(0, 2);
+                    if (value.length > 2) {
+                        formattedValue += '/' + value.slice(2, 4);
+                        if (value.length > 4) {
+                            formattedValue += '/' + value.slice(4, 8);
+                        }
+                    }
+                }
+                e.target.value = formattedValue;
+
+                // Sync to native date input if complete and valid
+                if (formattedValue.length === 10) {
+                    const [d, m, y] = formattedValue.split('/');
+                    if (y && y.length === 4) {
+                        const dateStr = `${y}-${m}-${d}`;
+                        const parsedDate = new Date(dateStr + 'T00:00:00');
+                        if (!isNaN(parsedDate.getTime()) && 
+                            parsedDate.getFullYear() === parseInt(y) && 
+                            (parsedDate.getMonth() + 1) === parseInt(m) && 
+                            parsedDate.getDate() === parseInt(d)) {
+                            
+                            hiddenInput.value = dateStr;
+                            hiddenInput.dispatchEvent(new Event('change'));
+                        }
+                    }
+                }
+            });
+
+            // Reset input to last valid value if invalid on blur
+            displayInput.addEventListener('blur', (e) => {
+                const val = e.target.value;
+                if (val.trim() === '') {
+                    hiddenInput.value = '';
+                    hiddenInput.dispatchEvent(new Event('change'));
+                } else if (val.length < 10) {
+                    updateDateInputDisplay(hiddenInput, displayInput);
+                } else {
+                    const [d, m, y] = val.split('/');
+                    const dateStr = `${y}-${m}-${d}`;
+                    const parsedDate = new Date(dateStr + 'T00:00:00');
+                    if (isNaN(parsedDate.getTime()) || 
+                        parsedDate.getFullYear() !== parseInt(y) || 
+                        (parsedDate.getMonth() + 1) !== parseInt(m) || 
+                        parsedDate.getDate() !== parseInt(d)) {
+                        updateDateInputDisplay(hiddenInput, displayInput);
+                    }
+                }
+            });
+        };
+
+        setupDateInputSync(displayIngreso, fechaIngresoInput);
+        setupDateInputSync(displaySalida, fechaSalidaInput);
+
         /* Update displays immediately if values pre-filled (though browsers usually don't autofill dates this way on reload) */
         updateDateInputDisplay(fechaIngresoInput, displayIngreso);
         updateDateInputDisplay(fechaSalidaInput, displaySalida);
@@ -762,7 +833,7 @@
                 }
             }
 
-            // Calculate cesantia
+            // Calculate cesantia (Art. 80 del Código de Trabajo)
             let diasCesantia = 0;
             let montoCesantia = 0;
             if (tipoTerminacion === 'despido') {
@@ -772,30 +843,57 @@
                     diasCesantia = 6;
                 } else if (ant.totalMonths < 12) {
                     diasCesantia = 13;
-                } else if (ant.years < 5) {
-                    diasCesantia = 21 * ant.years;
-                    // Fracción
-                    const fraccionMeses = ant.totalMonths % 12;
-                    if (fraccionMeses >= 3) {
-                        diasCesantia += Math.floor(21 * fraccionMeses / 12);
-                    }
                 } else {
-                    diasCesantia = 23 * ant.years;
+                    diasCesantia = (ant.years < 5 ? 21 : 23) * ant.years;
                     const fraccionMeses = ant.totalMonths % 12;
-                    if (fraccionMeses >= 3) {
-                        diasCesantia += Math.floor(23 * fraccionMeses / 12);
+                    if (fraccionMeses >= 6) {
+                        diasCesantia += 13;
+                    } else if (fraccionMeses >= 3) {
+                        diasCesantia += 6;
                     }
                 }
                 montoCesantia = diasCesantia * salarioDiario;
             }
 
-            // Calculate vacaciones
-            const diasVacacionesAnuales = ant.years >= 5 ? 18 : (ant.years >= 1 ? 14 : 0);
-            const diasVacacionesPendientes = Math.max(0, diasVacacionesAnuales - diasVacacionesTomados);
+            // Calculate vacaciones (Art. 177 y Art. 180)
+            let diasVacacionesAnuales = 0;
+            if (ant.years >= 1) {
+                diasVacacionesAnuales = ant.years >= 5 ? 18 : 14;
+            }
+            const fraccionMesesVac = ant.totalMonths % 12;
+            let diasVacacionesProporcionales = 0;
+            if (fraccionMesesVac >= 11) diasVacacionesProporcionales = 12;
+            else if (fraccionMesesVac >= 10) diasVacacionesProporcionales = 11;
+            else if (fraccionMesesVac >= 9) diasVacacionesProporcionales = 10;
+            else if (fraccionMesesVac >= 8) diasVacacionesProporcionales = 9;
+            else if (fraccionMesesVac >= 7) diasVacacionesProporcionales = 8;
+            else if (fraccionMesesVac >= 6) diasVacacionesProporcionales = 7;
+            else if (fraccionMesesVac >= 5) diasVacacionesProporcionales = 6;
+
+            const diasVacacionesTotales = diasVacacionesAnuales + diasVacacionesProporcionales;
+            const diasVacacionesPendientes = Math.max(0, diasVacacionesTotales - diasVacacionesTomados);
             const montoVacaciones = diasVacacionesPendientes * salarioDiario;
 
-            // Calculate regalia (proportional)
-            const mesesTrabajadosAnio = (fechaSalida.getMonth() + 1); // 1-12
+            // Calculate regalia (proportional to time worked in current calendar year - Art. 219)
+            const yearOfDeparture = fechaSalida.getFullYear();
+            const startOfDepartureYear = new Date(yearOfDeparture, 0, 1);
+            const regaliaStart = fechaIngreso > startOfDepartureYear ? fechaIngreso : startOfDepartureYear;
+
+            let yearsRegalia = fechaSalida.getFullYear() - regaliaStart.getFullYear();
+            let monthsRegalia = fechaSalida.getMonth() - regaliaStart.getMonth();
+            let daysRegalia = fechaSalida.getDate() - regaliaStart.getDate() + 1; // Inclusivo
+
+            if (daysRegalia < 0) {
+                monthsRegalia--;
+                const prevMonthDate = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth(), 0);
+                daysRegalia += prevMonthDate.getDate();
+            }
+            if (monthsRegalia < 0) {
+                yearsRegalia--;
+                monthsRegalia += 12;
+            }
+            const totalMonthsRegalia = yearsRegalia * 12 + monthsRegalia;
+            const mesesTrabajadosAnio = Math.min(12, totalMonthsRegalia + (daysRegalia / 30));
             const montoRegalia = (salario * mesesTrabajadosAnio) / 12;
 
             // Total
