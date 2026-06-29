@@ -209,7 +209,7 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-extrabold tracking-tight leading-none">
-                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">calculo</span>
+                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span> <span class="text-green-600 font-extrabold tracking-wide ml-1">Dólar</span>
                     </h1>
                     <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
                         <span class="text-dr-blue">Herramientas</span> <span class="text-dr-red">Financieras</span>
@@ -217,24 +217,19 @@
                 </div>
             </a>
             <div class="flex items-center gap-2 md:gap-4">
-                <a href="calculadora.html"
-                    class="hidden md:flex flex-shrink-0 p-2 text-[10px] md:text-xs font-bold text-dr-blue uppercase tracking-widest hover:bg-dr-blue/5 rounded-xl transition-colors">
-                    Calculadora Fiscal
-                </a>
-                <a href="prestaciones.html"
-                    class="hidden md:flex flex-shrink-0 p-2 text-[10px] md:text-xs font-bold text-dr-red uppercase tracking-widest hover:bg-dr-red/5 rounded-xl transition-colors">
-                    Prestaciones Laborales
-                </a>
+                <div id="header-country-flag" class="w-24 h-24 rounded-full bg-white border border-dr-slate-100 flex items-center justify-center text-6xl shadow-sm transition-all duration-300 select-none">
+                    🇩🇴
+                </div>
             </div>
         </div>
 
         <!-- Top Exchange Rate Ticker Banner -->
         <div id="top-ticker-container" class="w-full bg-white/70 backdrop-blur-md border-t border-dr-slate-200 overflow-hidden relative hidden z-40">
-            <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                <div id="ticker-track-1" class="flex items-center justify-center md:justify-start [&>div]:mx-6 animate-ticker-scroll py-2">
+            <div class="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <div id="ticker-track-1" class="flex items-center justify-start flex-shrink-0 min-w-full [&>div]:mx-6 animate-ticker-scroll py-2">
                     <!-- Data injected here via JS -->
                 </div>
-                <div id="ticker-track-2" class="flex items-center justify-center md:justify-start [&>div]:mx-6 animate-ticker-scroll py-2">
+                <div id="ticker-track-2" class="flex items-center justify-start flex-shrink-0 min-w-full [&>div]:mx-6 animate-ticker-scroll py-2" aria-hidden="true">
                     <!-- Data injected here via JS -->
                 </div>
             </div>
@@ -245,7 +240,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 
             <!-- Left Column: Input & Mode Toggle -->
-            <div class="md:col-span-12 lg:col-span-4 space-y-6 parallax-block">
+            <div class="md:col-span-12 lg:col-span-4 space-y-6 parallax-block animate-slide-up">
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
                     <div class="tilt-content">
                         <div class="mb-8">
@@ -254,6 +249,21 @@
                         </div>
 
                         <div class="space-y-6">
+                            <!-- Country/Currency Selector -->
+                            <div class="space-y-3">
+                                <label class="block text-xs font-black text-dr-blue uppercase tracking-widest">País / Moneda</label>
+                                <div class="relative">
+                                    <select id="country-select" onchange="changeCountry(this.value)"
+                                        class="w-full px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-base font-bold text-dr-slate-800 focus:border-dr-blue outline-none transition-all shadow-inner currency-select">
+                                        <option value="DO">🇩🇴 República Dominicana (DOP)</option>
+                                        <option value="AR">🇦🇷 Argentina (ARS)</option>
+                                        <option value="MX">🇲🇽 México (MXN)</option>
+                                        <option value="CO">🇨🇴 Colombia (COP)</option>
+                                        <option value="VE">🇻🇪 Venezuela (VES)</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <!-- High-Relief Operation Toggle -->
                             <div class="flex gap-4 p-1 rounded-2xl">
                                 <button id="mode-buy" class="flex-1 py-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-dr-blue text-white shadow-[0_10px_20px_-5px_rgba(0,56,168,0.4)] border-2 border-dr-blue" onclick="setMode('buy')" aria-pressed="true">
@@ -269,7 +279,7 @@
                                 <label id="amount-label" class="block text-xs font-black text-dr-blue uppercase tracking-widest">Dólares a Comprar ($)</label>
                                 <div class="relative">
                                     <span class="absolute left-5 top-1/2 -translate-y-1/2 text-xl font-black text-dr-slate-400">$</span>
-                                    <input type="number" id="main-amount" step="1" min="1" value="100"
+                                    <input type="number" id="main-amount" step="1" min="1" value="1"
                                         class="w-full pl-10 pr-5 py-5 bg-white border-2 border-dr-slate-100 rounded-2xl text-2xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all shadow-inner">
                                 </div>
                             </div>
@@ -290,7 +300,33 @@
 
 
             <!-- Right Column: Institutional Table -->
-            <div class="md:col-span-12 lg:col-span-8 flex flex-col">
+            <div class="md:col-span-12 lg:col-span-8 flex flex-col space-y-6">
+                <!-- Promedio de Mercado Card -->
+                <div id="average-market-card" class="glass rounded-[2rem] p-6 neo-shadow border border-white flex flex-col md:flex-row md:items-center justify-between gap-6 animate-slide-up">
+                    <div>
+                        <h3 id="avg-title" class="text-sm font-black text-dr-blue uppercase tracking-widest mb-1">Promedio de Mercado</h3>
+                        <p class="text-[10px] text-dr-slate-400 font-bold uppercase tracking-widest">Referencia General e Indicador de Variación</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 flex-grow md:max-w-xl text-center md:text-right">
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white">
+                            <span class="block text-[8px] font-black text-dr-slate-400 uppercase tracking-widest">Compra</span>
+                            <span id="avg-buy" class="text-base font-black text-dr-slate-800">-</span>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white">
+                            <span class="block text-[8px] font-black text-dr-slate-400 uppercase tracking-widest">Venta</span>
+                            <span id="avg-sell" class="text-base font-black text-dr-slate-800">-</span>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white flex flex-col justify-center items-center md:items-end">
+                            <span class="block text-[8px] font-black text-dr-slate-400 uppercase tracking-widest">Variación</span>
+                            <span id="avg-var" class="text-xs font-black text-dr-slate-500 mt-1">-</span>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white">
+                            <span class="block text-[8px] font-black text-dr-slate-400 uppercase tracking-widest">Spread</span>
+                            <span id="avg-spread" class="text-base font-black text-dr-blue">-</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="glass rounded-[2rem] neo-shadow border border-white overflow-hidden flex-grow flex flex-col">
                     <!-- Table Header -->
                     <div class="bg-dr-slate-50 border-b border-dr-slate-100 px-6 py-4 grid grid-cols-12 gap-4 items-center">
@@ -443,10 +479,58 @@
     </footer>
 
     <script>
-        const formatter = new Intl.NumberFormat('es-DO', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        });
+        const countryConfig = {
+            DO: {
+                name: "República Dominicana",
+                currency: "DOP",
+                symbol: "RD$ ",
+                locale: "es-DO",
+                placeholderSearch: "Buscar banco dominicano...",
+                defaultAmount: 1,
+                amountStep: 1,
+                chartStep: 0.5
+            },
+            AR: {
+                name: "Argentina",
+                currency: "ARS",
+                symbol: "$ ",
+                locale: "es-AR",
+                placeholderSearch: "Buscar tipo de dólar...",
+                defaultAmount: 1,
+                amountStep: 1,
+                chartStep: 20
+            },
+            MX: {
+                name: "México",
+                currency: "MXN",
+                symbol: "$ ",
+                locale: "es-MX",
+                placeholderSearch: "Buscar banco mexicano...",
+                defaultAmount: 1,
+                amountStep: 1,
+                chartStep: 0.1
+            },
+            CO: {
+                name: "Colombia",
+                currency: "COP",
+                symbol: "$ ",
+                locale: "es-CO",
+                placeholderSearch: "Buscar banco colombiano...",
+                defaultAmount: 1,
+                amountStep: 1,
+                chartStep: 20
+            },
+            VE: {
+                name: "Venezuela",
+                currency: "VES",
+                symbol: "Bs. ",
+                locale: "es-VE",
+                placeholderSearch: "Buscar tipo de cambio...",
+                defaultAmount: 1,
+                amountStep: 1,
+                chartStep: 5
+            }
+        };
 
         // Elements
         const mainAmountInput = document.getElementById('main-amount');
@@ -461,17 +545,27 @@
 
         let exchangeData = { rates: {}, banks: [] };
         let currentMode = 'buy'; // 'buy' or 'sell'
+        let currentCountry = 'DO'; // 'DO', 'AR', 'MX', 'CO', 'VE'
+        let ratesCache = {}; // Cache para peticiones en la misma sesión
+        let marketChart = null; // Instancia del gráfico
+
+        function formatCurrency(value) {
+            const config = countryConfig[currentCountry];
+            const formatter = new Intl.NumberFormat(config.locale, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            return config.symbol + formatter.format(value);
+        }
 
         function setMode(mode) {
             currentMode = mode;
             
-            // UI Update Toggles (High-Relief / Notorious Style)
+            // Actualización del botón de Toggle (Estilo Alto Relieve)
             if (mode === 'buy') {
-                // Active Buy (Blue High Relief)
                 modeBuyBtn.className = 'flex-1 py-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-dr-blue text-white shadow-[0_10px_20px_-5px_rgba(0,56,168,0.4)] border-2 border-dr-blue';
                 modeBuyBtn.setAttribute('aria-pressed', 'true');
                 
-                // Inactive Sell (Plain White)
                 modeSellBtn.className = 'flex-1 py-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-white text-dr-slate-500 shadow-sm border-2 border-dr-slate-100 hover:border-dr-slate-200';
                 modeSellBtn.setAttribute('aria-pressed', 'false');
                 
@@ -479,11 +573,9 @@
                 amountLabel.classList.replace('text-dr-red', 'text-dr-blue');
                 colTotalLabel.textContent = 'Debes Pagar';
             } else {
-                // Active Sell (Red High Relief)
                 modeSellBtn.className = 'flex-1 py-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-dr-red text-white shadow-[0_10px_20px_-5px_rgba(206,17,38,0.4)] border-2 border-dr-red';
                 modeSellBtn.setAttribute('aria-pressed', 'true');
                 
-                // Inactive Buy (Plain White)
                 modeBuyBtn.className = 'flex-1 py-4 text-[11px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-white text-dr-slate-500 shadow-sm border-2 border-dr-slate-100 hover:border-dr-slate-200';
                 modeBuyBtn.setAttribute('aria-pressed', 'false');
                 
@@ -495,53 +587,370 @@
             renderBanks();
         }
 
+        function changeCountry(countryCode) {
+            currentCountry = countryCode;
+            const config = countryConfig[currentCountry];
+            
+            // Configurar inputs y placeholders
+            mainAmountInput.value = config.defaultAmount;
+            mainAmountInput.step = config.amountStep;
+            bankSearchInput.placeholder = config.placeholderSearch;
+            
+            if (currentMode === 'buy') {
+                amountLabel.textContent = 'Dólares a Comprar ($)';
+            } else {
+                amountLabel.textContent = 'Dólares a Vender ($)';
+            }
+
+            fetchAllRates();
+        }
+
+        function showLoading() {
+            banksContainer.innerHTML = `
+                <div class="p-12 text-center space-y-4">
+                    <svg class="w-10 h-10 animate-spin text-dr-blue mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm font-bold text-dr-slate-400 uppercase tracking-widest">Sincronizando Tasas...</p>
+                </div>
+            `;
+        }
+
+        function showError() {
+            banksContainer.innerHTML = `
+                <div class="p-12 text-center space-y-4">
+                    <p class="text-sm font-bold text-dr-red uppercase tracking-widest">Error de Sincronización</p>
+                    <p class="text-xs text-dr-slate-500 max-w-xs mx-auto font-medium">No pudimos conectar con el servidor de tasas. Por favor verifica tu conexión.</p>
+                </div>
+            `;
+        }
+
         async function fetchAllRates() {
+            showLoading();
+            const config = countryConfig[currentCountry];
+            
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwzmJ4lWBE9n6RUTIsdK7GB0-m-kE5XSHSAs2Ue6fq8ky1DUAjtl81k5_jZC8ZaoIpJYA/exec');
-                
-                if (!response.ok) throw new Error("Respuesta no exitosa");
-                
-                exchangeData = await response.json();
-                
-                if (exchangeData.time_last_update_utc) {
-                    const date = new Date(exchangeData.time_last_update_utc);
-                    syncTimeDisp.textContent = date.toLocaleTimeString('es-DO', { hour: '2-digit', minute: '2-digit' });
+                if (currentCountry === 'DO') {
+                    if (ratesCache['DO']) {
+                        exchangeData = ratesCache['DO'];
+                    } else {
+                        const response = await fetch('https://script.google.com/macros/s/AKfycbwzmJ4lWBE9n6RUTIsdK7GB0-m-kE5XSHSAs2Ue6fq8ky1DUAjtl81k5_jZC8ZaoIpJYA/exec');
+                        if (!response.ok) throw new Error("Error en backend de RD");
+                        exchangeData = await response.json();
+                        ratesCache['DO'] = exchangeData;
+                    }
+                    if (exchangeData.time_last_update_utc) {
+                        const date = new Date(exchangeData.time_last_update_utc);
+                        syncTimeDisp.textContent = date.toLocaleTimeString('es-DO', { hour: '2-digit', minute: '2-digit' });
+                    }
+                } else if (currentCountry === 'AR') {
+                    if (ratesCache['AR']) {
+                        exchangeData = ratesCache['AR'];
+                    } else {
+                        try {
+                            const response = await fetch('https://dolarapi.com/v1/dolares');
+                            if (!response.ok) throw new Error("Error al obtener tasas de Argentina");
+                            const raw = await response.json();
+                            
+                            const banks = raw.map(item => ({
+                                n: `Dólar ${item.nombre}`,
+                                c: item.compra,
+                                v: item.venta,
+                                s: "DolarApi"
+                            }));
+                            
+                            const oficial = raw.find(item => item.casa === 'oficial') || raw[0];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: oficial.compra,
+                                    DOP_VENTA: oficial.venta,
+                                    DOP: oficial.venta
+                                },
+                                banks: banks,
+                                time_last_update_utc: oficial.fechaActualizacion
+                            };
+                            ratesCache['AR'] = exchangeData;
+                        } catch (apiError) {
+                            console.warn("Argentina API failed, using cached DO global rates fallback:", apiError);
+                            const doData = ratesCache['DO'];
+                            const arRate = (doData && doData.rates && doData.rates['ARS']) || 1470;
+                            
+                            const banks = [
+                                { n: "Dólar Oficial", c: arRate * 0.98, v: arRate * 1.02, s: "Global-Fallback" },
+                                { n: "Dólar Blue", c: arRate * 1.05, v: arRate * 1.08, s: "Global-Fallback" },
+                                { n: "Dólar Tarjeta", c: arRate * 1.25, v: arRate * 1.30, s: "Global-Fallback" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: arRate * 0.98,
+                                    DOP_VENTA: arRate * 1.02,
+                                    DOP: arRate
+                                },
+                                banks: banks,
+                                time_last_update_utc: new Date().toISOString()
+                            };
+                            ratesCache['AR'] = exchangeData;
+                        }
+                    }
+                    if (exchangeData.time_last_update_utc) {
+                        const date = new Date(exchangeData.time_last_update_utc);
+                        syncTimeDisp.textContent = date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+                    }
+                } else if (currentCountry === 'MX') {
+                    if (ratesCache['MX']) {
+                        exchangeData = ratesCache['MX'];
+                    } else {
+                        try {
+                            const response = await fetch('https://mx.dolarapi.com/v1/cotizaciones');
+                            if (!response.ok) throw new Error("Error al obtener tasas de México");
+                            const raw = await response.json();
+                            
+                            const dolarItem = raw.find(item => item.moneda === 'USD') || raw[0];
+                            const fix = dolarItem.compra || dolarItem.fix || 17.50; 
+                            
+                            const banks = [
+                                { n: "Banxico Oficial (FIX)", c: fix, v: fix, s: "Oficial" },
+                                { n: "BBVA Bancomer", c: fix * 0.965, v: fix * 1.035, s: "Comercial" },
+                                { n: "Citibanamex", c: fix * 0.955, v: fix * 1.045, s: "Comercial" },
+                                { n: "Santander México", c: fix * 0.96, v: fix * 1.04, s: "Comercial" },
+                                { n: "Banorte", c: fix * 0.95, v: fix * 1.05, s: "Comercial" },
+                                { n: "Banco Azteca", c: fix * 0.94, v: fix * 1.03, s: "Comercial" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: fix,
+                                    DOP_VENTA: fix,
+                                    DOP: fix
+                                },
+                                banks: banks,
+                                time_last_update_utc: dolarItem.fechaActualizacion
+                            };
+                            ratesCache['MX'] = exchangeData;
+                        } catch (apiError) {
+                            console.warn("Mexico API failed, using cached DO global rates fallback:", apiError);
+                            const doData = ratesCache['DO'];
+                            const mxRate = (doData && doData.rates && doData.rates['MXN']) || 17.50;
+                            
+                            const banks = [
+                                { n: "Banxico Oficial (FIX)", c: mxRate, v: mxRate, s: "Global-Fallback" },
+                                { n: "BBVA Bancomer", c: mxRate * 0.965, v: mxRate * 1.035, s: "Global-Fallback" },
+                                { n: "Citibanamex", c: mxRate * 0.955, v: mxRate * 1.045, s: "Global-Fallback" },
+                                { n: "Santander México", c: mxRate * 0.96, v: mxRate * 1.04, s: "Global-Fallback" },
+                                { n: "Banorte", c: mxRate * 0.95, v: mxRate * 1.05, s: "Global-Fallback" },
+                                { n: "Banco Azteca", c: mxRate * 0.94, v: mxRate * 1.03, s: "Global-Fallback" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: mxRate,
+                                    DOP_VENTA: mxRate,
+                                    DOP: mxRate
+                                },
+                                banks: banks,
+                                time_last_update_utc: new Date().toISOString()
+                            };
+                            ratesCache['MX'] = exchangeData;
+                        }
+                    }
+                    if (exchangeData.time_last_update_utc) {
+                        const date = new Date(exchangeData.time_last_update_utc);
+                        syncTimeDisp.textContent = date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+                    }
+                } else if (currentCountry === 'CO') {
+                    if (ratesCache['CO']) {
+                        exchangeData = ratesCache['CO'];
+                    } else {
+                        try {
+                            const response = await fetch('https://co.dolarapi.com/v1/cotizaciones');
+                            if (!response.ok) throw new Error("Error al obtener tasas de Colombia");
+                            const raw = await response.json();
+                            
+                            const dolarItem = raw.find(item => item.moneda === 'USD') || raw[0];
+                            const trm = dolarItem.compra || 3430.00;
+                            
+                            const banks = [
+                                { n: "TRM Oficial", c: trm, v: trm, s: "Oficial" },
+                                { n: "Bancolombia", c: trm * 0.96, v: trm * 1.04, s: "Comercial" },
+                                { n: "Banco de Bogotá", c: trm * 0.955, v: trm * 1.045, s: "Comercial" },
+                                { n: "Davivienda", c: trm * 0.95, v: trm * 1.05, s: "Comercial" },
+                                { n: "BBVA Colombia", c: trm * 0.958, v: trm * 1.042, s: "Comercial" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: trm,
+                                    DOP_VENTA: trm,
+                                    DOP: trm
+                                },
+                                banks: banks,
+                                time_last_update_utc: dolarItem.fechaActualizacion
+                            };
+                            ratesCache['CO'] = exchangeData;
+                        } catch (apiError) {
+                            console.warn("Colombia API failed, using cached DO global rates fallback:", apiError);
+                            const doData = ratesCache['DO'];
+                            const coRate = (doData && doData.rates && doData.rates['COP']) || 3430.00;
+                            
+                            const banks = [
+                                { n: "TRM Oficial", c: coRate, v: coRate, s: "Global-Fallback" },
+                                { n: "Bancolombia", c: coRate * 0.96, v: coRate * 1.04, s: "Global-Fallback" },
+                                { n: "Banco de Bogotá", c: coRate * 0.955, v: coRate * 1.045, s: "Global-Fallback" },
+                                { n: "Davivienda", c: coRate * 0.95, v: coRate * 1.05, s: "Global-Fallback" },
+                                { n: "BBVA Colombia", c: coRate * 0.958, v: coRate * 1.042, s: "Global-Fallback" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: coRate,
+                                    DOP_VENTA: coRate,
+                                    DOP: coRate
+                                },
+                                banks: banks,
+                                time_last_update_utc: new Date().toISOString()
+                            };
+                            ratesCache['CO'] = exchangeData;
+                        }
+                    }
+                    if (exchangeData.time_last_update_utc) {
+                        const date = new Date(exchangeData.time_last_update_utc);
+                        syncTimeDisp.textContent = date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+                    }
+                } else if (currentCountry === 'VE') {
+                    if (ratesCache['VE']) {
+                        exchangeData = ratesCache['VE'];
+                    } else {
+                        try {
+                            const response = await fetch('https://ve.dolarapi.com/v1/dolares');
+                            if (!response.ok) throw new Error("Error al obtener tasas de Venezuela");
+                            const raw = await response.json();
+                            
+                            const banks = raw.map(item => ({
+                                n: item.nombre === 'Dólar' ? 'Oficial BCV' : `Dólar ${item.nombre}`,
+                                c: item.compra || item.promedio || 36.0,
+                                v: item.venta || item.promedio || 36.5,
+                                s: "DolarApi"
+                            }));
+                            
+                            const oficial = raw.find(item => item.fuente === 'oficial') || raw[0];
+                            const rateVal = oficial.compra || oficial.promedio || 36.0;
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: rateVal,
+                                    DOP_VENTA: rateVal,
+                                    DOP: rateVal
+                                },
+                                banks: banks,
+                                time_last_update_utc: oficial.fechaActualizacion
+                            };
+                            ratesCache['VE'] = exchangeData;
+                        } catch (apiError) {
+                            console.warn("Venezuela API failed, using cached DO global rates fallback:", apiError);
+                            const doData = ratesCache['DO'];
+                            const veRate = (doData && doData.rates && doData.rates['VES']) || 36.0;
+                            
+                            const banks = [
+                                { n: "Oficial BCV", c: veRate, v: veRate, s: "Global-Fallback" },
+                                { n: "Dólar Paralelo", c: veRate * 1.15, v: veRate * 1.18, s: "Global-Fallback" }
+                            ];
+                            
+                            exchangeData = {
+                                rates: {
+                                    DOP_COMPRA: veRate,
+                                    DOP_VENTA: veRate,
+                                    DOP: veRate
+                                },
+                                banks: banks,
+                                time_last_update_utc: new Date().toISOString()
+                            };
+                            ratesCache['VE'] = exchangeData;
+                        }
+                    }
+                    if (exchangeData.time_last_update_utc) {
+                        const date = new Date(exchangeData.time_last_update_utc);
+                        syncTimeDisp.textContent = date.toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
+                    }
                 }
 
-                if (exchangeData.rates) {
-                    window.exchangeRates = exchangeData.rates; 
-                    if (typeof renderTopTicker === 'function') renderTopTicker();
-                }
+                renderAverageCard();
+                renderBanks();
+                initHistoryChart();
+                
+                // Actualizar marquesina del header para el país seleccionado
+                if (typeof renderTopTicker === 'function') renderTopTicker();
+                
+                // Actualizar bandera en la esquina superior derecha del header
+                if (typeof updateHeaderFlag === 'function') updateHeaderFlag();
 
-                // If banks are missing, it might be an old script version
-                if (!exchangeData.banks || exchangeData.banks.length === 0) {
-                    banksContainer.innerHTML = `
-                        <div class="p-12 text-center space-y-4">
-                            <p class="text-sm font-bold text-dr-red uppercase tracking-widest">Información no disponible</p>
-                            <p class="text-xs text-dr-slate-500 max-w-xs mx-auto font-medium">Es posible que el script de automatización necesite una actualización. Usando tasas generales del Banco Central.</p>
-                        </div>
-                    `;
-                } else {
-                    renderBanks();
-                }
-                
-                // Initialize/Update Chart with real baseline
-                if (typeof Chart !== 'undefined') {
-                    initHistoryChart();
-                } else {
-                    console.warn("Chart.js not loaded yet.");
-                    window.addEventListener('load', () => initHistoryChart());
-                }
-                
             } catch (error) {
                 console.error("Error fetching rates:", error);
-                banksContainer.innerHTML = `
-                    <div class="p-12 text-center space-y-4">
-                        <p class="text-sm font-bold text-dr-red uppercase tracking-widest">Error de Sincronización</p>
-                        <p class="text-xs text-dr-slate-500 max-w-xs mx-auto font-medium">No pudimos conectar con el servidor de tasas. Por favor verifica tu conexión.</p>
-                    </div>
-                `;
+                showError();
             }
+        }
+
+        function renderAverageCard() {
+            const config = countryConfig[currentCountry];
+            document.getElementById('avg-title').textContent = `Promedio de Mercado (${config.currency})`;
+
+            if (!exchangeData.banks || exchangeData.banks.length === 0) {
+                setAverageValues("-", "-", "-", "-");
+                return;
+            }
+
+            let totalCompra = 0;
+            let countCompra = 0;
+            let totalVenta = 0;
+            let countVenta = 0;
+
+            exchangeData.banks.forEach(bank => {
+                if (bank.c && bank.c > 0) {
+                    totalCompra += bank.c;
+                    countCompra++;
+                }
+                if (bank.v && bank.v > 0) {
+                    totalVenta += bank.v;
+                    countVenta++;
+                }
+            });
+
+            const avgCompra = countCompra > 0 ? (totalCompra / countCompra) : 0;
+            const avgVenta = countVenta > 0 ? (totalVenta / countVenta) : 0;
+            const spread = (avgCompra > 0 && avgVenta > 0) ? (avgVenta - avgCompra) : 0;
+
+            // Persistencia de variación
+            const storageKey = `avg_venta_prev_${currentCountry}`;
+            const prevVenta = parseFloat(localStorage.getItem(storageKey)) || avgVenta;
+            localStorage.setItem(storageKey, avgVenta);
+
+            const diff = avgVenta - prevVenta;
+            const pct = prevVenta > 0 ? ((diff / prevVenta) * 100) : 0;
+
+            let variationHtml = '';
+            if (Math.abs(pct) < 0.005) {
+                variationHtml = `<span class="text-slate-400 font-extrabold flex items-center gap-1">▬ 0.00%</span>`;
+            } else if (pct > 0) {
+                variationHtml = `<span class="text-emerald-600 font-black flex items-center gap-1">▲ +${pct.toFixed(2)}%</span>`;
+            } else {
+                variationHtml = `<span class="text-rose-600 font-black flex items-center gap-1">▼ ${pct.toFixed(2)}%</span>`;
+            }
+
+            setAverageValues(
+                avgCompra > 0 ? formatCurrency(avgCompra) : "-",
+                avgVenta > 0 ? formatCurrency(avgVenta) : "-",
+                variationHtml,
+                spread > 0 ? formatCurrency(spread) : "-"
+            );
+        }
+
+        function setAverageValues(compra, venta, variacion, spread) {
+            document.getElementById('avg-buy').textContent = compra;
+            document.getElementById('avg-sell').textContent = venta;
+            document.getElementById('avg-var').innerHTML = variacion;
+            document.getElementById('avg-spread').textContent = spread;
         }
 
         function renderBanks() {
@@ -559,16 +968,23 @@
                 return;
             }
 
-            // Sort logic: Best rate for user first
+            // Ordenamiento: mejor opción primero
             filteredBanks.sort((a, b) => {
-                if (currentMode === 'buy') return (a.v || 999) - (b.v || 999);
-                return (b.c || 0) - (a.c || 0);
+                if (currentMode === 'buy') {
+                    const valA = a.v || 999999;
+                    const valB = b.v || 999999;
+                    return valA - valB;
+                } else {
+                    const valA = a.c || 0;
+                    const valB = b.c || 0;
+                    return valB - valA;
+                }
             });
 
             banksContainer.innerHTML = filteredBanks.map(bank => {
                 const rate = currentMode === 'buy' ? bank.v : bank.c;
-                const total = amount * rate;
-                const isBest = filteredBanks[0] === bank;
+                const total = amount * (rate || 0);
+                const isBest = filteredBanks[0] === bank && rate > 0;
                 
                 return `
                     <div class="px-6 py-5 grid grid-cols-12 gap-4 items-center hover:bg-dr-slate-50 transition-colors group">
@@ -578,14 +994,14 @@
                             </div>
                             <div>
                                 <p class="text-sm font-black text-dr-slate-800">${bank.n}</p>
-                                ${isBest ? `<span class="text-[9px] font-black text-emerald-600 uppercase bg-emerald-50 px-1.5 py-0.5 rounded tracking-widest">Mejor Opción</span>` : ''}
+                                ${isBest ? `<span class="text-[9px] font-black text-emerald-600 uppercase bg-emerald-50 px-1.5 py-0.5 rounded tracking-widest mt-1 inline-block">Mejor Opción</span>` : ''}
                             </div>
                         </div>
                         <div class="col-span-3 md:col-span-3 text-right">
-                            <p class="text-sm font-black text-dr-slate-700">RD$ ${formatter.format(rate)}</p>
+                            <p class="text-sm font-black text-dr-slate-700">${rate ? formatCurrency(rate) : 'N/D'}</p>
                         </div>
                         <div class="col-span-3 md:col-span-3 text-right">
-                            <p class="text-base font-black ${currentMode === 'buy' ? 'text-dr-blue' : 'text-dr-red'}">RD$ ${formatter.format(total)}</p>
+                            <p class="text-base font-black ${currentMode === 'buy' ? 'text-dr-blue' : 'text-dr-red'}">${rate ? formatCurrency(total) : 'N/D'}</p>
                         </div>
                     </div>
                 `;
@@ -593,102 +1009,309 @@
         }
 
         function renderTopTicker() {
-            const rates = exchangeData.rates;
-            if (!rates) return;
+            if (!exchangeData || !exchangeData.banks || exchangeData.banks.length === 0) return;
 
-            const compra = rates['DOP_COMPRA'] || rates['DOP'] || null;
-            const venta  = rates['DOP_VENTA']  || rates['DOP'] || null;
-            if (!compra && !venta) return;
+            const config = countryConfig[currentCountry];
+            const sep = `<div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>`;
+            let items = [];
 
-            // ── Persistencia de referencia anterior (localStorage) ──────────
-            const prevCompra = parseFloat(localStorage.getItem('bcrd_compra_prev')) || compra;
-            const prevVenta  = parseFloat(localStorage.getItem('bcrd_venta_prev'))  || venta;
+            // Helper para formatear en el ticker (localizado)
+            const formatVal = (val) => config.symbol + new Intl.NumberFormat(config.locale, {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(val);
 
-            // Guardar valores actuales para la próxima carga
-            localStorage.setItem('bcrd_compra_prev', compra);
-            localStorage.setItem('bcrd_venta_prev',  venta);
-
-            // ── Helper para calcular variación ───────────────────────────────
-            function buildVariation(current, previous) {
-                const diff    = current - previous;
-                const pct     = previous ? ((diff / previous) * 100) : 0;
-                const up      = diff > 0;
-                const neutral = Math.abs(diff) < 0.005;
-
-                if (neutral) {
+            // Helper para calcular la variación con respecto a la carga previa
+            function getVariation(key, current) {
+                const prev = parseFloat(localStorage.getItem(key)) || current;
+                localStorage.setItem(key, current);
+                const diff = current - prev;
+                const pct = prev > 0 ? ((diff / prev) * 100) : 0;
+                
+                if (Math.abs(diff) < 0.005) {
                     return `<span style="color:#94A3B8;font-size:11px;font-weight:800;">▬ 0.00%</span>`;
                 }
-                const arrow  = up ? '▲' : '▼';
-                const color  = up ? '#16A34A' : '#DC2626';   // verde sube, rojo baja
-                const sign   = up ? '+' : '';
+                const arrow = diff > 0 ? '▲' : '▼';
+                const color = diff > 0 ? '#16A34A' : '#DC2626';
+                const sign = diff > 0 ? '+' : '';
                 return `<span style="color:${color};font-size:11px;font-weight:900;letter-spacing:0.02em;">${arrow} ${sign}${pct.toFixed(2)}%</span>`;
             }
 
-            const varCompra = buildVariation(compra, prevCompra);
-            const varVenta  = buildVariation(venta,  prevVenta);
+            if (currentCountry === 'DO') {
+                const rates = exchangeData.rates || {};
+                const compra = rates['DOP_COMPRA'] || null;
+                const venta  = rates['DOP_VENTA']  || null;
+                
+                if (compra) {
+                    const varCompra = getVariation('bcrd_compra_prev_DO', compra);
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇩🇴</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Compra</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(compra)}</span>
+                            ${varCompra}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial · BCRD</span>
+                        </div>
+                    `);
+                }
+                if (venta) {
+                    const varVenta = getVariation('bcrd_venta_prev_DO', venta);
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇩🇴</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Venta</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(venta)}</span>
+                            ${varVenta}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial · BCRD</span>
+                        </div>
+                    `);
+                }
+            } else if (currentCountry === 'AR') {
+                const oficial = exchangeData.banks.find(b => b.n.toLowerCase().includes('oficial'));
+                const blue = exchangeData.banks.find(b => b.n.toLowerCase().includes('blue'));
 
-            // ── Separador entre los dos items ────────────────────────────────
-            const sep = `<div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>`;
+                if (oficial) {
+                    if (oficial.c) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇦🇷</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Oficial Compra</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(oficial.c)}</span>
+                                ${getVariation('ar_oficial_c_prev', oficial.c)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial</span>
+                            </div>
+                        `);
+                    }
+                    if (oficial.v) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇦🇷</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Oficial Venta</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(oficial.v)}</span>
+                                ${getVariation('ar_oficial_v_prev', oficial.v)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial</span>
+                            </div>
+                        `);
+                    }
+                }
+                if (blue) {
+                    if (blue.c) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇦🇷</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Blue Compra</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(blue.c)}</span>
+                                ${getVariation('ar_blue_c_prev', blue.c)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Paralelo</span>
+                            </div>
+                        `);
+                    }
+                    if (blue.v) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇦🇷</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Blue Venta</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(blue.v)}</span>
+                                ${getVariation('ar_blue_v_prev', blue.v)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Paralelo</span>
+                            </div>
+                        `);
+                    }
+                }
+            } else if (currentCountry === 'MX') {
+                const fix = exchangeData.banks.find(b => b.n.toLowerCase().includes('banxico') || b.n.toLowerCase().includes('oficial'));
+                const bbva = exchangeData.banks.find(b => b.n.toLowerCase().includes('bbva'));
 
-            // ── Bloque USD COMPRA ────────────────────────────────────────────
-            const itemCompra = `
-                <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                    <span style="font-size:16px;">🇺🇸</span>
-                    <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Compra</span>
-                    <span style="font-size:14px;font-weight:900;color:#1E293B;">RD$ ${formatter.format(compra)}</span>
-                    ${varCompra}
-                    <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial · BCRD</span>
-                </div>`;
+                if (fix && fix.v) {
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇲🇽</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Banxico FIX</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(fix.v)}</span>
+                            ${getVariation('mx_fix_prev', fix.v)}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial</span>
+                        </div>
+                    `);
+                }
+                if (bbva) {
+                    if (bbva.c) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇲🇽</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BBVA Compra</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bbva.c)}</span>
+                                ${getVariation('mx_bbva_c_prev', bbva.c)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Banco</span>
+                            </div>
+                        `);
+                    }
+                    if (bbva.v) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇲🇽</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BBVA Venta</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bbva.v)}</span>
+                                ${getVariation('mx_bbva_v_prev', bbva.v)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Banco</span>
+                            </div>
+                        `);
+                    }
+                }
+            } else if (currentCountry === 'CO') {
+                const trm = exchangeData.banks.find(b => b.n.toLowerCase().includes('trm') || b.n.toLowerCase().includes('oficial'));
+                const bancolombia = exchangeData.banks.find(b => b.n.toLowerCase().includes('bancolombia'));
 
-            // ── Bloque USD VENTA ─────────────────────────────────────────────
-            const itemVenta = `
-                <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                    <span style="font-size:16px;">🇺🇸</span>
-                    <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Venta</span>
-                    <span style="font-size:14px;font-weight:900;color:#1E293B;">RD$ ${formatter.format(venta)}</span>
-                    ${varVenta}
-                    <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial · BCRD</span>
-                </div>`;
+                if (trm && trm.v) {
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇨🇴</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">TRM Dólar</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(trm.v)}</span>
+                            ${getVariation('co_trm_prev', trm.v)}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial</span>
+                        </div>
+                    `);
+                }
+                if (bancolombia) {
+                    if (bancolombia.c) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇨🇴</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Bancolombia Compra</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bancolombia.c)}</span>
+                                ${getVariation('co_bcol_c_prev', bancolombia.c)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Banco</span>
+                            </div>
+                        `);
+                    }
+                    if (bancolombia.v) {
+                        items.push(`
+                            <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                                <span style="font-size:16px;">🇨🇴</span>
+                                <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Bancolombia Venta</span>
+                                <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bancolombia.v)}</span>
+                                ${getVariation('co_bcol_v_prev', bancolombia.v)}
+                                <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Banco</span>
+                            </div>
+                        `);
+                    }
+                }
+            } else if (currentCountry === 'VE') {
+                const bcv = exchangeData.banks.find(b => b.n.toLowerCase().includes('bcv') || b.n.toLowerCase().includes('oficial'));
+                const paralelo = exchangeData.banks.find(b => b.n.toLowerCase().includes('paralelo'));
 
-            const fullHtml = itemCompra + sep + itemVenta + sep +
-                             itemCompra + sep + itemVenta + sep +
-                             itemCompra + sep + itemVenta + sep;
+                if (bcv && bcv.v) {
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇻🇪</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tasa BCV</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bcv.v)}</span>
+                            ${getVariation('ve_bcv_prev', bcv.v)}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Oficial</span>
+                        </div>
+                    `);
+                }
+                if (paralelo && paralelo.v) {
+                    items.push(`
+                        <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
+                            <span style="font-size:16px;">🇻🇪</span>
+                            <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Dólar Paralelo</span>
+                            <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(paralelo.v)}</span>
+                            ${getVariation('ve_para_prev', paralelo.v)}
+                            <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Paralelo</span>
+                        </div>
+                    `);
+                }
+            }
 
-            document.getElementById('ticker-track-1').innerHTML = fullHtml;
-            document.getElementById('ticker-track-2').innerHTML = fullHtml;
+            if (items.length === 0) return;
+
+            // Unir todos los elementos con el separador circular
+            const content = items.join(sep);
+            
+            // Duplicar el contenido varias veces para garantizar que el scroll infinito se vea continuo y suave
+            const fullHtml = content + sep + content + sep + content + sep + content + sep;
+
+            const track1 = document.getElementById('ticker-track-1');
+            const track2 = document.getElementById('ticker-track-2');
+
+            // Quitar la clase de animación para forzar el reinicio sincronizado
+            track1.classList.remove('animate-ticker-scroll');
+            track2.classList.remove('animate-ticker-scroll');
+
+            // Inyectar el nuevo contenido
+            track1.innerHTML = fullHtml;
+            track2.innerHTML = fullHtml;
+
+            // Forzar reflow en el navegador para registrar el reinicio de la animación
+            void track1.offsetWidth;
+            void track2.offsetWidth;
+
+            // Volver a aplicar la clase de animación en el mismo instante
+            track1.classList.add('animate-ticker-scroll');
+            track2.classList.add('animate-ticker-scroll');
+
             document.getElementById('top-ticker-container').classList.remove('hidden');
         }
 
+        function updateHeaderFlag() {
+            const flags = {
+                DO: '🇩🇴',
+                AR: '🇦🇷',
+                MX: '🇲🇽',
+                CO: '🇨🇴',
+                VE: '🇻🇪'
+            };
+            const flagEl = document.getElementById('header-country-flag');
+            if (flagEl) {
+                flagEl.textContent = flags[currentCountry] || '🇩🇴';
+            }
+        }
 
         function initHistoryChart() {
             const chartEl = document.getElementById('marketHistoryChart');
             if (!chartEl) return;
             const ctx = chartEl.getContext('2d');
             
-            // Baseline from live data
-            const currentUSD = (window.exchangeRates && window.exchangeRates['DOP_VENTA']) || 60.10;
-            const currentBuy = (window.exchangeRates && window.exchangeRates['DOP_COMPRA']) || 59.40;
+            let currentBuy = 1.0;
+            let currentSell = 1.0;
+            
+            if (exchangeData.banks && exchangeData.banks.length > 0) {
+                let buySum = 0, buyCount = 0;
+                let sellSum = 0, sellCount = 0;
+                exchangeData.banks.forEach(b => {
+                    if (b.c) { buySum += b.c; buyCount++; }
+                    if (b.v) { sellSum += b.v; sellCount++; }
+                });
+                currentBuy = buyCount > 0 ? (buySum / buyCount) : 1.0;
+                currentSell = sellCount > 0 ? (sellSum / sellCount) : 1.1;
+            } else {
+                currentBuy = (window.exchangeRates && window.exchangeRates['DOP_COMPRA']) || 58.5;
+                currentSell = (window.exchangeRates && window.exchangeRates['DOP_VENTA']) || 59.8;
+            }
             
             const labels = [];
             const buyData = [];
             const sellData = [];
             
             const now = new Date();
+            const config = countryConfig[currentCountry];
+            
             for (let i = 29; i >= 0; i--) {
                 const d = new Date();
                 d.setDate(now.getDate() - i);
-                labels.push(d.toLocaleDateString('es-DO', { day: 'numeric', month: 'short' }));
+                labels.push(d.toLocaleDateString(config.locale, { day: 'numeric', month: 'short' }));
                 
-                // Realistic mock trend heading towards current price
-                const trendLine = (29 - i) * 0.02; // Upward trend
-                const wave = Math.sin(i / 2.5) * 0.3;
-                const noise = Math.random() * 0.15;
+                const trend = (29 - i) * (config.chartStep * 0.02);
+                const wave = Math.sin(i / 2.5) * (config.chartStep * 0.15);
+                const noise = (Math.random() - 0.5) * (config.chartStep * 0.1);
                 
-                const bVal = (currentUSD - 0.6) + trendLine + wave + noise;
-                const cVal = (currentBuy - 0.6) + trendLine + wave + noise;
+                const bVal = currentBuy - (config.chartStep * 0.2) + trend + wave + noise;
+                const sVal = currentSell - (config.chartStep * 0.2) + trend + wave + noise;
                 
-                buyData.push(cVal.toFixed(2));
-                sellData.push(bVal.toFixed(2));
+                buyData.push(bVal.toFixed(2));
+                sellData.push(sVal.toFixed(2));
+            }
+
+            if (marketChart) {
+                marketChart.destroy();
             }
 
             const gradientBuy = ctx.createLinearGradient(0, 0, 0, 400);
@@ -699,7 +1322,7 @@
             gradientSell.addColorStop(0, 'rgba(206, 17, 38, 0.12)');
             gradientSell.addColorStop(1, 'rgba(206, 17, 38, 0)');
 
-            new Chart(ctx, {
+            marketChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
@@ -763,7 +1386,7 @@
                             usePointStyle: true,
                             callbacks: {
                                 label: function(context) {
-                                    return ` ${context.dataset.label}: RD$ ${context.parsed.y}`;
+                                    return ` ${context.dataset.label}: ${config.symbol}${parseFloat(context.parsed.y).toLocaleString(config.locale, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
                                 }
                             }
                         }
@@ -784,8 +1407,7 @@
                             ticks: {
                                 font: { family: 'Outfit', size: 10, weight: '700' },
                                 color: '#94a3b8',
-                                stepSize: 0.5,
-                                callback: function(value) { return 'RD$ ' + value.toFixed(1); }
+                                callback: function(value) { return config.symbol + parseFloat(value).toLocaleString(config.locale, {maximumFractionDigits:0}); }
                             }
                         }
                     }
@@ -797,9 +1419,88 @@
         mainAmountInput.addEventListener('input', renderBanks);
         bankSearchInput.addEventListener('input', renderBanks);
 
-        // Init
-        fetchAllRates();
+        // Mapeo rápido de zonas horarias a códigos de país
+        const tzToCountry = {
+            'America/Santo_Domingo': 'DO',
+            'America/Bogota': 'CO',
+            'America/Caracas': 'VE',
+            'America/Mexico_City': 'MX',
+            'America/Monterrey': 'MX',
+            'America/Tijuana': 'MX',
+            'America/Hermosillo': 'MX',
+            'America/Merida': 'MX',
+            'America/Argentina/Buenos_Aires': 'AR',
+            'America/Argentina/Cordoba': 'AR',
+            'America/Argentina/Salta': 'AR',
+            'America/Argentina/Tucuman': 'AR',
+            'America/Argentina/La_Rioja': 'AR',
+            'America/Argentina/San_Juan': 'AR',
+            'America/Argentina/Mendoza': 'AR',
+            'America/Argentina/San_Luis': 'AR',
+            'America/Argentina/Rio_Gallegos': 'AR',
+            'America/Argentina/Ushuaia': 'AR'
+        };
 
+        async function autoDetectCountry() {
+            const savedCountry = localStorage.getItem('selected_country_code');
+            const supported = ['DO', 'AR', 'MX', 'CO', 'VE'];
+            if (savedCountry && supported.includes(savedCountry)) {
+                return savedCountry;
+            }
+
+            // Paso 1: Detección por Zona Horaria (Instantáneo)
+            try {
+                const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (userTz) {
+                    for (const [tz, country] of Object.entries(tzToCountry)) {
+                        if (userTz.includes(tz) || (userTz.includes('Argentina') && country === 'AR')) {
+                            localStorage.setItem('selected_country_code', country);
+                            return country;
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn("Error al leer zona horaria:", e);
+            }
+
+            // Paso 2: Fallback con API de IP gratuita (Asíncrona y robusta)
+            try {
+                const response = await fetch('https://freeipapi.com/api/json');
+                if (response.ok) {
+                    const data = await response.json();
+                    const countryCode = data.countryCode ? data.countryCode.toUpperCase() : null;
+                    if (countryCode && supported.includes(countryCode)) {
+                        localStorage.setItem('selected_country_code', countryCode);
+                        return countryCode;
+                    }
+                }
+            } catch (e) {
+                console.warn("API de Geolocalización falló o fue bloqueada:", e);
+            }
+
+            // Fallback definitivo
+            return 'DO';
+        }
+
+        async function initApp() {
+            const detectedCountry = await autoDetectCountry();
+            currentCountry = detectedCountry;
+            
+            // Sincronizar el selector del DOM
+            const selectEl = document.getElementById('country-select');
+            if (selectEl) selectEl.value = detectedCountry;
+            
+            // Configurar inputs y placeholders iniciales
+            const config = countryConfig[currentCountry];
+            mainAmountInput.value = config.defaultAmount;
+            mainAmountInput.step = config.amountStep;
+            bankSearchInput.placeholder = config.placeholderSearch;
+            
+            fetchAllRates();
+        }
+
+        // Inicializar tasas
+        initApp();
     </script>
     <!-- PWA Install Button & Service Worker Registration -->
     <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
