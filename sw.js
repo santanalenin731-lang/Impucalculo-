@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v26';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v26';
+const CACHE_NAME = 'impucalculo-v47';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v47';
 
 const STATIC_ASSETS = [
     '/',
@@ -7,6 +7,12 @@ const STATIC_ASSETS = [
     '/calculadora.html',
     '/prestaciones.html',
     '/divisas.html',
+    '/divisas/ar/index.html',
+    '/divisas/mx/index.html',
+    '/divisas/co/index.html',
+    '/divisas/ve/index.html',
+    '/js/divisas-engine.js',
+    '/blog.html',
     '/manifest.json',
     '/logo_new.webp',
     '/icon-192.png',

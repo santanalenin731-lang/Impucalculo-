@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://impucalculo.com/</loc>
     <lastmod>2026-02-15</lastmod>
@@ -20,9 +20,63 @@
   </url>
   <url>
     <loc>https://impucalculo.com/divisas.html</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html"/>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/"/>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/divisas/co/"/>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/divisas/ve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/divisas.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/divisas/ar/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html"/>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/"/>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/divisas/co/"/>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/divisas/ve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/divisas.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/divisas/mx/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html"/>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/"/>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/divisas/co/"/>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/divisas/ve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/divisas.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/divisas/co/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html"/>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/"/>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/divisas/co/"/>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/divisas/ve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/divisas.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/divisas/ve/</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html"/>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/"/>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/"/>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/divisas/co/"/>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/divisas/ve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/divisas.html"/>
   </url>
   <url>
     <loc>https://impucalculo.com/blog.html</loc>

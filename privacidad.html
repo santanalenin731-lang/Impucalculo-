@@ -56,65 +56,48 @@
         <div class="max-w-3xl mx-auto px-6 bg-white rounded-2xl shadow-sm border border-dr-slate-100 p-8 md:p-12">
             <h1 class="text-3xl font-black text-dr-slate-900 mb-2">Política de Privacidad y Seguridad</h1>
             <p class="text-sm text-dr-slate-500 font-medium mb-10">Última actualización: <span
-                    class="text-dr-blue">Febrero 2026</span></p>
+                    class="text-dr-blue">29 de Junio de 2026</span></p>
 
             <div class="space-y-8 text-dr-slate-600 prose prose-slate">
-                <p>En <strong>Impucálculo</strong>, tu confianza es nuestra máxima prioridad. Entendemos que manejar
-                    información financiera, salarial e impuestos (ISR/TSS) requiere los más altos estándares de
-                    privacidad. Esta política existe para asegurarte cómo funciona nuestra herramienta:</p>
+                <p>En <strong>Impucálculo</strong>, la transparencia y la privacidad son los pilares de nuestro servicio. Esta Política de Privacidad y Seguridad describe el procesamiento local de datos, la gestión de consultas financieras y divisas, y las medidas adoptadas para garantizar un entorno 100% seguro para todos nuestros usuarios en República Dominicana, Argentina, México, Colombia, Venezuela y otros países de la región.</p>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">1. Tratamiento de Datos Financieros y
-                        Personales</h3>
-                    <p>Tus cálculos te pertenecen solo a ti. Impucálculo ha sido diseñada bajo una arquitectura de
-                        <em>procesamiento local</em>. Esto significa que cuando ingresas tu salario, fechas de ingreso,
-                        salidas o cualquier dato requerido para el cálculo de ISR o prestaciones laborales, <strong>toda
-                            la operación matemática ocurre directamente en el navegador local de tu
-                            dispositivo.</strong>
-                    </p>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">1. Procesamiento 100% Local de Cálculos</h3>
+                    <p>Cualquier simulación matemática (cálculos de impuestos sobre la renta, prestaciones laborales por renuncia o despido, o conversiones cambiarias de divisas) ocurre <strong>directamente y en tiempo real en el navegador local de tu dispositivo</strong>. Impucálculo no envía, procesa ni almacena tus ingresos, montos, sueldos ni resultados financieros en servidores externos.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">2. No almacenamos tu información salarial</h3>
-                    <p>Impucálculo no guarda, no registra y no transmite tu información salarial ni tus resultados a
-                        nuestros servidores, ni a terceros, ni a anunciantes. Una vez que cierras la página o eliminas
-                        los registros manuales locales, cualquier dato que hayas ingresado en la calculadora desaparece
-                        sin dejar rastro en la nube.</p>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">2. Consultas Cambiarias y Tasas de Divisas</h3>
+                    <p>Nuestra plataforma obtiene en tiempo real los tipos de cambio oficiales y del mercado paralelo (tales como tasas de ventanilla de bancos comerciales, TRM de Colombia, tipo FIX del Banco de México, cotizaciones del dólar oficial/blue en Argentina y promedios oficiales del BCV / paralelo en Venezuela). 
+                    Estas solicitudes se realizan de forma anónima a APIs cambiarias públicas. Impucálculo <strong>nunca asocia el monto que deseas convertir ni tus preferencias de divisas con tus datos personales</strong>, garantizando transacciones privadas y confidenciales.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">3. Navegación Segura e Infraestructura</h3>
-                    <p>Toda la comunicación inicial entre tu dispositivo y nuestra plataforma está protegida por una
-                        capa de cifrado <strong>HTTPS/SSL</strong>, garantizando un entorno seguro y transparente.</p>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">3. Geolocalización Inteligente por Sesión</h3>
+                    <p>Para simplificar el acceso a las cotizaciones de tu moneda local, implementamos un mecanismo pasivo de geolocalización que detecta la zona horaria del dispositivo del usuario. Si resides fuera de República Dominicana, el sistema te redirigirá automáticamente a la versión cambiaria correspondiente en tu primera entrada. 
+                    Este proceso utiliza <code>sessionStorage</code> dentro de tu navegador, lo que significa que <strong>los datos expiran y se borran automáticamente al cerrar la pestaña o el navegador</strong>, sin almacenar ningún registro de ubicación en bases de datos externas.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">4. Analíticas Anónimas de Uso</h3>
-                    <p>Para ayudar a mejorar nuestra plataforma en un futuro y crear más calculadoras necesarias, nos
-                        respaldamos en herramientas estadísticas. Estas herramientas (como Google Analytics) revisan
-                        cuántas personas visitan nuestra página web día a día. Estas capturas de visitas se envían de
-                        forma <strong>totalmente anónima</strong> (sólo registrando "alguien entró, hizo un clic").
-                        <strong>En ningún momento estas herramientas capturan ni reciben conocimiento de las cifras o
-                            cantidades salariales usadas en tus cálculos.</strong>
-                    </p>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">4. PWA (Progressive Web App) y Caché Local</h3>
+                    <p>Nuestra suite cuenta con tecnologías de Service Worker que guardan en el caché estático de tu navegador los archivos de la interfaz para acelerar el tiempo de carga y posibilitar el uso sin conexión a Internet (offline). Ninguna cifra salarial o cambiaria es almacenada dentro de este precaché del sistema.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">5. Uso de Cookies y Publicidad de Terceros</h3>
-                    <p>Para mantener nuestra plataforma gratuita, en el futuro podríamos utilizar servicios de
-                        publicidad de terceros para mostrar anuncios. Dichos servicios pueden utilizar cookies para
-                        mostrar anuncios basados en tus visitas anteriores a nuestro sitio web u otros sitios en
-                        Internet. Puedes inhabilitar la publicidad personalizada visitando la <a
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">5. Analíticas de Uso Anónimas</h3>
+                    <p>Para fines estadísticos y de mejora de la interfaz, utilizamos herramientas analíticas de terceros (como Google Analytics) que recopilan información agregada no identificable (páginas visitadas, origen de país de red y clicks genéricos). <strong>Estas herramientas estadísticas tienen prohibido por diseño capturar las cifras monetarias o los números ingresados en las calculadoras.</strong></p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">6. Cookies y Publicidad de Terceros</h3>
+                    <p>Para financiar y mantener gratuito este servicio, podríamos incorporar publicidad de terceros en un futuro. Estos proveedores de anuncios pueden utilizar cookies de seguimiento técnico para mostrar anuncios personalizados. Puedes desactivar la publicidad personalizada en cualquier momento visitando la <a
                             href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank"
                             class="text-dr-blue hover:underline font-bold">Configuración de Anuncios de Google</a>.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">6. Exención de Responsabilidad</h3>
-                    <p>Los cálculos provistos por Impucálculo se rigen por los lineamientos del Código de Trabajo y
-                        códigos tributarios DGII de República Dominicana (2025-2026). Confiamos plenamente en su
-                        exactitud, sin embargo, los resultados presentados son una estimación de ayuda y no constituyen
-                        un testimonio contable oficial o representación legal vinculante de manera jurídica.</p>
+                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">7. Exención de Responsabilidad Cambiaria y Fiscal</h3>
+                    <p>Los cálculos tributarios e indemnizaciones se apegan a los códigos de trabajo y normativas tributarias (DGII de República Dominicana) vigentes. Las tasas de cambio e indicadores bancarios proporcionados en el comparador de divisas son de carácter referencial e informativo y pueden diferir ligeramente de las cotizaciones finales ofrecidas por las entidades bancarias comerciales al momento de realizar la transacción física. Impucálculo no actúa como intermediario financiero ni constituye asesoría fiscal o contable vinculante.</p>
                 </div>
             </div>
 
@@ -130,8 +113,7 @@
     <footer style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:4rem 2rem 2.5rem; margin-top:5rem;">
         <div style="max-width:1200px; margin:0 auto;">
             <div style="text-align:center; margin-bottom:3rem;">
-                <p style="font-size:1.1rem; font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Impucálculo</p>
-                <p style="font-size:0.85rem; color:#64748B; margin:0;">Cálculo de Impuestos y Prestaciones Laborales · República Dominicana</p>
+                <p style="font-size:1.3rem; font-weight:900; margin:0; font-family:'Outfit', sans-serif; letter-spacing:0.05rem;"><span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span></p>
             </div>
 
             <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:3rem; color:#64748B;">

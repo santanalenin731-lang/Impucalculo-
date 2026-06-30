@@ -1,57 +1,10 @@
 <!DOCTYPE html>
-<html lang="es-DO">
+<html lang="es-AR">
 
 <head>
-    <script>
-        // Redirección inteligente de sesión (evita bucles y respeta la navegación manual)
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('noredirect') === 'true' || sessionStorage.getItem('divisas_session_redirected')) {
-                sessionStorage.setItem('divisas_session_redirected', 'true');
-                return;
-            }
-
-            sessionStorage.setItem('divisas_session_redirected', 'true');
-
-            // 1. Preferencia guardada
-            const savedCountry = localStorage.getItem('selected_country_code');
-            if (savedCountry) {
-                const cleanCountry = savedCountry.toLowerCase();
-                if (cleanCountry === 'do') return;
-                const supported = ['ar', 'mx', 'co', 've'];
-                if (supported.includes(cleanCountry)) {
-                    window.location.replace('divisas/' + cleanCountry + '/');
-                    return;
-                }
-            }
-            
-            // 2. Detección por zona horaria
-            try {
-                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                if (tz) {
-                    let country = 'do';
-                    if (tz.includes('Buenos_Aires') || tz.includes('Cordoba') || tz.includes('Tucuman') || tz.includes('Ushuaia')) {
-                        country = 'ar';
-                    } else if (tz.includes('Mexico') || tz.includes('Monterrey') || tz.includes('Tijuana') || tz.includes('Merida') || tz.includes('Cancun')) {
-                        country = 'mx';
-                    } else if (tz.includes('Bogota')) {
-                        country = 'co';
-                    } else if (tz.includes('Caracas')) {
-                        country = 've';
-                    }
-                    
-                    if (country === 'do') return;
-                    window.location.replace('divisas/' + country + '/');
-                    return;
-                }
-            } catch (e) {
-                console.warn("Fallo al detectar huso horario:", e);
-            }
-        })();
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasa del Dólar en República Dominicana Hoy (BCRD y Bancos) | Impucálculo</title>
+    <title>Cotización del Dólar Hoy en Argentina (Oficial y Blue) | Impucálculo</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html">
     <link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/">
     <link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/divisas/mx/">
@@ -61,29 +14,29 @@
 
     <!-- Meta/SEO -->
     <meta name="description"
-        content="Compara la tasa del dólar en vivo entre todos los bancos y el Banco Central (BCRD). Compra y vende dólares al mejor precio en República Dominicana.">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+        content="Cotización en tiempo real del dólar oficial, dólar blue, tarjeta y solidario en Argentina. Compara precios y calcula conversiones al instante.">
+    <link rel="icon" type="image/png" href="../../logo_new.webp">
+    <link rel="apple-touch-icon" href="../../logo_new.webp">
 
     <meta name="keywords"
         content="conversor de divisas rd, dolar a peso, euro a peso, tasa del dolar rd, republica dominicana, calculo de monedas">
     <meta name="author" content="Impucálculo">
-    <link rel="canonical" href="https://impucalculo.com/divisas.html">
+    <link rel="canonical" href="https://impucalculo.com/divisas/ar/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://impucalculo.com/divisas.html">
-    <meta property="og:title" content="Tasa del Dólar en República Dominicana Hoy (BCRD y Bancos) | Impucálculo">
+    <meta property="og:url" content="https://impucalculo.com/divisas/ar/">
+    <meta property="og:title" content="Cotización del Dólar Hoy en Argentina (Oficial y Blue) | Impucálculo">
     <meta property="og:description"
-        content="Compara la tasa del dólar en vivo entre todos los bancos y el Banco Central (BCRD). Compra y vende dólares al mejor precio en República Dominicana.">
+        content="Cotización en tiempo real del dólar oficial, dólar blue, tarjeta y solidario en Argentina. Compara precios y calcula conversiones al instante.">
     <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://impucalculo.com/divisas.html">
-    <meta property="twitter:title" content="Tasa del Dólar en República Dominicana Hoy (BCRD y Bancos) | Impucálculo">
+    <meta property="twitter:url" content="https://impucalculo.com/divisas/ar/">
+    <meta property="twitter:title" content="Cotización del Dólar Hoy en Argentina (Oficial y Blue) | Impucálculo">
     <meta property="twitter:description"
-        content="Compara la tasa del dólar en vivo entre todos los bancos y el Banco Central (BCRD). Compra y vende dólares al mejor precio en República Dominicana.">
+        content="Cotización en tiempo real del dólar oficial, dólar blue, tarjeta y solidario en Argentina. Compara precios y calcula conversiones al instante.">
     <meta property="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts & Scripts -->
@@ -223,13 +176,13 @@
         }
     </style>
     <!-- Firebase Analytics -->
-    <script type="module" src="js/firebase-analytics.js"></script>
+    <script type="module" src="../../js/firebase-analytics.js"></script>
     <!-- PWA Settings -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#0038A8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="../../icon-192.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -251,24 +204,24 @@
   "@type": "FAQPage",
   "mainEntity": [{
     "@type": "Question",
-    "name": "¿Cómo se determina la tasa del dólar oficial en República Dominicana?",
+    "name": "¿Cuál es la diferencia entre el dólar oficial y el dólar blue en Argentina?",
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": "La tasa de cambio oficial del dólar en República Dominicana es determinada diariamente por el Banco Central de la República Dominicana (BCRD) basándose en las operaciones de compra y venta reportadas por las entidades financieras autorizadas."
+      "text": "El dólar oficial es la cotización del Banco de la Nación Argentina que se utiliza para operaciones formales, mientras que el dólar blue es la cotización del mercado paralelo libre que se comercializa de forma no oficial en cuevas cambiarias, teniendo una brecha con el oficial."
     }
   }, {
     "@type": "Question",
-    "name": "¿Qué bancos comerciales ofrecen la mejor tasa del dólar hoy en RD?",
+    "name": "¿Qué es el dólar tarjeta o dólar turista hoy?",
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Las cotizaciones varían constantemente entre bancos como el Banco Popular Dominicano, Banreservas, Banco BHD y Scotiabank. Con la calculadora en vivo de Impucálculo puedes comparar y saber al instante cuál entidad ofrece el mejor precio de compra o venta."
+      "text": "Es la cotización del dólar oficial sumándole los recargos e impuestos tributarios vigentes (Impuesto PAIS y retenciones a cuenta de Ganancias) aplicados a los consumos con tarjetas de crédito y débito en el exterior."
     }
   }, {
     "@type": "Question",
-    "name": "¿Cuál es el mejor momento para comprar o vender dólares hoy?",
+    "name": "¿Cómo utilizar la calculadora de conversión de dólar blue a pesos?",
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Se recomienda realizar transacciones cambiarias en horas de la mañana (de 9:00 AM a 1:00 PM), que es cuando el mercado financiero tiene mayor liquidez y las pizarras de los bancos están actualizadas."
+      "text": "Escribe el monto en el input cambiario de Impucálculo Argentina y el sistema convertirá de forma inmediata tu dinero a pesos argentinos (ARS) utilizando las cotizaciones vigentes del mercado oficial, blue o turista."
     }
   }]
 }
@@ -280,11 +233,11 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 flex flex-col shadow-sm">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between w-full">
-            <a href="index.html"
+            <a href="../../index.html"
                 class="flex items-center gap-4 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
                 <div class="w-[100px] h-[100px] flex items-center justify-center">
-                    <img src="logo_new.webp" alt="Conversor de Divisas RD Dolar Banco Central - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
+                    <img src="../../logo_new.webp" alt="Conversor de Divisas RD Dolar Banco Central - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
                         onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
                 </div>
                 <div>
@@ -329,23 +282,23 @@
                             <div class="space-y-3">
                                 <label class="block text-xs font-black text-dr-blue uppercase tracking-widest">País / Moneda</label>
                                 <div class="flex flex-col gap-2">
-                                    <a href="./divisas.html?noredirect=true" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-do">
+                                    <a href="../../divisas.html?noredirect=true" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-do">
                                         <span class="flex items-center gap-2"><span>🇩🇴</span> Impucálculo Dólar R. Dominicana</span>
                                         <span class="text-[10px] text-dr-slate-400 font-bold">DOP</span>
                                     </a>
-                                    <a href="./divisas/ar/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-ar">
+                                    <a href="../../divisas/ar/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-ar">
                                         <span class="flex items-center gap-2"><span>🇦🇷</span> Impucálculo Dólar Argentina</span>
                                         <span class="text-[10px] text-dr-slate-400 font-bold">ARS</span>
                                     </a>
-                                    <a href="./divisas/mx/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-mx">
+                                    <a href="../../divisas/mx/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-mx">
                                         <span class="flex items-center gap-2"><span>🇲🇽</span> Impucálculo Dólar México</span>
                                         <span class="text-[10px] text-dr-slate-400 font-bold">MXN</span>
                                     </a>
-                                    <a href="./divisas/co/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-co">
+                                    <a href="../../divisas/co/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-co">
                                         <span class="flex items-center gap-2"><span>🇨🇴</span> Impucálculo Dólar Colombia</span>
                                         <span class="text-[10px] text-dr-slate-400 font-bold">COP</span>
                                     </a>
-                                    <a href="./divisas/ve/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-ve">
+                                    <a href="../../divisas/ve/" class="country-link flex items-center justify-between px-5 py-4 bg-white border-2 border-dr-slate-100 rounded-2xl text-xs font-black text-dr-slate-800 hover:border-dr-blue hover:text-dr-blue transition-all shadow-sm" id="link-ve">
                                         <span class="flex items-center gap-2"><span>🇻🇪</span> Impucálculo Dólar Venezuela</span>
                                         <span class="text-[10px] text-dr-slate-400 font-bold">VES</span>
                                     </a>
@@ -501,34 +454,34 @@
             <!-- FAQ Section (SEO Enhancement) -->
         <div class="mt-8 bg-white rounded-[2rem] p-8 border border-dr-slate-100 max-w-7xl mx-auto shadow-sm parallax-block">
             <h2 class="text-base md:text-lg font-black tracking-wide mb-6 flex items-center gap-2.5">
-                <span class="uppercase"><span class="text-dr-blue">Preguntas</span> <span class="text-dr-red">Frecuentes</span> <span class="text-dr-slate-800">Impucálculo Dólar República Dominicana</span></span>
+                <span class="uppercase"><span class="text-dr-blue">Preguntas</span> <span class="text-dr-red">Frecuentes</span> <span class="text-dr-slate-800">Impucálculo Dólar Argentina</span></span>
             </h2>
             <div class="space-y-4">
                 <details class="group border-b border-dr-slate-100 pb-4">
                     <summary class="flex justify-between items-center font-bold text-sm text-dr-slate-800 cursor-pointer list-none select-none focus:outline-none hover:text-dr-blue transition-colors duration-200">
-                        <span>¿Cómo se determina la tasa del dólar oficial en República Dominicana?</span>
+                        <span>¿Cuál es la diferencia entre el dólar oficial y el dólar blue en Argentina?</span>
                         <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                     </summary>
                     <p class="mt-3 text-xs text-dr-slate-500 font-semibold leading-relaxed pl-1">
-                        La tasa de cambio oficial del dólar en República Dominicana es determinada diariamente por el Banco Central de la República Dominicana (BCRD) basándose en las operaciones de compra y venta reportadas por las entidades financieras autorizadas del mercado cambiario dominicano.
+                        El dólar oficial es la cotización del Banco de la Nación Argentina que se utiliza para operaciones formales del mercado cambiario regulado por el BCRA, mientras que el dólar blue es la cotización del mercado paralelo libre que se comercializa de forma no oficial en cuevas cambiarias, teniendo usualmente una brecha de precio con el oficial.
                     </p>
                 </details>
                 <details class="group border-b border-dr-slate-100 pb-4">
                     <summary class="flex justify-between items-center font-bold text-sm text-dr-slate-800 cursor-pointer list-none select-none focus:outline-none hover:text-dr-blue transition-colors duration-200">
-                        <span>¿Qué bancos comerciales ofrecen la mejor tasa del dólar hoy en RD?</span>
+                        <span>¿Qué es el dólar tarjeta o dólar turista hoy?</span>
                         <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                     </summary>
                     <p class="mt-3 text-xs text-dr-slate-500 font-semibold leading-relaxed pl-1">
-                        Las cotizaciones varían de forma constante entre entidades como el Banco Popular Dominicano, Banreservas, Banco BHD y Scotiabank. Con la calculadora en vivo de Impucálculo puedes comparar de inmediato cuál de ellas ofrece el mejor precio de compra o venta de ventanilla en pesos dominicanos (DOP).
+                        Es la cotización del dólar oficial sumándole los recargos e impuestos tributarios vigentes (Impuesto PAIS y retenciones a cuenta de Ganancias/Bienes Personales) aplicados a las compras realizadas con tarjetas de crédito y débito en el exterior.
                     </p>
                 </details>
                 <details class="group border-b border-dr-slate-100 pb-4">
                     <summary class="flex justify-between items-center font-bold text-sm text-dr-slate-800 cursor-pointer list-none select-none focus:outline-none hover:text-dr-blue transition-colors duration-200">
-                        <span>¿Cuál es el mejor momento para comprar o vender dólares hoy?</span>
+                        <span>¿Cómo utilizar la calculadora de conversión de dólar blue a pesos?</span>
                         <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                     </summary>
                     <p class="mt-3 text-xs text-dr-slate-500 font-semibold leading-relaxed pl-1">
-                        Se recomienda realizar transacciones cambiarias en horas de la mañana (de 9:00 AM a 1:00 PM), que es cuando el mercado financiero de divisas tiene mayor liquidez y las pizarras de las entidades bancarias están completamente actualizadas.
+                        Escribe el monto en el input interactivo cambiario de Impucálculo Argentina y el sistema convertirá de forma inmediata tu dinero a pesos argentinos (ARS) utilizando las cotizaciones vigentes del mercado oficial, blue, tarjeta o MEP en tiempo real.
                     </p>
                 </details>
             </div>
@@ -567,7 +520,7 @@
                 </a>
 
                 <!-- Privacidad -->
-                <a href="privacidad.html" title="Política de Privacidad"
+                <a href="../../privacidad.html" title="Política de Privacidad"
                     style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
                     onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#CE1126';this.style.color='#CE1126'"
                     onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
@@ -577,7 +530,7 @@
                 </a>
 
                 <!-- Blog -->
-                <a href="blog.html" title="Nuestro Blog"
+                <a href="../../blog.html" title="Nuestro Blog"
                     style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
                     onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#0038A8';this.style.color='#0038A8'"
                     onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
@@ -606,9 +559,9 @@
     </footer>
 
     <script>
-        window.currentCountry = 'DO';
+        window.currentCountry = 'AR';
     </script>
-    <script src="js/divisas-engine.js" defer></script>
+    <script src="../../js/divisas-engine.js" defer></script>
     <!-- PWA Install Button & Service Worker Registration -->
     <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
         <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
