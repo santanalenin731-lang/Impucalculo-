@@ -585,29 +585,26 @@
                 return `
                     <div class="px-6 py-5 grid grid-cols-12 gap-4 items-center hover:bg-dr-slate-50 transition-colors group">
                         <!-- 1. Institución -->
-                        <div class="col-span-4 md:col-span-3 flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-dr-slate-100 flex items-center justify-center font-black text-xs text-dr-slate-400 group-hover:bg-white border border-transparent group-hover:border-dr-slate-100 transition-all flex-shrink-0">
-                                ${bank.n.substring(0,2).toUpperCase()}
-                            </div>
+                        <div class="col-span-5 md:col-span-3 flex items-center">
                             <div class="min-w-0">
-                                <p class="text-sm font-black text-dr-slate-800 truncate" title="${bank.n}">${bank.n}</p>
-                                <span class="text-[9px] font-bold text-dr-slate-400 uppercase tracking-widest">${bank.s || 'Comercial'}</span>
+                                <p class="text-xs md:text-sm font-black text-dr-slate-800 leading-tight" title="${bank.n}">${bank.n}</p>
+                                <span class="text-[9px] font-bold text-dr-slate-400 uppercase tracking-widest block mt-0.5">${bank.s || 'Comercial'}</span>
                                 ${isBest ? `<span class="text-[9px] font-black text-emerald-600 uppercase bg-emerald-50 px-1.5 py-0.5 rounded tracking-widest mt-1 block w-max">Mejor Opción</span>` : ''}
                             </div>
                         </div>
                         
                         <!-- 2. Compra -->
-                        <div class="col-span-4 md:col-span-2 text-right ${currentMode === 'sell' ? 'bg-emerald-50/40 rounded-xl p-1.5 border border-emerald-100/50' : ''}">
-                            <p class="text-sm font-black ${currentMode === 'sell' ? 'text-emerald-700' : 'text-dr-slate-700'}">${bank.c > 0 ? formatCurrency(bank.c) : 'N/D'}</p>
-                            <p class="text-[10px]">${formatAbsoluteChange(diffC)}</p>
-                            ${amount > 1 && bank.c > 0 ? `<p class="text-[10px] font-black text-emerald-600 mt-0.5">Recibes: ${formatCurrency(totalC)}</p>` : ''}
+                        <div class="col-span-3 md:col-span-2 text-right ${currentMode === 'sell' ? 'bg-emerald-50/40 rounded-xl p-1.5 border border-emerald-100/50' : ''}">
+                            <p class="text-xs md:text-sm font-black ${currentMode === 'sell' ? 'text-emerald-700' : 'text-dr-slate-700'}">${bank.c > 0 ? formatCurrency(bank.c) : 'N/D'}</p>
+                            <p class="text-[9px] md:text-[10px]">${formatAbsoluteChange(diffC)}</p>
+                            ${amount > 1 && bank.c > 0 ? `<p class="text-[9px] md:text-[10px] font-black text-emerald-600 mt-0.5">Recibes: ${formatCurrency(totalC)}</p>` : ''}
                         </div>
                         
                         <!-- 3. Venta -->
                         <div class="col-span-4 md:col-span-2 text-right ${currentMode === 'buy' ? 'bg-dr-blue/5 rounded-xl p-1.5 border border-dr-blue/10' : ''}">
-                            <p class="text-sm font-black ${currentMode === 'buy' ? 'text-dr-blue' : 'text-dr-slate-700'}">${bank.v > 0 ? formatCurrency(bank.v) : 'N/D'}</p>
-                            <p class="text-[10px]">${formatAbsoluteChange(diffV)}</p>
-                            ${amount > 1 && bank.v > 0 ? `<p class="text-[10px] font-black text-dr-blue mt-0.5">Pagas: ${formatCurrency(totalV)}</p>` : ''}
+                            <p class="text-xs md:text-sm font-black ${currentMode === 'buy' ? 'text-dr-blue' : 'text-dr-slate-700'}">${bank.v > 0 ? formatCurrency(bank.v) : 'N/D'}</p>
+                            <p class="text-[9px] md:text-[10px]">${formatAbsoluteChange(diffV)}</p>
+                            ${amount > 1 && bank.v > 0 ? `<p class="text-[9px] md:text-[10px] font-black text-dr-blue mt-0.5">Pagas: ${formatCurrency(totalV)}</p>` : ''}
                         </div>
                         
                         <!-- 4. Variación -->
