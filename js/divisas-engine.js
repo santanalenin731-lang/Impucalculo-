@@ -154,8 +154,68 @@
             `;
         }
 
-        async function fetchAllRates() {
-            showLoading();
+        function updateSyncTimeDisplay(timeUtc) {
+            if (!timeUtc || !syncTimeDisp) return;
+            const date = new Date(timeUtc);
+            const locales = {
+                DO: 'es-DO',
+                AR: 'es-AR',
+                MX: 'es-MX',
+                CO: 'es-CO',
+                VE: 'es-VE'
+            };
+            syncTimeDisp.textContent = date.toLocaleTimeString(locales[currentCountry] || 'es-DO', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        async function fetchAllRates(isBackground = false) {
+            if (!isBackground) {
+                try {
+                    const cacheKey = 'rates_cache_' + currentCountry;
+                    const cachedStr = localStorage.getItem(cacheKey);
+                    if (cachedStr) {
+                        const cachedObj = JSON.parse(cachedStr);
+                        if (cachedObj && cachedObj.timestamp && cachedObj.data) {
+                            const ageMinutes = (Date.now() - cachedObj.timestamp) / (1000 * 60);
+                            
+                            // Si la caché es menor a 15 minutos, la usamos directamente e ignoramos la red
+                            if (ageMinutes < 15) {
+                                exchangeData = cachedObj.data;
+                                ratesCache[currentCountry] = exchangeData;
+                                
+                                updateSyncTimeDisplay(exchangeData.time_last_update_utc);
+                                renderAverageCard();
+                                renderBanks();
+                                initHistoryChart();
+                                if (typeof renderTopTicker === 'function') renderTopTicker();
+                                if (typeof updateHeaderFlag === 'function') updateHeaderFlag();
+                                return;
+                            }
+                            
+                            // Si la caché es menor a 12 horas, la usamos inmediatamente (SWR) pero disparamos fetch en segundo plano
+                            if (ageMinutes < 720) {
+                                exchangeData = cachedObj.data;
+                                ratesCache[currentCountry] = exchangeData;
+                                
+                                updateSyncTimeDisplay(exchangeData.time_last_update_utc);
+                                renderAverageCard();
+                                renderBanks();
+                                initHistoryChart();
+                                if (typeof renderTopTicker === 'function') renderTopTicker();
+                                if (typeof updateHeaderFlag === 'function') updateHeaderFlag();
+                                
+                                // Ejecutar fetch en segundo plano de forma silenciosa
+                                fetchAllRates(true);
+                                return;
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Error leyendo caché local:", e);
+                }
+
+                showLoading();
+            }
+
             const config = countryConfig[currentCountry];
             
             try {
@@ -168,10 +228,7 @@
                         exchangeData = await response.json();
                         ratesCache['DO'] = exchangeData;
                     }
-                    if (exchangeData.time_last_update_utc) {
-                        const date = new Date(exchangeData.time_last_update_utc);
-                        syncTimeDisp.textContent = date.toLocaleTimeString('es-DO', { hour: '2-digit', minute: '2-digit' });
-                    }
+                    updateSyncTimeDisplay(exchangeData.time_last_update_utc);
                 } else if (currentCountry === 'AR') {
                     if (ratesCache['AR']) {
                         exchangeData = ratesCache['AR'];
@@ -202,7 +259,13 @@
                             ratesCache['AR'] = exchangeData;
                         } catch (apiError) {
                             console.warn("Argentina API failed, using cached DO global rates fallback:", apiError);
-                            const doData = ratesCache['DO'];
+                            let doData = ratesCache['DO'];
+                            if (!doData) {
+                                try {
+                                    const cachedDO = localStorage.getItem('rates_cache_DO');
+                                    if (cachedDO) doData = JSON.parse(cachedDO).data;
+                                } catch (_) {}
+                            }
                             const arRate = (doData && doData.rates && doData.rates['ARS']) || 1470;
                             
                             const banks = [
@@ -223,10 +286,7 @@
                             ratesCache['AR'] = exchangeData;
                         }
                     }
-                    if (exchangeData.time_last_update_utc) {
-                        const date = new Date(exchangeData.time_last_update_utc);
-                        syncTimeDisp.textContent = date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
-                    }
+                    updateSyncTimeDisplay(exchangeData.time_last_update_utc);
                 } else if (currentCountry === 'MX') {
                     if (ratesCache['MX']) {
                         exchangeData = ratesCache['MX'];
@@ -260,7 +320,13 @@
                             ratesCache['MX'] = exchangeData;
                         } catch (apiError) {
                             console.warn("Mexico API failed, using cached DO global rates fallback:", apiError);
-                            const doData = ratesCache['DO'];
+                            let doData = ratesCache['DO'];
+                            if (!doData) {
+                                try {
+                                    const cachedDO = localStorage.getItem('rates_cache_DO');
+                                    if (cachedDO) doData = JSON.parse(cachedDO).data;
+                                } catch (_) {}
+                            }
                             const mxRate = (doData && doData.rates && doData.rates['MXN']) || 17.50;
                             
                             const banks = [
@@ -284,10 +350,7 @@
                             ratesCache['MX'] = exchangeData;
                         }
                     }
-                    if (exchangeData.time_last_update_utc) {
-                        const date = new Date(exchangeData.time_last_update_utc);
-                        syncTimeDisp.textContent = date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
-                    }
+                    updateSyncTimeDisplay(exchangeData.time_last_update_utc);
                 } else if (currentCountry === 'CO') {
                     if (ratesCache['CO']) {
                         exchangeData = ratesCache['CO'];
@@ -320,7 +383,13 @@
                             ratesCache['CO'] = exchangeData;
                         } catch (apiError) {
                             console.warn("Colombia API failed, using cached DO global rates fallback:", apiError);
-                            const doData = ratesCache['DO'];
+                            let doData = ratesCache['DO'];
+                            if (!doData) {
+                                try {
+                                    const cachedDO = localStorage.getItem('rates_cache_DO');
+                                    if (cachedDO) doData = JSON.parse(cachedDO).data;
+                                } catch (_) {}
+                            }
                             const coRate = (doData && doData.rates && doData.rates['COP']) || 3430.00;
                             
                             const banks = [
@@ -343,10 +412,7 @@
                             ratesCache['CO'] = exchangeData;
                         }
                     }
-                    if (exchangeData.time_last_update_utc) {
-                        const date = new Date(exchangeData.time_last_update_utc);
-                        syncTimeDisp.textContent = date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
-                    }
+                    updateSyncTimeDisplay(exchangeData.time_last_update_utc);
                 } else if (currentCountry === 'VE') {
                     if (ratesCache['VE']) {
                         exchangeData = ratesCache['VE'];
@@ -378,7 +444,13 @@
                             ratesCache['VE'] = exchangeData;
                         } catch (apiError) {
                             console.warn("Venezuela API failed, using cached DO global rates fallback:", apiError);
-                            const doData = ratesCache['DO'];
+                            let doData = ratesCache['DO'];
+                            if (!doData) {
+                                try {
+                                    const cachedDO = localStorage.getItem('rates_cache_DO');
+                                    if (cachedDO) doData = JSON.parse(cachedDO).data;
+                                } catch (_) {}
+                            }
                             const veRate = (doData && doData.rates && doData.rates['VES']) || 36.0;
                             
                             const banks = [
@@ -398,25 +470,31 @@
                             ratesCache['VE'] = exchangeData;
                         }
                     }
-                    if (exchangeData.time_last_update_utc) {
-                        const date = new Date(exchangeData.time_last_update_utc);
-                        syncTimeDisp.textContent = date.toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
-                    }
+                    updateSyncTimeDisplay(exchangeData.time_last_update_utc);
+                }
+
+                // Guardar en caché de localStorage
+                try {
+                    localStorage.setItem('rates_cache_' + currentCountry, JSON.stringify({
+                        timestamp: Date.now(),
+                        data: exchangeData
+                    }));
+                } catch (e) {
+                    console.warn("Error escribiendo caché local:", e);
                 }
 
                 renderAverageCard();
                 renderBanks();
                 initHistoryChart();
                 
-                // Actualizar marquesina del header para el país seleccionado
                 if (typeof renderTopTicker === 'function') renderTopTicker();
-                
-                // Actualizar bandera en la esquina superior derecha del header
                 if (typeof updateHeaderFlag === 'function') updateHeaderFlag();
 
             } catch (error) {
                 console.error("Error fetching rates:", error);
-                showError();
+                if (!isBackground) {
+                    showError();
+                }
             }
         }
 

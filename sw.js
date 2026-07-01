@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v48';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v48';
+const CACHE_NAME = 'impucalculo-v52';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v52';
 
 const STATIC_ASSETS = [
     '/',
@@ -13,6 +13,14 @@ const STATIC_ASSETS = [
     '/divisas/ve/index.html',
     '/js/divisas-engine.js',
     '/blog.html',
+    '/blog/ar/dolar-tarjeta-argentina.html',
+    '/blog/ar/dolar-mep-vs-blue.html',
+    '/blog/ve/como-facturar-bolivares-tasa-bcv.html',
+    '/blog/ve/brecha-cambiaria-oficial-promedio.html',
+    '/blog/co/que-es-trm-colombia.html',
+    '/blog/co/enviar-remesas-colombia.html',
+    '/blog/mx/mejor-opcion-remesas-mexico-eeuu.html',
+    '/blog/mx/calcular-tipo-cambio-dolar-mexico.html',
     '/manifest.json',
     '/logo_new.webp',
     '/icon-192.png',

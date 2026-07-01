@@ -7,7 +7,7 @@
 function doGet(e) {
   var limitMinutes = 60; // Cache de 1 hora
   var cache = CacheService.getScriptCache();
-  var cachedData = cache.get("tasas_impucalculo");
+  var cachedData = cache.get("tasas_multi_v1");
   
   if (cachedData != null) {
       return responderJSON(cachedData);

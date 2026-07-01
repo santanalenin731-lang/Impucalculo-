@@ -1534,129 +1534,108 @@
             });
         });
 
-        /* =============================================
-           BLOG CAROUSEL — INFINITE AUTO-SCROLL
-        ============================================= */
-        (function initBlogCarousel() {
+            (function initBlogCarousel() {
             const blogArticles = [
+                {
+                    title: 'Cómo Calcular el Dólar Tarjeta en Argentina 2026',
+                    category: 'Divisas',
+                    excerpt: 'Entiende la composición impositiva (Impuesto PAIS y retenciones AFIP) sobre compras en el exterior y cómo recuperar percepciones.',
+                    slug: 'blog/ar/dolar-tarjeta-argentina.html'
+                },
+                {
+                    title: 'Dólar MEP vs. Dólar Blue en Argentina',
+                    category: 'Divisas',
+                    excerpt: 'Diferencias legales, operativas y cómo se calcula la cotización implícita bursátil mediante la compra-venta de bonos con parking.',
+                    slug: 'blog/ar/dolar-mep-vs-blue.html'
+                },
+                {
+                    title: 'Cómo Facturar con la Tasa Oficial BCV en Venezuela',
+                    category: 'Comercio',
+                    excerpt: 'Guía para comercios sobre las obligaciones tributarias y de precios al facturar en bolívares usando la tasa oficial del Banco Central.',
+                    slug: 'blog/ve/como-facturar-bolivares-tasa-bcv.html'
+                },
+                {
+                    title: 'La Brecha Cambiaria en Venezuela: BCV vs. Promedio',
+                    category: 'Economía',
+                    excerpt: 'Analizamos las razones de la discrepancia de tasas en Venezuela, su impacto en la reposición de inventario y la devaluación.',
+                    slug: 'blog/ve/brecha-cambiaria-oficial-promedio.html'
+                },
+                {
+                    title: '¿Qué es la TRM en Colombia y Cómo se Calcula?',
+                    category: 'Finanzas',
+                    excerpt: 'Conoce qué significa la Tasa Representativa del Mercado, cómo la regula la Superfinanciera y cómo evitar recargos de spread.',
+                    slug: 'blog/co/que-es-trm-colombia.html'
+                },
+                {
+                    title: 'Cómo Enviar Remesas a Colombia: Tasas y Comisiones',
+                    category: 'Remesas',
+                    excerpt: 'Comparativa de giros familiares por canales digitales y tradicionales, cobro de comisiones y exención tributaria del 4x1000.',
+                    slug: 'blog/co/enviar-remesas-colombia.html'
+                },
+                {
+                    title: 'Mejor Opción para Enviar Remesas a México desde EE. UU.',
+                    category: 'Remesas',
+                    excerpt: 'Estudio de comisiones y tipo de cambio interbancario de remesadoras, cobros en OXXO o Elektra, y exenciones de impuestos del SAT.',
+                    slug: 'blog/mx/mejor-opcion-remesas-mexico-eeuu.html'
+                },
+                {
+                    title: 'Cómo Calcular el Tipo de Cambio del Dólar en México',
+                    category: 'Finanzas',
+                    excerpt: 'Descubre las diferencias entre el FIX oficial de Banxico y las cotizaciones minoristas de ventanilla en bancos comerciales.',
+                    slug: 'blog/mx/calcular-tipo-cambio-dolar-mexico.html'
+                },
                 {
                     title: 'Liquidación por Renuncia en RD: Guía de Derechos Adquiridos 2026',
                     category: 'Laboral',
-                    tagClass: 'tag-laboral',
-                    date: '22 junio 2026',
                     excerpt: 'Conoce tus derechos adquiridos al renunciar voluntariamente: vacaciones, regalía pascual y cómo evitar deducciones por preaviso.',
-                    slug: 'blog/liquidacion-renuncia-derechos-adquiridos.html',
-                    gradient: 'linear-gradient(135deg,#CE1126 0%,#E83550 50%,#0038A8 100%)',
-                    iconPath: 'M9 12h6M12 9v6m-7 6h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+                    slug: 'blog/liquidacion-renuncia-derechos-adquiridos.html'
                 },
                 {
                     title: 'Gastos Educativos DGII 2026: Cómo Solicitar la Devolución de ISR',
                     category: 'Fiscal',
-                    tagClass: 'tag-fiscal',
-                    date: '22 junio 2026',
                     excerpt: 'Reporta tus facturas con comprobante fiscal (NCF) de colegios y universidades para recibir un reembolso del ISR de la DGII (Ley 179-09).',
-                    slug: 'blog/gastos-educativos-dgii-ley-179-09.html',
-                    gradient: 'linear-gradient(135deg,#0038A8 0%,#7C3AED 60%,#CE1126 100%)',
-                    iconPath: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
+                    slug: 'blog/gastos-educativos-dgii-ley-179-09.html'
                 },
                 {
                     title: 'ISR en República Dominicana 2026: Guía Completa',
                     category: 'Fiscal',
-                    tagClass: 'tag-fiscal',
-                    date: '13 abril 2026',
                     excerpt: 'Todo sobre el Impuesto Sobre la Renta: tabla DGII actualizada, cálculo paso a paso y 4 ejemplos reales con salarios dominicanos.',
-                    slug: 'blog/isr-dominicano-guia.html',
-                    gradient: 'linear-gradient(135deg,#0038A8 0%,#1E50C8 50%,#CE1126 100%)',
-                    iconPath: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z'
+                    slug: 'blog/isr-dominicano-guia.html'
                 },
                 {
                     title: 'Prestaciones Laborales RD: Cálculo y Derechos 2026',
                     category: 'Laboral',
-                    tagClass: 'tag-laboral',
-                    date: '13 abril 2026',
                     excerpt: 'Preaviso, cesantía, vacaciones y regalía pascual explicados con fórmulas del Código de Trabajo y ejemplos reales.',
-                    slug: 'blog/prestaciones-laborales-guia.html',
-                    gradient: 'linear-gradient(135deg,#CE1126 0%,#E83550 50%,#0038A8 100%)',
-                    iconPath: 'M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z'
+                    slug: 'blog/prestaciones-laborales-guia.html'
                 },
                 {
                     title: 'Tasa de Cambio Dólar–Peso Dominicano 2026',
                     category: 'Divisas',
-                    tagClass: 'tag-divisas',
-                    date: '20 abril 2026',
                     excerpt: 'Compara las tasas de +30 bancos y agentes de cambio. Aprende a sacar el mejor provecho al cambio de dólares en RD.',
-                    slug: 'blog/tasa-cambio-dolar-rd.html',
-                    gradient: 'linear-gradient(135deg,#1E293B 0%,#334155 55%,#0038A8 100%)',
-                    iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    slug: 'blog/tasa-cambio-dolar-rd.html'
                 },
                 {
                     title: 'Regalía Pascual en República Dominicana 2026',
                     category: 'Laboral',
-                    tagClass: 'tag-laboral',
-                    date: '20 abril 2026',
-                    excerpt: 'Todo sobre el sueldo 13: cuánto es, cuándo se paga, cómo calcular el proporcional y qué pasa en renuncia o despido.',
-                    slug: 'blog/regalia-pascual-rd.html',
-                    gradient: 'linear-gradient(135deg,#CE1126 0%,#E53E1A 45%,#F59E0B 100%)',
-                    iconPath: 'M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7'
+                    excerpt: 'Todo sobre el sueldo 13: cuánto es, cuándo se paga, cómo calcular la regalía proporcional y qué pasa en renuncia o despido.',
+                    slug: 'blog/regalia-pascual-rd.html'
                 },
                 {
                     title: 'Bonificación Laboral RD: Ley 16-92 Explicada',
                     category: 'Laboral',
-                    tagClass: 'tag-laboral',
-                    date: '29 abril 2026',
                     excerpt: 'El 10% de utilidades netas, topes de 45 y 60 días, cálculo proporcional y por qué no paga TSS — todo con la ley en mano.',
-                    slug: 'blog/bonificacion-beneficios-rd.html',
-                    gradient: 'linear-gradient(135deg,#0038A8 0%,#0052D4 50%,#059669 100%)',
-                    iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                    slug: 'blog/bonificacion-beneficios-rd.html'
                 },
                 {
                     title: 'TSS, AFP y ARS en RD: Guía Definitiva 2026',
                     category: 'Fiscal',
-                    tagClass: 'tag-fiscal',
-                    date: '29 abril 2026',
                     excerpt: 'Descuentos de Seguridad Social desglosados: quién paga qué, topes de cotización, maternidad e IDOPPRIL.',
-                    slug: 'blog/tss-afp-ars-guia.html',
-                    gradient: 'linear-gradient(135deg,#0038A8 0%,#7C3AED 60%,#CE1126 100%)',
-                    iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+                    slug: 'blog/tss-afp-ars-guia.html'
                 },
                 {
                     title: 'Cómo Calcular tu Sueldo Neto en RD — Guía de Uso',
                     category: 'Educación',
-                    tagClass: 'tag-educacion',
-                    date: '13 abril 2026',
                     excerpt: 'Guía práctica para usar Impucálculo: ISR, TSS, prestaciones y divisas paso a paso. Incluye Pro Tips de ahorro fiscal.',
-                    slug: 'blog/guia-uso-v2.html',
-                    gradient: 'linear-gradient(135deg,#475569 0%,#64748B 55%,#0038A8 100%)',
-                    iconPath: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'
-                },
-                {
-                    title: 'Misión Impucálculo: Transparencia Fiscal para RD',
-                    category: 'Educación',
-                    excerpt: 'Cómo funciona el spread, dónde cambiar dólares, remesas y el impacto en tu ISR si cobras en USD.',
-                    slug: 'blog/tasa-cambio-dolar-rd.html'
-                },
-                {
-                    title: 'Regalía Pascual RD 2026: Cuánto Te Toca',
-                    category: 'Prestaciones',
-                    excerpt: 'Cuándo se paga el sueldo 13, cómo calcular la regalía proporcional y si paga ISR o TSS según la Ley 16-92.',
-                    slug: 'blog/regalia-pascual-rd.html'
-                },
-                {
-                    title: 'Bonificación en RD 2026',
-                    category: 'Laboral',
-                    excerpt: 'Todo sobre la participación en los beneficios: quiénes califican, plazos legales y topes de 45 o 60 días de salario.',
-                    slug: 'blog/bonificacion-beneficios-rd.html'
-                },
-                {
-                    title: 'Guía de TSS: AFP y ARS en RD',
-                    category: 'Seguridad Social',
-                    excerpt: 'Entiende tus descuentos de seguridad social, los porcentajes de AFP y ARS, y cómo verificar tus aportes como trabajador.',
-                    slug: 'blog/tss-afp-ars-guia.html'
-                },
-                {
-                    title: 'Guía de Uso para tus Finanzas',
-                    category: 'Tutorial',
-                    excerpt: 'Aprende a sacar el máximo provecho de nuestras calculadoras de ISR, prestaciones y divisas.',
                     slug: 'blog/guia-uso-v2.html'
                 },
                 {

@@ -144,4 +144,68 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ar/dolar-tarjeta-argentina.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/blog/ar/dolar-tarjeta-argentina.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ar/dolar-tarjeta-argentina.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ar/dolar-mep-vs-blue.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/blog/ar/dolar-mep-vs-blue.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ar/dolar-mep-vs-blue.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ve/como-facturar-bolivares-tasa-bcv.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/blog/ve/como-facturar-bolivares-tasa-bcv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ve/como-facturar-bolivares-tasa-bcv.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ve/brecha-cambiaria-oficial-promedio.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/blog/ve/brecha-cambiaria-oficial-promedio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ve/brecha-cambiaria-oficial-promedio.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/co/que-es-trm-colombia.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/blog/co/que-es-trm-colombia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/co/que-es-trm-colombia.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/co/enviar-remesas-colombia.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-co" href="https://impucalculo.com/blog/co/enviar-remesas-colombia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/co/enviar-remesas-colombia.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/mx/mejor-opcion-remesas-mexico-eeuu.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/blog/mx/mejor-opcion-remesas-mexico-eeuu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/mx/mejor-opcion-remesas-mexico-eeuu.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/mx/calcular-tipo-cambio-dolar-mexico.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/blog/mx/calcular-tipo-cambio-dolar-mexico.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/mx/calcular-tipo-cambio-dolar-mexico.html"/>
+  </url>
 </urlset>
