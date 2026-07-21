@@ -130,8 +130,8 @@
         }
 
         .logo-wrapper {
-            width: 280px;
-            height: 280px;
+            width: 252px;
+            height: 252px;
             margin: 0 auto;
             background: transparent;
             box-shadow: none;
@@ -183,10 +183,12 @@
             letter-spacing: -0.02em;
             color: var(--color-text-dark);
             margin-bottom: 1rem;
+            text-shadow: 0 16px 36px rgba(0, 56, 168, 0.20), 0 6px 14px rgba(0, 0, 0, 0.10);
         }
 
         .brand-name {
             display: inline-block;
+            filter: drop-shadow(0 12px 24px rgba(206, 17, 38, 0.22));
         }
 
         .hero-tagline {
@@ -263,6 +265,10 @@
             border-color: transparent;
         }
 
+        .btn:hover span {
+            color: #ffffff !important;
+        }
+
         /* Calcular mi Sueldo → rojo al hover */
         .btn-sueldo:hover {
             background: #CE1126;
@@ -275,10 +281,10 @@
             box-shadow: 0 16px 40px rgba(0,56,168,0.35);
         }
 
-        /* Convertir Divisas → negro al hover */
+        /* Convertir Divisas → verde al hover */
         .btn-divisas:hover {
-            background: #1E293B;
-            box-shadow: 0 16px 40px rgba(30,41,59,0.4);
+            background: #16A34A;
+            box-shadow: 0 16px 40px rgba(22,163,74,0.35);
         }
 
         .btn:active {
@@ -370,21 +376,21 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border: 1.5px solid var(--color-border);
             border-radius: 1.25rem;
-            padding: 1.5rem 1.75rem;
+            padding: 1.75rem 2rem;
             display: flex;
-            align-items: center;
-            gap: 1.25rem;
+            flex-direction: column;
+            justify-content: center;
             text-align: left;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             transform: translateY(20px);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px -6px rgba(0, 56, 168, 0.10);
+            box-shadow: 0 20px 45px -12px rgba(0, 56, 168, 0.18), 0 10px 20px -8px rgba(0, 0, 0, 0.08);
         }
 
         .service-card.is-visible {
@@ -411,24 +417,9 @@
         }
 
         .service-card:hover {
-            transform: translateX(6px);
-            border-color: rgba(0, 56, 168, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 56, 168, 0.12);
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            min-width: 56px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.08) rotate(4deg);
+            transform: translateY(-8px);
+            border-color: rgba(0, 56, 168, 0.25);
+            box-shadow: 0 30px 65px -10px rgba(0, 56, 168, 0.25), 0 18px 36px -10px rgba(0, 0, 0, 0.12);
         }
 
         .service-icon svg {
@@ -643,8 +634,8 @@
             }
 
             .logo-wrapper {
-                width: 160px;
-                height: 160px;
+                width: 144px;
+                height: 144px;
             }
 
             .cta-buttons {
@@ -960,8 +951,8 @@
                 </h1>
                 <div class="hero-tagline" style="font-weight: 900; letter-spacing: 0.1em;">
                     <span style="color: #CE1126;">SUELDOS</span> <span
-                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #64748B;">PRESTACIONES</span><span
-                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #0038A8;">DIVISAS</span>
+                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #0038A8;">PRESTACIONES</span><span
+                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #16A34A;">DIVISAS</span>
                 </div>
                 <p class="hero-subtitle">
                     Calcula tu sueldo neto, prestaciones laborales por despido o renuncia, y compara la tasa del dólar en vivo. Sin Excel ni registros.
@@ -971,26 +962,26 @@
             <div class="cta-buttons">
                 <!-- Calcular mi Sueldo: rojo al hover -->
                 <a href="calculadora.html" class="btn btn-sueldo" id="btn-sueldo">
-                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                    </svg>
-                    <span class="btn-label">Calcular mi Sueldo</span>
+                    <span class="btn-label">
+                        <span style="color: #CE1126;">CALCULAR MI</span><br>
+                        <span style="color: #0038A8;">SUELDO</span>
+                    </span>
                 </a>
 
                 <!-- Calcular Prestaciones: azul al hover -->
                 <a href="prestaciones.html" class="btn btn-prestaciones" id="btn-prestaciones">
-                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                    </svg>
-                    <span class="btn-label">Calcular Prestaciones</span>
+                    <span class="btn-label">
+                        <span style="color: #0038A8;">CALCULAR</span><br>
+                        <span style="color: #CE1126;">PRESTACIONES</span>
+                    </span>
                 </a>
 
-                <!-- Convertir Divisas: negro al hover -->
+                <!-- Convertir Divisas: verde al hover -->
                 <a href="divisas.html" class="btn btn-divisas" id="btn-divisas">
-                    <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span class="btn-label">Convertir Divisas</span>
+                    <span class="btn-label">
+                        <span style="color: #16A34A;">CONVERTIR</span><br>
+                        <span style="color: #0038A8;">DIVISAS</span>
+                    </span>
                 </a>
             </div>
 
@@ -1044,169 +1035,69 @@
             <div class="services-grid">
                 <!-- Card 1: Impuestos -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.1s;">
-                    <div class="service-icon" style="background:#CE1126;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Impuestos</h3>
-                        <p>Cálculo completo de tus impuestos mensuales y anuales con precisión normativa</p>
-                    </div>
+                    <h3>Impuestos</h3>
+                    <p>Cálculo completo de tus impuestos mensuales y anuales con precisión normativa</p>
                 </div>
 
                 <!-- Card 2: ISR -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.15s;">
-                    <div class="service-icon" style="background:#0038A8;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>ISR</h3>
-                        <p>Impuesto Sobre la Renta calculado automáticamente según tu escala salarial</p>
-                    </div>
+                    <h3>ISR</h3>
+                    <p>Impuesto Sobre la Renta calculado automáticamente según tu escala salarial</p>
                 </div>
 
                 <!-- Card 3: Seguridad Social -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.2s;">
-                    <div class="service-icon" style="background:#CE1126;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Seguridad Social (TSS)</h3>
-                        <p>Deducciones de ley (ARS y AFP) con aplicación automática de sus topes correspondientes.</p>
-                    </div>
+                    <h3>Seguridad Social (TSS)</h3>
+                    <p>Deducciones de ley (ARS y AFP) con aplicación automática de sus topes correspondientes.</p>
                 </div>
 
                 <!-- Card 5: Prestaciones -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.3s;">
-                    <div class="service-icon" style="background:#CE1126;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Prestaciones Laborales</h3>
-                        <p>Cálculo de finiquito laboral: cesantía, preaviso, vacaciones y regalía pascual</p>
-                    </div>
+                    <h3>Prestaciones Laborales</h3>
+                    <p>Cálculo de finiquito laboral: cesantía, preaviso, vacaciones y regalía pascual</p>
                 </div>
 
                 <!-- Card 6: Sueldo Neto -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.35s;">
-                    <div class="service-icon" style="background:#0038A8;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Sueldo Neto</h3>
-                        <p>Calcula exactamente cuánto recibirás en mano después de todos los descuentos</p>
-                    </div>
+                    <h3>Sueldo Neto</h3>
+                    <p>Calcula exactamente cuánto recibirás en mano después de todos los descuentos</p>
                 </div>
 
                 <!-- Card 7: Divisas -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.4s;">
-                    <div class="service-icon" style="background:#1E293B;">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Conversor de Divisas</h3>
-                        <p>Convierte rápidamente entre Dólar, Euro y Peso Dominicano con tasas de mercado en tiempo real</p>
-                    </div>
+                    <h3>Conversor de Divisas</h3>
+                    <p>Convierte rápidamente entre Dólar, Euro y Peso Dominicano con tasas de mercado en tiempo real</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Trust Section -->
-    <section class="trust-section">
-        <div class="container">
+    <section class="trust-section" style="padding: 5rem 2rem; background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);">
+        <div class="container" style="max-width: 960px; margin: 0 auto;">
+            <div class="section-header" data-scroll-reveal style="text-align:center; margin-bottom:3.5rem;">
+                <h2 style="font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 900;"><span style="color:#0038A8;">¿Por qué elegir</span> <span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo?</span></h2>
+                <p style="font-size: 1.15rem; color: #64748B; margin-top: 0.5rem;">Confiabilidad y precisión para República Dominicana</p>
+            </div>
 
-            <!-- 2-col layout: imagen | contenido -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;" class="trust-layout">
-
-                <!-- Columna izquierda: imagen -->
-                <div data-scroll-reveal style="border-radius:2rem; box-shadow: 0 40px 100px -20px rgba(0, 56, 168, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.15); line-height:0; flex-shrink:0;">
-                    <img
-                        src="hero-images/hero-blog.png"
-                        alt="Dominicano usando Impucálculo en su teléfono"
-                        style="width:100%; height:auto; display:block; border-radius:2rem;"
-                        loading="lazy">
+            <div class="trust-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem;">
+                <!-- Trust 1: Precision -->
+                <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.1s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 12px 32px -8px rgba(0,56,168,0.08);">
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: #0038A8; margin-bottom: 0.75rem;">Precisión Total</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo dominicano.</p>
                 </div>
 
-                <!-- Columna derecha: título + tarjetas -->
-                <div>
-                    <div class="section-header" data-scroll-reveal style="text-align:left; margin-bottom:3rem;">
-                        <h2><span style="color:#0038A8;">¿Por qué elegir</span> <span style="color:#CE1126;">Impucálculo?</span>
-                        </h2>
-                        <p>Confiabilidad y precisión para República Dominicana</p>
-                    </div>
-
-                    <div class="trust-grid" style="grid-template-columns:1fr; gap:1.5rem;">
-                        <!-- Trust 1: Precision -->
-                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.1s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
-                            <div class="trust-icon" style="background:rgba(0,56,168,0.07); flex-shrink:0;">
-                                <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
-                                    style="width:50px;height:50px;">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Precisión Total</h3>
-                                <p>Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo
-                                    dominicano</p>
-                            </div>
-                        </div>
-
-                        <!-- Trust 2: Ease of Use -->
-                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.2s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
-                            <div class="trust-icon" style="background:rgba(206,17,38,0.07); flex-shrink:0;">
-                                <svg fill="none" stroke="var(--color-primary-red)" stroke-width="2" viewBox="0 0 24 24"
-                                    style="width:50px;height:50px;">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>En 30 segundos</h3>
-                                <p>Ingresa tu salario y obtén tu desglose completo de ISR, AFP, ARS y neto al instante. Sin
-                                    fórmulas, sin errores.</p>
-                            </div>
-                        </div>
-
-                        <!-- Trust 3: Adaptado a RD -->
-                        <div class="trust-card" data-scroll-reveal style="transition-delay: 0.3s; text-align:left; flex-direction:row; display:flex; align-items:flex-start; gap:1.25rem;">
-                            <div class="trust-icon" style="background:rgba(0,56,168,0.07); flex-shrink:0;">
-                                <svg fill="none" stroke="var(--color-secondary-blue)" stroke-width="2" viewBox="0 0 24 24"
-                                    style="width:50px;height:50px;">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Adaptado a RD</h3>
-                                <p>100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Trust 2: Ease of Use -->
+                <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.2s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(206,17,38,0.12); box-shadow: 0 12px 32px -8px rgba(206,17,38,0.08);">
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: #CE1126; margin-bottom: 0.75rem;">En 30 segundos</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Ingresa tu salario y obtén tu desglose completo de ISR, AFP, ARS y neto al instante. Sin fórmulas, sin errores.</p>
                 </div>
 
+                <!-- Trust 3: Adaptado a RD -->
+                <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.3s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 12px 32px -8px rgba(0,56,168,0.08);">
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: #0038A8; margin-bottom: 0.75rem;">Adaptado a RD</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1255,8 +1146,8 @@
             <!-- Derecha: vs Alternativas -->
             <div style="display:flex; flex-direction:column; gap:1.25rem;">
                 <p
-                    style="font-size:0.8rem; font-weight:700; color:#0038A8; text-transform:uppercase; letter-spacing:0.15em; margin:0 0 0.5rem;">
-                    ¿Por qué no usar...?</p>
+                    style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; margin:0 0 0.5rem;">
+                    <span style="color:#0038A8;">¿Por qué otras opciones</span> <span style="color:#CE1126;">no bastan?</span></p>
                 <div>
                     <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Una hoja de Excel</p>
                     <p style="color:#64748B; font-size:0.9rem; margin:0;">Las fórmulas de Excel se desactualizan.
@@ -1379,22 +1270,22 @@
 
                 <div class="cta-buttons">
                     <a href="calculadora.html" class="btn btn-sueldo">
-                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                        <span class="btn-label">Calcular Impuestos</span>
+                        <span class="btn-label">
+                            <span style="color: #CE1126;">CALCULAR</span><br>
+                            <span style="color: #0038A8;">SUELDO</span>
+                        </span>
                     </a>
                     <a href="prestaciones.html" class="btn btn-prestaciones">
-                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        <span class="btn-label">Calcular Prestaciones</span>
+                        <span class="btn-label">
+                            <span style="color: #0038A8;">CALCULAR</span><br>
+                            <span style="color: #CE1126;">PRESTACIONES</span>
+                        </span>
                     </a>
                     <a href="divisas.html" class="btn btn-divisas">
-                        <svg class="btn-icon" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="btn-label">Convertir Divisas</span>
+                        <span class="btn-label">
+                            <span style="color: #16A34A;">CONVERTIR</span><br>
+                            <span style="color: #0038A8;">DIVISAS</span>
+                        </span>
                     </a>
                 </div>
             </div>

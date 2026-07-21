@@ -145,6 +145,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/calculo-prestaciones-empleadas-domesticas-rd.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://impucalculo.com/blog/ar/dolar-tarjeta-argentina.html</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -175,6 +187,22 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/blog/ve/brecha-cambiaria-oficial-promedio.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ve/brecha-cambiaria-oficial-promedio.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ve/calculo-igtf-impuesto-divisas-pagos-dolares-venezuela.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/blog/ve/calculo-igtf-impuesto-divisas-pagos-dolares-venezuela.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ve/calculo-igtf-impuesto-divisas-pagos-dolares-venezuela.html"/>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/blog/ve/guia-remesas-dolares-euros-bolivares-venezuela.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-ve" href="https://impucalculo.com/blog/ve/guia-remesas-dolares-euros-bolivares-venezuela.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/ve/guia-remesas-dolares-euros-bolivares-venezuela.html"/>
   </url>
   <url>
     <loc>https://impucalculo.com/blog/co/que-es-trm-colombia.html</loc>

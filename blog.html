@@ -54,8 +54,16 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--color-border);
+            padding: 1.1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(0, 56, 168, 0.14);
+            box-shadow: 
+                0 14px 35px -6px rgba(0, 0, 0, 0.09),
+                0 22px 50px -10px rgba(0, 56, 168, 0.12),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .container {
@@ -70,10 +78,40 @@
         }
 
         .hero-title h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             color: var(--color-text-dark);
+            letter-spacing: -0.03em;
+            text-shadow: 
+                0 1px 0 #CBD5E1,
+                0 2px 0 #94A3B8,
+                0 3px 0 #64748B,
+                0 4px 0 rgba(0, 56, 168, 0.35),
+                0 10px 24px rgba(0, 56, 168, 0.30),
+                0 20px 48px rgba(0, 0, 0, 0.18);
+            filter: drop-shadow(0 12px 24px rgba(0, 56, 168, 0.22));
+            transform: perspective(600px) translateZ(10px);
+        }
+
+        .hero-title h1 span:first-child {
+            color: #CE1126;
+            text-shadow: 
+                0 1px 0 #991B1B,
+                0 2px 0 #7F1D1D,
+                0 3px 0 #450A0A,
+                0 8px 24px rgba(206, 17, 38, 0.45),
+                0 18px 45px rgba(206, 17, 38, 0.25);
+        }
+
+        .hero-title h1 span:last-child {
+            color: #0038A8;
+            text-shadow: 
+                0 1px 0 #1E40AF,
+                0 2px 0 #1E3A8A,
+                0 3px 0 #172554,
+                0 8px 24px rgba(0, 56, 168, 0.45),
+                0 18px 45px rgba(0, 56, 168, 0.25);
         }
 
         .hero-title p {
@@ -252,10 +290,10 @@
 <body>
     <!-- Header -->
     <header class="header glass">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center;">
-            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
-                <img src="logo_new.webp" alt="Blog Finanzas e Impuestos RD - Impucálculo" style="width: 45px; height: 45px; object-fit: contain;">
-                <span style="font-size: 1.25rem; font-weight: 900; color: #1E293B;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.85rem;">
+                <img src="logo_new.webp" alt="Blog Finanzas e Impuestos RD - Impucálculo" style="width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,56,168,0.22));">
+                <span style="font-size: 1.35rem; font-weight: 900; color: #1E293B; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));">
                     <span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span>
                 </span>
             </a>
@@ -264,7 +302,7 @@
 
     <main class="container">
         <div class="hero-title">
-            <h1>Blog <span style="color: var(--color-primary-red);">Impu</span><span style="color: var(--color-secondary-blue);">cálculo</span></h1>
+            <h1>Blog <span>Impu</span><span>cálculo</span></h1>
             <p>Guías, análisis y consejos para dominar tus finanzas personales y cambiarias a nivel internacional.</p>
         </div>
 
@@ -331,6 +369,32 @@
                 </div>
             </a>
 
+            <!-- Artículo 21: Cómo Calcular el IGTF en Venezuela -->
+            <a href="blog/ve/calculo-igtf-impuesto-divisas-pagos-dolares-venezuela.html" class="blog-card glass" data-country="ve">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Divisas · Venezuela</span>
+                    <h3>Cómo Calcular el IGTF en Venezuela</h3>
+                    <p>Guía técnica del 3% del IGTF en divisas y efectivo, conversión a la tasa BCV oficial y exenciones tributarias del SENIAT.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 22: Guía de Remesas a Venezuela -->
+            <a href="blog/ve/guia-remesas-dolares-euros-bolivares-venezuela.html" class="blog-card glass" data-country="ve">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Remesas · Venezuela</span>
+                    <h3>Guía de Remesas a Venezuela 2026</h3>
+                    <p>Todo sobre recibir dólares y euros en Venezuela a la tasa oficial del BCV, casas de cambio (Zoom, Italcambio) y P2P.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
             <!-- Artículo 15: TRM en Colombia -->
             <a href="blog/co/que-es-trm-colombia.html" class="blog-card glass" data-country="co">
                 <div class="blog-card-content">
@@ -376,6 +440,32 @@
                     <span class="blog-card-tag">Finanzas · México</span>
                     <h3>Tipo de Cambio Dólar en México</h3>
                     <p>Aprende a calcular el tipo de cambio del dólar en ventanilla frente al FIX oficial de Banxico y los spreads bancarios de ventanilla.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 19: Cálculo de Preaviso y Cesantía -->
+            <a href="blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html" class="blog-card glass" data-country="do">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral · RD</span>
+                    <h3>Cómo Calcular Preaviso y Cesantía en RD</h3>
+                    <p>Guía paso a paso sobre el desahucio, el divisor 23.83, ejemplos prácticos con salarios reales y la sanción del Art. 86.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artículo 20: Prestaciones Empleadas Domésticas -->
+            <a href="blog/calculo-prestaciones-empleadas-domesticas-rd.html" class="blog-card glass" data-country="do">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral · RD</span>
+                    <h3>Prestaciones para Empleadas Domésticas</h3>
+                    <p>Todo sobre los derechos laborales de las trabajadoras del hogar en RD, Resolución 14-2022, vacaciones, sueldo 13 y TSS.</p>
                     <div class="read-more">
                         <span>Leer más</span>
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

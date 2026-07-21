@@ -114,6 +114,27 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 24px -8px rgba(0, 56, 168, 0.4);
         }
+
+        /* Botón 3D Parallax con profundidad */
+        .btn-calc-3d {
+            background: linear-gradient(135deg, #0038A8, #002673);
+            box-shadow: 0 14px 32px -6px rgba(0, 56, 168, 0.45), 0 6px 16px -4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.35s ease;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            position: relative;
+        }
+
+        .btn-calc-3d:hover {
+            transform: translateY(-8px) scale(1.06);
+            box-shadow: 0 26px 55px -8px rgba(0, 56, 168, 0.60), 0 14px 28px -6px rgba(0, 0, 0, 0.22);
+            background: linear-gradient(135deg, #0044CC, #0038A8);
+        }
+
+        .btn-calc-3d:active {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 22px -4px rgba(0, 56, 168, 0.4);
+        }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
@@ -162,19 +183,6 @@
                             class="text-dr-blue">2025-2026</span>
                     </p>
                 </div>
-            </a>
-            <div class="flex items-center gap-2 md:gap-4">
-                <button id="btn-sugerencias"
-                    class="flex items-center gap-1 md:gap-2 px-3 md:px-5 py-2.5 rounded-xl btn-gradient-blue text-white text-[10px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest transition-all hover:scale-105 active:scale-90 active:translate-y-1 shadow-lg shadow-dr-blue/20"
-                    aria-label="Dejar sugerencias">
-                    <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
-                        </path>
-                    </svg>
-                    <span class="hidden sm:inline">Sugerencias</span>
-                </button>
-            </div>
         </div>
     </header>
 
@@ -322,10 +330,12 @@
                 </div>
 
                 <!-- Botón Calcular -->
-                <button type="submit"
-                    class="w-full py-4 px-6 bg-dr-blue text-white text-lg font-bold uppercase tracking-widest rounded-2xl transition-all hover:scale-105 hover:shadow-2xl neo-shadow">
-                    Calcular Prestaciones
-                </button>
+                <div class="flex justify-center mt-6" style="perspective: 600px;">
+                    <button type="submit" id="btn-calcular-prestaciones"
+                        class="btn-calc-3d py-3.5 px-9 text-white text-base font-extrabold uppercase tracking-wider rounded-xl cursor-pointer">
+                        Calcular Prestaciones
+                    </button>
+                </div>
             </form>
         </div>
 
@@ -394,123 +404,320 @@
             </div>
         </div>
 
-        <!-- Metodología de Cálculo -->
-        <section id="metodologia" class="mt-32 space-y-16 animate-slide-up" style="animation-delay: 0.4s;">
-            <div class="text-center space-y-4">
-                <div
-                    class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full mb-2">
-                    Derechos Laborales</div>
-                <h2 class="text-4xl font-black tracking-tight"><span class="text-dr-red">Metodología</span> <span
-                        class="text-dr-blue">de Cálculo</span></h2>
-                <p class="text-dr-slate-500 font-medium max-w-2xl mx-auto">Conoce los detalles y reglas que aplicamos
-                    para calcular tus prestaciones según el Código de Trabajo Dominicano.</p>
+        <!-- Guía Definitiva SEO: Cómo Calcular las Prestaciones Laborales en República Dominicana -->
+        <section id="metodologia" class="mt-20 space-y-16 animate-slide-up" style="animation-delay: 0.4s;">
+            
+            <!-- Encabezado del Artículo -->
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <div class="inline-flex px-4 py-1.5 bg-dr-blue/10 text-dr-blue text-xs font-black uppercase tracking-widest rounded-full">
+                    Guía Completa de Derechos Laborales RD (Ley 16-92)
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                    <span style="color:#0038A8;">Cómo Calcular las Prestaciones Laborales</span> <br class="hidden md:block">
+                    <span style="color:#CE1126;">en República Dominicana (2025-2026)</span>
+                </h2>
+                <p class="text-lg text-dr-slate-600 font-medium leading-relaxed">
+                    Aprende todo lo que necesitas saber sobre el cálculo de prestaciones laborales, auxilio de cesantía, preaviso, vacaciones y salario de navidad según el Código de Trabajo dominicano.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1: Preaviso -->
-                <div
-                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
-                    <div class="space-y-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
-                            1</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Preaviso</h3>
-                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                Días de anticipación o pago equivalente según tiempo laborado:
-                                <br><br>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">7 días</span><span class="text-xs">3 a 6 meses</span>
-                                </span>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">14 días</span><span class="text-xs">6 meses a 1 año</span>
-                                </span>
-                                <span class="flex justify-between">
-                                    <span class="font-bold">28 días</span><span class="text-xs">Más de 1 año</span>
-                                </span>
+            <!-- Contenido Principal del Artículo SEO -->
+            <article class="max-w-4xl mx-auto space-y-12 text-dr-slate-700 leading-relaxed font-medium">
+
+                <!-- Introducción -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        📌 Introducción a las Prestaciones Laborales en República Dominicana
+                    </h3>
+                    <p>
+                        El cálculo de las <strong>prestaciones laborales en República Dominicana</strong> es una de las consultas jurídicas y financieras más frecuentes entre trabajadores, contadores y departamentos de gestión humana. Reguladas rigurosamente por el <strong>Código de Trabajo de la República Dominicana (Ley 16-92)</strong> y fiscalizadas por el <strong>Ministerio de Trabajo</strong>, las prestaciones representan un conjunto de indemnizaciones y derechos adquiridos diseñados para proteger al trabajador en caso de la terminación del contrato de trabajo.
+                    </p>
+                    <p>
+                        Tanto si has sido objeto de un <strong>desahucio (despido sin causa justa)</strong> por parte de tu empleador, como si estás considerando presentar tu <strong>renuncia voluntaria</strong>, es vital comprender exactamente cuánto dinero te corresponde por concepto de <em>Preaviso, Cesantía, Vacaciones acumuladas y Salario de Navidad (Regalía Pascual)</em>.
+                    </p>
+                </div>
+
+                <!-- Sección 1: Derechos Adquiridos vs Indemnizaciones -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        ⚖️ Diferencia entre Derechos Adquiridos e Indemnizaciones Laborales
+                    </h3>
+                    <p>
+                        Para calcular correctamente el monto a recibir al finalizar una relación de trabajo en RD, el primer paso legal es diferenciar entre dos conceptos fundamentales:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="bg-white p-6 rounded-2xl border-2 border-dr-blue/20 shadow-sm space-y-3">
+                            <div class="text-dr-blue font-black text-lg">1. Derechos Adquiridos (Irrenunciables)</div>
+                            <p class="text-sm leading-relaxed text-dr-slate-600">
+                                Son aquellos beneficios que pertenecen al trabajador por el simple hecho de haber laborado, <strong>independientemente del motivo de salida</strong> (incluso en caso de renuncia o despido justificado). Incluyen:
                             </p>
+                            <ul class="list-disc list-inside text-sm font-bold text-dr-slate-800 space-y-1">
+                                <li>Salario de Navidad (Regalía Pascual - Sueldo 13)</li>
+                                <li>Vacaciones no disfrutadas o proporcionales</li>
+                                <li>Salarios pendientes de pago</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl border-2 border-dr-red/20 shadow-sm space-y-3">
+                            <div class="text-dr-red font-black text-lg">2. Indemnizaciones por Desahucio</div>
+                            <p class="text-sm leading-relaxed text-dr-slate-600">
+                                Son compensaciones económicas otorgadas únicamente cuando la empresa ejerce el derecho de <strong>desahucio</strong> (terminación del contrato sin culpa del trabajador). Incluyen:
+                            </p>
+                            <ul class="list-disc list-inside text-sm font-bold text-dr-slate-800 space-y-1">
+                                <li>Auxilio de Cesantía (Art. 80)</li>
+                                <li>Omisión de Preaviso (Art. 76)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Cesantía -->
-                <div
-                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
-                    <div class="space-y-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
-                            2</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Cesantía</h3>
-                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                Auxilio económico por desahucio (días de salario promedio):
-                                <br><br>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">6 días</span><span class="text-xs">3 a 6 meses</span>
-                                </span>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">13 días</span><span class="text-xs">6 meses a 1 año</span>
-                                </span>
-                                <span class="flex justify-between">
-                                    <span class="font-bold">21 días/año</span><span class="text-xs">Más de 1 año</span>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Sección 2: Componentes Detallados y Tablas Legal -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-8">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        📊 Los 4 Componentes de las Prestaciones Laborales
+                    </h3>
 
-                <!-- Card 3: Vacaciones -->
-                <div
-                    class="glass rounded-[2rem] p-10 neo-shadow border border-white transition-all hover:scale-[1.02] hover:shadow-xl">
-                    <div class="space-y-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
-                            3</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Vacaciones</h3>
-                            <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                Descanso remunerado anual o proporción si no se ha disfrutado:
-                                <br><br>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">14 días</span><span class="text-xs">1 a 5 años</span>
-                                </span>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">18 días</span><span class="text-xs">Más de 5 años</span>
-                                </span>
-                                <span class="flex justify-between">
-                                    <span class="font-bold pt-2 block text-xs italic text-dr-slate-400">Escala
-                                        proporcional desde los 5 meses</span>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Nota Técnica Regalía -->
-            <div
-                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] relative overflow-hidden group">
-                <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
-                </div>
-                <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Salario de Navidad
-                                (Regalía)</h4>
-                        </div>
-                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
-                            Conocido como el "sueldo 13", corresponde a la <span
-                                class="text-dr-blue font-black">duodécima parte (1/12)</span> del total de salarios
-                            ordinarios devengados por el trabajador en el año calendario.
-                            <span
-                                class="block mt-4 text-sm font-bold text-dr-slate-400 uppercase tracking-wider italic">
-                                * Este derecho es irrenunciable y está exento de impuestos.
-                            </span>
+                    <!-- 1. Preaviso -->
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-dr-blue flex items-center gap-2">
+                            <span>1️⃣ Preaviso (Artículos 76 al 79 del Código de Trabajo)</span>
+                        </h4>
+                        <p class="text-sm leading-relaxed">
+                            El <strong>Preaviso</strong> es la notificación previa que debe dar una de las partes cuando desea poner fin a un contrato de trabajo por tiempo indefinido. Si el empleador no le otorga el plazo de aviso previo al trabajador al momento del desahucio, está obligado a pagarle en dinero los días equivalentes según su antigüedad:
                         </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-dr-slate-200">
+                                <thead>
+                                    <tr class="bg-dr-blue text-white font-bold">
+                                        <th class="p-3.5">Tiempo de Trabajo Continuo</th>
+                                        <th class="p-3.5 text-right">Plazo de Preaviso / Días a Pagar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dr-slate-100">
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 3 a 6 meses de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-blue">7 días de salario promedio</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 6 meses a 1 año de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-blue">14 días de salario promedio</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">Más de 1 año de servicio continuo</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-blue">28 días de salario promedio</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 2. Cesantía -->
+                    <div class="space-y-4 pt-4">
+                        <h4 class="text-xl font-bold text-dr-red flex items-center gap-2">
+                            <span>2️⃣ Auxilio de Cesantía (Artículos 80 al 86)</span>
+                        </h4>
+                        <p class="text-sm leading-relaxed">
+                            El <strong>Auxilio de Cesantía</strong> es la indemnización económica que el empleador debe pagar al trabajador desahuciado para asistirlo mientras busca un nuevo empleo. Se calcula en base a los días de salario por cada año laborado:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-dr-slate-200">
+                                <thead>
+                                    <tr class="bg-dr-red text-white font-bold">
+                                        <th class="p-3.5">Antigüedad en la Empresa</th>
+                                        <th class="p-3.5 text-right">Días de Cesantía a Pagar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dr-slate-100">
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 3 a 6 meses de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-red">6 días de salario</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 6 meses a 1 año de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-red">13 días de salario</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 1 a 5 años de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-red">21 días por cada año laborado</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">Más de 5 años de servicio continuo</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-red">23 días por cada año laborado</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 3. Vacaciones -->
+                    <div class="space-y-4 pt-4">
+                        <h4 class="text-xl font-bold text-dr-blue flex items-center gap-2">
+                            <span>3️⃣ Vacaciones Remuneradas (Artículos 177 al 191)</span>
+                        </h4>
+                        <p class="text-sm leading-relaxed">
+                            Todo trabajador dominicano tiene derecho a un descanso anual remunerado tras cumplir un año de trabajo ininterrumpido. Si el contrato finaliza antes de disfrutar sus vacaciones acumuladas, se pagan según esta escala legal:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-dr-slate-200">
+                                <thead>
+                                    <tr class="bg-dr-slate-800 text-white font-bold">
+                                        <th class="p-3.5">Tiempo de Trabajo</th>
+                                        <th class="p-3.5 text-right">Días Salario Vacaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dr-slate-100">
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">5 meses de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">6 días</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">6 meses de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">7 días</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">7 a 11 meses de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">Escala de 8 a 12 días</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">De 1 a 5 años de servicio</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">14 días ordinarios de salario</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">Más de 5 años de servicio continuo</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">18 días ordinarios de salario</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 4. Salario de Navidad -->
+                    <div class="space-y-4 pt-4">
+                        <h4 class="text-xl font-bold text-dr-green flex items-center gap-2" style="color: #16A34A;">
+                            <span>4️⃣ Salario de Navidad / Regalía Pascual (Artículos 219 al 222)</span>
+                        </h4>
+                        <p class="text-sm leading-relaxed">
+                            Conocido popularmente como el <strong>"Sueldo 13"</strong>, consiste en la <strong>duodécima parte (1/12)</strong> del total de salarios ordinarios devengados por el trabajador durante el año calendario (del 1 de enero al 31 de diciembre o la fracción laborada).
+                        </p>
+                        <div class="bg-green-50 p-5 rounded-2xl border border-green-200 text-sm text-green-900 font-bold leading-relaxed">
+                            💡 **Regla de Oro en RD:** El Salario de Navidad es un derecho irrenunciable, **libre de impuestos (ISR)** y no sujeto a retenciones de la Tesorería de la Seguridad Social (TSS).
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Sección 3: Fórmula del Salario Diario (Factor 23.83) -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        🧮 La Fórmula del Salario Diario Promedio: ¿Por qué usamos el Factor 23.83?
+                    </h3>
+                    <p>
+                        En la República Dominicana, los sueldos se pactan de forma mensual, pero las prestaciones se liquidan por días laborables. El Código de Trabajo establece divisores fijos oficiales para determinar el <strong>salario diario promedio</strong> según la frecuencia de cobro:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white p-5 rounded-2xl border-2 border-dr-blue/20">
+                            <div class="text-xs uppercase font-extrabold text-dr-slate-500 mb-1">Cobro Mensual</div>
+                            <div class="text-2xl font-black text-dr-blue">Salario ÷ 23.83</div>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border-2 border-dr-blue/20">
+                            <div class="text-xs uppercase font-extrabold text-dr-slate-500 mb-1">Cobro Quincenal</div>
+                            <div class="text-2xl font-black text-dr-blue">Salario ÷ 11.91</div>
+                        </div>
+                        <div class="bg-white p-5 rounded-2xl border-2 border-dr-blue/20">
+                            <div class="text-xs uppercase font-extrabold text-dr-slate-500 mb-1">Cobro Semanal</div>
+                            <div class="text-2xl font-black text-dr-blue">Salario ÷ 5.95</div>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo Practico con Numeros Realistas -->
+                    <div class="bg-dr-slate-900 text-white p-8 rounded-3xl space-y-4 shadow-xl">
+                        <div class="text-dr-red font-black text-xs uppercase tracking-widest">Ejemplo Práctico de Cálculo</div>
+                        <h4 class="text-xl font-black">Caso: Empleado con RD$ 35,000 mensuales y 2 años de trabajo</h4>
+                        <div class="space-y-2 text-sm text-dr-slate-300 font-mono">
+                            <p>• Salario Diario Promedio = RD$ 35,000 / 23.83 = <strong class="text-white">RD$ 1,468.74</strong></p>
+                            <p>• Preaviso (28 días) = 28 x 1,468.74 = <strong class="text-white">RD$ 41,124.72</strong></p>
+                            <p>• Cesantía (21 días x 2 años = 42 días) = 42 x 1,468.74 = <strong class="text-white">RD$ 61,687.08</strong></p>
+                            <p>• Vacaciones No Disfrutadas (14 días) = 14 x 1,468.74 = <strong class="text-white">RD$ 20,562.36</strong></p>
+                            <p class="text-base text-dr-blue font-bold pt-2 border-t border-dr-slate-700">➔ TOTAL ESTIMADO DE PRESTACIONES = <span class="text-white font-black text-xl">RD$ 123,374.16</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 4: Plazos Legales y Penalidad por Mora (Art. 86) -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        ⏰ Plazo de Pago y Recargo por Retardo (Artículo 86)
+                    </h3>
+                    <p>
+                        De acuerdo con el <strong>Artículo 86 del Código de Trabajo de la República Dominicana</strong>, una vez ejercido el desahucio, el empleador dispone de un plazo improrrogable de <strong>diez (10) días laborables</strong> para liquidar el pago total de las prestaciones laborales.
+                    </p>
+                    <div class="p-6 bg-red-50 border-2 border-dr-red/30 rounded-2xl text-sm text-dr-red font-bold leading-relaxed">
+                        ⚠️ **Sanción Legal por Incumplimiento:** Si la empresa excede los 10 días laborables sin pagar el monto adeudado, deberá abonar al trabajador un recargo de **un (1) día de salario completo por cada día de retardo** incurrido, además de los intereses legales correspondientes.
+                    </div>
+                </div>
+
+                <!-- Sección 5: FAQ Accordion (Preguntas Frecuentes) -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        ❓ Preguntas Frecuentes sobre Prestaciones en RD
+                    </h3>
+
+                    <div class="space-y-4">
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿Tengo derecho a cesantía si presento mi renuncia voluntaria?</span>
+                                <span class="text-dr-blue group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                No. Al renunciar voluntariamente no aplica el auxilio de cesantía ni el pago de preaviso por parte del empleador. Sin embargo, conservas el 100% de tus <strong>derechos adquiridos</strong>: el Salario de Navidad acumulado y las vacaciones no disfrutadas.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿Las comisiones y horas extras forman parte del cálculo?</span>
+                                <span class="text-dr-blue group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                Sí. Todas las remuneraciones ordinarias (comisiones por ventas, incentivos fijos y horas extraordinarias habituales) devengadas en los últimos 12 meses se promedian para obtener el salario mensual computable según la Ley 16-92.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿Dónde puedo hacer una reclamación formal si la empresa no me paga?</span>
+                                <span class="text-dr-blue group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                Puedes acudir a las oficinas de la <strong>Dirección General de Trabajo (Ministerio de Trabajo de la República Dominicana)</strong> o iniciar una mediación con asistencia legal de un abogado especialista en derecho laboral.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- JSON-LD Structured Data Schema for Google Search -->
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "Cómo Calcular las Prestaciones Laborales en República Dominicana (Ley 16-92)",
+              "description": "Guía completa y calculadora oficial para determinar el pago de prestaciones laborales, cesantía, preaviso, vacaciones y salario de navidad en RD.",
+              "author": {
+                "@type": "Organization",
+                "name": "Impucálculo República Dominicana"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Impucálculo",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://impucalculo.com/logo-antigravity.svg"
+                }
+              },
+              "mainEntityOfPage": "https://impucalculo.com/prestaciones.html"
+            }
+            </script>
         </section>
 
     </main>
@@ -994,144 +1201,18 @@
         }
     </script>
 
-    <!-- Modal de Sugerencias -->
-    <div id="modal-sugerencias" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-dr-slate-900/40 backdrop-blur-sm transition-opacity"
-            onclick="closeSuggestionsModal()"></div>
-
-        <!-- Modal Content -->
-        <div
-            class="glass relative w-full max-w-lg rounded-[2.5rem] p-8 neo-shadow border border-white animate-slide-up">
-            <button onclick="closeSuggestionsModal()"
-                class="absolute top-6 right-6 text-dr-slate-400 hover:text-dr-red transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
-
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-dr-blue/10 flex items-center justify-center text-dr-blue">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
-                        </path>
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-black tracking-tight"><span class="text-dr-blue">Tu Feedback</span> <span
-                            class="text-dr-red">importa</span></h2>
-                    <p class="text-xs font-bold text-dr-slate-800 uppercase tracking-widest">Ayúdanos a mejorar
-                        Impucálculo</p>
-                </div>
-            </div>
-
-            <form id="form-sugerencias" class="space-y-6">
-                <div id="feedback-success"
-                    class="hidden p-4 bg-green-50 text-green-700 rounded-2xl border border-green-100 text-center font-bold animate-fade-in">
-                    ¡Gracias! Tu sugerencia ha sido recibida. ✨
-                </div>
-
-                <div class="space-y-4" id="feedback-fields">
-                    <div>
-                        <label
-                            class="block text-[10px] font-black text-dr-slate-800 uppercase tracking-widest mb-2">Nombre
-                            (Opcional)</label>
-                        <input type="text" id="feedback-name" placeholder="Tu nombre"
-                            class="w-full px-5 py-4 bg-dr-slate-50 border-2 border-dr-slate-100 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue outline-none transition-all">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black text-dr-slate-800 uppercase tracking-widest mb-2">Tu
-                            Sugerencia</label>
-                        <textarea id="feedback-message" required rows="4"
-                            placeholder="¿Cómo podemos mejorar la aplicación?"
-                            class="w-full px-5 py-4 bg-white border-2 border-dr-blue/20 rounded-2xl text-dr-slate-900 font-bold focus:border-dr-blue outline-none transition-all resize-none"></textarea>
-                    </div>
-                    <button type="submit"
-                        class="w-full py-5 rounded-[1.5rem] btn-gradient-blue text-white font-black text-lg uppercase tracking-widest hover:scale-[1.02] transition-transform">
-                        Enviar Sugerencia
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Funciones para el Modal de Sugerencias
-        const suggestionsModal = document.getElementById('modal-sugerencias');
-        const suggestBtn = document.getElementById('btn-sugerencias');
-        const feedbackForm = document.getElementById('form-sugerencias');
-        const feedbackFields = document.getElementById('feedback-fields');
-        const feedbackSuccess = document.getElementById('feedback-success');
-
-        // REEMPLAZA ESTA URL CON LA DE TU GOOGLE APPS SCRIPT
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweavYg0Hu3kftiPB58R07F4bV0jHInti62LfBk5wx7I_TblYv-vBnMsciKwpTwxHL9/exec';
-
-        function openSuggestionsModal() {
-            suggestionsModal.classList.remove('hidden');
-            suggestionsModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-            feedbackFields.classList.remove('hidden');
-            feedbackSuccess.classList.add('hidden');
-            feedbackForm.reset();
-        }
-
-        function closeSuggestionsModal() {
-            suggestionsModal.classList.add('hidden');
-            suggestionsModal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
-
-        if (suggestBtn) {
-            suggestBtn.addEventListener('click', openSuggestionsModal);
-        }
-
-        if (feedbackForm) {
-            feedbackForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                // Evitar doble envío
-                const submitBtn = feedbackForm.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerText;
-                submitBtn.disabled = true;
-                submitBtn.innerText = 'Enviando...';
-                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-                // Recopilar datos
-                const name = document.getElementById('feedback-name').value;
-                const message = document.getElementById('feedback-message').value;
-
-                // Enviar a Google Sheets
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        message: message,
-                        source: 'Calculadora Prestaciones (prestaciones.html)'
-                    })
-                }).then(() => {
-                    feedbackFields.classList.add('hidden');
-                    feedbackSuccess.classList.remove('hidden');
-                    setTimeout(() => {
-                        closeSuggestionsModal();
-                        // Resetear botón después de cerrar
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    }, 2500);
-                }).catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al enviar tu sugerencia.');
-                    // Resetear botón en caso de error
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                });
+        // 3D Parallax Tilt Effect for Calculate Button
+        const btn3d = document.getElementById('btn-calcular-prestaciones');
+        if (btn3d) {
+            btn3d.addEventListener('mousemove', (e) => {
+                const rect = btn3d.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn3d.style.transform = `translateY(-8px) scale(1.06) rotateX(${-y / 4}deg) rotateY(${x / 6}deg)`;
+            });
+            btn3d.addEventListener('mouseleave', () => {
+                btn3d.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
             });
         }
     </script>
