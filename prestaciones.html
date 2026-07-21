@@ -183,6 +183,7 @@
                             class="text-dr-blue">2025-2026</span>
                     </p>
                 </div>
+            </a>
         </div>
     </header>
 
@@ -203,37 +204,17 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Fecha Ingreso -->
                         <div class="relative group">
-                            <label for="display-ingreso" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                            <label for="fecha-ingreso" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
                                 Ingreso</label>
-                            <div class="relative flex items-center">
-                                <input type="text" id="display-ingreso"
-                                    class="w-full px-4 py-3 pr-12 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
-                                    placeholder="DD/MM/YYYY" maxlength="10">
-                                <button type="button" class="absolute right-3 p-1.5 text-dr-slate-400 hover:text-dr-blue transition-colors focus:outline-none" onclick="document.getElementById('fecha-ingreso').showPicker()">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                    </svg>
-                                </button>
-                                <input type="date" id="fecha-ingreso" required
-                                    class="absolute right-3 w-5 h-5 opacity-0 pointer-events-none">
-                            </div>
+                            <input type="date" id="fecha-ingreso" required
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white text-dr-slate-900 cursor-pointer">
                         </div>
                         <!-- Fecha Salida -->
                         <div class="relative group">
-                            <label for="display-salida" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
+                            <label for="fecha-salida" class="block text-sm font-bold text-dr-slate-700 mb-2">Fecha de
                                 Salida</label>
-                            <div class="relative flex items-center">
-                                <input type="text" id="display-salida"
-                                    class="w-full px-4 py-3 pr-12 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white"
-                                    placeholder="DD/MM/YYYY" maxlength="10">
-                                <button type="button" class="absolute right-3 p-1.5 text-dr-slate-400 hover:text-dr-blue transition-colors focus:outline-none" onclick="document.getElementById('fecha-salida').showPicker()">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                    </svg>
-                                </button>
-                                <input type="date" id="fecha-salida" required
-                                    class="absolute right-3 w-5 h-5 opacity-0 pointer-events-none">
-                            </div>
+                            <input type="date" id="fecha-salida" required
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white text-dr-slate-900 cursor-pointer">
                         </div>
                     </div>
                     <div id="antiguedad-display" class="p-4 bg-dr-blue/5 rounded-xl hidden">
@@ -889,114 +870,45 @@
         // Update antiguedad display
         const fechaIngresoInput = document.getElementById('fecha-ingreso');
         const fechaSalidaInput = document.getElementById('fecha-salida');
-        const displayIngreso = document.getElementById('display-ingreso');
-        const displaySalida = document.getElementById('display-salida');
 
-        const updateDateInputDisplay = (input, display) => {
-            const isoDate = input.value;
-            if (isoDate) {
-                const [y, m, d] = isoDate.split('-');
-                display.value = `${d}/${m}/${y}`;
+        function updateAntiguedad() {
+            const display = document.getElementById('antiguedad-display');
+            const text = document.getElementById('antiguedad-text');
+
+            if (fechaIngresoInput.value && fechaSalidaInput.value) {
+                const inicio = new Date(fechaIngresoInput.value + 'T00:00:00');
+                const fin = new Date(fechaSalidaInput.value + 'T00:00:00');
+
+                if (isNaN(inicio.getTime()) || isNaN(fin.getTime())) {
+                    display.classList.add('hidden');
+                    return;
+                }
+
+                if (fin <= inicio) {
+                    display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
+                    text.innerHTML = '<span class="text-dr-red font-bold">⚠️ La fecha de salida debe ser posterior a la fecha de ingreso.</span>';
+                    display.classList.remove('hidden');
+                    return;
+                }
+
+                const ant = calculateAntiguedad(inicio, fin);
+                display.className = 'p-4 bg-dr-blue/5 rounded-xl';
+                text.innerHTML = `<span class="text-dr-blue font-bold">Antigüedad: ${ant.years} años, ${ant.months} meses</span>`;
+                display.classList.remove('hidden');
             } else {
-                display.value = '';
+                display.classList.add('hidden');
             }
-        };
-
-        // Auto-format DD/MM/YYYY on text inputs and sync to date inputs
-        const setupDateInputSync = (displayInput, hiddenInput) => {
-            displayInput.addEventListener('input', (e) => {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 8) value = value.slice(0, 8);
-                
-                let formattedValue = '';
-                if (value.length > 0) {
-                    formattedValue = value.slice(0, 2);
-                    if (value.length > 2) {
-                        formattedValue += '/' + value.slice(2, 4);
-                        if (value.length > 4) {
-                            formattedValue += '/' + value.slice(4, 8);
-                        }
-                    }
-                }
-                e.target.value = formattedValue;
-
-                // Sync to native date input if complete and valid
-                if (formattedValue.length === 10) {
-                    const [d, m, y] = formattedValue.split('/');
-                    if (y && y.length === 4) {
-                        const dateStr = `${y}-${m}-${d}`;
-                        const parsedDate = new Date(dateStr + 'T00:00:00');
-                        if (!isNaN(parsedDate.getTime()) && 
-                            parsedDate.getFullYear() === parseInt(y) && 
-                            (parsedDate.getMonth() + 1) === parseInt(m) && 
-                            parsedDate.getDate() === parseInt(d)) {
-                            
-                            hiddenInput.value = dateStr;
-                            hiddenInput.dispatchEvent(new Event('change'));
-                        }
-                    }
-                }
-            });
-
-            // Reset input to last valid value if invalid on blur
-            displayInput.addEventListener('blur', (e) => {
-                const val = e.target.value;
-                if (val.trim() === '') {
-                    hiddenInput.value = '';
-                    hiddenInput.dispatchEvent(new Event('change'));
-                } else if (val.length < 10) {
-                    updateDateInputDisplay(hiddenInput, displayInput);
-                } else {
-                    const [d, m, y] = val.split('/');
-                    const dateStr = `${y}-${m}-${d}`;
-                    const parsedDate = new Date(dateStr + 'T00:00:00');
-                    if (isNaN(parsedDate.getTime()) || 
-                        parsedDate.getFullYear() !== parseInt(y) || 
-                        (parsedDate.getMonth() + 1) !== parseInt(m) || 
-                        parsedDate.getDate() !== parseInt(d)) {
-                        updateDateInputDisplay(hiddenInput, displayInput);
-                    }
-                }
-            });
-        };
-
-        setupDateInputSync(displayIngreso, fechaIngresoInput);
-        setupDateInputSync(displaySalida, fechaSalidaInput);
-
-        /* Update displays immediately if values pre-filled (though browsers usually don't autofill dates this way on reload) */
-        updateDateInputDisplay(fechaIngresoInput, displayIngreso);
-        updateDateInputDisplay(fechaSalidaInput, displaySalida);
+        }
 
         [fechaIngresoInput, fechaSalidaInput].forEach(input => {
-            input.addEventListener('input', () => { /* Add input listener for sync */
-                if (input === fechaIngresoInput) updateDateInputDisplay(input, displayIngreso);
-                else updateDateInputDisplay(input, displaySalida);
-            });
-
-            input.addEventListener('change', () => {
-                if (input === fechaIngresoInput) updateDateInputDisplay(input, displayIngreso);
-                else updateDateInputDisplay(input, displaySalida);
-
-                const inicio = new Date(fechaIngresoInput.value);
-                const fin = new Date(fechaSalidaInput.value);
-                /* ... rest of original change logic ... */
-                if (fechaIngresoInput.value && fechaSalidaInput.value) {
-                    // Validate dates
-                    if (fin <= inicio) {
-                        alert('⚠️ La fecha de salida debe ser posterior a la fecha de ingreso');
-                        fechaSalidaInput.value = '';
-                        displaySalida.value = ''; /* Clear display too */
-                        document.getElementById('antiguedad-display').classList.add('hidden');
-                        return;
+            input.addEventListener('change', updateAntiguedad);
+            input.addEventListener('input', updateAntiguedad);
+            input.addEventListener('click', () => {
+                try {
+                    if (typeof input.showPicker === 'function') {
+                        input.showPicker();
                     }
-
-                    const ant = calculateAntiguedad(inicio, fin);
-                    document.getElementById('antiguedad-text').textContent =
-                        `${ant.years} años, ${ant.months} meses`;
-                    document.getElementById('antiguedad-display').classList.remove('hidden');
-                } else {
-                    document.getElementById('antiguedad-display').classList.add('hidden');
-                }
+                } catch (e) {}
             });
         });
 
@@ -1004,13 +916,32 @@
         document.getElementById('prestaciones-form').addEventListener('submit', (e) => {
             e.preventDefault();
 
+            const display = document.getElementById('antiguedad-display');
+            const text = document.getElementById('antiguedad-text');
+
+            if (!fechaIngresoInput.value || !fechaSalidaInput.value) {
+                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
+                text.innerHTML = '<span class="text-dr-red font-bold">⚠️ Por favor completa ambas fechas de ingreso y salida.</span>';
+                display.classList.remove('hidden');
+                return;
+            }
+
             // Get form data
-            const fechaIngreso = new Date(fechaIngresoInput.value);
-            const fechaSalida = new Date(fechaSalidaInput.value);
+            const fechaIngreso = new Date(fechaIngresoInput.value + 'T00:00:00');
+            const fechaSalida = new Date(fechaSalidaInput.value + 'T00:00:00');
+
+            if (isNaN(fechaIngreso.getTime()) || isNaN(fechaSalida.getTime())) {
+                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
+                text.innerHTML = '<span class="text-dr-red font-bold">⚠️ Por favor introduce fechas válidas.</span>';
+                display.classList.remove('hidden');
+                return;
+            }
 
             // Validate dates
             if (fechaSalida <= fechaIngreso) {
-                alert('⚠️ La fecha de salida debe ser posterior a la fecha de ingreso');
+                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
+                text.innerHTML = '<span class="text-dr-red font-bold">⚠️ La fecha de salida debe ser posterior a la fecha de ingreso.</span>';
+                display.classList.remove('hidden');
                 return;
             }
 
