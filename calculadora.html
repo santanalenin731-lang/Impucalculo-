@@ -99,13 +99,23 @@
         }
 
         .btn-gradient-blue {
-            background: linear-gradient(135deg, #0038A8, #1E40AF);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #0038A8, #002673);
+            box-shadow: 0 20px 40px -10px rgba(0, 56, 168, 0.38), 0 8px 16px -8px rgba(0, 0, 0, 0.15), inset 0 2px 3px rgba(255, 255, 255, 0.25);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.35s ease;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            position: relative;
         }
 
         .btn-gradient-blue:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(0, 56, 168, 0.4);
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 30px 60px -8px rgba(0, 56, 168, 0.55), 0 14px 28px -6px rgba(0, 0, 0, 0.22);
+            background: linear-gradient(135deg, #0044CC, #0038A8);
+        }
+
+        .btn-gradient-blue:active {
+            transform: translateY(2px) scale(0.98);
+            box-shadow: 0 10px 20px -6px rgba(0, 56, 168, 0.30), inset 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .progress-bar-glow {
@@ -177,6 +187,75 @@
   },
   "description": "Herramienta gratuita para cálculo fiscal, laboral y de divisas en República Dominicana."
 }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Cómo Calcular AFP, ARS e Impuesto Sobre la Renta (ISR) en República Dominicana",
+      "description": "Guía definitiva sobre retenciones salariales en RD. Aprende a calcular el descuento de TSS (AFP y ARS) y la retención del Impuesto Sobre la Renta de la DGII paso a paso.",
+      "author": {
+        "@type": "Organization",
+        "name": "Impucálculo República Dominicana"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Impucálculo",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://impucalculo.com/logo_new.webp"
+        }
+      },
+      "mainEntityOfPage": "https://impucalculo.com/calculadora.html"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la deducción mensual del trabajador para la AFP y la ARS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El trabajador aporta mensualmente un 2.87% de su salario bruto para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y un 3.04% para el Seguro Familiar de Salud (ARS). Las deducciones totales para el empleado suman un 5.91% de su remuneración computable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿A partir de qué monto mensual se retiene el Impuesto Sobre la Renta (ISR) en RD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En la República Dominicana el Impuesto Sobre la Renta se retiene a partir de salarios netos mensuales superiores a RD$ 34,685.00 (equivalente a una exención anual de RD$ 416,220.00). Los salarios por debajo de este umbral neto están completamente exentos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo influyen los descuentos de la TSS en el cálculo del ISR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los aportes del trabajador a la TSS (AFP y ARS) son deducibles de impuestos. El cálculo del ISR se realiza sobre el 'salario neto imponible', que resulta de restar la retención de TSS al salario bruto original."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué ingresos están exentos del Impuesto Sobre la Renta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Están exentos del ISR el Salario de Navidad (Regalía Pascual / Doble Sueldo) hasta el límite de la duodécima parte del salario anual, las indemnizaciones por prestaciones laborales (cesantía y preaviso) y las indemnizaciones por accidentes de trabajo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the educational expenses law and how does it benefit taxpayers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La Ley 179-09 sobre Gastos Educativos permite a los empleados asalariados declarar los gastos invertidos en la educación de sus dependientes directos o de ellos mismos, para deducirlos del ISR. Esto genera un reembolso o saldo a favor que es devuelto por la DGII a través de la nómina del empleador."
+          }
+        }
+      ]
+    }
     </script>
 </head>
 
@@ -312,7 +391,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit"
+                            <button type="submit" id="btn-procesar-calculo"
                                 class="w-full py-5 rounded-[1.5rem] btn-gradient-blue text-white font-black text-lg uppercase tracking-widest">
                                 Procesar Cálculo
                             </button>
@@ -624,6 +703,297 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Guía Definitiva SEO: AFP, ARS e Impuesto Sobre la Renta en República Dominicana -->
+        <section id="metodologia-impuestos" class="mt-20 space-y-16 animate-slide-up" style="animation-delay: 0.4s;">
+            
+            <!-- Encabezado del Artículo -->
+            <div class="text-center space-y-4 max-w-3xl mx-auto">
+                <div class="inline-flex px-4 py-1.5 bg-dr-blue/10 text-dr-blue text-xs font-black uppercase tracking-widest rounded-full">
+                    Guía Completa de Retenciones y Nómina RD
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                    <span style="color:#0038A8;">Cómo se Calculan AFP, ARS e ISR</span> <br class="hidden md:block">
+                    <span style="color:#CE1126;">en la República Dominicana (2025-2026)</span>
+                </h2>
+                <p class="text-lg text-dr-slate-600 font-medium leading-relaxed">
+                    Aprende el funcionamiento legal y matemático del sistema tributario y de seguridad social dominicano. Conoce las tasas oficiales de aportes a la TSS y los tramos impositivos de la DGII.
+                </p>
+            </div>
+
+            <!-- Contenido Principal del Artículo SEO -->
+            <article class="max-w-4xl mx-auto space-y-12 text-dr-slate-700 leading-relaxed font-medium">
+
+                <!-- Introducción -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        Introducción a las Deducciones de Nómina en República Dominicana
+                    </h3>
+                    <p>
+                        El salario que un trabajador acuerda con su empleador representa el <strong>salario bruto</strong>. Sin embargo, al momento del cobro quincenal o mensual, el monto depositado (el <strong>salario neto o sueldo líquido</strong>) es menor debido a las retenciones que la ley dominicana impone a los trabajadores asalariados. Estas deducciones se dividen principalmente en dos áreas obligatorias: las aportaciones a la <strong>Tesorería de la Seguridad Social (TSS)</strong>, reguladas por la Ley 87-01, y el <strong>Impuesto Sobre la Renta (ISR)</strong> para personas físicas, administrado por la <strong>Dirección General de Impuestos Internos (DGII)</strong> bajo el Código Tributario (Ley 11-92).
+                    </p>
+                    <p>
+                        Entender con precisión cómo se aplican estos porcentajes y tramos es indispensable tanto para que los empleados verifiquen la exactitud de sus nóminas como para que las empresas y gestores de recursos humanos eviten contingencias o penalidades por retenciones erróneas.
+                    </p>
+                </div>
+
+                <!-- Sección 1: Seguridad Social (TSS) -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        Descuentos de la Seguridad Social (TSS - Ley 87-01)
+                    </h3>
+                    <p>
+                        El Sistema Dominicano de Seguridad Social obliga tanto a empleados como a empleadores a aportar al financiamiento de las pensiones y la salud pública. Estas deducciones se calculan directamente sobre el salario bruto mensual y están exentas de impuestos.
+                    </p>
+                    <p>
+                        Los dos pilares de descuento obligatorio del trabajador son:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="bg-white p-6 rounded-2xl border border-dr-blue/20 shadow-sm space-y-3">
+                            <div class="text-dr-blue font-black text-lg">AFP (Fondo de Pensiones)</div>
+                            <p class="text-sm leading-relaxed text-dr-slate-600">
+                                Destinado al Seguro de Vejez, Discapacidad y Sobrevivencia para la jubilación del trabajador.
+                            </p>
+                            <ul class="list-disc list-inside text-sm font-bold text-dr-slate-800 space-y-1">
+                                <li>Aporte del Trabajador: <strong>2.87%</strong></li>
+                                <li>Aporte del Empleador: <strong>7.10%</strong></li>
+                                <li>Tope de Cotización: 20 Salarios Mínimos Nacionales</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl border border-dr-red/20 shadow-sm space-y-3">
+                            <div class="text-dr-red font-black text-lg">ARS (Seguro Familiar de Salud)</div>
+                            <p class="text-sm leading-relaxed text-dr-slate-600">
+                                Financia la cobertura médica básica del empleado y sus dependientes directos.
+                            </p>
+                            <ul class="list-disc list-inside text-sm font-bold text-dr-slate-800 space-y-1">
+                                <li>Aporte del Trabajador: <strong>3.04%</strong></li>
+                                <li>Aporte del Empleador: <strong>7.09%</strong></li>
+                                <li>Tope de Cotización: 10 Salarios Mínimos Nacionales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pt-4">
+                        <h4 class="text-xl font-bold text-dr-slate-900">
+                            Entendiendo los Topes de Cotización de la TSS
+                        </h4>
+                        <p class="text-sm leading-relaxed">
+                            Los topes de cotización previenen que los trabajadores con sueldos extremadamente altos aporten indefinidamente sobre el total de su remuneración. Se calculan usando el salario mínimo promedio cotizable establecido por el Consejo Nacional de Seguridad Social (CNSS), que actualmente ronda los <strong>RD$ 19,300.00</strong>:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-dr-slate-200">
+                                <thead>
+                                    <tr class="bg-dr-blue text-white font-bold">
+                                        <th class="p-3.5">Seguro / Aporte</th>
+                                        <th class="p-3.5">Tope en Salarios Mínimos</th>
+                                        <th class="p-3.5 text-right">Salario Máximo Cotizable</th>
+                                        <th class="p-3.5 text-right">Descuento Máximo Mensual</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dr-slate-100">
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">ARS (Salud - 3.04%)</td>
+                                        <td class="p-3">10 Salarios Mínimos</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">RD$ 193,000.00</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-blue">RD$ 5,867.20</td>
+                                    </tr>
+                                    <tr class="hover:bg-dr-slate-50">
+                                        <td class="p-3 font-semibold">AFP (Pensiones - 2.87%)</td>
+                                        <td class="p-3">20 Salarios Mínimos</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-slate-800">RD$ 386,000.00</td>
+                                        <td class="p-3 text-right font-extrabold text-dr-blue">RD$ 11,078.20</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Impuesto Sobre la Renta (ISR) -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        El Impuesto Sobre la Renta de Personas Físicas (DGII)
+                    </h3>
+                    <p>
+                        El Impuesto Sobre la Renta (ISR) es una retención progresiva que grava los ingresos de las personas físicas. En el caso de los asalariados, la ley establece que el impuesto no se calcula sobre el salario bruto, sino sobre la <strong>renta neta imponible</strong>. Esta se obtiene restando la deducción del 5.91% de TSS al salario bruto original.
+                    </p>
+                    <p>
+                        La escala progresiva anual de retención del ISR en la República Dominicana se define en base a los siguientes tramos:
+                    </p>
+
+                    <div class="overflow-x-auto pt-2">
+                        <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-dr-slate-200">
+                            <thead>
+                                <tr class="bg-dr-slate-800 text-white font-bold">
+                                    <th class="p-3.5">Escala Anual (Renta Neta)</th>
+                                    <th class="p-3.5">Equivalente Mensual</th>
+                                    <th class="p-3.5">Tasa Impositiva</th>
+                                    <th class="p-3.5 text-right">Impuesto a Retener</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-dr-slate-100">
+                                <tr class="hover:bg-dr-slate-50">
+                                    <td class="p-3 font-semibold">Hasta RD$ 416,220.00</td>
+                                    <td class="p-3">Hasta RD$ 34,685.00</td>
+                                    <td class="p-3"><span class="px-2.5 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">Exento</span></td>
+                                    <td class="p-3 text-right font-extrabold text-dr-slate-800">RD$ 0.00</td>
+                                </tr>
+                                <tr class="hover:bg-dr-slate-50">
+                                    <td class="p-3 font-semibold">RD$ 416,220.01 a RD$ 624,329.00</td>
+                                    <td class="p-3">RD$ 34,685.01 a RD$ 52,027.42</td>
+                                    <td class="p-3"><span class="px-2.5 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold">15%</span></td>
+                                    <td class="p-3 text-right font-extrabold text-dr-slate-800">15% del excedente de RD$ 34,685.01</td>
+                                </tr>
+                                <tr class="hover:bg-dr-slate-50">
+                                    <td class="p-3 font-semibold">RD$ 624,329.01 a RD$ 867,123.00</td>
+                                    <td class="p-3">RD$ 52,027.43 a RD$ 72,260.25</td>
+                                    <td class="p-3"><span class="px-2.5 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-bold">20%</span></td>
+                                    <td class="p-3 text-right font-extrabold text-dr-slate-800">RD$ 2,601.33 + 20% del excedente de RD$ 52,027.43</td>
+                                </tr>
+                                <tr class="hover:bg-dr-slate-50">
+                                    <td class="p-3 font-semibold">Desde RD$ 867,123.01</td>
+                                    <td class="p-3">Desde RD$ 72,260.26</td>
+                                    <td class="p-3"><span class="px-2.5 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold">25%</span></td>
+                                    <td class="p-3 text-right font-extrabold text-dr-slate-800">RD$ 6,648.00 + 25% del excedente de RD$ 72,260.26</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sección 3: Fórmula del Cálculo Paso a Paso -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        La Fórmula de Cálculo del Sueldo Neto
+                    </h3>
+                    <p>
+                        Para obtener el sueldo líquido mensual de forma manual, se sigue una secuencia matemática estricta:
+                    </p>
+                    <div class="bg-dr-blue/5 p-6 rounded-2xl border border-dr-blue/15 space-y-4">
+                        <div class="text-center font-black text-dr-blue text-xl">
+                            Sueldo Neto = Salario Bruto - TSS (AFP + ARS) - ISR
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="font-bold">Pasos del algoritmo fiscal:</p>
+                        <ol class="list-decimal list-inside space-y-2 text-sm">
+                            <li><strong>Descuento TSS:</strong> Se calcula el 2.87% de AFP y el 3.04% de ARS sobre el sueldo bruto (dentro de los topes correspondientes) y se deducen.</li>
+                            <li><strong>Anualización:</strong> El resultado del sueldo neto provisional se multiplica por 12 meses para obtener la renta neta imponible proyectada del año.</li>
+                            <li><strong>Aplicación de la escala:</strong> Se evalúa en qué tramo de la escala progresiva de la DGII cae el ingreso anualizado y se calcula la retención de ISR correspondiente.</li>
+                            <li><strong>Mensualización del ISR:</strong> El impuesto anualizado se divide entre 12 meses para obtener el descuento de ISR mensual.</li>
+                            <li><strong>Cálculo final:</strong> Se deduce el ISR mensual al sueldo neto provisional obtenido en el Paso 1.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Sección 4: Ejemplos de Cálculos Reales -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-8">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        Ejemplos de Cálculo con Salarios de Referencia
+                    </h3>
+
+                    <!-- Ejemplo 1: 30,000 -->
+                    <div class="bg-white p-6 rounded-2xl border border-dr-slate-200 space-y-3">
+                        <h4 class="text-lg font-black text-dr-slate-900">1. Salario Bruto de RD$ 30,000.00 mensual</h4>
+                        <div class="space-y-1 text-sm font-mono">
+                            <p>• Descuento AFP (2.87%) = RD$ 861.00</p>
+                            <p>• Descuento ARS (3.04%) = RD$ 912.00</p>
+                            <p>• Renta Neta Provisional = RD$ 30,000.00 - (861.00 + 912.00) = RD$ 28,227.00</p>
+                            <p>• Renta Anualizada = RD$ 28,227.00 x 12 = RD$ 338,724.00</p>
+                            <p class="text-green-600 font-bold">• Evaluación ISR: Exento (es menor a RD$ 416,220.00 anual)</p>
+                            <p class="text-dr-blue font-bold pt-2 border-t text-base">➔ Sueldo Neto Mensual = RD$ 28,227.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 2: 50,000 -->
+                    <div class="bg-white p-6 rounded-2xl border border-dr-slate-200 space-y-3">
+                        <h4 class="text-lg font-black text-dr-slate-900">2. Salario Bruto de RD$ 50,000.00 mensual</h4>
+                        <div class="space-y-1 text-sm font-mono">
+                            <p>• Descuento AFP (2.87%) = RD$ 1,435.00</p>
+                            <p>• Descuento ARS (3.04%) = RD$ 1,520.00</p>
+                            <p>• Renta Neta Provisional = RD$ 50,000.00 - (1,435.00 + 1,520.00) = RD$ 47,045.00</p>
+                            <p>• Renta Anualizada = RD$ 47,045.00 x 12 = RD$ 564,540.00 (Tramo del 15%)</p>
+                            <p>• Excedente del tramo = RD$ 564,540.00 - RD$ 416,220.00 = RD$ 148,320.00</p>
+                            <p>• ISR Anual (15%) = RD$ 148,320.00 x 0.15 = RD$ 22,248.00</p>
+                            <p>• ISR Mensual = RD$ 22,248.00 / 12 = RD$ 1,854.00</p>
+                            <p class="text-dr-blue font-bold pt-2 border-t text-base">➔ Sueldo Neto Mensual = RD$ 47,045.00 - 1,854.00 = RD$ 45,191.00</p>
+                        </div>
+                    </div>
+
+                    <!-- Ejemplo 3: 80,000 -->
+                    <div class="bg-white p-6 rounded-2xl border border-dr-slate-200 space-y-3">
+                        <h4 class="text-lg font-black text-dr-slate-900">3. Salario Bruto de RD$ 80,000.00 mensual</h4>
+                        <div class="space-y-1 text-sm font-mono">
+                            <p>• Descuento AFP (2.87%) = RD$ 2,296.00</p>
+                            <p>• Descuento ARS (3.04%) = RD$ 2,432.00</p>
+                            <p>• Renta Neta Provisional = RD$ 80,000.00 - (2,296.00 + 2,432.00) = RD$ 75,272.00</p>
+                            <p>• Renta Anualizada = RD$ 75,272.00 x 12 = RD$ 903,264.00 (Tramo del 25%)</p>
+                            <p>• Excedente del tramo = RD$ 903,264.00 - RD$ 867,123.00 = RD$ 36,141.00</p>
+                            <p>• ISR Anual = RD$ 79,776.00 (tasa fija) + (RD$ 36,141.00 x 25%) = RD$ 88,811.25</p>
+                            <p>• ISR Mensual = RD$ 88,811.25 / 12 = RD$ 7,400.94</p>
+                            <p class="text-dr-blue font-bold pt-2 border-t text-base">➔ Sueldo Neto Mensual = RD$ 75,272.00 - 7,400.94 = RD$ 67,871.06</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 5: Gastos Educativos -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        Deducción de Gastos Educativos (Ley 179-09)
+                    </h3>
+                    <p>
+                        La <strong>Ley 179-09</strong> sobre Gastos Educativos otorga a las personas físicas registradas como asalariados o contribuyentes directos el beneficio de deducir de sus ingresos gravados con el ISR los montos pagados por concepto de la educación de sus dependientes directos no asalariados (hijos) o de ellos mismos.
+                    </p>
+                    <p>
+                        Este beneficio permite que la DGII calcule el impuesto sobre una base menor y devuelva el excedente de impuesto retenido durante el año fiscal. Para aplicar, el contribuyente debe registrarse en la oficina virtual de la DGII, solicitar facturas con comprobante fiscal de crédito fiscal (NCF) del centro educativo y cargarlos antes de la fecha límite establecida cada año (generalmente en febrero).
+                    </p>
+                    <div class="p-6 bg-red-50 border border-dr-red/20 rounded-2xl text-sm text-dr-slate-700 font-bold leading-relaxed">
+                        El monto máximo a deducir de los gastos educativos está limitado al 25% de la exención de ISR vigente o al 10% del ingreso gravado del asalariado, seleccionando siempre el menor de ambos límites legales.
+                    </div>
+                </div>
+
+                <!-- Sección 6: FAQs -->
+                <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
+                    <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
+                        Preguntas Frecuentes sobre Deducciones y TSS
+                    </h3>
+
+                    <div class="space-y-4">
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿El doble sueldo o salario de navidad paga AFP, ARS o impuesto sobre la renta?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                No. De acuerdo con el Artículo 219 del Código de Trabajo y la regulación de la TSS, el salario de navidad (hasta la duodécima parte de las remuneraciones del año) está completamente exento de retenciones de seguridad social (AFP/ARS) y del Impuesto Sobre la Renta (ISR).
+                            </p>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿Qué ocurre si trabajo para más de un empleador en cuanto a la TSS?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                En la República Dominicana opera el principio de unicidad del empleador para el Seguro Familiar de Salud (ARS), lo que significa que solo se te descontará el seguro de salud en uno de los empleos (generalmente el de mayor salario). Sin embargo, el aporte al fondo de pensiones (AFP) sí se calculará y deducirá en todos los salarios de forma conjunta, sumando los montos hasta el tope legal.
+                            </p>
+                        </details>
+
+                        <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                            <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                                <span>¿Las horas extras y bonificaciones pagan AFP/ARS y el impuesto de la DGII?</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                            </summary>
+                            <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                                Las horas extraordinarias y la bonificación por participación en los beneficios de la empresa están gravadas con el Impuesto Sobre la Renta (ISR). Para la TSS, las horas extras no cotizan al seguro familiar de salud ni pensión, pero la participación en los beneficios anuales sí está sujeta a cotizaciones de TSS si no excede los límites legales.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+            </article>
         </section>
     </main>
 
@@ -1225,6 +1595,21 @@
                 deferredPrompt = null;
             });
         });
+    </script>
+    <script>
+        // 3D Parallax Tilt Effect for Calculate Button
+        const btn3d = document.getElementById('btn-procesar-calculo');
+        if (btn3d) {
+            btn3d.addEventListener('mousemove', (e) => {
+                const rect = btn3d.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn3d.style.transform = `translateY(-8px) scale(1.04) rotateX(${-y / 4}deg) rotateY(${x / 6}deg)`;
+            });
+            btn3d.addEventListener('mouseleave', () => {
+                btn3d.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
+            });
+        }
     </script>
 </body>
 

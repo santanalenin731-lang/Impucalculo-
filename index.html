@@ -241,10 +241,10 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            border: 2px solid #CBD5E1;
-            border-radius: 1.25rem;
+            border: 1.5px solid rgba(0, 56, 168, 0.16);
+            border-radius: 1.75rem;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             display: inline-flex;
             flex-direction: column;
@@ -252,15 +252,20 @@
             justify-content: center;
             gap: 0.75rem;
             overflow: hidden;
-            /* Default: monocromático neutro */
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(8px);
+            /* Degradado suave neomórfico para simular volumen y curvatura real de luz */
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            backdrop-filter: blur(12px);
             color: #64748B;
-            box-shadow: 0 4px 16px -4px rgba(0,0,0,0.08);
+            /* Alto relieve 3D Extremo: sombras proyectadas multicapa muy profundas y brillo superior biselado */
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 56, 168, 0.24), 
+                0 12px 24px -10px rgba(0, 0, 0, 0.10), 
+                inset 0 2px 0px 1px rgba(255, 255, 255, 1), 
+                inset 0 -3px 8px rgba(0, 56, 168, 0.04);
         }
 
         .btn:hover {
-            transform: translateY(-6px) scale(1.04);
+            transform: translateY(-12px) scale(1.06);
             color: #fff;
             border-color: transparent;
         }
@@ -272,23 +277,37 @@
         /* Calcular mi Sueldo → rojo al hover */
         .btn-sueldo:hover {
             background: #CE1126;
-            box-shadow: 0 16px 40px rgba(206,17,38,0.35);
+            box-shadow: 
+                0 35px 70px -10px rgba(206, 17, 38, 0.52), 
+                0 15px 30px -8px rgba(206, 17, 38, 0.28),
+                inset 0 2px 1px rgba(255, 255, 255, 0.45);
         }
 
         /* Calcular Prestaciones → azul al hover */
         .btn-prestaciones:hover {
             background: #0038A8;
-            box-shadow: 0 16px 40px rgba(0,56,168,0.35);
+            box-shadow: 
+                0 35px 70px -10px rgba(0, 56, 168, 0.52), 
+                0 15px 30px -8px rgba(0, 56, 168, 0.28),
+                inset 0 2px 1px rgba(255, 255, 255, 0.45);
         }
 
         /* Convertir Divisas → verde al hover */
         .btn-divisas:hover {
             background: #16A34A;
-            box-shadow: 0 16px 40px rgba(22,163,74,0.35);
+            box-shadow: 
+                0 35px 70px -10px rgba(22, 163, 74, 0.52), 
+                0 15px 30px -8px rgba(22, 163, 74, 0.28),
+                inset 0 2px 1px rgba(255, 255, 255, 0.45);
         }
 
         .btn:active {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(4px) scale(0.95);
+            box-shadow: 
+                inset 0 8px 16px rgba(0, 56, 168, 0.20), 
+                inset 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 1px 3px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.1s ease;
         }
 
         /* Ripple effect */
