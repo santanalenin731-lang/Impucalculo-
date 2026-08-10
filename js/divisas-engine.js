@@ -739,7 +739,6 @@
                     const varCompra = getVariation('bcrd_compra_prev_DO', compra);
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇩🇴</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Compra</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(compra)}</span>
                             ${varCompra}
@@ -751,7 +750,6 @@
                     const varVenta = getVariation('bcrd_venta_prev_DO', venta);
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇩🇴</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BC Venta</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(venta)}</span>
                             ${varVenta}
@@ -767,7 +765,6 @@
                     if (oficial.c) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇦🇷</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Oficial Compra</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(oficial.c)}</span>
                                 ${getVariation('ar_oficial_c_prev', oficial.c)}
@@ -778,7 +775,6 @@
                     if (oficial.v) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇦🇷</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Oficial Venta</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(oficial.v)}</span>
                                 ${getVariation('ar_oficial_v_prev', oficial.v)}
@@ -791,7 +787,6 @@
                     if (blue.c) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇦🇷</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Blue Compra</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(blue.c)}</span>
                                 ${getVariation('ar_blue_c_prev', blue.c)}
@@ -802,7 +797,6 @@
                     if (blue.v) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇦🇷</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Blue Venta</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(blue.v)}</span>
                                 ${getVariation('ar_blue_v_prev', blue.v)}
@@ -818,7 +812,6 @@
                 if (fix && fix.v) {
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇲🇽</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Banxico FIX</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(fix.v)}</span>
                             ${getVariation('mx_fix_prev', fix.v)}
@@ -830,7 +823,6 @@
                     if (bbva.c) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇲🇽</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BBVA Compra</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bbva.c)}</span>
                                 ${getVariation('mx_bbva_c_prev', bbva.c)}
@@ -841,7 +833,6 @@
                     if (bbva.v) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇲🇽</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">BBVA Venta</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bbva.v)}</span>
                                 ${getVariation('mx_bbva_v_prev', bbva.v)}
@@ -857,7 +848,6 @@
                 if (trm && trm.v) {
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇨🇴</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">TRM Dólar</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(trm.v)}</span>
                             ${getVariation('co_trm_prev', trm.v)}
@@ -869,7 +859,6 @@
                     if (bancolombia.c) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇨🇴</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Bancolombia Compra</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bancolombia.c)}</span>
                                 ${getVariation('co_bcol_c_prev', bancolombia.c)}
@@ -880,7 +869,6 @@
                     if (bancolombia.v) {
                         items.push(`
                             <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                                <span style="font-size:16px;">🇨🇴</span>
                                 <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Bancolombia Venta</span>
                                 <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bancolombia.v)}</span>
                                 ${getVariation('co_bcol_v_prev', bancolombia.v)}
@@ -896,7 +884,6 @@
                 if (bcv && bcv.v) {
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇻🇪</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tasa BCV</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(bcv.v)}</span>
                             ${getVariation('ve_bcv_prev', bcv.v)}
@@ -907,7 +894,6 @@
                 if (paralelo && paralelo.v) {
                     items.push(`
                         <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                            <span style="font-size:16px;">🇻🇪</span>
                             <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Dólar Paralelo</span>
                             <span style="font-size:14px;font-weight:900;color:#1E293B;">${formatVal(paralelo.v)}</span>
                             ${getVariation('ve_para_prev', paralelo.v)}
@@ -948,16 +934,9 @@
         }
 
         function updateHeaderFlag() {
-            const flags = {
-                DO: '🇩🇴',
-                AR: '🇦🇷',
-                MX: '🇲🇽',
-                CO: '🇨🇴',
-                VE: '🇻🇪'
-            };
             const flagEl = document.getElementById('header-country-flag');
             if (flagEl) {
-                flagEl.textContent = flags[currentCountry] || '🇩🇴';
+                flagEl.textContent = '';
             }
         }
 
