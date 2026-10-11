@@ -778,22 +778,37 @@
             width: 100%;
             overflow: hidden;
             cursor: default;
+            padding: 1.5rem 0;
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
         }
 
-        /* The scrolling strip — will hold cards and move step by step */
+        .carousel-track-wrapper {
+            display: flex;
+            width: max-content;
+        }
+
+        /* The scrolling strip — continuous smooth linear marquee */
         .carousel-track {
             display: flex;
             gap: 1.5rem;
-            width: max-content;
+            flex-shrink: 0;
+            padding-right: 1.5rem;
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: carousel-marquee 110s linear infinite;
         }
 
-        /* Reduce-motion override also needs the new duration */
-        @media (prefers-reduced-motion: no-preference) {
-            .carousel-track { animation-duration: 70s; }
+        @keyframes carousel-marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .carousel-viewport:hover .carousel-track {
+            animation-play-state: paused;
         }
 
         /* ── Blog card: idéntica a blog.html ── */
@@ -971,29 +986,29 @@
                             style="color: #0038A8;">igente</span></span> y en segundos
                 </h1>
                 <div class="hero-tagline" style="font-weight: 900; letter-spacing: 0.1em;">
-                    <span style="color: #CE1126;">SUELDOS</span> <span
-                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #0038A8;">PRESTACIONES</span><span
+                    <span style="color: #0038A8;">PRESTACIONES</span><span
+                        style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #CE1126;">SUELDOS</span><span
                         style="color:#CBD5E1;margin:0 0.4rem;">·</span><span style="color: #16A34A;">DIVISAS</span>
                 </div>
                 <p class="hero-subtitle">
-                    Calcula tu sueldo neto, prestaciones laborales por despido o renuncia y compara la tasa del dólar en vivo. Sin Excel ni registros.
+                    Calcula tus prestaciones laborales por despido o renuncia, tu sueldo neto y compara la tasa del dólar en vivo. Sin Excel ni registros.
                 </p>
             </div>
 
             <div class="cta-buttons">
-                <!-- Calcular mi Sueldo: rojo al hover -->
-                <a href="calculadora.html" class="btn btn-sueldo" id="btn-sueldo">
-                    <span class="btn-label">
-                        <span style="color: #CE1126;">CALCULAR MI</span><br>
-                        <span style="color: #0038A8;">SUELDO</span>
-                    </span>
-                </a>
-
                 <!-- Calcular Prestaciones: azul al hover -->
                 <a href="prestaciones.html" class="btn btn-prestaciones" id="btn-prestaciones">
                     <span class="btn-label">
                         <span style="color: #0038A8;">CALCULAR</span><br>
                         <span style="color: #CE1126;">PRESTACIONES</span>
+                    </span>
+                </a>
+
+                <!-- Calcular mi Sueldo: rojo al hover -->
+                <a href="calculadora.html" class="btn btn-sueldo" id="btn-sueldo">
+                    <span class="btn-label">
+                        <span style="color: #CE1126;">CALCULAR MI</span><br>
+                        <span style="color: #0038A8;">SUELDO</span>
                     </span>
                 </a>
 
@@ -1266,8 +1281,13 @@
 
         <!-- Carousel viewport -->
         <div class="carousel-viewport" id="carouselViewport">
-            <div class="carousel-track" id="carouselTrack">
-                <!-- JS inserts cards × 2 for infinite loop -->
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="carouselTrack1">
+                    <!-- JS inserts cards -->
+                </div>
+                <div class="carousel-track" id="carouselTrack2" aria-hidden="true">
+                    <!-- JS inserts cards -->
+                </div>
             </div>
         </div>
 
@@ -1290,16 +1310,16 @@
                 <p>Ya lo viste. Ahora descúbrelo tú mismo — es gratis.</p>
 
                 <div class="cta-buttons">
-                    <a href="calculadora.html" class="btn btn-sueldo">
-                        <span class="btn-label">
-                            <span style="color: #CE1126;">CALCULAR</span><br>
-                            <span style="color: #0038A8;">SUELDO</span>
-                        </span>
-                    </a>
                     <a href="prestaciones.html" class="btn btn-prestaciones">
                         <span class="btn-label">
                             <span style="color: #0038A8;">CALCULAR</span><br>
                             <span style="color: #CE1126;">PRESTACIONES</span>
+                        </span>
+                    </a>
+                    <a href="calculadora.html" class="btn btn-sueldo">
+                        <span class="btn-label">
+                            <span style="color: #CE1126;">CALCULAR</span><br>
+                            <span style="color: #0038A8;">SUELDO</span>
                         </span>
                     </a>
                     <a href="divisas.html" class="btn btn-divisas">
@@ -1573,51 +1593,27 @@
                 return a;
             }
 
-            const track = document.getElementById('carouselTrack');
+            const track1 = document.getElementById('carouselTrack1');
+            const track2 = document.getElementById('carouselTrack2');
             const viewport = document.getElementById('carouselViewport');
-            if (!track || !viewport) return;
+            if (!track1 || !track2 || !viewport) return;
 
-            // Render cards (no cloning needed for this discrete step logic, or just a few for buffer)
+            // Render cards in both tracks for infinite smooth marquee
             blogArticles.forEach(article => {
-                track.appendChild(buildCard(article));
+                track1.appendChild(buildCard(article));
+                track2.appendChild(buildCard(article));
             });
 
-            let currentIndex = 0;
-            const cardWidth = 320; // from CSS
-            const gap = 24; // 1.5rem
-            const step = cardWidth + gap;
+            // Pause marquee on touch interaction on mobile
+            viewport.addEventListener('touchstart', () => {
+                track1.style.animationPlayState = 'paused';
+                track2.style.animationPlayState = 'paused';
+            }, { passive: true });
 
-            function updateCarousel() {
-                const viewportWidth = viewport.offsetWidth;
-                // Offset to center the card: (viewport / 2) - (card / 2)
-                const centerOffset = (viewportWidth / 2) - (cardWidth / 2);
-                const targetX = - (currentIndex * step) + centerOffset;
-                
-                track.style.transform = `translateX(${targetX}px)`;
-            }
-
-            let isPaused = false;
-            
-            function nextSlide() {
-                if (isPaused) return;
-                currentIndex++;
-                if (currentIndex >= blogArticles.length) {
-                    currentIndex = 0;
-                }
-                updateCarousel();
-            }
-
-            // Initial position
-            window.addEventListener('resize', updateCarousel);
-            setTimeout(updateCarousel, 100);
-
-            // Interval: 2 seconds pause + animation time
-            let interval = setInterval(nextSlide, 2600);
-
-            viewport.addEventListener('mouseenter', () => isPaused = true);
-            viewport.addEventListener('mouseleave', () => isPaused = false);
-            viewport.addEventListener('touchstart', () => isPaused = true, { passive: true });
-            viewport.addEventListener('touchend',   () => isPaused = false, { passive: true });
+            viewport.addEventListener('touchend', () => {
+                track1.style.animationPlayState = 'running';
+                track2.style.animationPlayState = 'running';
+            }, { passive: true });
         })();
 
         // Prevent animation replay on back navigation
