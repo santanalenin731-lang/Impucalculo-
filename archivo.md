@@ -82,3 +82,29 @@ Publisher ID: pub-5697958043734992
 Primary Domain: https://impucalculo.com/
 ```
 
+---
+
+## 📝 Registro de Cambios Recientes (10 de Octubre de 2026)
+
+### 1. Cintillo de Parámetros Laborales en ImpuCálculo Prestaciones (`prestaciones.html`)
+- Implementación de un cintillo informativo dinámico e interactivo debajo de la barra de navegación con estilo idéntico al de ImpuCálculo Divisas.
+- Presenta datos clave actualizados: Salario Mínimo Nacional Promedio (RD$19,355), Topes TSS/Seguridad Social, divisor legal de cálculo (23.83 días/mes), recargos por horas extras (35% y 100%) y régimen de salario de navidad (Art. 219).
+- Incluye soporte responsive, selector manual de temas (oscuro/claro) sincronizado con el botón global, y pausa inteligente al pasar el cursor o interactuar.
+
+### 2. Homogeneización de Dimensiones en Preguntas Frecuentes (FAQ)
+- Se homologó el ancho del contenedor de Preguntas Frecuentes en `prestaciones.html` al estándar de `max-w-5xl`, igualándolo perfectamente con el bloque de la calculadora superior.
+
+### 3. Identidad Visual Bicolor en Título de Prestaciones
+- Estilización del título principal H2 en `prestaciones.html`: palabra `PRESTACIONES` con degradado dinámico entre rojo patriótico (`#CE1126`) y azul marino (`#002F6C`), manteniendo armonía con la identidad visual institucional de República Dominicana.
+
+### 4. Movimiento Continuo y Fluido en Artículos del Blog
+- Modificación de la animación del carrusel de artículos en `prestaciones.html`: transición de movimiento por pausas escalonadas a un scroll continuo, suave y prolongado (keyframes CSS a 35 segundos lineales e infinitos).
+
+### 5. Priorización de la Calculadora de Prestaciones en el Inicio (`index.html`)
+- Reorganización jerárquica de la plataforma: posicionamiento de la Calculadora de Prestaciones Laborales como herramienta #1 en el Hero principal y botones CTA por su alto volumen de visitas y relevancia central para los usuarios.
+
+### 6. Optimización de Caché PWA y Solución Móvil (`sw.js` v99)
+- Incremento del Service Worker a `impucalculo-v99` con invalidación forzada mediante `{ cache: 'reload' }`.
+- Registro reactivo (`registration.update()` y listener `controllerchange`) para garantizar la carga inmediata de los nuevos estilos y componentes en dispositivos móviles (iOS Safari / Android Chrome).
+
+
