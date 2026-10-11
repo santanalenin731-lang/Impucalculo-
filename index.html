@@ -1631,16 +1631,25 @@
     </div>
 
     <script>
-        // PWA Service Worker Registration
+        // PWA Service Worker Registration with Immediate Force-Update
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('sw.js?v=99')
                     .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        console.log('ServiceWorker registered with scope: ', registration.scope);
+                        registration.update();
                     })
                     .catch(error => {
                         console.log('ServiceWorker registration failed: ', error);
                     });
+            });
+
+            let refreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (!refreshing) {
+                    refreshing = true;
+                    window.location.reload();
+                }
             });
         }
         

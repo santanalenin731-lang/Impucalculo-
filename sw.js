@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v98';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v98';
+const CACHE_NAME = 'impucalculo-v99';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v99';
 
 const STATIC_ASSETS = [
     '/',
@@ -27,12 +27,23 @@ const STATIC_ASSETS = [
     '/icon-512.png'
 ];
 
-// Install Event: Precache static resources
+// Install Event: Precache static resources bypassing browser HTTP cache
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('[Service Worker] Precaching files');
-            return cache.addAll(STATIC_ASSETS);
+            console.log('[Service Worker] Precaching files with network reload');
+            return Promise.all(
+                STATIC_ASSETS.map((asset) => {
+                    return fetch(asset, { cache: 'reload' })
+                        .then((res) => {
+                            if (res.ok) return cache.put(asset, res);
+                        })
+                        .catch((err) => {
+                            console.warn('[Service Worker] Precache fallback for:', asset, err);
+                            return cache.add(asset);
+                        });
+                })
+            );
         })
     );
     self.skipWaiting();
