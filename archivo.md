@@ -107,4 +107,38 @@ Primary Domain: https://impucalculo.com/
 - Incremento del Service Worker a `impucalculo-v99` con invalidación forzada mediante `{ cache: 'reload' }`.
 - Registro reactivo (`registration.update()` y listener `controllerchange`) para garantizar la carga inmediata de los nuevos estilos y componentes en dispositivos móviles (iOS Safari / Android Chrome).
 
+---
+
+## 📝 Registro de Cambios Recientes (25 de Octubre de 2026)
+
+### 1. Blindaje Legal y Cláusula de Privacidad Publicitaria (`privacidad.html`)
+- Incorporación formal de la **Sección 8: Publicidad de Terceros y Redes de Anuncios** para regular legalmente la monetización externa sin riesgo de contingencias ni demandas.
+- Garantía explícita de **Confidencialidad Salarial**: se estipuló con valor legal vinculante que ninguna red de anuncios tiene acceso ni puede capturar las cifras financieras ingresadas por el usuario, protegiendo el principio de procesamiento 100% local en el navegador.
+- Actualización de la fecha de vigencia formal de la política al 25 de Octubre de 2026.
+
+### 2. Auditoría, Prueba Local y Retiro Preventivo de Monetag
+- Verificación exitosa de la titularidad de `impucalculo.com` en Monetag.
+- Prueba experimental controlada en entorno local aislado (`localhost:8080`) sin comprometer el entorno de producción.
+- Detección de anuncios engañosos de descargas y bloqueo de seguridad en Safari (*Malware Website Warning*).
+- **Retiro y limpieza total inmediata:** eliminación completa de todos los scripts, etiquetas de verificación y rastros de código de Monetag en el proyecto para proteger la reputación institucional y el posicionamiento SEO de Impucálculo.
+- Planificación estratégica de la ruta definitiva y limpia a través de Google AdSense mediante cuenta familiar independiente.
+
+### 3. Rediseño del Hero y Protagonismo en Prestaciones (`index.html`)
+- Reformulación del titular principal H1 para posicionar a las Prestaciones Laborales como el motor insignia de la plataforma:
+  > *"La plataforma líder en prestaciones calculadas de forma inteligente"*
+- Redacción de nuevo subtítulo persuasivo y legal: *"Determina al centavo tu cesantía, preaviso y derechos adquiridos según la ley dominicana. También incluye cálculo de sueldos netos y tasas de cambio al instante."*
+- Eliminación del logo superior estático dentro del Hero para conseguir mayor amplitud vertical, limpieza estética y foco inmediato en la propuesta de valor.
+
+### 4. Carrusel Hero con Deslizamiento Continuo Infinito (*Infinite Slide*)
+- Sustitución de la imagen estática individual por un **carrusel dinámico de 3 vistas móviles reales**.
+- Optimización y compresión de capturas en `hero-images/`, reduciendo el peso de ~9 MB a ~1 MB sin pérdida perceptible de calidad.
+- Transición horizontal tipo *slide* fluida y moderna cada 2.0 segundos exactos.
+- Algoritmo de clonación invisible (*seamless loop forward*) que asegura una secuencia continua y natural hacia adelante (`1 ➔ 2 ➔ 3 ➔ 1...`) sin rebobinados hacia atrás.
+- Indicadores interactivos tipo píldora en azul `#0038A8`, pausa al pasar el cursor y soporte de gestos táctiles (*swipe*).
+
+### 5. Actualización de Service Worker PWA (`sw.js` v105)
+- Incremento progresivo y definitivo del Service Worker a `impucalculo-v105` en `sw.js` e `index.html`.
+- Forzado de invalidación de caché para garantizar la actualización inmediata del nuevo diseño en todos los dispositivos móviles y navegadores de escritorio.
+
+
 
