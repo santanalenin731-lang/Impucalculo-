@@ -1,3 +1,34 @@
+# 🚀 ESTADO ACTUAL Y SIGUIENTE TAREA INMEDIATA (LECTURA OBLIGATORIA)
+
+> 📌 **CONSIGNA PARA EL AGENTE**: Si el usuario te pide "lee archivo.md" o retoma la sesión, este es el contexto operativo exacto donde nos quedamos y la acción que se debe ejecutar de inmediato.
+
+### 📍 Estado del Proyecto (Cerrado y sincronizado el 25 de Octubre de 2026):
+1. **Monetag fue 100% descartado y eliminado**: No usar Monetag bajo ninguna circunstancia. Mostró alertas de malware y anuncios engañosos en las pruebas locales. El código está 100% limpio de cualquier rastro o script de Monetag.
+2. **Políticas de Privacidad (`privacidad.html`)**: Blindadas y 100% compatibles con las directrices oficiales de **Google AdSense** (Sección 8 redactada con cláusula obligatoria de cookies de Google, enlaces a aboutads.info/Google Ads Settings y garantía estricta de confidencialidad salarial). Subido a producción en GitHub (`main`).
+3. **Hero y Carrusel (`index.html`)**: Rediseñado exitosamente con foco central en **Prestaciones Laborales** (H1: *"La plataforma líder en prestaciones calculadas de forma inteligente"*), sin logo superior y con un carrusel de 3 imágenes móviles con efecto slide infinito hacia adelante cada 2 segundos. Todo en producción (`sw.js` v105).
+
+---
+
+### 🎯 TAREA INMEDIATA A REALIZAR ESTA NOCHE:
+**Conectar Google AdSense a través de la cuenta del hermano de Lenin.**
+
+* **Contexto**: Lenin (el titular anterior) tuvo su cuenta personal de AdSense inhabilitada por un problema administrativo previo. Por ello, la nueva cuenta de AdSense pertenece a su hermano, quien se conecta desde su propia casa con una **IP, correo y dispositivo completamente limpios e independientes**.
+* **Procedimiento exacto cuando el usuario abra la sesión**:
+  1. El hermano de Lenin entra a [google.com/adsense](https://www.google.com/adsense/) desde su computadora.
+  2. Añade el dominio: `https://impucalculo.com` en la sección **Sitios** de Google AdSense.
+  3. Google le proporcionará el código oficial de AdSense, similar a:
+     ```html
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+     ```
+  4. El usuario nos pasará ese fragmento `<script>`.
+  5. **Acción del Agente**:
+     - Insertar el script de AdSense en el `<head>` de `index.html` (y páginas principales).
+     - Incrementar la versión del Service Worker (`sw.js`).
+     - Hacer `git commit` y `git push origin main`.
+     - Confirmar que el código esté en vivo en producción para que el hermano de Lenin haga clic en **"Solicitar revisión"** dentro del panel de Google AdSense.
+
+---
+
 # Hoja de Ruta de Calculadoras Financieras para Impucálculo
 
 Este documento sirve como guía estratégica y ranking de las siguientes herramientas a desarrollar e integrar en **Impucálculo** (https://impucalculo.com/).
