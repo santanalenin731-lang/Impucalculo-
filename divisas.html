@@ -50,7 +50,7 @@
         })();
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Tasa del Dólar en República Dominicana Hoy (BCRD y Bancos) | Impucálculo</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/divisas.html">
     <link rel="alternate" hreflang="es-ar" href="https://impucalculo.com/divisas/ar/">
@@ -132,6 +132,20 @@
     </script>
 
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            overflow-x: clip;
+            width: 100%;
+            max-width: 100vw;
+            overscroll-behavior-x: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
         :root {
             --dr-blue: #0038A8;
             --dr-red: #CE1126;
@@ -141,6 +155,13 @@
             background-color: #F1F5F9;
             background-image: radial-gradient(circle at 2px 2px, #CBD5E1 1px, transparent 0);
             background-size: 32px 32px;
+            overflow-x: hidden;
+            overflow-x: clip;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+            overscroll-behavior-x: none;
+            touch-action: pan-y;
         }
 
         .glass {

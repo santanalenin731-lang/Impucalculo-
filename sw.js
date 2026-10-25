@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v105';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v105';
+const CACHE_NAME = 'impucalculo-v106';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v106';
 
 const STATIC_ASSETS = [
     '/',

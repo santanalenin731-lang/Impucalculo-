@@ -171,5 +171,12 @@ Primary Domain: https://impucalculo.com/
 - Incremento progresivo y definitivo del Service Worker a `impucalculo-v105` en `sw.js` e `index.html`.
 - Forzado de invalidación de caché para garantizar la actualización inmediata del nuevo diseño en todos los dispositivos móviles y navegadores de escritorio.
 
+### 6. Bloqueo Estricto de Desplazamiento Horizontal en Móviles (App-Like Behavior)
+- **Erradicación del desplazamiento lateral**: Corrección del rebote elástico (*rubber-banding*) y paneo horizontal involuntario en móviles tras la integración del carrusel Hero y el carrusel continuo del blog.
+- **Blindaje del Viewport**: Inclusión de `maximum-scale=1.0, user-scalable=no, viewport-fit=cover` en todas las vistas principales (`index.html`, `prestaciones.html`, `calculadora.html`, `divisas.html`, `blog.html` y `privacidad.html`).
+- **Bloqueo CSS en `html` y `body`**: Configuración de `overflow-x: hidden; overflow-x: clip; width: 100%; max-width: 100vw; overscroll-behavior-x: none; touch-action: pan-y;`. La directiva `touch-action: pan-y` restringe el motor táctil para procesar únicamente desplazamientos verticales.
+- **Aislamiento de Capas Gráficas**: En `#hero-carousel`, `#heroTrack` y `.carousel-viewport`, se inyectó `contain: paint; isolation: isolate; -webkit-mask-image: -webkit-radial-gradient(white, black);`, evitando que capas aceleradas por hardware (`will-change: transform`) expandan el ancho del viewport en WebKit / Safari iOS.
+- **Bump PWA (`sw.js` v106)**: Incremento del Service Worker a `impucalculo-v106` para forzar la actualización instantánea en todos los clientes y garantizar un comportamiento 100% idéntico a una app nativa.
+
 
 
