@@ -9,23 +9,15 @@
 
 ---
 
-### 🎯 TAREA INMEDIATA A REALIZAR ESTA NOCHE:
+### 🎯 TAREA DE LA NOCHE (COMPLETADA CON ÉXITO):
 **Conectar Google AdSense a través de la cuenta del hermano de Lenin.**
 
-* **Contexto**: Lenin (el titular anterior) tuvo su cuenta personal de AdSense inhabilitada por un problema administrativo previo. Por ello, la nueva cuenta de AdSense pertenece a su hermano, quien se conecta desde su propia casa con una **IP, correo y dispositivo completamente limpios e independientes**.
-* **Procedimiento exacto cuando el usuario abra la sesión**:
-  1. El hermano de Lenin entra a [google.com/adsense](https://www.google.com/adsense/) desde su computadora.
-  2. Añade el dominio: `https://impucalculo.com` en la sección **Sitios** de Google AdSense.
-  3. Google le proporcionará el código oficial de AdSense, similar a:
-     ```html
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-     ```
-  4. El usuario nos pasará ese fragmento `<script>`.
-  5. **Acción del Agente**:
-     - Insertar el script de AdSense en el `<head>` de `index.html` (y páginas principales).
-     - Incrementar la versión del Service Worker (`sw.js`).
-     - Hacer `git commit` y `git push origin main`.
-     - Confirmar que el código esté en vivo en producción para que el hermano de Lenin haga clic en **"Solicitar revisión"** dentro del panel de Google AdSense.
+* **Estado**: ✅ **Código oficial recibido e insertado** (`ca-pub-1230372815450080`).
+* **Acciones ejecutadas**:
+  - Inyección del `<script async src="... ca-pub-1230372815450080" ...>` en el `<head>` de las 34 páginas HTML de la plataforma.
+  - Creación del archivo [`ads.txt`](file:///Users/leninsantanadejesus/Documents/impucalculo-deploy/ads.txt) con la línea de editor: `google.com, pub-1230372815450080, DIRECT, f08c47fec0942fa0`.
+  - Bump del Service Worker PWA a `v107` (`impucalculo-v107` / `impucalculo-dynamic-v107`) en `sw.js`, `index.html` y `prestaciones.html`.
+  - Listo para subir a GitHub y solicitar la revisión en el panel de AdSense.
 
 ---
 
