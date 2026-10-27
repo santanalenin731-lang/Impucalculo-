@@ -4,12 +4,13 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDjDE3_2z-t1n3Wiqj3lQT9rnYMsuZxBmg",
-  authDomain: "impucalculo-analytics-2026.firebaseapp.com",
-  projectId: "impucalculo-analytics-2026",
-  storageBucket: "impucalculo-analytics-2026.firebasestorage.app",
-  messagingSenderId: "683013434858",
-  appId: "1:683013434858:web:ec7cfbb2c930ac1f4f1693"
+  apiKey: "AIzaSyDEp9BLnroBBvxx5XpSJzjn0iWPEl43s-Q",
+  authDomain: "impucalculo-rd.firebaseapp.com",
+  projectId: "impucalculo-rd",
+  storageBucket: "impucalculo-rd.firebasestorage.app",
+  messagingSenderId: "222433319439",
+  appId: "1:222433319439:web:d72352ea017ce5cf9ee17a",
+  measurementId: "G-0C71EYB36J"
 };
 
 // Initialize Firebase

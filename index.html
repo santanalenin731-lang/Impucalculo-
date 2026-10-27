@@ -1868,7 +1868,7 @@
         // PWA Service Worker Registration with Immediate Force-Update
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=108')
+                navigator.serviceWorker.register('sw.js?v=109')
                     .then(registration => {
                         console.log('ServiceWorker registered with scope: ', registration.scope);
                         registration.update();
