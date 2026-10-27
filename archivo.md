@@ -12,12 +12,16 @@
 ### 🎯 TAREA DE LA NOCHE (COMPLETADA CON ÉXITO):
 **Conectar Google AdSense a través de la cuenta del hermano de Lenin.**
 
-* **Estado**: ✅ **Código oficial recibido e insertado** (`ca-pub-1230372815450080`).
-* **Acciones ejecutadas**:
-  - Inyección del `<script async src="... ca-pub-1230372815450080" ...>` en el `<head>` de las 34 páginas HTML de la plataforma.
-  - Creación del archivo [`ads.txt`](file:///Users/leninsantanadejesus/Documents/impucalculo-deploy/ads.txt) con la línea de editor: `google.com, pub-1230372815450080, DIRECT, f08c47fec0942fa0`.
-  - Bump del Service Worker PWA a `v107` (`impucalculo-v107` / `impucalculo-dynamic-v107`) en `sw.js`, `index.html` y `prestaciones.html`.
-  - Listo para subir a GitHub y solicitar la revisión en el panel de AdSense.
+* **Estado**: ✅ **Sitio verificado y enviado a revisión oficial en Google AdSense** (`ca-pub-1230372815450080`).
+* **Acciones ejecutadas y en producción**:
+  - Inyección del `<script async src="... ca-pub-1230372815450080" ...>` en el `<head>` de las 34 páginas HTML.
+  - Creación del archivo [`ads.txt`](file:///Users/leninsantanadejesus/Documents/impucalculo-deploy/ads.txt): `google.com, pub-1230372815450080, DIRECT, f08c47fec0942fa0`.
+  - Bump del Service Worker PWA a `v107` (`impucalculo-v107` / `impucalculo-dynamic-v107`).
+  - Desplegado en vivo a GitHub Pages (`main`, commit `aa6d27e`).
+  - Google AdSense verificó la propiedad del sitio web con check verde y se presionó **"Solicitar revisión"** (Tarjeta SITIOS: *"Gracias por conectar el sitio"*).
+* **Pendiente para la próxima sesión**:
+  1. Completar la tarjeta **PAGOS** ("Introducir información" con los datos personales de facturación del hermano en RD).
+  2. Explorar y activar la tarjeta **ANUNCIOS** ("Anuncios automáticos").
 
 ---
 
