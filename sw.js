@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v111';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v111';
+const CACHE_NAME = 'impucalculo-v114';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v114';
 
 const STATIC_ASSETS = [
     '/',
@@ -13,6 +13,7 @@ const STATIC_ASSETS = [
     '/divisas/ve/index.html',
     '/js/divisas-engine.js',
     '/blog.html',
+    '/blog/dimision-laboral-rd-prestaciones.html',
     '/blog/ar/dolar-tarjeta-argentina.html',
     '/blog/ar/dolar-mep-vs-blue.html',
     '/blog/ve/como-facturar-bolivares-tasa-bcv.html',
@@ -69,10 +70,21 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Event: Network First for HTML, Cache First for Images
 self.addEventListener('fetch', (event) => {
-    const url = new URL(event.request.url);
+    if (event.request.method !== 'GET') return;
 
-    // Skip cross-origin requests unless they are specific APIs if necessary
-    // Here we let everything pass but apply strategy depending on the file type
+    const url = new URL(event.request.url);
+    if (!url.protocol.startsWith('http')) return;
+
+    // Bypass third-party analytics & ad networks so they never block page load or pollute cache
+    if (
+        url.hostname.includes('googlesyndication.com') ||
+        url.hostname.includes('google-analytics.com') ||
+        url.hostname.includes('googletagmanager.com') ||
+        url.hostname.includes('doubleclick.net') ||
+        url.hostname.includes('googleadservices.com')
+    ) {
+        return;
+    }
 
     // 1. HTML Pages & API Calls -> Network First, fallback to Cache
     if (event.request.mode === 'navigate' || url.pathname.endsWith('.html') || event.request.url.includes('script.google.com')) {

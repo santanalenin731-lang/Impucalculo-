@@ -24,5 +24,7 @@ server.log
 autosync.log
 autosync.err
 
-# Documentación interna
+# Documentación interna y privada
 sistema.md
+archivo.md
+docs/

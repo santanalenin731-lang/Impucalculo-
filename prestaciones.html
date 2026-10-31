@@ -1137,10 +1137,13 @@
     </div>
 
     <script>
-        // PWA Service Worker Registration with Immediate Force-Update
+        // PWA Service Worker Registration (Canonical URL + Loop Protection)
         if ('serviceWorker' in navigator) {
+            const hadController = Boolean(navigator.serviceWorker.controller);
+            let refreshing = false;
+
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=109')
+                navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
                     .then(registration => {
                         console.log('ServiceWorker registered with scope: ', registration.scope);
                         registration.update();
@@ -1150,12 +1153,14 @@
                     });
             });
 
-            let refreshing = false;
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!refreshing) {
-                    refreshing = true;
-                    window.location.reload();
-                }
+                if (!hadController || refreshing) return;
+                const now = Date.now();
+                const lastReload = parseInt(sessionStorage.getItem('impucalculo_sw_reload') || '0', 10);
+                if (now - lastReload < 5000) return;
+                sessionStorage.setItem('impucalculo_sw_reload', String(now));
+                refreshing = true;
+                window.location.reload();
             });
         }
         

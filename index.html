@@ -1590,6 +1590,12 @@
             (function initBlogCarousel() {
             const blogArticles = [
                 {
+                    title: 'Dimisión Laboral en RD 2026: Sal sin Perder tu Cesantía',
+                    category: 'Laboral',
+                    excerpt: 'Cómo terminar tu contrato por falta grave de la empresa (no pago de TSS o rebaja salarial), plazo de 48 horas y cálculo de prestaciones.',
+                    slug: 'blog/dimision-laboral-rd-prestaciones.html'
+                },
+                {
                     title: 'Cómo Calcular el Dólar Tarjeta en Argentina 2026',
                     category: 'Divisas',
                     excerpt: 'Entiende la composición impositiva (Impuesto PAIS y retenciones AFIP) sobre compras en el exterior y cómo recuperar percepciones.',
@@ -1749,7 +1755,7 @@
             });
         }
 
-        // Hero Image Carousel Controller (Infinite Continuous Slide Forward - 2s)
+        // Hero Image Carousel Controller (Infinite Continuous Slide Forward - Resilient)
         (function() {
             const carousel = document.getElementById('hero-carousel');
             const track = document.getElementById('heroTrack');
@@ -1759,14 +1765,18 @@
 
             let currentIndex = 0;
             let timer = null;
+            let resetTimer = null;
+            let isTransitioning = false;
             const intervalTime = 3000;
             const transitionDuration = '0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+            const transitionMs = 600;
 
             track.style.transition = 'transform ' + transitionDuration;
 
             function updateDots(activeIdx) {
+                const safeIdx = ((activeIdx % originalCount) + originalCount) % originalCount;
                 dots.forEach((dot, i) => {
-                    if (i === activeIdx) {
+                    if (i === safeIdx) {
                         dot.style.width = '28px';
                         dot.style.background = '#0038A8';
                         dot.style.borderColor = 'rgba(255, 255, 255, 0.9)';
@@ -1780,24 +1790,69 @@
                 });
             }
 
-            function moveToSlide(index) {
+            function snapToSlide(index) {
+                if (resetTimer) {
+                    clearTimeout(resetTimer);
+                    resetTimer = null;
+                }
                 currentIndex = index;
+                track.style.transition = 'none';
+                track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                void track.offsetHeight; // Force reflow
+                updateDots(currentIndex % originalCount);
+                isTransitioning = false;
+            }
+
+            function moveToSlide(index) {
+                if (resetTimer) {
+                    clearTimeout(resetTimer);
+                    resetTimer = null;
+                }
+
+                if (currentIndex >= originalCount) {
+                    snapToSlide(0);
+                }
+
+                currentIndex = index;
+                if (currentIndex > originalCount) {
+                    snapToSlide(0);
+                    currentIndex = 1;
+                }
+
+                isTransitioning = true;
                 track.style.transition = 'transform ' + transitionDuration;
                 track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
                 updateDots(currentIndex % originalCount);
+
+                if (currentIndex === originalCount) {
+                    resetTimer = setTimeout(() => {
+                        snapToSlide(0);
+                    }, transitionMs + 50);
+                } else {
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, transitionMs);
+                }
             }
 
             function nextSlide() {
-                moveToSlide(currentIndex + 1);
+                if (isTransitioning) return;
+                if (currentIndex >= originalCount) {
+                    snapToSlide(0);
+                    moveToSlide(1);
+                } else {
+                    moveToSlide(currentIndex + 1);
+                }
             }
 
-            track.addEventListener('transitionend', () => {
-                // If we slid to the clone of slide 1 (index 3), instantly reset to slide 1 (index 0) without transition
-                if (currentIndex === originalCount) {
-                    track.style.transition = 'none';
-                    currentIndex = 0;
-                    track.style.transform = 'translateX(0%)';
-                    void track.offsetHeight; // Force browser layout recalculation
+            track.addEventListener('transitionend', (e) => {
+                if (e.target !== track) return;
+                if (e.propertyName && e.propertyName !== 'transform') return;
+
+                if (currentIndex >= originalCount) {
+                    snapToSlide(0);
+                } else {
+                    isTransitioning = false;
                 }
             });
 
@@ -1816,13 +1871,31 @@
             dots.forEach(dot => {
                 dot.addEventListener('click', () => {
                     const idx = parseInt(dot.getAttribute('data-index'), 10);
-                    moveToSlide(idx);
-                    startTimer();
+                    if (!isNaN(idx) && idx >= 0 && idx < originalCount) {
+                        snapToSlide(idx);
+                        startTimer();
+                    }
                 });
             });
 
             carousel.addEventListener('mouseenter', stopTimer);
-            carousel.addEventListener('mouseleave', startTimer);
+            carousel.addEventListener('mouseleave', () => {
+                if (currentIndex >= originalCount) {
+                    snapToSlide(0);
+                }
+                startTimer();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopTimer();
+                } else {
+                    if (currentIndex >= originalCount) {
+                        snapToSlide(0);
+                    }
+                    startTimer();
+                }
+            });
 
             let touchStartX = 0;
             carousel.addEventListener('touchstart', (e) => {
@@ -1834,16 +1907,14 @@
                 const touchEndX = e.changedTouches[0].clientX;
                 const diff = touchStartX - touchEndX;
                 if (Math.abs(diff) > 40) {
-                    if (diff > 0) nextSlide();
-                    else {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
                         if (currentIndex === 0) {
-                            track.style.transition = 'none';
-                            currentIndex = originalCount;
-                            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-                            void track.offsetHeight;
+                            snapToSlide(originalCount);
                             moveToSlide(originalCount - 1);
                         } else {
-                            moveToSlide(currentIndex - 1);
+                            moveToSlide(Math.max(0, currentIndex - 1));
                         }
                     }
                 }
@@ -1860,10 +1931,13 @@
     </div>
 
     <script>
-        // PWA Service Worker Registration with Immediate Force-Update
+        // PWA Service Worker Registration (Canonical URL + Loop Protection)
         if ('serviceWorker' in navigator) {
+            const hadController = Boolean(navigator.serviceWorker.controller);
+            let refreshing = false;
+
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=109')
+                navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
                     .then(registration => {
                         console.log('ServiceWorker registered with scope: ', registration.scope);
                         registration.update();
@@ -1873,12 +1947,14 @@
                     });
             });
 
-            let refreshing = false;
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!refreshing) {
-                    refreshing = true;
-                    window.location.reload();
-                }
+                if (!hadController || refreshing) return;
+                const now = Date.now();
+                const lastReload = parseInt(sessionStorage.getItem('impucalculo_sw_reload') || '0', 10);
+                if (now - lastReload < 5000) return;
+                sessionStorage.setItem('impucalculo_sw_reload', String(now));
+                refreshing = true;
+                window.location.reload();
             });
         }
         

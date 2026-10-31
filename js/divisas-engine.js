@@ -559,6 +559,11 @@
             document.getElementById('avg-spread').textContent = spread;
         }
 
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
+        }
+
         function renderBanks() {
             const searchTerm = bankSearchInput.value.toLowerCase();
             const amount = parseFloat(mainAmountInput.value) || 0;
@@ -665,8 +670,8 @@
                         <!-- 1. Institución -->
                         <div class="col-span-5 md:col-span-3 flex items-center">
                             <div class="min-w-0">
-                                <p class="text-xs md:text-sm font-black text-dr-slate-800 leading-tight" title="${bank.n}">${bank.n}</p>
-                                <span class="text-[9px] font-bold text-dr-slate-400 uppercase tracking-widest block mt-0.5">${bank.s || 'Comercial'}</span>
+                                <p class="text-xs md:text-sm font-black text-dr-slate-800 leading-tight" title="${escapeHtml(bank.n)}">${escapeHtml(bank.n)}</p>
+                                <span class="text-[9px] font-bold text-dr-slate-400 uppercase tracking-widest block mt-0.5">${escapeHtml(bank.s || 'Comercial')}</span>
                                 ${isBest ? `<span class="text-[9px] font-black text-emerald-600 uppercase bg-emerald-50 px-1.5 py-0.5 rounded tracking-widest mt-1 block w-max">Mejor Opción</span>` : ''}
                             </div>
                         </div>
