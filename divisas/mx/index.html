@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="../../logo_new.webp">
 
     <meta name="keywords"
-        content="conversor de divisas rd, dolar a peso, euro a peso, tasa del dolar rd, republica dominicana, calculo de monedas">
+        content="tipo de cambio dolar mexico, fix banxico, dolar a peso mexicano, cotizacion dolar bancos mexico, conversor divisas mexico, impucalculo">
     <meta name="author" content="Impucálculo">
     <link rel="canonical" href="https://impucalculo.com/divisas/mx/">
 
@@ -48,7 +48,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -242,7 +242,7 @@
                 class="flex items-center gap-4 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
                 <div class="w-[100px] h-[100px] flex items-center justify-center">
-                    <img src="../../logo_new.webp" alt="Conversor de Divisas RD Dolar Banco Central - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
+                    <img src="../../logo_new.webp" alt="Tipo de Cambio Dólar México Banxico - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
                         onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
                 </div>
                 <div>
@@ -254,7 +254,11 @@
                     </p>
                 </div>
             </a>
-
+            <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
+                <a href="../../prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
+                <a href="../../calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
+                <a href="../../blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+            </nav>
         </div>
 
         <!-- Top Exchange Rate Ticker Banner -->
@@ -493,55 +497,51 @@
         </div>
     </main>
 
-    <!-- Footer Ticker -->
-    <footer style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:4rem 2rem 2.5rem; margin-top:5rem;">
-        <div style="max-width:1200px; margin:0 auto;">
-            <!-- Top: Logo + tagline centrado -->
-            <div style="text-align:center; margin-bottom:3rem;">
-                <p style="font-size:1.3rem; font-weight:900; margin:0; font-family:'Outfit', sans-serif; letter-spacing:0.05rem;"><span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span></p>
-                
+    <!-- Standard Compliant Footer -->
+    <footer class="bg-dr-slate-50 border-t border-dr-slate-200 py-12 px-6 mt-16 font-sans">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div class="md:col-span-2 space-y-3">
+                    <div class="flex items-center gap-2">
+                        <img src="../../logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
+                    </div>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
+                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana y Latinoamérica.
+                    </p>
+                    <p class="text-xs text-dr-slate-500">
+                        Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <ul class="space-y-2 text-sm text-dr-slate-600">
+                        <li><a href="../../prestaciones.html" class="hover:text-dr-blue transition">Prestaciones Laborales</a></li>
+                        <li><a href="../../calculadora.html" class="hover:text-dr-blue transition">Calculadora de Sueldo e ISR</a></li>
+                        <li><a href="../../divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas RD</a></li>
+                        <li><a href="../../blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <ul class="space-y-2 text-sm text-dr-slate-600">
+                        <li><a href="../../sobre-nosotros.html" class="hover:text-dr-blue transition">Sobre Nosotros</a></li>
+                        <li><a href="../../privacidad.html" class="hover:text-dr-blue transition">Política de Privacidad</a></li>
+                        <li><a href="../../terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
+                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Redes y Contacto (Logos limpios) -->
-            <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:3rem; color:#64748B;">
-                <!-- Correo -->
-                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo de contacto para enviarnos un mensaje:', 'info@impucalculo.com');" title="Ver Correo"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#0038A8';this.style.color='#0038A8'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
-
-
-                <!-- Privacidad -->
-                <a href="../../privacidad.html" title="Política de Privacidad"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#CE1126';this.style.color='#CE1126'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                </a>
-
-                <!-- Blog -->
-                <a href="../../blog.html" title="Nuestro Blog"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#0038A8';this.style.color='#0038A8'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                </a>
-
-
+            <!-- Disclaimer legal explícito -->
+            <div class="border-t border-dr-slate-200 pt-6 pb-6 text-xs text-dr-slate-500 leading-relaxed">
+                <p>
+                    <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. Las tasas de cambio e indicadores financieros son de carácter referencial según cotizaciones públicas de mercado.
+                </p>
             </div>
 
-            <!-- Bottom: copyright -->
-            <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; text-align:center;">
-                <p style="font-size:0.92rem; color:#475569; font-weight:600; letter-spacing:0.01em; margin:0;">© 2026 Impucálculo · Todos los derechos reservados · República Dominicana</p>
+            <div class="border-t border-dr-slate-200 pt-6 text-center text-xs font-semibold text-dr-slate-500">
+                <p>© 2026 Impucálculo · Todos los derechos reservados · República Dominicana y Latinoamérica</p>
             </div>
         </div>
     </footer>
@@ -551,7 +551,7 @@
     </script>
     <script src="../../js/divisas-engine.js" defer></script>
     <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
+    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 85px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
         <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
         <span>Instalar App</span>
     </div>

@@ -242,4 +242,22 @@
     <xhtml:link rel="alternate" hreflang="es-mx" href="https://impucalculo.com/blog/mx/calcular-tipo-cambio-dolar-mexico.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://impucalculo.com/blog/mx/calcular-tipo-cambio-dolar-mexico.html"/>
   </url>
+  <url>
+    <loc>https://impucalculo.com/sobre-nosotros.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/terminos.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://impucalculo.com/privacidad.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

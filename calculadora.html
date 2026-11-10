@@ -306,7 +306,12 @@
                     </p>
                 </div>
             </a>
-            <div class="flex items-center gap-2 md:gap-4">
+            <div class="flex items-center gap-3 md:gap-5">
+                <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
+                    <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
+                    <a href="divisas.html" class="text-dr-slate-600 hover:text-dr-blue transition">Divisas</a>
+                    <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+                </nav>
                 <!-- Botón de Ajustes (Sueldo Fijo) -->
                 <button onclick="openFixedSalaryModal()"
                     class="flex-shrink-0 p-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 hover:bg-dr-blue/10 transition-colors group"
@@ -807,55 +812,51 @@
         </section>
     </main>
 
-    <!-- Footer Ticker -->
-    <footer style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:4rem 2rem 2.5rem; margin-top:5rem;">
-        <div style="max-width:1200px; margin:0 auto;">
-            <!-- Top: Logo + tagline centrado -->
-            <div style="text-align:center; margin-bottom:3rem;">
-                <p style="font-size:1.3rem; font-weight:900; margin:0; font-family:'Outfit', sans-serif; letter-spacing:0.05rem;"><span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span></p>
-                
+    <!-- Standard Compliant Footer -->
+    <footer class="bg-dr-slate-50 border-t border-dr-slate-200 py-12 px-6 mt-16 font-sans">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div class="md:col-span-2 space-y-3">
+                    <div class="flex items-center gap-2">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
+                    </div>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
+                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                    </p>
+                    <p class="text-xs text-dr-slate-500">
+                        Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <ul class="space-y-2 text-sm text-dr-slate-600">
+                        <li><a href="prestaciones.html" class="hover:text-dr-blue transition">Prestaciones Laborales</a></li>
+                        <li><a href="calculadora.html" class="text-dr-blue font-semibold hover:underline">Calculadora de Sueldo e ISR</a></li>
+                        <li><a href="divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas</a></li>
+                        <li><a href="blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <ul class="space-y-2 text-sm text-dr-slate-600">
+                        <li><a href="sobre-nosotros.html" class="hover:text-dr-blue transition">Sobre Nosotros</a></li>
+                        <li><a href="privacidad.html" class="hover:text-dr-blue transition">Política de Privacidad</a></li>
+                        <li><a href="terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
+                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Redes y Contacto (Logos limpios) -->
-            <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:3rem; color:#64748B;">
-                <!-- Correo -->
-                <a href="#" onclick="event.preventDefault(); prompt('Copia nuestro correo de contacto para enviarnos un mensaje:', 'info@impucalculo.com');" title="Ver Correo"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#0038A8';this.style.color='#0038A8'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
-
-
-                <!-- Privacidad -->
-                <a href="privacidad.html" title="Política de Privacidad"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#CE1126';this.style.color='#CE1126'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                </a>
-
-                <!-- Blog -->
-                <a href="blog.html" title="Nuestro Blog"
-                    style="width:50px; height:50px; background:#fff; border:1px solid #E2E8F0; border-radius:14px; display:flex; align-items:center; justify-content:center; transition:all 0.3s; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05); color:#64748B;"
-                    onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.1)';this.style.borderColor='#0038A8';this.style.color='#0038A8'"
-                    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.05)';this.style.borderColor='#E2E8F0';this.style.color='#64748B'">
-                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                </a>
-
-
+            <!-- Disclaimer legal explícito -->
+            <div class="border-t border-dr-slate-200 pt-6 pb-6 text-xs text-dr-slate-500 leading-relaxed">
+                <p>
+                    <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII), la Tesorería de la Seguridad Social (TSS) ni el Ministerio de Trabajo de la República Dominicana. Los resultados son simulaciones aproximadas según la normativa vigente (Ley 11-92 y Ley 16-92).
+                </p>
             </div>
 
-            <!-- Bottom: copyright -->
-            <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; text-align:center;">
-                <p style="font-size:0.92rem; color:#475569; font-weight:600; letter-spacing:0.01em; margin:0;">© 2026 Impucálculo · Todos los derechos reservados · República Dominicana</p>
+            <div class="border-t border-dr-slate-200 pt-6 text-center text-xs font-semibold text-dr-slate-500">
+                <p>© 2026 Impucálculo · Todos los derechos reservados · República Dominicana</p>
             </div>
         </div>
     </footer>
@@ -978,6 +979,8 @@
         function openFixedSalaryModal() {
             const modal = document.getElementById('modal-sueldo-fijo');
             const input = document.getElementById('modal-fixed-salary-input');
+            const errEl = document.getElementById('modal-salary-error');
+            if (errEl) errEl.classList.add('hidden');
 
             if (modal && input) {
                 // Cargar valor actual
@@ -995,6 +998,8 @@
 
         function closeFixedSalaryModal() {
             const modal = document.getElementById('modal-sueldo-fijo');
+            const errEl = document.getElementById('modal-salary-error');
+            if (errEl) errEl.classList.add('hidden');
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
@@ -1020,7 +1025,11 @@
                     updatePreview();
                 }
             } else {
-                alert('Por favor introduce un monto válido mayor a 0 para activar el sueldo fijo, o presiona Eliminar.');
+                const errEl = document.getElementById('modal-salary-error');
+                if (errEl) {
+                    errEl.textContent = 'Por favor introduce un monto válido mayor a 0 o presiona Eliminar.';
+                    errEl.classList.remove('hidden');
+                }
             }
         }
 
@@ -1164,12 +1173,10 @@
 
                 // Delete handle
                 template.querySelector('.delete-btn').onclick = () => {
-                    if (confirm('¿Borrar este registro?')) {
-                        state.records = state.records.filter(r => r.id !== record.id);
-                        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-                        updateDashboard();
-                        renderHistory();
-                    }
+                    state.records = state.records.filter(r => r.id !== record.id);
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+                    updateDashboard();
+                    renderHistory();
                 };
 
                 elements.historyRows.appendChild(template);
@@ -1266,19 +1273,13 @@
         // Gestión de historial de cálculos
         function clearHistory() {
             localStorage.removeItem(STORAGE_KEY);
-            // NO borramos la configuración de sueldo fijo (para que el usuario no tenga que reescribirlo)
-            // Pero sí queremos que el modal salte de nuevo para confirmar.
-            // Usamos sessionStorage para forzar la apertura del modal en la recarga.
-            sessionStorage.setItem('force_salary_modal', 'true');
-
-            // Recargamos la página
-            location.reload();
+            state.records = [];
+            updateDashboard();
+            renderHistory();
         }
 
         elements.btnClear.addEventListener('click', () => {
-            if (confirm('¿Eliminar todo el historial?')) {
-                clearHistory();
-            }
+            clearHistory();
         });
 
         // Init
@@ -1286,23 +1287,6 @@
             const today = new Date().toISOString().split('T')[0];
             elements.dateInput.value = today;
             elements.currentDateDisplay.innerText = fmtDate(today);
-
-            // Restaurar indicador (ya no existe)
-
-
-            // Mostrar modal de sueldo fijo si:
-            // 1. No existe configuración (Usuario nuevo)
-            // 2. Se forzó la apertura desde "Limpiar Todo" (sessionStorage)
-            if (!localStorage.getItem(FIXED_SALARY_KEY) || sessionStorage.getItem('force_salary_modal')) {
-                // Limpiar la bandera de forzado
-                sessionStorage.removeItem('force_salary_modal');
-
-                // Marcar como visto (para consistencia)
-                localStorage.setItem('impucalculo_fixed_salary_seen', '1');
-
-                // Abrir modal con delay
-                setTimeout(() => openFixedSalaryModal(), 500);
-            }
 
             updateDashboard();
             renderHistory();
@@ -1348,6 +1332,7 @@
                     <input type="number" id="modal-fixed-salary-input" step="0.01" min="0" placeholder="Ej: 15,000.00"
                         class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue/30 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                 </div>
+                <p id="modal-salary-error" class="hidden text-xs font-bold text-dr-red text-center mt-1"></p>
             </div>
 
             <!-- Botones -->
@@ -1365,7 +1350,7 @@
     </div>
 
     <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
+    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 85px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
         <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
         <span>Instalar App</span>
     </div>

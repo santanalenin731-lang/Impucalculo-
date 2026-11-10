@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v117';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v117';
+const CACHE_NAME = 'impucalculo-v121';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v121';
 
 const STATIC_ASSETS = [
     '/',
@@ -7,6 +7,9 @@ const STATIC_ASSETS = [
     '/calculadora.html',
     '/prestaciones.html',
     '/divisas.html',
+    '/sobre-nosotros.html',
+    '/terminos.html',
+    '/privacidad.html',
     '/divisas/ar/index.html',
     '/divisas/mx/index.html',
     '/divisas/co/index.html',
@@ -86,8 +89,15 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // 1. HTML Pages & API Calls -> Network First, fallback to Cache
-    if (event.request.mode === 'navigate' || url.pathname.endsWith('.html') || event.request.url.includes('script.google.com')) {
+    // 1. HTML Pages & Realtime API Calls -> Network First, fallback to Cache
+    if (
+        event.request.mode === 'navigate' || 
+        url.pathname.endsWith('.html') || 
+        url.hostname.includes('script.google.com') ||
+        url.hostname.includes('dolarapi.com') ||
+        url.hostname.includes('freeipapi.com') ||
+        url.hostname.includes('open.er-api.com')
+    ) {
         event.respondWith(
             fetch(event.request)
                 .then((networkResponse) => {
