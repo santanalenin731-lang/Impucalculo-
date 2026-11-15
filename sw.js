@@ -1,5 +1,5 @@
-const CACHE_NAME = 'impucalculo-v123';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v123';
+const CACHE_NAME = 'impucalculo-v124';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v124';
 
 const STATIC_ASSETS = [
     '/',
@@ -24,6 +24,9 @@ const STATIC_ASSETS = [
     '/blog/guia-uso-v2.html',
     '/css/tailwind.min.css',
     '/js/firebase-analytics.js',
+    '/hero-images/hero-1.jpg',
+    '/hero-images/hero-2.jpg',
+    '/hero-images/hero-3.jpg',
     '/manifest.json',
     '/logo_new.webp',
     '/icon-192.png',
