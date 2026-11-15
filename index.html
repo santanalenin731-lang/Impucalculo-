@@ -2,12 +2,28 @@
 <html lang="es-DO">
 
 <head>
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+    </script>
+
     <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Impucálculo | Cálculo de Sueldo Neto, ISR y Prestaciones RD 2026</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/">
 
@@ -17,13 +33,12 @@
 
     <!-- Meta/SEO -->
     <meta name="description"
-        content="La herramienta #1 en República Dominicana para calcular al instante tu Sueldo Neto, retenciones de ISR, AFP, ARS y liquidación laboral gratis y actualizada.">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+        content="Plataforma gratuita e independiente en República Dominicana para calcular al instante tu Sueldo Neto, retenciones de ISR, AFP, ARS y liquidación laboral actualizada a 2026.">
+    <link rel="icon" type="image/webp" href="logo_new.webp">
 
     <meta name="keywords"
-        content="impuestos, calculo, prestaciones laborales, republica dominicana, isr, afp, ars, tss, salario, nomina, calculadora fiscal, divisas, dolar, banco central">
-    <meta name="author" content="Impucálculo">
+        content="impuestos, calculo, prestaciones laborales, republica dominicana, isr, afp, ars, tss, salario, nomina, calculadora fiscal, regalia pascual, bonificacion">
+    <meta name="author" content="Starlin Santana - Impucálculo">
     <link rel="canonical" href="https://impucalculo.com/">
 
     <!-- Open Graph / Facebook -->
@@ -31,16 +46,17 @@
     <meta property="og:url" content="https://impucalculo.com/">
     <meta property="og:title" content="Impucálculo | Cálculo de Sueldo Neto, ISR y Prestaciones RD 2026">
     <meta property="og:description"
-        content="La herramienta #1 en República Dominicana para calcular al instante tu Sueldo Neto, retenciones de ISR, AFP, ARS y liquidación laboral gratis y actualizada.">
+        content="Plataforma gratuita e independiente en República Dominicana para calcular al instante tu Sueldo Neto, retenciones de ISR, AFP, ARS y liquidación laboral actualizada a 2026.">
     <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
+    <meta property="og:site_name" content="Impucálculo">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://impucalculo.com/">
-    <meta property="twitter:title" content="Impucálculo | Impuestos, Divisas y Prestaciones RD">
-    <meta property="twitter:description"
-        content="Impucálculo - Plataforma moderna para cálculo de impuestos, divisas y prestaciones laborales en República Dominicana. Calcula ISR, AFP, ARS y prestaciones de forma precisa y fácil.">
-    <meta property="twitter:image" content="https://impucalculo.com/logo_new.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://impucalculo.com/">
+    <meta name="twitter:title" content="Impucálculo | Cálculo de Sueldo Neto, ISR y Prestaciones RD 2026">
+    <meta name="twitter:description"
+        content="Impucálculo - Plataforma moderna para el cálculo de impuestos (ISR), Seguridad Social (TSS: AFP y ARS) y prestaciones laborales en República Dominicana.">
+    <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -91,7 +107,7 @@
             max-width: 100vw;
             position: relative;
             overscroll-behavior-x: none;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
         }
 
         section, footer {
@@ -165,8 +181,8 @@
             gap: 5rem;
             width: 100%;
             max-width: 100%;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+            opacity: 1;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .hero-visual-left {
@@ -206,6 +222,37 @@
             height: 100%;
         }
 
+        .hero-carousel-dots {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid rgba(0, 56, 168, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-dot.active {
+            width: 28px;
+            background: #0038A8;
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
         .hero-stats-right {
             display: flex;
             flex-direction: column;
@@ -213,10 +260,14 @@
             text-align: left;
         }
 
+        .stat-item {
+            display: block;
+        }
+
         .logo-container {
             margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 1;
+            animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .logo-wrapper {
@@ -250,8 +301,8 @@
 
         @keyframes fadeInScale {
             from {
-                opacity: 0;
-                transform: scale(0.8);
+                opacity: 1;
+                transform: scale(0.95);
             }
 
             to {
@@ -262,8 +313,8 @@
 
         .hero-title {
             margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 1;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .hero-title h1 {
@@ -301,8 +352,8 @@
 
         @keyframes fadeInUp {
             from {
-                opacity: 0;
-                transform: translateY(30px);
+                opacity: 1;
+                transform: translateY(15px);
             }
 
             to {
@@ -317,8 +368,8 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 3rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+            opacity: 1;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         /* ─── Hero CTA Buttons — cuadrados y monocromáticos ─── */
@@ -382,12 +433,12 @@
                 inset 0 2px 1px rgba(255, 255, 255, 0.45);
         }
 
-        /* Convertir Divisas → verde al hover */
-        .btn-divisas:hover {
-            background: #16A34A;
+        /* Guías y Blog Fiscal → azul oscuro al hover */
+        .btn-blog:hover {
+            background: #1E293B;
             box-shadow: 
-                0 35px 70px -10px rgba(22, 163, 74, 0.52), 
-                0 15px 30px -8px rgba(22, 163, 74, 0.28),
+                0 35px 70px -10px rgba(30, 41, 59, 0.52), 
+                0 15px 30px -8px rgba(30, 41, 59, 0.28),
                 inset 0 2px 1px rgba(255, 255, 255, 0.45);
         }
 
@@ -454,8 +505,8 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -495,8 +546,8 @@
             justify-content: center;
             text-align: left;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1;
+            transform: translateY(0);
             position: relative;
             overflow: hidden;
             box-shadow: 0 20px 45px -12px rgba(0, 56, 168, 0.18), 0 10px 20px -8px rgba(0, 0, 0, 0.08);
@@ -565,8 +616,8 @@
 
         .trust-card {
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -623,8 +674,8 @@
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
-            opacity: 0;
-            transform: scale(0.9);
+            opacity: 1;
+            transform: scale(1);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -691,8 +742,8 @@
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            opacity: 0;
-            animation: fadeIn 1s ease 1s forwards, bounce 2s ease-in-out 1s infinite;
+            opacity: 1;
+            animation: bounce 2s ease-in-out 1s infinite;
             z-index: 1;
         }
 
@@ -767,6 +818,9 @@
 
             .btn {
                 width: 100%;
+                height: auto;
+                min-height: 76px;
+                padding: 14px 18px;
                 justify-content: center;
             }
 
@@ -804,7 +858,7 @@
             }
 
             .btn {
-                padding: 1rem 2rem;
+                padding: 14px 18px;
                 font-size: 0.9rem;
             }
         }
@@ -817,20 +871,20 @@
         }
 
         /* FAQ smooth transition */
-        details>p {
+        details > p {
             overflow: hidden;
             max-height: 0;
             margin: 0;
-            transition: max-height 0.4s ease, margin 0.4s ease;
+            transition: max-height 0.4s ease, margin-top 0.4s ease;
         }
 
-        details[open]>p {
-            max-height: 300px;
-            margin: 1rem 0 0;
+        details[open] > p {
+            max-height: 360px;
+            margin-top: 1rem;
         }
 
         /* =============================================
-           BLOG CAROUSEL SECTION
+           BLOG PREVIEW GRID SECTION
         ============================================= */
         .blog-carousel-section {
             padding: 5rem 0;
@@ -881,51 +935,18 @@
             margin: 0;
         }
 
-        /* Track wrapper — clip overflow */
-        .carousel-viewport {
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-            contain: paint;
-            isolation: isolate;
-            cursor: default;
-            padding: 1.5rem 0;
-            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-            mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-        }
-
-        .carousel-track-wrapper {
-            display: flex;
-            width: max-content;
-        }
-
-        /* The scrolling strip — continuous smooth linear marquee */
-        .carousel-track {
-            display: flex;
-            gap: 1.5rem;
-            flex-shrink: 0;
-            padding-right: 1.5rem;
-            will-change: transform;
-            animation: carousel-marquee 110s linear infinite;
-        }
-
-        @keyframes carousel-marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .carousel-viewport:hover .carousel-track {
-            animation-play-state: paused;
+        .blog-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         /* ── Blog card: idéntica a blog.html ── */
         .blog-card {
-            flex: 0 0 320px;
-            background: rgba(255,255,255,0.82);
+            background: rgba(255,255,255,0.88);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255,255,255,0.5);
             border-radius: 2rem;
@@ -942,9 +963,9 @@
         }
 
         .blog-card:hover {
-            transform: translateY(-12px) scale(1.02);
+            transform: translateY(-10px) scale(1.01);
             box-shadow:
-                0 40px 80px -15px rgba(0,0,0,0.25),
+                0 40px 80px -15px rgba(0,0,0,0.22),
                 0 50px 100px -20px rgba(0,56,168,0.15);
             border-color: rgba(0,56,168,0.2);
         }
@@ -966,7 +987,7 @@
         }
 
         .blog-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.3;
@@ -975,7 +996,7 @@
 
         .blog-card p {
             color: #64748B;
-            font-size: 1rem;
+            font-size: 0.98rem;
             margin-bottom: 1.5rem;
             flex-grow: 1;
             line-height: 1.6;
@@ -1032,32 +1053,175 @@
             transform: translateX(5px);
         }
 
-        /* Responsive card widths */
-        @media (max-width: 900px) {
-            .blog-card { flex: 0 0 280px; }
-        }
         @media (max-width: 540px) {
-            .blog-card { flex: 0 0 260px; min-height: 240px; }
-            .carousel-track { gap: 1rem; }
+            .blog-preview-grid { grid-template-columns: 1fr; padding: 0 1rem; gap: 1.25rem; }
+            .blog-card { min-height: 240px; }
             .blog-card-content { padding: 1.5rem; }
             .blog-card h3 { font-size: 1.15rem; }
         }
 
-        /* Respect reduced-motion */
-        @media (prefers-reduced-motion: reduce) {
-            .carousel-track {
-                animation: none;
-                flex-wrap: wrap;
-                width: auto;
-                overflow-x: auto;
-                justify-content: center;
-                padding: 0 2rem;
-            }
-            .carousel-viewport {
-                -webkit-mask-image: none;
-                mask-image: none;
-                overflow-x: auto;
-            }
+        /* Site Top Header & Responsive Nav */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #E2E8F0;
+            padding: 0.85rem 1.5rem;
+            width: 100%;
+        }
+
+        .site-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .site-brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .site-brand-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .site-brand-sub {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 700;
+            margin-top: 0.2rem;
+        }
+
+        .site-nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .site-nav-desktop a,
+        .site-nav-mobile a {
+            color: #475569;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .site-nav-desktop a:hover,
+        .site-nav-mobile a:hover {
+            color: #0038A8;
+        }
+
+        .site-nav-desktop a.nav-active,
+        .site-nav-mobile a.nav-active {
+            color: #0038A8;
+            font-weight: 800;
+        }
+
+        .site-nav-mobile {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            padding-top: 0.7rem;
+            margin-top: 0.7rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 0.75rem 1rem; }
+            .site-nav-desktop { display: none; }
+            .site-nav-mobile { display: flex; }
+        }
+
+        /* Compact All Guides Block */
+        .all-guides-box {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .all-guides-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #E2E8F0;
+            border-radius: 1.5rem;
+            padding: 1.75rem 2rem;
+            box-shadow: 0 10px 30px -12px rgba(0, 56, 168, 0.12);
+        }
+
+        .all-guides-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1E293B;
+            margin: 0 0 1rem;
+        }
+
+        .all-guides-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.85rem 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .all-guides-list a {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.85rem 1rem;
+            border-radius: 0.9rem;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            text-decoration: none;
+            color: #1E293B;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .all-guides-list a:hover {
+            border-color: #0038A8;
+            transform: translateY(-2px);
+        }
+
+        .all-guides-tag {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #0038A8;
+        }
+
+        .all-guides-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        @media (max-width: 540px) {
+            .all-guides-box { padding: 0 1rem; }
+            .all-guides-card { padding: 1.25rem; }
         }
     </style>
     <!-- Firebase Analytics -->
@@ -1071,27 +1235,88 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Impucálculo",
-  "url": "https://impucalculo.com/",
-  "description": "Plataforma moderna para cálculo de impuestos, divisas y prestaciones locales en República Dominicana.",
-  "inLanguage": "es-DO"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Impucálculo",
+      "url": "https://impucalculo.com/",
+      "description": "Plataforma especializada en el cálculo de sueldo neto, retenciones de ISR, Seguridad Social (TSS: AFP y ARS) y prestaciones laborales en República Dominicana.",
+      "inLanguage": "es-DO",
+      "publisher": {
+        "@id": "https://impucalculo.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://impucalculo.com/#organization",
+      "name": "Impucálculo",
+      "url": "https://impucalculo.com/",
+      "logo": "https://impucalculo.com/logo_new.webp",
+      "description": "Plataforma tecnológica dominicana independiente de educación financiera, cálculo tributario (DGII), Seguridad Social (TSS) y liquidación de prestaciones laborales (Código de Trabajo Ley 16-92).",
+      "foundingDate": "2025",
+      "founder": {
+        "@type": "Person",
+        "name": "Starlin Santana",
+        "jobTitle": "Fundador, Desarrollador Principal y Responsable Editorial"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santo Domingo",
+        "addressCountry": "DO"
+      },
+      "email": "info@impucalculo.com"
+    }
+  ]
 }
     </script>
 </head>
 
 <body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="site-brand" aria-label="Ir a Inicio">
+                <img src="logo_new.webp" alt="Impucálculo - Calculadora Laboral y Fiscal RD">
+                <div>
+                    <div class="site-brand-title">
+                        <span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo</span>
+                    </div>
+                    <div class="site-brand-sub">
+                        <span style="color:#0038A8;">Gestión Fiscal</span> <span style="color:#CE1126;">RD 2026</span>
+                    </div>
+                </div>
+            </a>
+            <nav class="site-nav-desktop" aria-label="Navegación principal">
+                <a href="index.html" class="nav-active">Inicio</a>
+                <a href="calculadora.html">Sueldo e ISR</a>
+                <a href="prestaciones.html">Prestaciones</a>
+                <a href="blog.html">Blog</a>
+                <a href="sobre-nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+        <nav class="site-nav-mobile" aria-label="Navegación móvil">
+            <a href="index.html" class="nav-active">Inicio</a>
+            <a href="calculadora.html">Sueldo/ISR</a>
+            <a href="prestaciones.html">Prestaciones</a>
+            <a href="blog.html">Blog</a>
+            <a href="sobre-nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-title">
                 <h1>
-                    La plataforma líder en prestaciones<br>
+                    Plataforma gratuita e independiente de prestaciones<br>
                     calculadas de forma <span class="brand-name"><span style="color: #CE1126;">intel</span><span
                             style="color: #0038A8;">igente</span></span>
                 </h1>
                 <p class="hero-subtitle">
-                    Determina al centavo tu cesantía, preaviso y derechos adquiridos según la ley dominicana. También incluye cálculo de sueldos netos y tasas de cambio al instante.
+                    Determina al centavo tu cesantía, preaviso y derechos adquiridos según el Código de Trabajo dominicano. También incluye cálculo exacto de sueldo neto, ISR y deducciones de la TSS al instante.
                 </p>
             </div>
 
@@ -1112,11 +1337,11 @@
                     </span>
                 </a>
 
-                <!-- Convertir Divisas: verde al hover -->
-                <a href="divisas.html" class="btn btn-divisas" id="btn-divisas">
+                <!-- Guías y Blog Fiscal -->
+                <a href="blog.html" class="btn btn-blog" id="btn-blog">
                     <span class="btn-label">
-                        <span style="color: #16A34A;">CONVERTIR</span><br>
-                        <span style="color: #0038A8;">DIVISAS</span>
+                        <span style="color: #0038A8;">GUÍAS Y</span><br>
+                        <span style="color: #CE1126;">BLOG FISCAL</span>
                     </span>
                 </a>
             </div>
@@ -1140,16 +1365,16 @@
                                 <img src="hero-images/hero-3.jpg" alt="Impucálculo en tu móvil - Vista 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <!-- Clon de Imagen 1 para deslizamiento infinito hacia adelante sin rebobinar -->
-                            <div class="hero-slide" style="flex: 0 0 100%; width: 100%; height: 100%;">
+                            <div class="hero-slide" aria-hidden="true" data-nosnippet style="flex: 0 0 100%; width: 100%; height: 100%;">
                                 <img src="hero-images/hero-1.jpg" alt="Impucálculo en tu móvil - Vista 1 (Loop)" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                         </div>
 
                         <!-- Dots / Indicators -->
-                        <div class="hero-carousel-dots" style="position: absolute; bottom: 1.5rem; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 0.6rem; z-index: 10; pointer-events: auto;">
-                            <button type="button" class="carousel-dot active" data-index="0" aria-label="Ir a diapositiva 1" style="width: 28px; height: 8px; border-radius: 9999px; background: #0038A8; border: 1.5px solid rgba(255,255,255,0.9); cursor: pointer; transition: all 0.3s ease; padding: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.3);"></button>
-                            <button type="button" class="carousel-dot" data-index="1" aria-label="Ir a diapositiva 2" style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(255, 255, 255, 0.85); border: 1.5px solid rgba(0, 56, 168, 0.2); cursor: pointer; transition: all 0.3s ease; padding: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.3);"></button>
-                            <button type="button" class="carousel-dot" data-index="2" aria-label="Ir a diapositiva 3" style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(255, 255, 255, 0.85); border: 1.5px solid rgba(0, 56, 168, 0.2); cursor: pointer; transition: all 0.3s ease; padding: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.3);"></button>
+                        <div class="hero-carousel-dots">
+                            <button type="button" class="carousel-dot active" data-index="0" aria-label="Ir a diapositiva 1"></button>
+                            <button type="button" class="carousel-dot" data-index="1" aria-label="Ir a diapositiva 2"></button>
+                            <button type="button" class="carousel-dot" data-index="2" aria-label="Ir a diapositiva 3"></button>
                         </div>
                     </div>
                 </div>
@@ -1158,7 +1383,7 @@
                 <div class="hero-stats-right">
                     <div class="stat-item">
                         <p style="font-size: 1.75rem; font-weight: 900; color: #0038A8; margin: 0;">100% RD</p>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Normativa DGII 2025–2026</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #64748B; margin: 0.25rem 0 0; text-transform: uppercase; letter-spacing: 0.08em;">Normativa DGII 2026</p>
                     </div>
                     <div class="stat-item">
                         <p style="font-size: 1.75rem; font-weight: 900; color: #CE1126; margin: 0;">&lt; 30 seg</p>
@@ -1176,7 +1401,7 @@
             </div>
         </div>
 
-        <div class="scroll-indicator" style="bottom: 1rem; cursor: pointer;">
+        <div class="scroll-indicator" role="button" tabindex="0" aria-label="Desplazar hacia las herramientas y guías" style="bottom: 1rem; cursor: pointer;">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
                 </path>
@@ -1224,12 +1449,29 @@
                     <p>Calcula exactamente cuánto recibirás en mano después de todos los descuentos</p>
                 </div>
 
-                <!-- Card 7: Divisas -->
+                <!-- Card 7: Regalía Pascual y Bonificación -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.4s;">
-                    <h3>Conversor de Divisas</h3>
-                    <p>Convierte rápidamente entre Dólar, Euro y Peso Dominicano con tasas de mercado en tiempo real</p>
+                    <h3>Regalía Pascual y Bonificación</h3>
+                    <p>Cálculo exacto de tu doble sueldo navideño (Art. 219) y participación en las utilidades anuales de la empresa (Art. 223)</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Editorial Overview: 2026 Dominican Fiscal & Labor Framework -->
+    <section aria-labelledby="marco-normativo-2026" style="padding: 4.5rem 2rem; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+        <div style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 1.5rem; padding: 2.25rem 2rem; box-shadow: 0 12px 32px -12px rgba(0, 56, 168, 0.08);">
+            <p style="font-size: 0.78rem; font-weight: 700; color: #CE1126; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 0.65rem;">Metodología y Marco Legal Vigente</p>
+            <h2 id="marco-normativo-2026" style="font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 900; color: #1E293B; margin: 0 0 1.25rem; line-height: 1.2;">Marco Fiscal y Laboral de República Dominicana en 2026</h2>
+            <p style="color: #475569; font-size: 1rem; line-height: 1.78; margin: 0 0 1rem;">
+                En la República Dominicana, el cálculo exacto del salario neto y las indemnizaciones laborales depende de tres pilares legales vigentes. En materia tributaria, el <strong>Código Tributario (Ley 11-92)</strong> y las escalas publicadas por la <strong>Dirección General de Impuestos Internos (DGII)</strong> fijan un tramo anual exento de Impuesto Sobre la Renta (ISR) de <strong>RD$416,220.00</strong> (RD$34,685.00 mensuales), gravando únicamente el excedente con tasas progresivas del 15%, 20% y 25% después de descontar la Seguridad Social.
+            </p>
+            <p style="color: #475569; font-size: 1rem; line-height: 1.78; margin: 0 0 1rem;">
+                Respecto a la protección social, la <strong>Ley 87-01</strong> y la <strong>Resolución 01-2025 de la Tesorería de la Seguridad Social (TSS)</strong> regulan las retenciones obligatorias sobre el salario cotizable: <strong>2.87%</strong> para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y <strong>3.04%</strong> para el Seguro Familiar de Salud (ARS/SFS), aplicando topes máximos de 20 y 10 salarios mínimos cotizables vigentes en 2026 (sobre un Salario Mínimo Nacional Cotizable de RD$23,223.00).
+            </p>
+            <p style="color: #475569; font-size: 1rem; line-height: 1.78; margin: 0;">
+                Por su parte, la <strong>Ley 16-92 (Código de Trabajo)</strong> establece el divisor oficial de <strong>23.83 días</strong> para determinar el salario diario ordinario y calcular el preaviso (Art. 76), el auxilio de cesantía (Art. 80), las vacaciones no disfrutadas (Art. 177), la regalía pascual o salario de Navidad (Art. 219) y la participación en los beneficios de la empresa (Art. 223). En Impucálculo ejecutamos todas estas fórmulas localmente en tu navegador y contrastamos cada parámetro con las fuentes oficiales de la <a href="https://dgii.gov.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">DGII</a>, la <a href="https://www.tss.gob.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">TSS</a> y el <a href="https://mt.gob.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">Ministerio de Trabajo</a>, así como en nuestra <a href="sobre-nosotros.html" style="color: #CE1126; font-weight: 700; text-decoration: underline;">sección de metodología</a>.
+            </p>
         </div>
     </section>
 
@@ -1257,29 +1499,11 @@
                 <!-- Trust 3: Adaptado a RD -->
                 <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.3s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 12px 32px -8px rgba(0,56,168,0.08);">
                     <h3 style="font-size: 1.35rem; font-weight: 800; color: #0038A8; margin-bottom: 0.75rem;">Adaptado a RD</h3>
-                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2025-2026.</p>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">100% diseñado para República Dominicana con topes, escalas y regulaciones locales 2026.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Responsive: trust-layout a 1 col en mobile -->
-    <style>
-        @media (max-width: 768px) {
-            .trust-layout {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            .trust-layout > div:first-child img {
-                max-height: none !important;
-                height: auto !important;
-            }
-        }
-    </style>
-
-
-
-
 
     <!-- Historia y Diferenciacion -->
     <section style="padding:5rem 2rem; background:#fff;">
@@ -1300,9 +1524,11 @@
                     <strong>Impucálculo</strong> nació de la necesidad de tener una herramienta simple, honesta y 100%
                     dominicana que te diga exactamente a dónde va tu dinero.
                 </p>
-                <p style="color:#475569; line-height:1.8; font-size:1rem; margin:0;">Desarrollado con los lineamientos
-                    oficiales de la <strong>DGII</strong> y el <strong>Código de Trabajo</strong> de República
-                    Dominicana. Actualizado cada año fiscal.</p>
+                <p style="color:#475569; line-height:1.8; font-size:1rem; margin:0 0 1rem;">Fundado y desarrollado por
+                    <strong>Starlin Santana</strong> en Santo Domingo, República Dominicana, con los lineamientos
+                    oficiales de la <strong>DGII</strong> (Ley 11-92), la <strong>TSS</strong> (Ley 87-01) y el
+                    <strong>Código de Trabajo</strong> (Ley 16-92). Auditado y actualizado cada año fiscal.</p>
+                <p style="margin:0;"><a href="sobre-nosotros.html" style="color:#0038A8; font-weight:700; font-size:0.92rem; text-decoration:underline;">Conoce nuestra metodología y equipo editorial →</a></p>
             </div>
             <!-- Derecha: vs Alternativas -->
             <div style="display:flex; flex-direction:column; gap:1.25rem;">
@@ -1341,52 +1567,52 @@
             </div>
             <div style="display:flex; flex-direction:column; gap:1rem;">
                 <!-- FAQ Items -->
-                <details
+                <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
                         ¿Es gratis usar Impucálculo? <span style="color:#0038A8; font-size:1.25rem;">+</span></summary>
-                    <p style="color:#64748B; margin:1rem 0 0; line-height:1.7;">Sí, completamente gratis. No necesitas
+                    <p style="color:#64748B; line-height:1.7;">Sí, completamente gratis. No necesitas
                         crear una cuenta, no hay versión de pago oculta, ni tienes que dejar tu correo. Solo entras y
                         calculas.</p>
                 </details>
-                <details
+                <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
-                        ¿Está actualizado con las normativas DGII 2025-2026? <span
+                        ¿Está actualizado con las normativas DGII 2026? <span
                             style="color:#0038A8; font-size:1.25rem;">+</span></summary>
-                    <p style="color:#64748B; margin:1rem 0 0; line-height:1.7;">Sí. Todos los topes de TSS, escalas del
+                    <p style="color:#64748B; line-height:1.7;">Sí. Todos los topes de TSS, escalas del
                         ISR y porcentajes de AFP/ARS están actualizados con la normativa vigente publicada por la DGII y
-                        la TSS para el año fiscal 2025-2026.</p>
+                        la TSS para el año fiscal vigente 2026.</p>
                 </details>
-                <details
+                <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
                         ¿Mis datos salariales son enviados a algún servidor? <span
                             style="color:#0038A8; font-size:1.25rem;">+</span></summary>
-                    <p style="color:#64748B; margin:1rem 0 0; line-height:1.7;">No. Todo el procesamiento ocurre
+                    <p style="color:#64748B; line-height:1.7;">No. Todo el procesamiento ocurre
                         directamente en tu navegador. Tu salario nunca sale de tu computadora. No guardamos ni
                         transmitimos ningún dato financiero tuyo.</p>
                 </details>
-                <details
+                <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
                         ¿Funciona para cualquier tipo de empleado dominicano? <span
                             style="color:#0038A8; font-size:1.25rem;">+</span></summary>
-                    <p style="color:#64748B; margin:1rem 0 0; line-height:1.7;">Sí. Funciona para empleados asalariados
+                    <p style="color:#64748B; line-height:1.7;">Sí. Funciona para empleados asalariados
                         bajo el régimen de contribuyente del sector privado. Aplica los topes de la TSS y las escalas
-                        del ISR según las tablas oficiales dominicanas.</p>
+                        del ISR según las tablas oficiales dominicanas. La calculadora aplica principalmente al régimen general del sector privado; los servidores públicos pueden estar sujetos a regímenes o deducciones especiales (ej. INABIMA o leyes especiales).</p>
                 </details>
-                <details
+                <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
                         ¿Puedo usarlo desde el celular? <span style="color:#0038A8; font-size:1.25rem;">+</span>
                     </summary>
-                    <p style="color:#64748B; margin:1rem 0 0; line-height:1.7;">Sí. Impucálculo es completamente
+                    <p style="color:#64748B; line-height:1.7;">Sí. Impucálculo es completamente
                         responsive y funciona en cualquier dispositivo: teléfono, tablet o computadora, desde cualquier
                         navegador moderno.</p>
                 </details>
@@ -1395,24 +1621,132 @@
     </section>
 
     <!-- =============================================
-         BLOG CAROUSEL SECTION
+         BLOG PREVIEW GRID SECTION (6 Artículos Dominicanos Destacados)
     ============================================= -->
     <section class="blog-carousel-section" id="blog-preview">
         <div class="blog-carousel-header">
             <p class="eyebrow">Desde el Blog</p>
             <h2><span style="color:#0038A8;">Guías y recursos</span> <span style="color:#CE1126;">para tu bolsillo</span></h2>
-            <p>Artículos educativos sobre fiscalidad, salarios y derechos laborales en RD</p>
+            <p>Artículos educativos sobre fiscalidad, salarios y derechos laborales en República Dominicana</p>
         </div>
 
-        <!-- Carousel viewport -->
-        <div class="carousel-viewport" id="carouselViewport">
-            <div class="carousel-track-wrapper">
-                <div class="carousel-track" id="carouselTrack1">
-                    <!-- JS inserts cards -->
+        <!-- Cuadrícula estática limpia de 6 artículos destacados dominicanos -->
+        <div class="blog-preview-grid">
+            <!-- 1. ISR -->
+            <a href="blog/isr-dominicano-guia.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Fiscal · DGII</span>
+                    <h3>ISR en República Dominicana 2026: Guía Completa</h3>
+                    <p>Todo sobre el Impuesto Sobre la Renta: tabla DGII actualizada, cálculo paso a paso y ejemplos reales con salarios dominicanos.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
                 </div>
-                <div class="carousel-track" id="carouselTrack2" aria-hidden="true">
-                    <!-- JS inserts cards -->
+            </a>
+
+            <!-- 2. Prestaciones Laborales -->
+            <a href="blog/prestaciones-laborales-guia.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral · Ley 16-92</span>
+                    <h3>Prestaciones Laborales RD: Cálculo y Derechos 2026</h3>
+                    <p>Preaviso, cesantía, vacaciones y regalía pascual explicados con las fórmulas oficiales del Código de Trabajo y ejemplos reales.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
                 </div>
+            </a>
+
+            <!-- 3. TSS AFP ARS -->
+            <a href="blog/tss-afp-ars-guia.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Seguridad Social · TSS</span>
+                    <h3>TSS, AFP y ARS en RD: Guía Definitiva 2026</h3>
+                    <p>Descuentos de Seguridad Social desglosados: quién paga qué, topes de cotización vigentes, licencia de maternidad e IDOPPRIL.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 4. Dimisión Laboral -->
+            <a href="blog/dimision-laboral-rd-prestaciones.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral · RD</span>
+                    <h3>Dimisión Laboral en RD 2026: Sal sin Perder tu Cesantía</h3>
+                    <p>Cómo terminar tu contrato por falta grave de la empresa (no pago de TSS o rebaja salarial), plazo de 48 horas y cálculo de prestaciones.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 5. Liquidación por Renuncia -->
+            <a href="blog/liquidacion-renuncia-derechos-adquiridos.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Laboral · Derechos Adquiridos</span>
+                    <h3>Liquidación por Renuncia en RD: Guía de Derechos Adquiridos</h3>
+                    <p>Conoce tus derechos adquiridos al renunciar voluntariamente: vacaciones, regalía pascual y cómo proteger tu liquidación.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 6. Gastos Educativos DGII -->
+            <a href="blog/gastos-educativos-dgii-ley-179-09.html" class="blog-card glass">
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Fiscal · Ley 179-09</span>
+                    <h3>Gastos Educativos DGII 2026: Devolución de ISR</h3>
+                    <p>Cómo reportar tus facturas con comprobante fiscal (NCF) de colegios y universidades para recibir el reembolso anual de tu ISR.</p>
+                    <div class="read-more">
+                        <span>Leer más</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Bloque compacto con las 5 guías restantes para enlazar los 11 artículos desde portada sin duplicar nodos -->
+        <div class="all-guides-box">
+            <div class="all-guides-card">
+                <h3>Todas las Guías Dominicanas</h3>
+                <ul class="all-guides-list">
+                    <li>
+                        <a href="blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
+                            <span class="all-guides-tag">Derecho Laboral · Fórmulas</span>
+                            <span class="all-guides-title">Cómo Calcular Preaviso y Cesantía en RD (Divisor 23.83)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog/calculo-prestaciones-empleadas-domesticas-rd.html">
+                            <span class="all-guides-tag">Derecho Laboral · Trabajo Doméstico</span>
+                            <span class="all-guides-title">Prestaciones para Empleadas Domésticas en RD</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog/regalia-pascual-rd.html">
+                            <span class="all-guides-tag">Derecho Laboral · Art. 219</span>
+                            <span class="all-guides-title">Regalía Pascual RD 2026: Cálculo y Exención de ISR</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog/bonificacion-beneficios-rd.html">
+                            <span class="all-guides-tag">Derecho Laboral · Art. 223</span>
+                            <span class="all-guides-title">Bonificación en RD 2026: Utilidades y Topes Legales</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog/guia-uso-v2.html">
+                            <span class="all-guides-tag">Tutorial · Nómina e ISR</span>
+                            <span class="all-guides-title">Guía Práctica para Calcular tu Sueldo Neto en RD</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -1447,16 +1781,17 @@
                             <span style="color: #0038A8;">SUELDO</span>
                         </span>
                     </a>
-                    <a href="divisas.html" class="btn btn-divisas">
+                    <a href="blog.html" class="btn btn-blog">
                         <span class="btn-label">
-                            <span style="color: #16A34A;">CONVERTIR</span><br>
-                            <span style="color: #0038A8;">DIVISAS</span>
+                            <span style="color: #0038A8;">GUÍAS Y</span><br>
+                            <span style="color: #CE1126;">BLOG FISCAL</span>
                         </span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Standard Compliant Rich Footer -->
     <footer style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:4rem 1.5rem 2.5rem; margin-top:5rem; font-family:'Outfit', sans-serif;">
@@ -1469,7 +1804,7 @@
                         <span style="font-size:1.35rem; font-weight:900; letter-spacing:0.02rem;"><span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo</span></span>
                     </div>
                     <p style="font-size:0.875rem; color:#64748B; line-height:1.6; margin-bottom:1rem;">
-                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                        Plataforma gratuita e independiente para el cálculo de sueldo neto, retenciones de ISR, Seguridad Social (TSS) y prestaciones laborales en República Dominicana.
                     </p>
                     <p style="font-size:0.825rem; color:#64748B;">
                         Contacto: <a href="mailto:info@impucalculo.com" style="color:#0038A8; font-weight:700; text-decoration:none;">info@impucalculo.com</a>
@@ -1478,23 +1813,22 @@
 
                 <!-- Col 2: Herramientas -->
                 <div>
-                    <h4 style="font-size:0.75rem; font-weight:900; text-transform:uppercase; letter-spacing:0.08em; color:#94A3B8; margin-bottom:1rem;">Herramientas</h4>
+                    <h3 style="font-size:0.75rem; font-weight:900; text-transform:uppercase; letter-spacing:0.08em; color:#94A3B8; margin-bottom:1rem;">Herramientas</h3>
                     <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; font-size:0.875rem;">
                         <li><a href="prestaciones.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Prestaciones Laborales</a></li>
                         <li><a href="calculadora.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Calculadora de Sueldo e ISR</a></li>
-                        <li><a href="divisas.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Cotización de Divisas</a></li>
                         <li><a href="blog.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Blog y Guías Fiscales</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Institucional y Legal -->
                 <div>
-                    <h4 style="font-size:0.75rem; font-weight:900; text-transform:uppercase; letter-spacing:0.08em; color:#94A3B8; margin-bottom:1rem;">Institucional</h4>
+                    <h3 style="font-size:0.75rem; font-weight:900; text-transform:uppercase; letter-spacing:0.08em; color:#94A3B8; margin-bottom:1rem;">Institucional</h3>
                     <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; font-size:0.875rem;">
                         <li><a href="sobre-nosotros.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Sobre Nosotros</a></li>
                         <li><a href="privacidad.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Política de Privacidad</a></li>
                         <li><a href="terminos.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Términos y Condiciones</a></li>
-                        <li><a href="mailto:info@impucalculo.com" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Contacto Directo</a></li>
+                        <li><a href="contacto.html" style="color:#475569; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#0038A8'" onmouseout="this.style.color='#475569'">Contacto Directo</a></li>
                     </ul>
                 </div>
             </div>
@@ -1506,27 +1840,18 @@
                 </p>
             </div>
 
-            <!-- Bottom: copyright -->
+            <!-- Bottom: copyright & inline PWA install button -->
             <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; text-align:center;">
                 <p style="font-size:0.92rem; color:#475569; font-weight:600; letter-spacing:0.01em; margin:0;">© 2026 Impucálculo · Todos los derechos reservados · República Dominicana</p>
+                <button type="button" id="pwa-install-container" class="neo-shadow" style="display: none; align-items: center; justify-content: center; gap: 8px; margin: 1rem auto 0; background: #0038A8; color: #FFFFFF; border: none; padding: 10px 18px; border-radius: 9999px; cursor: pointer; font-weight: 600; font-size: 0.875rem; font-family: 'Outfit', sans-serif;">
+                    <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+                    <span>Instalar App</span>
+                </button>
             </div>
         </div>
     </footer>
 
     <script>
-        // Copy email to clipboard
-        function copyEmail(btn) {
-            navigator.clipboard.writeText('info@impucalculo.com').then(() => {
-                const label = btn.querySelector('#email-label');
-                label.textContent = '¡Copiado! ✓';
-                label.style.color = '#22C55E';
-                setTimeout(() => {
-                    label.textContent = 'info@impucalculo.com';
-                    label.style.color = '';
-                }, 2000);
-            });
-        }
-
         // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.15,
@@ -1549,193 +1874,20 @@
         // Smooth scroll for indicator
         const scrollIndicator = document.querySelector('.scroll-indicator');
         if (scrollIndicator) {
-            scrollIndicator.addEventListener('click', () => {
+            const scrollToServices = () => {
                 document.querySelector('.services-section').scrollIntoView({ behavior: 'smooth' });
+            };
+            scrollIndicator.addEventListener('click', scrollToServices);
+            scrollIndicator.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    scrollToServices();
+                }
             });
         }
 
-        // Smooth page transitions
-        window.addEventListener('pageshow', () => {
-            document.body.style.opacity = '1';
-        });
-
-        document.querySelectorAll('a[href$=".html"]').forEach(link => {
-            link.addEventListener('click', function (e) {
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || this.target === '_blank') return;
-                const href = this.getAttribute('href');
-                if (href && !href.startsWith('http')) {
-                    e.preventDefault();
-                    document.body.style.opacity = '0';
-                    document.body.style.transition = 'opacity 0.3s ease';
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 300);
-                }
-            });
-        });
-
-            (function initBlogCarousel() {
-            const blogArticles = [
-                {
-                    title: 'Dimisión Laboral en RD 2026: Sal sin Perder tu Cesantía',
-                    category: 'Laboral',
-                    excerpt: 'Cómo terminar tu contrato por falta grave de la empresa (no pago de TSS o rebaja salarial), plazo de 48 horas y cálculo de prestaciones.',
-                    slug: 'blog/dimision-laboral-rd-prestaciones.html'
-                },
-                {
-                    title: 'Cómo Calcular el Dólar Tarjeta en Argentina 2026',
-                    category: 'Divisas',
-                    excerpt: 'Entiende la composición impositiva (Impuesto PAIS y retenciones AFIP) sobre compras en el exterior y cómo recuperar percepciones.',
-                    slug: 'blog/ar/dolar-tarjeta-argentina.html'
-                },
-                {
-                    title: 'Dólar MEP vs. Dólar Blue en Argentina',
-                    category: 'Divisas',
-                    excerpt: 'Diferencias legales, operativas y cómo se calcula la cotización implícita bursátil mediante la compra-venta de bonos con parking.',
-                    slug: 'blog/ar/dolar-mep-vs-blue.html'
-                },
-                {
-                    title: 'Cómo Facturar con la Tasa Oficial BCV en Venezuela',
-                    category: 'Comercio',
-                    excerpt: 'Guía para comercios sobre las obligaciones tributarias y de precios al facturar en bolívares usando la tasa oficial del Banco Central.',
-                    slug: 'blog/ve/como-facturar-bolivares-tasa-bcv.html'
-                },
-                {
-                    title: 'La Brecha Cambiaria en Venezuela: BCV vs. Promedio',
-                    category: 'Economía',
-                    excerpt: 'Analizamos las razones de la discrepancia de tasas en Venezuela, su impacto en la reposición de inventario y la devaluación.',
-                    slug: 'blog/ve/brecha-cambiaria-oficial-promedio.html'
-                },
-                {
-                    title: '¿Qué es la TRM en Colombia y Cómo se Calcula?',
-                    category: 'Finanzas',
-                    excerpt: 'Conoce qué significa la Tasa Representativa del Mercado, cómo la regula la Superfinanciera y cómo evitar recargos de spread.',
-                    slug: 'blog/co/que-es-trm-colombia.html'
-                },
-                {
-                    title: 'Cómo Enviar Remesas a Colombia: Tasas y Comisiones',
-                    category: 'Remesas',
-                    excerpt: 'Comparativa de giros familiares por canales digitales y tradicionales, cobro de comisiones y exención tributaria del 4x1000.',
-                    slug: 'blog/co/enviar-remesas-colombia.html'
-                },
-                {
-                    title: 'Mejor Opción para Enviar Remesas a México desde EE. UU.',
-                    category: 'Remesas',
-                    excerpt: 'Estudio de comisiones y tipo de cambio interbancario de remesadoras, cobros en OXXO o Elektra, y exenciones de impuestos del SAT.',
-                    slug: 'blog/mx/mejor-opcion-remesas-mexico-eeuu.html'
-                },
-                {
-                    title: 'Cómo Calcular el Tipo de Cambio del Dólar en México',
-                    category: 'Finanzas',
-                    excerpt: 'Descubre las diferencias entre el FIX oficial de Banxico y las cotizaciones minoristas de ventanilla en bancos comerciales.',
-                    slug: 'blog/mx/calcular-tipo-cambio-dolar-mexico.html'
-                },
-                {
-                    title: 'Liquidación por Renuncia en RD: Guía de Derechos Adquiridos 2026',
-                    category: 'Laboral',
-                    excerpt: 'Conoce tus derechos adquiridos al renunciar voluntariamente: vacaciones, regalía pascual y cómo evitar deducciones por preaviso.',
-                    slug: 'blog/liquidacion-renuncia-derechos-adquiridos.html'
-                },
-                {
-                    title: 'Gastos Educativos DGII 2026: Cómo Solicitar la Devolución de ISR',
-                    category: 'Fiscal',
-                    excerpt: 'Reporta tus facturas con comprobante fiscal (NCF) de colegios y universidades para recibir un reembolso del ISR de la DGII (Ley 179-09).',
-                    slug: 'blog/gastos-educativos-dgii-ley-179-09.html'
-                },
-                {
-                    title: 'ISR en República Dominicana 2026: Guía Completa',
-                    category: 'Fiscal',
-                    excerpt: 'Todo sobre el Impuesto Sobre la Renta: tabla DGII actualizada, cálculo paso a paso y 4 ejemplos reales con salarios dominicanos.',
-                    slug: 'blog/isr-dominicano-guia.html'
-                },
-                {
-                    title: 'Prestaciones Laborales RD: Cálculo y Derechos 2026',
-                    category: 'Laboral',
-                    excerpt: 'Preaviso, cesantía, vacaciones y regalía pascual explicados con fórmulas del Código de Trabajo y ejemplos reales.',
-                    slug: 'blog/prestaciones-laborales-guia.html'
-                },
-                {
-                    title: 'Tasa de Cambio Dólar–Peso Dominicano 2026',
-                    category: 'Divisas',
-                    excerpt: 'Compara las tasas de +30 bancos y agentes de cambio. Aprende a sacar el mejor provecho al cambio de dólares en RD.',
-                    slug: 'blog/tasa-cambio-dolar-rd.html'
-                },
-                {
-                    title: 'Regalía Pascual en República Dominicana 2026',
-                    category: 'Laboral',
-                    excerpt: 'Todo sobre el sueldo 13: cuánto es, cuándo se paga, cómo calcular la regalía proporcional y qué pasa en renuncia o despido.',
-                    slug: 'blog/regalia-pascual-rd.html'
-                },
-                {
-                    title: 'Bonificación Laboral RD: Ley 16-92 Explicada',
-                    category: 'Laboral',
-                    excerpt: 'El 10% de utilidades netas, topes de 45 y 60 días, cálculo proporcional y por qué no paga TSS — todo con la ley en mano.',
-                    slug: 'blog/bonificacion-beneficios-rd.html'
-                },
-                {
-                    title: 'TSS, AFP y ARS en RD: Guía Definitiva 2026',
-                    category: 'Fiscal',
-                    excerpt: 'Descuentos de Seguridad Social desglosados: quién paga qué, topes de cotización, maternidad e IDOPPRIL.',
-                    slug: 'blog/tss-afp-ars-guia.html'
-                },
-                {
-                    title: 'Cómo Calcular tu Sueldo Neto en RD — Guía de Uso',
-                    category: 'Educación',
-                    excerpt: 'Guía práctica para usar Impucálculo: ISR, TSS, prestaciones y divisas paso a paso. Incluye Pro Tips de ahorro fiscal.',
-                    slug: 'blog/guia-uso-v2.html'
-                },
-                {
-                    title: 'Por qué creamos Impucálculo',
-                    category: 'Institucional',
-                    excerpt: 'Nuestra misión: transparencia fiscal y herramientas gratuitas para todos los dominicanos.',
-                    slug: 'blog/mision-impucalculo.html'
-                }
-            ];
-
-            function buildCard(article) {
-                const a = document.createElement('a');
-                a.className = 'blog-card glass';
-                a.href = article.slug;
-                a.innerHTML = `
-                    <div class="blog-card-content">
-                        <span class="blog-card-tag">${article.category}</span>
-                        <h3>${article.title}</h3>
-                        <p>${article.excerpt}</p>
-                        <div class="read-more">
-                            <span>Leer más</span>
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>`;
-                return a;
-            }
-
-            const track1 = document.getElementById('carouselTrack1');
-            const track2 = document.getElementById('carouselTrack2');
-            const viewport = document.getElementById('carouselViewport');
-            if (!track1 || !track2 || !viewport) return;
-
-            // Render cards in both tracks for infinite smooth marquee
-            blogArticles.forEach(article => {
-                track1.appendChild(buildCard(article));
-                track2.appendChild(buildCard(article));
-            });
-
-            // Pause marquee on touch interaction on mobile
-            viewport.addEventListener('touchstart', () => {
-                track1.style.animationPlayState = 'paused';
-                track2.style.animationPlayState = 'paused';
-            }, { passive: true });
-
-            viewport.addEventListener('touchend', () => {
-                track1.style.animationPlayState = 'running';
-                track2.style.animationPlayState = 'running';
-            }, { passive: true });
-        })();
-
         // Prevent animation replay on back navigation
-        if (performance.navigation.type === 2) {
+        if (performance.getEntriesByType('navigation')[0]?.type === 'back_forward') {
             document.querySelectorAll('.logo-container, .hero-title, .cta-buttons').forEach(el => {
                 el.style.animation = 'none';
                 el.style.opacity = '1';
@@ -1763,17 +1915,7 @@
             function updateDots(activeIdx) {
                 const safeIdx = ((activeIdx % originalCount) + originalCount) % originalCount;
                 dots.forEach((dot, i) => {
-                    if (i === safeIdx) {
-                        dot.style.width = '28px';
-                        dot.style.background = '#0038A8';
-                        dot.style.borderColor = 'rgba(255, 255, 255, 0.9)';
-                        dot.classList.add('active');
-                    } else {
-                        dot.style.width = '8px';
-                        dot.style.background = 'rgba(255, 255, 255, 0.85)';
-                        dot.style.borderColor = 'rgba(0, 56, 168, 0.2)';
-                        dot.classList.remove('active');
-                    }
+                    dot.classList.toggle('active', i === safeIdx);
                 });
             }
 
@@ -1790,18 +1932,18 @@
                 isTransitioning = false;
             }
 
-            function moveToSlide(index) {
+            function moveToSlide(targetIndex, allowForwardWrap = true) {
                 if (resetTimer) {
                     clearTimeout(resetTimer);
                     resetTimer = null;
                 }
 
-                if (currentIndex >= originalCount) {
+                if (allowForwardWrap && currentIndex >= originalCount) {
                     snapToSlide(0);
                 }
 
-                currentIndex = index;
-                if (currentIndex > originalCount) {
+                currentIndex = targetIndex;
+                if (allowForwardWrap && currentIndex > originalCount) {
                     snapToSlide(0);
                     currentIndex = 1;
                 }
@@ -1899,9 +2041,9 @@
                     } else {
                         if (currentIndex === 0) {
                             snapToSlide(originalCount);
-                            moveToSlide(originalCount - 1);
+                            moveToSlide(originalCount - 1, false);
                         } else {
-                            moveToSlide(Math.max(0, currentIndex - 1));
+                            moveToSlide(Math.max(0, currentIndex - 1), false);
                         }
                     }
                 }
@@ -1911,12 +2053,7 @@
             startTimer();
         })();
     </script>
-    <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 85px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
-        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
-        <span>Instalar App</span>
-    </div>
-
+    <!-- PWA Service Worker Registration & Install Prompt -->
     <script>
         // PWA Service Worker Registration (Canonical URL + Loop Protection)
         if ('serviceWorker' in navigator) {
@@ -1959,6 +2096,7 @@
         });
 
         installBtn.addEventListener('click', (e) => {
+            if (!deferredPrompt) return;
             // Hide our user interface that shows our A2HS button
             installBtn.style.display = 'none';
             // Show the prompt

@@ -3,20 +3,34 @@
 
 <head>
     <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = window.gtag || gtag;
+      window.__consentDefaultSet = true;
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+        wait_for_update: 500
+      });
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Calculadora de Sueldo Neto e ISR RD 2026 | Impucálculo</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/calculadora.html">
 
 
     <!-- Meta/SEO -->
     <meta name="description"
-        content="Calcula tu sueldo neto y retenciones de ISR, AFP y ARS en República Dominicana. Herramienta fiscal exacta, gratuita y actualizada al 2026.">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+        content="Calcula tu sueldo neto y retenciones de ISR, AFP y ARS en República Dominicana. Herramienta fiscal gratuita e independiente, actualizada al 2026.">
+    <link rel="icon" type="image/webp" href="logo_new.webp">
 
     <meta name="keywords"
         content="calculadora fiscal, impuestos rd, retenciones de ley, isr, afp, ars, nomina, salario neto, republica dominicana">
@@ -30,56 +44,20 @@
     <meta property="og:description"
         content="Calcula tu sueldo neto y retenciones de ISR, AFP y ARS en República Dominicana. Herramienta fiscal exacta, gratuita y actualizada al 2026.">
     <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
+    <meta property="og:site_name" content="Impucálculo">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://impucalculo.com/calculadora.html">
-    <meta property="twitter:title" content="Impucalculo | Gestión Fiscal RD 2025-2026">
-    <meta property="twitter:description"
-        content="Calculadora fiscal avanzada para trabajadores en República Dominicana (2025-2026). Gestión de ISR, TSS y acumulados mensuales.">
-    <meta property="twitter:image" content="https://impucalculo.com/logo_new.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://impucalculo.com/calculadora.html">
+    <meta name="twitter:title" content="Impucálculo | Gestión Fiscal RD 2026">
+    <meta name="twitter:description"
+        content="Calculadora fiscal avanzada para trabajadores en República Dominicana (2026). Gestión de ISR, TSS y acumulados mensuales.">
+    <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts & Scripts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: {
-                        dr: {
-                            blue: '#0038A8',
-                            red: '#CE1126',
-                            white: '#FFFFFF',
-                            slate: {
-                                50: '#F8FAFC',
-                                100: '#F1F5F9',
-                                200: '#E2E8F0',
-                                800: '#1E293B',
-                                900: '#0F172A'
-                            }
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                        'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        'infinite-scroll': {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-100%)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="css/tailwind.min.css">
 
     <style>
         *, *::before, *::after {
@@ -111,7 +89,7 @@
             max-width: 100vw;
             position: relative;
             overscroll-behavior-x: none;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
         }
 
         .glass {
@@ -190,6 +168,32 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #0038A8;
         }
+
+        .hover\:opacity-90:hover {
+            opacity: 0.9;
+        }
+
+        .header-pad {
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
+        }
+
+        .header-logo {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-pad {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+
+            .header-logo {
+                width: 4rem;
+                height: 4rem;
+            }
+        }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
@@ -202,115 +206,56 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Impucalculo | Gestión Fiscal RD 2025-2026",
+  "@type": "WebApplication",
+  "name": "Impucálculo | Calculadora de Sueldo Neto, TSS e ISR RD 2026",
+  "url": "https://impucalculo.com/calculadora.html",
+  "inLanguage": "es-DO",
   "operatingSystem": "Web Browser",
   "applicationCategory": "FinanceApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Starlin Santana",
+    "url": "https://impucalculo.com/sobre-nosotros.html"
+  },
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "DOP"
   },
-  "description": "Herramienta gratuita para cálculo fiscal, laboral y de divisas en República Dominicana."
+  "description": "Herramienta gratuita para el cálculo exacto de sueldo neto, retenciones de TSS (AFP y ARS) e Impuesto Sobre la Renta (ISR) en República Dominicana."
 }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Cómo Calcular AFP, ARS e Impuesto Sobre la Renta (ISR) en República Dominicana",
-      "description": "Guía definitiva sobre retenciones salariales en RD. Aprende a calcular el descuento de TSS (AFP y ARS) y la retención del Impuesto Sobre la Renta de la DGII paso a paso.",
-      "author": {
-        "@type": "Organization",
-        "name": "Impucálculo República Dominicana"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Impucálculo",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://impucalculo.com/logo_new.webp"
-        }
-      },
-      "mainEntityOfPage": "https://impucalculo.com/calculadora.html"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Cuál es la deducción mensual del trabajador para la AFP y la ARS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El trabajador aporta mensualmente un 2.87% de su salario bruto para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y un 3.04% para el Seguro Familiar de Salud (ARS). Las deducciones totales para el empleado suman un 5.91% de su remuneración computable."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿A partir de qué monto mensual se retiene el Impuesto Sobre la Renta (ISR) en RD?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "En la República Dominicana el Impuesto Sobre la Renta se retiene a partir de salarios netos mensuales superiores a RD$ 34,685.00 (equivalente a una exención anual de RD$ 416,220.00). Los salarios por debajo de este umbral neto están completamente exentos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo influyen los descuentos de la TSS en el cálculo del ISR?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los aportes del trabajador a la TSS (AFP y ARS) son deducibles de impuestos. El cálculo del ISR se realiza sobre el 'salario neto imponible', que resulta de restar la retención de TSS al salario bruto original."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué ingresos están exentos del Impuesto Sobre la Renta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Están exentos del ISR el Salario de Navidad (Regalía Pascual / Doble Sueldo) hasta el límite de la duodécima parte del salario anual, las indemnizaciones por prestaciones laborales (cesantía y preaviso) y las indemnizaciones por accidentes de trabajo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the educational expenses law and how does it benefit taxpayers?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "La Ley 179-09 sobre Gastos Educativos permite a los empleados asalariados declarar los gastos invertidos en la educación de sus dependientes directos o de ellos mismos, para deducirlos del ISR. Esto genera un reembolso o saldo a favor que es devuelto por la DGII a través de la nómina del empleador."
-          }
-        }
-      ]
-    }
     </script>
 </head>
 
 <body class="min-h-screen flex flex-col font-sans text-dr-slate-900">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 py-4">
+    <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 header-pad">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
             <a href="index.html"
-                class="flex items-center gap-4 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                class="flex items-center gap-3 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
-                <div class="w-[100px] h-[100px] flex items-center justify-center">
-                    <img src="logo_new.webp" alt="Calculadora de ISR y Sueldo Neto RD - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
-                        onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
+                <div class="header-logo flex items-center justify-center flex-shrink-0">
+                    <img src="logo_new.webp" alt="Calculadora de ISR y Sueldo Neto RD - Impucálculo" class="header-logo object-contain drop-shadow-md"
+                        onerror="this.style.display='none'">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-extrabold tracking-tight leading-none">
-                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">calculo</span>
-                    </h1>
+                    <span class="block text-2xl font-extrabold tracking-tight leading-none">
+                        <span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span>
+                    </span>
                     <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
-                        <span class="text-dr-blue">Gestión Fiscal</span> <span class="text-dr-red">RD 2025-2026</span>
+                        <span class="text-dr-blue">Gestión Fiscal</span> <span class="text-dr-red">RD 2026</span>
                     </p>
                 </div>
             </a>
             <div class="flex items-center gap-3 md:gap-5">
-                <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
+                <nav class="hidden md:flex items-center gap-5 text-sm font-semibold" aria-label="Navegación principal">
+                    <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                    <a href="calculadora.html" class="text-dr-blue font-bold">Sueldo e ISR</a>
                     <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
-                    <a href="divisas.html" class="text-dr-slate-600 hover:text-dr-blue transition">Divisas</a>
                     <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+                    <a href="sobre-nosotros.html" class="text-dr-slate-600 hover:text-dr-blue transition">Nosotros</a>
+                    <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
                 </nav>
                 <!-- Botón de Ajustes (Sueldo Fijo) -->
                 <button onclick="openFixedSalaryModal()"
@@ -326,9 +271,31 @@
                 </button>
             </div>
         </div>
+        <!-- Barra de Navegación Móvil Visible -->
+        <nav class="flex md:hidden items-center justify-center flex-wrap gap-x-4 gap-y-2 px-4 pt-2 mt-2 border-t border-dr-slate-200/70 text-xs font-bold" aria-label="Navegación móvil">
+            <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+            <a href="calculadora.html" class="text-dr-blue underline underline-offset-4">Sueldo/ISR</a>
+            <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
+            <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+            <a href="sobre-nosotros.html" class="text-dr-slate-600 hover:text-dr-blue transition">Nosotros</a>
+            <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
+        </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
+        <div class="text-center mb-8 space-y-2">
+            <h1 class="text-3xl md:text-4xl font-black text-dr-slate-900 tracking-tight">
+                Calculadora de Sueldo Neto, TSS e ISR en República Dominicana 2026
+            </h1>
+            <p class="text-sm text-dr-slate-600 font-medium max-w-3xl mx-auto">
+                Herramienta gratuita e independiente para calcular tu salario neto y las retenciones obligatorias de AFP, ARS (SFS) e Impuesto Sobre la Renta conforme a la normativa vigente de la DGII y la TSS.
+            </p>
+            <div class="glass rounded-2xl p-5 border border-dr-slate-200 max-w-4xl mx-auto text-left mt-4">
+                <p class="text-xs sm:text-sm text-dr-slate-700 leading-relaxed">
+                    Esta calculadora laboral y fiscal estima con precisión tu salario neto disponible en la República Dominicana para 2026 sobre nóminas semanales, quincenales o mensuales. Primero aplica las cotizaciones obligatorias de Seguridad Social según la <strong>Ley 87-01</strong> y la <strong>Resolución 01-2025 de la TSS</strong> (2.87% AFP y 3.04% SFS/ARS, respetando los topes de 20 y 10 salarios mínimos cotizables y excluyendo horas extras si configuras tu salario fijo). Luego calcula el Impuesto Sobre la Renta (ISR) conforme a la escala progresiva de la <strong>Ley 11-92</strong> (exención mensual de RD$ 34,685.00), acumulando automáticamente tus ingresos del mes para evitar sorpresas en tu volante de pago.
+                </p>
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 
             <!-- Left Column: Input Panel -->
@@ -387,13 +354,14 @@
                                             class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                             <span class="text-dr-blue font-bold">RD$</span>
                                         </div>
-                                        <input type="number" id="weekly-income" step="0.01" min="0"
+                                        <input type="number" id="weekly-income" step="0.01" min="0.01"
                                             placeholder="Ej: 15,000.00" required
-                                            class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue-100 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
+                                            class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue/20 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                                     </div>
                                     <p id="income-help" class="text-[10px] text-dr-slate-400 font-bold">Monto total
                                         semanal según tu
                                         volante de pago.</p>
+                                    <p id="income-error" class="hidden text-xs font-bold text-dr-red mt-1"></p>
                                 </div>
 
 
@@ -453,8 +421,7 @@
                                     <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-red">Resumen del Mes</span> <span class="text-dr-blue">Actual</span></h2>
                                 </div>
                                 <span id="label-mes-actual"
-                                    class="px-4 py-2 bg-dr-blue text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-dr-blue/20">FEBRERO
-                                    2026</span>
+                                    class="px-4 py-2 bg-dr-blue text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-dr-blue/20">MES EN CURSO 2026</span>
                             </div>
 
                             <div class="space-y-4">
@@ -576,133 +543,269 @@
         </div>
 
         <!-- Metodología de Cálculo -->
-        <section id="metodologia" class="mt-32 space-y-16 parallax-block scroll-reveal">
+        <section id="metodologia" class="mt-24 space-y-12 parallax-block scroll-reveal">
             <div class="text-center space-y-4">
                 <div
                     class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full mb-2">
-                    Transparencia Fiscal</div>
-                <h2 class="text-4xl font-black text-dr-slate-800 tracking-tight">Metodología de Cálculo Fiscal</h2>
-                <p class="text-dr-slate-500 font-medium max-w-2xl mx-auto">Entiende el proceso detallado que realiza el
-                    sistema para garantizar que tus retenciones de ISR y TSS cumplan con las normativas actuales.</p>
+                    Transparencia Fiscal · Normativa DGII y TSS 2026</div>
+                <h2 class="text-3xl md:text-4xl font-black text-dr-slate-800 tracking-tight">Metodología Oficial de Cálculo Fiscal y Seguridad Social</h2>
+                <p class="text-dr-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
+                    Guía técnica y normativa sobre el cálculo del salario neto, las cotizaciones obligatorias al Sistema Dominicano de Seguridad Social (Ley 87-01) y la retención mensual del Impuesto Sobre la Renta de Personas Físicas (Ley 11-92 / Código Tributario de la República Dominicana).
+                </p>
             </div>
 
+            <!-- Tarjeta de Autoría E-E-A-T -->
+            <div class="glass rounded-2xl p-6 neo-shadow border border-dr-blue/20 bg-white/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-dr-blue text-white flex items-center justify-center font-black text-lg flex-shrink-0 shadow-md">
+                        SS
+                    </div>
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Revisión Técnica y Legal Verificada</p>
+                        <p class="text-sm font-bold text-dr-slate-800">
+                            Metodología desarrollada y verificada por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
+                        </p>
+                        <p class="text-xs text-dr-slate-500 mt-0.5">Parámetros auditados conforme a las resoluciones vigentes del CNSS, la TSS y la Dirección General de Impuestos Internos (DGII).</p>
+                    </div>
+                </div>
+                <a href="sobre-nosotros.html" class="px-4 py-2 rounded-xl bg-dr-blue/10 text-dr-blue text-xs font-extrabold uppercase tracking-wider hover:bg-dr-blue hover:text-white transition flex-shrink-0">
+                    Ver Perfil Editorial
+                </a>
+            </div>
+
+            <!-- 3 Pasos Fundamentales -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Paso 1 -->
-                <div class="glass rounded-[2rem] p-10 neo-shadow border border-white tilt-card">
-                    <div class="tilt-content space-y-6">
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
+                    <div class="tilt-content space-y-5">
                         <div
                             class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
                             1</div>
                         <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Sueldo Neto Gravable</h3>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">1. Deducción Previa de la TSS</h3>
                             <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                Calculamos tu ingreso neto real restando las deducciones de Seguridad Social al sueldo
-                                bruto percibido.
-                                <br><br>
-                                <span
-                                    class="inline-flex items-center gap-2 text-dr-blue font-bold bg-dr-blue/5 px-2 py-1 rounded-lg text-xs">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-dr-blue"></span> 3.04% ARS (Salud)
-                                </span>
-                                <br>
-                                <span
-                                    class="inline-flex items-center gap-2 text-dr-blue font-bold bg-dr-blue/5 px-2 py-1 rounded-lg text-xs mt-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-dr-blue"></span> 2.87% AFP (Pensiones)
-                                </span>
+                                Conforme a la Ley 87-01 y al Código Tributario, los aportes del trabajador a la Tesorería de la Seguridad Social (TSS) están exentos del ISR. Por ello, antes de calcular el impuesto de la DGII, se deduce el <strong>5.91%</strong> del salario cotizable hasta los topes legales:
                             </p>
+                            <div class="mt-4 space-y-2">
+                                <span class="inline-flex items-center gap-2 text-dr-blue font-bold bg-dr-blue/5 px-3 py-1.5 rounded-lg text-xs w-full">
+                                    <span class="w-2 h-2 rounded-full bg-dr-blue"></span> 3.04% SFS / ARS (Seguro Familiar de Salud)
+                                </span>
+                                <span class="inline-flex items-center gap-2 text-dr-blue font-bold bg-dr-blue/5 px-3 py-1.5 rounded-lg text-xs w-full">
+                                    <span class="w-2 h-2 rounded-full bg-dr-blue"></span> 2.87% AFP (Fondo de Pensiones / SVDS)
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Paso 2 -->
-                <div class="glass rounded-[2rem] p-10 neo-shadow border border-white tilt-card">
-                    <div class="tilt-content space-y-6">
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
+                    <div class="tilt-content space-y-5">
                         <div
                             class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
                             2</div>
                         <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Proyección Anual</h3>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">2. Base Imponible Neta</h3>
                             <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                El sistema anualiza tus ingresos (Neto x 12) para ubicarte dentro de la escala
-                                progresiva de la DGII.
-                                <br><br>
-                                Esto permite aplicar la retención exacta basada en tu flujo de ingresos acumulado y
-                                proyectado.
+                                El resultado de restar las retenciones de AFP y SFS al salario bruto ordinario constituye el <strong>Salario Neto Imponible</strong>. Si el trabajador percibe comisiones, incentivos, horas extraordinarias o bonificaciones gravadas durante el mismo mes calendario, estos montos se integran a la base imponible mensual acumulada para determinar el tramo exacto de tributación ante la DGII.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Paso 3 -->
-                <div class="glass rounded-[2rem] p-10 neo-shadow border border-white tilt-card">
-                    <div class="tilt-content space-y-6">
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
+                    <div class="tilt-content space-y-5">
                         <div
                             class="w-14 h-14 rounded-2xl bg-dr-blue text-white flex items-center justify-center font-black text-2xl shadow-xl shadow-dr-blue/20">
                             3</div>
                         <div>
-                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">Escala Progresiva</h3>
+                            <h3 class="text-xl font-bold text-dr-slate-800 mb-3">3. Escala Progresiva DGII</h3>
                             <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
-                                Aplicamos la retención sobre el excedente del exento mensual de <span
-                                    class="text-dr-red font-bold">RD$ 34,685.00</span>:
-                                <br><br>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">15%</span><span class="text-xs">Excedente 1er tramo</span>
-                                </span>
-                                <span class="flex justify-between border-b border-dr-slate-100 pb-1 mb-1">
-                                    <span class="font-bold">20%</span><span class="text-xs">Excedente 2do tramo</span>
-                                </span>
-                                <span class="flex justify-between">
-                                    <span class="font-bold">25%</span><span class="text-xs">Excedente 3er tramo</span>
-                                </span>
+                                El Artículo 296 del Código Tributario establece cuatro tramos progresivos. Solo se grava el excedente que supera el umbral mensual exento de <span class="text-dr-red font-bold">RD$ 34,685.00</span> (RD$ 416,220.00 anuales), aplicando tasas marginales escalonadas del <strong>15%, 20% y 25%</strong> junto con la cuota fija correspondiente a cada escalón.
                             </p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Nota Técnica TSS -->
-            <div
-                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] relative overflow-hidden group">
-                <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
+            <!-- Tabla Oficial de Escala ISR DGII (Anual y Mensual) -->
+            <div class="glass rounded-[2rem] p-8 md:p-10 neo-shadow border border-white space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-dr-red bg-dr-red/10 px-3 py-1 rounded-full">Artículo 296 · Ley 11-92</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">Escala Oficial de Retención del Impuesto Sobre la Renta (ISR) — DGII 2026</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        En la República Dominicana, el Impuesto Sobre la Renta para asalariados se liquida bajo un sistema de tasas marginales progresivas. Esto significa que cuando tu ingreso neto imponible sube de categoría, la nueva tasa porcentual no se aplica a la totalidad de tu salario, sino exclusivamente a la porción que excede el límite inferior de ese tramo:
+                    </p>
                 </div>
-                <div class="relative z-10">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Nota Técnica: Tope TSS
-                                Observado</h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-dr-slate-900 text-white">
+                                <th class="p-4 rounded-tl-xl font-black uppercase text-xs tracking-wider">Tramo</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Escala Anual (DGII)</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Equivalente Mensual</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Tasa Marginal</th>
+                                <th class="p-4 rounded-tr-xl font-black uppercase text-xs tracking-wider">Cuota Fija + Excedente</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-dr-slate-200 bg-white/80">
+                            <tr class="hover:bg-dr-blue/5 transition">
+                                <td class="p-4 font-black text-dr-blue">Tramo 1 (Exento)</td>
+                                <td class="p-4 font-medium text-dr-slate-700">Hasta RD$ 416,220.00</td>
+                                <td class="p-4 font-bold text-dr-slate-900">Hasta RD$ 34,685.00</td>
+                                <td class="p-4"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-black rounded-lg text-xs">0% (Exento)</span></td>
+                                <td class="p-4 text-dr-slate-600">RD$ 0.00 (No aplica retención)</td>
+                            </tr>
+                            <tr class="hover:bg-dr-blue/5 transition">
+                                <td class="p-4 font-black text-dr-blue">Tramo 2</td>
+                                <td class="p-4 font-medium text-dr-slate-700">RD$ 416,220.01 a RD$ 624,329.00</td>
+                                <td class="p-4 font-bold text-dr-slate-900">RD$ 34,685.01 a RD$ 52,027.42</td>
+                                <td class="p-4"><span class="px-2.5 py-1 bg-blue-100 text-dr-blue font-black rounded-lg text-xs">15%</span></td>
+                                <td class="p-4 text-dr-slate-600">15% del excedente de RD$ 34,685.00/mes (RD$ 416,220.01/año)</td>
+                            </tr>
+                            <tr class="hover:bg-dr-blue/5 transition">
+                                <td class="p-4 font-black text-dr-blue">Tramo 3</td>
+                                <td class="p-4 font-medium text-dr-slate-700">RD$ 624,329.01 a RD$ 867,123.00</td>
+                                <td class="p-4 font-bold text-dr-slate-900">RD$ 52,027.43 a RD$ 72,260.25</td>
+                                <td class="p-4"><span class="px-2.5 py-1 bg-amber-100 text-amber-800 font-black rounded-lg text-xs">20%</span></td>
+                                <td class="p-4 text-dr-slate-600"><strong>RD$ 2,601.33/mes</strong> (RD$ 31,216.00/año) + 20% del excedente de RD$ 52,027.42/mes</td>
+                            </tr>
+                            <tr class="hover:bg-dr-blue/5 transition">
+                                <td class="p-4 font-black text-dr-red">Tramo 4</td>
+                                <td class="p-4 font-medium text-dr-slate-700">RD$ 867,123.01 en adelante</td>
+                                <td class="p-4 font-bold text-dr-slate-900">Más de RD$ 72,260.25</td>
+                                <td class="p-4"><span class="px-2.5 py-1 bg-red-100 text-dr-red font-black rounded-lg text-xs">25%</span></td>
+                                <td class="p-4 text-dr-slate-600"><strong>RD$ 6,648.00/mes</strong> (RD$ 79,776.00/año) + 25% del excedente de RD$ 72,260.25/mes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Topes Legales Oficiales TSS / CNSS -->
+            <div class="glass rounded-[2rem] p-8 md:p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-3 py-1 rounded-full">Ley 87-01 · Resolución 01-2025 TSS (Vigente desde Febrero 2026)</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">Topes Salariales Oficiales de Cotización en la TSS (2026)</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        Las cotizaciones al Sistema Dominicano de Seguridad Social (SDSS) no se calculan de forma ilimitada sobre cualquier remuneración. Conforme a la Ley 87-01 y la <strong>Resolución 01-2025 de la TSS</strong> (vigente desde el 1 de febrero de 2026), los techos máximos de cotización se expresan en múltiplos del <strong>Salario Mínimo Nacional Cotizable (SMN = RD$ 23,223.00)</strong>. Cuando el salario ordinario de un trabajador supera estos topes mensuales, la deducción porcentual se detiene en el monto máximo legal:
+                    </p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-dr-blue text-white">
+                                <th class="p-4 rounded-tl-xl font-black uppercase text-xs tracking-wider">Seguro / Régimen TSS</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Aporte Empleado</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Aporte Empleador</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Tope Legal (SMN)</th>
+                                <th class="p-4 font-black uppercase text-xs tracking-wider">Salario Tope Mensual</th>
+                                <th class="p-4 rounded-tr-xl font-black uppercase text-xs tracking-wider">Descuento Máx. Empleado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-dr-slate-200 bg-white">
+                            <tr>
+                                <td class="p-4 font-bold text-dr-slate-900">Seguro Familiar de Salud (SFS / ARS)</td>
+                                <td class="p-4 font-black text-dr-blue">3.04%</td>
+                                <td class="p-4 text-dr-slate-600">7.09%</td>
+                                <td class="p-4 font-semibold text-dr-slate-700">10 SMN</td>
+                                <td class="p-4 font-bold text-dr-slate-900">RD$ 232,230.00 / mes</td>
+                                <td class="p-4 font-black text-dr-red">RD$ 7,059.79 / mes</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-dr-slate-900">Fondo de Pensiones (AFP / SVDS)</td>
+                                <td class="p-4 font-black text-dr-blue">2.87%</td>
+                                <td class="p-4 text-dr-slate-600">7.10%</td>
+                                <td class="p-4 font-semibold text-dr-slate-700">20 SMN</td>
+                                <td class="p-4 font-bold text-dr-slate-900">RD$ 464,460.00 / mes</td>
+                                <td class="p-4 font-black text-dr-red">RD$ 13,330.00 / mes</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-dr-slate-900">Seguro de Riesgos Laborales (SRL)</td>
+                                <td class="p-4 font-semibold text-emerald-700">0.00% (No aplica)</td>
+                                <td class="p-4 text-dr-slate-600">1.10% a 1.30%</td>
+                                <td class="p-4 font-semibold text-dr-slate-700">4 SMN</td>
+                                <td class="p-4 font-bold text-dr-slate-900">RD$ 92,892.00 / mes</td>
+                                <td class="p-4 text-dr-slate-500">RD$ 0.00 (100% Patronal)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-white/90 rounded-2xl p-5 border border-dr-slate-200 text-xs text-dr-slate-600 leading-relaxed space-y-2">
+                    <p>
+                        <strong>Regla sobre Horas Extras, Comisiones y Bonificaciones (Resolución 72-03 del CNSS):</strong> Para fines de la Seguridad Social (AFP y ARS), únicamente forman parte del salario cotizable el sueldo fijo ordinario, las comisiones por ventas regulares y las vacaciones. Las <strong>horas extraordinarias</strong>, propinas legales y el salario de navidad <strong>no cotizan en la TSS</strong>. En cambio, para fines de la DGII, tanto las horas extras como las comisiones, incentivos y bonificaciones empresariales sí están gravadas con el Impuesto Sobre la Renta (ISR). Si percibes horas extras sobre un salario base fijo, utiliza el botón de engranaje en la esquina superior derecha para fijar tu sueldo base mensual y evitar que el sistema aplique TSS sobre tus horas extraordinarias.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2 Ejemplos Prácticos Resueltos Paso a Paso -->
+            <div class="space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-3 py-1 rounded-full">Casos de Estudio Reales</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">Ejemplos Prácticos Resueltos Paso a Paso</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        A continuación presentamos dos escenarios representativos del mercado laboral dominicano para ilustrar cómo interactúan las deducciones de la TSS con la base imponible de la DGII:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1 -->
+                    <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                        <div class="flex items-center justify-between border-b border-dr-slate-200 pb-4">
+                            <div>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">Ejemplo Práctico 1</span>
+                                <h4 class="text-lg font-black text-dr-slate-900 mt-2">Salario Mensual de RD$ 35,000.00 (Exento tras TSS)</h4>
+                            </div>
                         </div>
-                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
-                            El sistema utiliza un tope semanal de <span
-                                class="text-dr-blue font-black underline decoration-2 underline-offset-4">RD$
-                                18,915.79</span> para el cálculo de las retenciones de AFP y ARS.
-                            <span
-                                class="block mt-4 text-sm font-bold text-dr-slate-400 uppercase tracking-wider italic">
-                                * Valor determinado mediante estudio de casos reales en el sector privado y normativa
-                                vigente de topes de cotización.
-                            </span>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Muchos trabajadores creen erróneamente que al ganar <strong>RD$ 35,000.00 brutos</strong> al mes deben pagar ISR porque superan los RD$ 34,685.00. Sin embargo, al deducir primero la TSS, la base imponible queda por debajo del límite exento:
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-dr-slate-700 bg-dr-slate-50 p-5 rounded-2xl border border-dr-slate-200/80">
+                            <li class="flex justify-between"><span>1. Salario Bruto Mensual:</span> <strong>RD$ 35,000.00</strong></li>
+                            <li class="flex justify-between"><span>2. Descuento SFS / ARS (3.04%):</span> <span class="text-dr-red font-bold">- RD$ 1,064.00</span></li>
+                            <li class="flex justify-between"><span>3. Descuento AFP / Pensión (2.87%):</span> <span class="text-dr-red font-bold">- RD$ 1,004.50</span></li>
+                            <li class="flex justify-between border-t border-dr-slate-200 pt-2"><span>4. Total Retención TSS (5.91%):</span> <strong>RD$ 2,068.50</strong></li>
+                            <li class="flex justify-between"><span>5. Base Imponible Neta DGII (35,000 - 2,068.50):</span> <strong class="text-dr-blue">RD$ 32,931.50</strong></li>
+                            <li class="flex justify-between"><span>6. Evaluación Tramo ISR (Menor a RD$ 34,685.00):</span> <strong class="text-emerald-700">RD$ 0.00 (Exento)</strong></li>
+                            <li class="flex justify-between border-t-2 border-dr-blue/20 pt-2.5 text-sm">
+                                <span class="font-black text-dr-slate-900">Sueldo Neto Final a Recibir:</span>
+                                <strong class="font-black text-dr-blue">RD$ 32,931.50</strong>
+                            </li>
+                        </ul>
+                        <p class="text-[11px] text-dr-slate-500 italic">
+                            Conclusión técnica: Un empleado con salario ordinario único solo comienza a pagar ISR cuando su sueldo bruto mensual supera los <strong>RD$ 36,863.64</strong>, ya que a partir de ese monto el neto luego de TSS rebasa los RD$ 34,685.00.
                         </p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Seguridad Social -->
-            <div
-                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-blue/20 bg-dr-blue/[0.03] relative overflow-hidden group mt-8">
-                <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-dr-blue/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-blue/10 transition-all duration-700">
-                </div>
-                <div class="relative z-10">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Seguridad Social 2025-2026</h4>
+                    <!-- Ejemplo 2 -->
+                    <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                        <div class="flex items-center justify-between border-b border-dr-slate-200 pb-4">
+                            <div>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-2.5 py-1 rounded-md">Ejemplo Práctico 2</span>
+                                <h4 class="text-lg font-black text-dr-slate-900 mt-2">Salario de RD$ 65,000.00 + Comisiones / Bonificación</h4>
+                            </div>
                         </div>
-                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
-                            Se aplica una deducción automática del <span class="text-dr-blue font-black">5.91%</span> sobre el sueldo bruto:
-                            <span class="block mt-2">
-                                <span class="font-bold text-dr-slate-800">3.04%</span> Seguro Familiar de Salud (ARS) <br>
-                                <span class="font-bold text-dr-slate-800">2.87%</span> Adm. de Fondos de Pensiones (AFP)
-                            </span>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Supongamos un profesional con sueldo base de <strong>RD$ 65,000.00</strong> que además percibe <strong>RD$ 10,000.00 de comisiones ordinarias</strong> en el mes (Ingreso Bruto Total = <strong>RD$ 75,000.00</strong>):
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-dr-slate-700 bg-dr-slate-50 p-5 rounded-2xl border border-dr-slate-200/80">
+                            <li class="flex justify-between"><span>1. Ingreso Bruto Cotizable (Sueldo + Comisiones):</span> <strong>RD$ 75,000.00</strong></li>
+                            <li class="flex justify-between"><span>2. Descuento SFS / ARS (3.04% de 75,000):</span> <span class="text-dr-red font-bold">- RD$ 2,280.00</span></li>
+                            <li class="flex justify-between"><span>3. Descuento AFP / Pensión (2.87% de 75,000):</span> <span class="text-dr-red font-bold">- RD$ 2,152.50</span></li>
+                            <li class="flex justify-between border-t border-dr-slate-200 pt-2"><span>4. Base Imponible Neta (75,000 - 4,432.50):</span> <strong class="text-dr-blue">RD$ 70,567.50</strong></li>
+                            <li class="flex justify-between"><span>5. Tramo DGII Aplicable (Tramo 3: 20%):</span> <span>Excede RD$ 52,027.42</span></li>
+                            <li class="flex justify-between"><span>6. Cuota Fija Tramo 3 + 20% de RD$ 18,540.08:</span> <span class="text-dr-red font-bold">- RD$ 6,309.35</span></li>
+                            <li class="flex justify-between border-t-2 border-dr-blue/20 pt-2.5 text-sm">
+                                <span class="font-black text-dr-slate-900">Sueldo Neto Final a Recibir:</span>
+                                <strong class="font-black text-dr-blue">RD$ 64,258.15</strong>
+                            </li>
+                        </ul>
+                        <p class="text-[11px] text-dr-slate-500 italic">
+                            Nota: Si el trabajador solo hubiese percibido sus <strong>RD$ 65,000.00</strong> sin comisiones, su TSS sería de RD$ 3,841.50, su base imponible de RD$ 61,158.50, su ISR de <strong>RD$ 4,427.55</strong> y su sueldo neto final de <strong>RD$ 56,730.95</strong>.
                         </p>
                     </div>
                 </div>
@@ -710,28 +813,39 @@
 
             <!-- Note: Disclaimer Section -->
             <div
-                class="glass rounded-[3rem] p-10 neo-shadow border border-dr-red/20 bg-dr-red/[0.03] relative overflow-hidden group mt-8">
-                <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-dr-red/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-dr-red/10 transition-all duration-700">
+                class="glass rounded-[2.5rem] p-8 md:p-10 neo-shadow border border-dr-red/20 bg-dr-red/[0.03] relative overflow-hidden group">
+                <div class="relative z-10 space-y-3">
+                    <h4 class="text-xl font-black text-dr-slate-800 tracking-tight">Importante: Alcance Legal del Cálculo</h4>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed font-medium">
+                        Impucálculo procesa exclusivamente las retenciones impositivas y de seguridad social de carácter obligatorio según las leyes dominicanas: <span class="text-dr-blue font-black">ISR (Ley 11-92), AFP y ARS (Ley 87-01)</span>. Los descuentos privados o corporativos internos acordados con el empleador —tales como préstamos comerciales, cooperativas de ahorro, planes médicos complementarios voluntarios, seguros de vida privados o consumos de cafetería— <strong>no reducen la base imponible del ISR</strong> y se descuentan directamente del sueldo neto final.
+                    </p>
                 </div>
-                <div class="relative z-10">
+            </div>
+
+            <!-- Fuentes Oficiales Primarias -->
+            <div class="glass rounded-[2rem] p-8 neo-shadow border border-dr-blue/20 bg-white space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-dr-slate-200 pb-4">
                     <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <h4 class="text-2xl font-black text-dr-slate-800 tracking-tight">Importante: Alcance del
-                                Cálculo</h4>
-                        </div>
-                        <p class="text-lg text-dr-slate-600 leading-relaxed font-medium">
-                            Impucalculo solo procesa las retenciones de ley: <span class="text-dr-blue font-black">ISR,
-                                AFP y ARS</span>.
-                            <br>
-                            <span class="block mt-4 text-sm font-bold text-dr-slate-500 uppercase tracking-wider">
-                                Descuentos corporativos internos (como <span
-                                    class="text-dr-slate-700 underline decoration-dr-red/30 decoration-2 underline-offset-2">cafetería,
-                                    préstamos, cooperativa o seguros adicionales</span>) <span class="text-dr-red">NO
-                                    SON CALCULADOS</span> por este sistema.
-                            </span>
-                        </p>
+                        <h4 class="text-lg font-black text-dr-slate-900 tracking-tight">Fuentes Oficiales Primarias (República Dominicana)</h4>
+                        <p class="text-xs text-dr-slate-500">Parámetros verificados por <a href="sobre-nosotros.html" class="text-dr-blue font-bold hover:underline">Starlin Santana</a> conforme a los portales institucionales vigentes:</p>
                     </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">DGII →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Dirección General de Impuestos Internos (dgii.gov.do)</span>
+                    </a>
+                    <a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">TSS →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Tesorería de la Seguridad Social (tss.gob.do)</span>
+                    </a>
+                    <a href="https://mt.gob.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">Ministerio de Trabajo →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Normativa Laboral RD (mt.gob.do)</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -740,37 +854,57 @@
         <section id="faq-section" class="mt-16 max-w-4xl mx-auto space-y-6">
             <div class="glass rounded-[2rem] p-8 md:p-12 neo-shadow space-y-6">
                 <h3 class="text-2xl font-black text-dr-slate-900 border-b-2 border-dr-blue/10 pb-4">
-                    Preguntas Frecuentes sobre Deducciones y TSS
+                    Preguntas Frecuentes sobre Deducciones, ISR y TSS
                 </h3>
 
                 <div class="space-y-4">
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                        <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                            <span>¿Cuál es la deducción mensual del trabajador para la AFP y la ARS?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                        </summary>
+                        <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                            El trabajador aporta mensualmente un 2.87% de su salario cotizable para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y un 3.04% para el Seguro Familiar de Salud (SFS/ARS). En total, las deducciones de seguridad social para el empleado suman un 5.91% de su remuneración computable hasta los topes legales de la TSS.
+                        </p>
+                    </details>
+
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                        <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                            <span>¿A partir de qué monto mensual se retiene el Impuesto Sobre la Renta (ISR) en RD?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                        </summary>
+                        <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                            En la República Dominicana el Impuesto Sobre la Renta se retiene a partir de salarios netos imponibles superiores a RD$ 34,685.00 mensuales (equivalente a la exención anual de RD$ 416,220.00 establecida por la DGII). Como los aportes a la TSS (5.91%) se restan antes de calcular el impuesto, un trabajador con salario único comienza a pagar ISR cuando su sueldo bruto supera los RD$ 36,863.64 al mes.
+                        </p>
+                    </details>
+
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
                             <span>¿El doble sueldo o salario de navidad paga AFP, ARS o impuesto sobre la renta?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            No. De acuerdo con el Artículo 219 del Código de Trabajo y la regulación de la TSS, el salario de navidad (hasta la duodécima parte de las remuneraciones del año) está completamente exento de retenciones de seguridad social (AFP/ARS) y del Impuesto Sobre la Renta (ISR).
+                            No. De acuerdo con el Artículo 219 del Código de Trabajo y la regulación de la TSS, el salario de navidad (hasta la duodécima parte de las remuneraciones ordinarias del año) está completamente exento de retenciones de seguridad social (AFP/ARS) y del Impuesto Sobre la Renta (ISR).
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
-                            <span>¿Qué ocurre si trabajo para más de un empleador en cuanto a la TSS?</span>
+                            <span>¿Qué ocurre si trabajo para más de un empleador en cuanto a la TSS y el ISR?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            En la República Dominicana opera el principio de unicidad del empleador para el Seguro Familiar de Salud (ARS), lo que significa que solo se te descontará el seguro de salud en uno de los empleos (generalmente el de mayor salario). Sin embargo, el aporte al fondo de pensiones (AFP) sí se calculará y deducirá en todos los salarios de forma conjunta, sumando los montos hasta el tope legal.
+                            En el pluriempleo, las cotizaciones de AFP y SFS se aplican en cada nómina respetando los topes máximos combinados del Sistema Único de Información y Recaudo (SUIR). Para el Impuesto Sobre la Renta, el empleado debe elegir un único agente de retención mediante el Formulario IR-10 ante la DGII para que acumule los salarios de ambos empleos y aplique la escala progresiva correctamente.
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
                             <span>¿Las horas extras y bonificaciones pagan AFP/ARS y el impuesto de la DGII?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            Las horas extraordinarias y la bonificación por participación en los beneficios de la empresa están gravadas con el Impuesto Sobre la Renta (ISR). Para la TSS, las horas extras no cotizan al seguro familiar de salud ni pensión, pero la participación en los beneficios anuales sí está sujeta a cotizaciones de TSS si no excede los límites legales.
+                            Las horas extraordinarias y la bonificación anual por participación en los beneficios de la empresa (Art. 223 del Código de Trabajo) están gravadas con el Impuesto Sobre la Renta (ISR) de la DGII en el mes en que se pagan. En cambio, según la Resolución 72-03 del CNSS, las horas extras no cotizan para AFP ni ARS.
                         </p>
                     </details>
                 </div>
@@ -781,21 +915,38 @@
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
+              "inLanguage": "es-DO",
               "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "¿Cuál es la deducción mensual del trabajador para la AFP y la ARS?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El trabajador aporta mensualmente un 2.87% de su salario cotizable para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y un 3.04% para el Seguro Familiar de Salud (SFS/ARS). En total, las deducciones de seguridad social para el empleado suman un 5.91% de su remuneración computable hasta los topes legales de la TSS."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿A partir de qué monto mensual se retiene el Impuesto Sobre la Renta (ISR) en RD?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En la República Dominicana el Impuesto Sobre la Renta se retiene a partir de salarios netos imponibles superiores a RD$ 34,685.00 mensuales (equivalente a la exención anual de RD$ 416,220.00 establecida por la DGII). Como los aportes a la TSS (5.91%) se restan antes de calcular el impuesto, un trabajador con salario único comienza a pagar ISR cuando su sueldo bruto supera los RD$ 36,863.64 al mes."
+                  }
+                },
                 {
                   "@type": "Question",
                   "name": "¿El doble sueldo o salario de navidad paga AFP, ARS o impuesto sobre la renta?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "No. De acuerdo con el Artículo 219 del Código de Trabajo y la regulación de la TSS, el salario de navidad (hasta la duodécima parte de las remuneraciones del año) está completamente exento de retenciones de seguridad social (AFP/ARS) y del Impuesto Sobre la Renta (ISR)."
+                    "text": "No. De acuerdo con el Artículo 219 del Código de Trabajo y la regulación de la TSS, el salario de navidad (hasta la duodécima parte de las remuneraciones ordinarias del año) está completamente exento de retenciones de seguridad social (AFP/ARS) y del Impuesto Sobre la Renta (ISR)."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "¿Qué ocurre si trabajo para más de un empleador en cuanto a la TSS?",
+                  "name": "¿Qué ocurre si trabajo para más de un empleador en cuanto a la TSS y el ISR?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "En la República Dominicana opera el principio de unicidad del empleador para el Seguro Familiar de Salud (ARS), lo que significa que solo se te descontará el seguro de salud en uno de los empleos (generalmente el de mayor salario). Sin embargo, el aporte al fondo de pensiones (AFP) sí se calculará y deducirá en todos los salarios de forma conjunta, sumando los montos hasta el tope legal."
+                    "text": "En el pluriempleo, las cotizaciones de AFP y SFS se aplican en cada nómina respetando los topes máximos combinados del Sistema Único de Información y Recaudo (SUIR). Para el Impuesto Sobre la Renta, el empleado debe elegir un único agente de retención mediante el Formulario IR-10 ante la DGII para que acumule los salarios de ambos empleos y aplique la escala progresiva correctamente."
                   }
                 },
                 {
@@ -803,7 +954,7 @@
                   "name": "¿Las horas extras y bonificaciones pagan AFP/ARS y el impuesto de la DGII?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Las horas extraordinarias y la bonificación por participación en los beneficios de la empresa están gravadas con el Impuesto Sobre la Renta (ISR). Para la TSS, las horas extras no cotizan al seguro familiar de salud ni pensión, pero la participación en los beneficios anuales sí está sujeta a cotizaciones de TSS si no excede los límites legales."
+                    "text": "Las horas extraordinarias y la bonificación anual por participación en los beneficios de la empresa (Art. 223 del Código de Trabajo) están gravadas con el Impuesto Sobre la Renta (ISR) de la DGII en el mes en que se pagan. En cambio, según la Resolución 72-03 del CNSS, las horas extras no cotizan para AFP ni ARS."
                   }
                 }
               ]
@@ -822,28 +973,33 @@
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
-                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                        Herramienta gratuita e independiente para el cálculo de sueldo neto, retenciones de ISR, seguridad social (TSS) y prestaciones laborales en República Dominicana.
                     </p>
                     <p class="text-xs text-dr-slate-500">
                         Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
                     </p>
+                    <div id="pwa-install-container" class="pt-2" style="display: none;">
+                        <button type="button" id="pwa-install-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-dr-blue text-white text-xs font-semibold neo-shadow hover:opacity-90 transition cursor-pointer" style="font-family: 'Outfit', sans-serif;">
+                            <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+                            <span>Instalar App</span>
+                        </button>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="prestaciones.html" class="hover:text-dr-blue transition">Prestaciones Laborales</a></li>
                         <li><a href="calculadora.html" class="text-dr-blue font-semibold hover:underline">Calculadora de Sueldo e ISR</a></li>
-                        <li><a href="divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas</a></li>
                         <li><a href="blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="sobre-nosotros.html" class="hover:text-dr-blue transition">Sobre Nosotros</a></li>
                         <li><a href="privacidad.html" class="hover:text-dr-blue transition">Política de Privacidad</a></li>
                         <li><a href="terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
-                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                        <li><a href="contacto.html" class="hover:text-dr-blue transition">Contacto Directo</a></li>
                     </ul>
                 </div>
             </div>
@@ -865,7 +1021,7 @@
     <template id="row-template">
         <tr class="group hover:bg-dr-blue/[0.02] transition-colors">
             <td class="px-8 py-6">
-                <p class="text-xs font-black text-dr-slate-900 mb-1 date-val">05 ENE 2025</p>
+                <p class="text-xs font-black text-dr-slate-900 mb-1 date-val">Ejemplo del mes</p>
                 <span
                     class="freq-tag px-2 py-0.5 bg-dr-slate-100 text-[9px] font-black text-dr-slate-500 uppercase rounded-md">MENSUAL</span>
             </td>
@@ -905,7 +1061,7 @@
 
     <script>
         const CONFIG = {
-            SMN: 21674.80,
+            SMN: 23223.00,
             MONTHLY_EXEMPT: 34685.00,
             ANNUAL_EXEMPT: 416220.00,
             TSS_RATES: {
@@ -947,8 +1103,13 @@
             return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
         };
 
+        const parseSafeDate = (d) => {
+            const parsed = d ? new Date(d + 'T00:00:00') : new Date();
+            return isNaN(parsed.getTime()) ? new Date() : parsed;
+        };
+
         const getMonthYear = (d) => {
-            const date = new Date(d + 'T00:00:00');
+            const date = parseSafeDate(d);
             return `${date.getMonth() + 1}-${date.getFullYear()}`;
         };
 
@@ -960,7 +1121,6 @@
             tssBasePreview: document.getElementById('tss-base-preview'),
             afpPreview: document.getElementById('afp-preview'),
             arsPreview: document.getElementById('ars-preview'),
-            currentDateDisplay: document.getElementById('current-date-display'),
             mtdAfp: document.getElementById('mtd-afp'),
             mtdArs: document.getElementById('mtd-ars'),
             mtdIsr: document.getElementById('mtd-isr'),
@@ -1111,6 +1271,47 @@
             return bracket.fixed + ((monthlyTaxable - bracket.base) * bracket.rate);
         };
 
+        const recalculateMonthlyLedger = () => {
+            if (!Array.isArray(state.records) || state.records.length === 0) return;
+
+            const byMonth = new Map();
+            state.records.forEach((record, index) => {
+                const monthYear = getMonthYear(record.date);
+                if (!byMonth.has(monthYear)) byMonth.set(monthYear, []);
+                byMonth.get(monthYear).push({ record, index });
+            });
+
+            byMonth.forEach((entries) => {
+                entries.sort((a, b) => {
+                    const dateDiff = parseSafeDate(a.record.date) - parseSafeDate(b.record.date);
+                    return dateDiff !== 0 ? dateDiff : a.index - b.index;
+                });
+
+                let acumuladoGravable = 0;
+                let prevIsr = 0;
+
+                entries.forEach(({ record }) => {
+                    const gross = Number(record.gross) || 0;
+                    const tss = (Number(record.afp) || 0) + (Number(record.ars) || 0);
+                    acumuladoGravable += (gross - tss);
+
+                    const totalIsrFullMonth = calculateMonthlyISR(acumuladoGravable);
+                    const isr = Math.max(0, totalIsrFullMonth - prevIsr);
+                    prevIsr += isr;
+
+                    record.isr = isr;
+                    record.net = gross - tss - isr;
+                });
+            });
+        };
+
+        const commitLedgerUpdate = () => {
+            recalculateMonthlyLedger();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            updateDashboard();
+            renderHistory();
+        };
+
         const updateDashboard = () => {
             const today = elements.dateInput.value;
             const currentMonthYear = getMonthYear(today);
@@ -1130,7 +1331,7 @@
             elements.mtdNet.innerText = fmt.format(totalNet);
             elements.mtdTaxable.innerText = fmt.format(totalTaxable);
 
-            const dateObj = new Date(today + 'T00:00:00');
+            const dateObj = parseSafeDate(elements.dateInput.value);
             elements.labelMesActual.innerText = dateObj.toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
 
             const progress = Math.min((totalTaxable / CONFIG.MONTHLY_EXEMPT) * 100, 100);
@@ -1174,9 +1375,7 @@
                 // Delete handle
                 template.querySelector('.delete-btn').onclick = () => {
                     state.records = state.records.filter(r => r.id !== record.id);
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-                    updateDashboard();
-                    renderHistory();
+                    commitLedgerUpdate();
                 };
 
                 elements.historyRows.appendChild(template);
@@ -1203,7 +1402,11 @@
             elements.arsPreview.innerText = fmt.format(sfs);
         };
 
-        elements.weeklyIncomeInput.addEventListener('input', updatePreview);
+        elements.weeklyIncomeInput.addEventListener('input', () => {
+            const incomeError = document.getElementById('income-error');
+            if (incomeError) incomeError.classList.add('hidden');
+            updatePreview();
+        });
 
 
 
@@ -1221,7 +1424,19 @@
         elements.form.addEventListener('submit', (e) => {
             e.preventDefault();
             const date = elements.dateInput.value;
-            const gross = parseFloat(elements.weeklyIncomeInput.value) || 0;
+            const gross = parseFloat(elements.weeklyIncomeInput.value);
+            const incomeError = document.getElementById('income-error');
+
+            if (!Number.isFinite(gross) || gross <= 0) {
+                if (incomeError) {
+                    incomeError.textContent = 'Por favor introduce un ingreso bruto mayor a RD$ 0.00.';
+                    incomeError.classList.remove('hidden');
+                }
+                elements.weeklyIncomeInput.focus();
+                return;
+            }
+            if (incomeError) incomeError.classList.add('hidden');
+
             const fixedAmt = parseFloat(fixedSalaryConfig.amount) || 0;
             // Si el monto es 0 o inválido, tratamos como si no hubiera sueldo fijo
             const fixedSalary = (fixedSalaryConfig.enabled && fixedAmt > 0) ? fixedAmt : null;
@@ -1231,28 +1446,11 @@
             const { afp, sfs, tssBase } = calculateTSS(gross, fixedSalary, freq);
             const ars = sfs; // Renombrar para consistencia
 
-            const monthYear = getMonthYear(date);
-            const prevRecords = state.records.filter(r => getMonthYear(r.date) === monthYear);
-            const prevGross = prevRecords.reduce((sum, r) => sum + r.gross, 0);
-            const prevTss = prevRecords.reduce((sum, r) => sum + (r.afp + r.ars), 0);
-            const prevIsr = prevRecords.reduce((sum, r) => sum + r.isr, 0);
-
-            // ISR se calcula sobre el acumulado del mes (ingreso total neto de TSS)
-            const currentMonthTaxable = (prevGross + gross) - (prevTss + (afp + ars));
-
-            // Si el acumulado es menor al límite mensual (34,685), ISR es 0
-            const totalIsrFullMonth = calculateMonthlyISR(currentMonthTaxable);
-            const isr = Math.max(0, totalIsrFullMonth - prevIsr);
-            const net = gross - (afp + ars) - isr;
-
             state.records.unshift({
-                id: Date.now(), date, freq, gross, tssBase, afp, ars, isr, net
+                id: Date.now(), date, freq, gross, tssBase, afp, ars, isr: 0, net: 0
             });
 
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-
-            updateDashboard();
-            renderHistory();
+            commitLedgerUpdate();
 
             // Limpiar formulario
             elements.weeklyIncomeInput.value = '';
@@ -1265,7 +1463,6 @@
         });
 
         elements.dateInput.addEventListener('change', () => {
-            elements.currentDateDisplay.innerText = fmtDate(elements.dateInput.value);
             updateDashboard();
             renderHistory();
         });
@@ -1284,10 +1481,14 @@
 
         // Init
         const initMain = () => {
-            const today = new Date().toISOString().split('T')[0];
-            elements.dateInput.value = today;
-            elements.currentDateDisplay.innerText = fmtDate(today);
+            const now = new Date();
+            const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+            elements.dateInput.value = localDate;
+            if (elements.labelMesActual) {
+                elements.labelMesActual.innerText = now.toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
+            }
 
+            recalculateMonthlyLedger();
             updateDashboard();
             renderHistory();
         };
@@ -1304,7 +1505,7 @@
 
         <!-- Modal Content -->
         <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 space-y-6 z-10">
-            <button onclick="closeFixedSalaryModal()"
+            <button onclick="closeFixedSalaryModal()" aria-label="Cerrar modal"
                 class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-dr-slate-100 hover:bg-dr-slate-200 transition-colors">
                 <span class="text-dr-slate-500 text-lg">✕</span>
             </button>
@@ -1323,13 +1524,13 @@
 
             <!-- Input -->
             <div class="space-y-2">
-                <label class="block text-xs font-black text-dr-blue uppercase tracking-widest">Sueldo Fijo Mensual <span
+                <label for="modal-fixed-salary-input" class="block text-xs font-black text-dr-blue uppercase tracking-widest">Sueldo Fijo Mensual <span
                         class="text-dr-red">(Sin Extras)</span></label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <span class="text-dr-blue font-bold">RD$</span>
                     </div>
-                    <input type="number" id="modal-fixed-salary-input" step="0.01" min="0" placeholder="Ej: 15,000.00"
+                    <input type="number" id="modal-fixed-salary-input" step="0.01" min="0.01" placeholder="Ej: 15,000.00"
                         class="w-full pl-12 pr-4 py-4 bg-white border-2 border-dr-blue/30 rounded-2xl text-xl font-black text-dr-slate-900 focus:border-dr-blue outline-none transition-all">
                 </div>
                 <p id="modal-salary-error" class="hidden text-xs font-bold text-dr-red text-center mt-1"></p>
@@ -1342,50 +1543,55 @@
                     Eliminar
                 </button>
                 <button type="button" onclick="saveFixedSalary()"
-                    class="flex-1 py-3 rounded-2xl bg-dr-blue text-white text-xs font-black uppercase tracking-widest hover:bg-dr-blue-600 transition-colors shadow-lg">
+                    class="flex-1 py-3 rounded-2xl bg-dr-blue text-white text-xs font-black uppercase tracking-widest hover:opacity-90 transition-colors shadow-lg">
                     Guardar
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 85px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
-        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
-        <span>Instalar App</span>
-    </div>
-
+    <!-- Service Worker Registration & PWA Install Logic -->
     <script>
-        // PWA Service Worker Registration (Canonical URL)
+        // PWA Service Worker Registration (No auto-reload to preserve active calculations)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
                     .then(registration => {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        registration.update();
                     })
                     .catch(error => {
                         console.log('ServiceWorker registration failed: ', error);
                     });
             });
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                sessionStorage.removeItem('impucalculo_sw_reload');
+                console.info('ServiceWorker actualizado; los cambios se aplicarán en la próxima navegación.');
+            });
         }
         
         // PWA Install Prompt Logic
         let deferredPrompt;
-        const installBtn = document.getElementById('pwa-install-container');
+        const installContainer = document.getElementById('pwa-install-container');
+        const installBtn = document.getElementById('pwa-install-btn') || installContainer;
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'flex';
-        });
-
-        installBtn.addEventListener('click', (e) => {
-            installBtn.style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                deferredPrompt = null;
+        if (installContainer && installBtn) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installContainer.style.display = 'inline-flex';
             });
-        });
+
+            installBtn.addEventListener('click', () => {
+                if (!deferredPrompt) return;
+                installContainer.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            });
+        }
     </script>
     <script>
         // 3D Parallax Tilt Effect for Calculate Button

@@ -2,12 +2,8 @@
 <html lang="es-DO">
 
 <head>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
-        crossorigin="anonymous"></script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -26,7 +22,10 @@
             max-width: 100vw;
             position: relative;
             overscroll-behavior-x: none;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
+        }
+        @media (min-width: 640px) {
+            .sm\:gap-5 { gap: 1.25rem; }
         }
     </style>
     <title>Política de Privacidad y Seguridad | Impucálculo</title>
@@ -34,8 +33,9 @@
         content="Política de Seguridad y Privacidad de Impucálculo. Tu información salarial está 100% protegida y procesada exclusivamente en tu navegador local.">
     <link rel="canonical" href="https://impucalculo.com/privacidad.html">
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/privacidad.html">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+    <link rel="icon" type="image/webp" href="logo_new.webp">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -48,6 +48,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://impucalculo.com/privacidad.html">
     <meta name="twitter:title" content="Política de Privacidad y Seguridad | Impucálculo">
     <meta name="twitter:description"
         content="Conoce nuestras políticas de privacidad, procesamiento financiero local y cumplimiento estricto con normativas de protección de datos y Google AdSense.">
@@ -56,46 +57,41 @@
     <!-- Fonts & Scripts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/tailwind.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: {
-                        dr: {
-                            blue: '#0038A8',
-                            red: '#CE1126',
-                            white: '#FFFFFF',
-                            slate: {
-                                50: '#F8FAFC',
-                                100: '#F1F5F9',
-                                200: '#E2E8F0',
-                                800: '#1E293B',
-                                900: '#0F172A'
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Política de Privacidad y Seguridad | Impucálculo",
+      "url": "https://impucalculo.com/privacidad.html",
+      "inLanguage": "es-DO",
+      "dateModified": "2026-11-14T18:00:00-04:00",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Impucálculo",
+        "url": "https://impucalculo.com/"
+      }
+    }
     </script>
 </head>
 
 <body class="bg-dr-slate-50 font-sans text-dr-slate-800 antialiased min-h-screen flex flex-col">
     <!-- Header Simple -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 flex items-center justify-between">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
-            <nav class="flex items-center gap-4 text-sm font-semibold">
+            <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
                 <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
+                <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
-                <a href="terminos.html" class="text-dr-slate-600 hover:text-dr-blue transition">Términos</a>
+                <a href="sobre-nosotros.html" class="text-dr-slate-600 hover:text-dr-blue transition">Nosotros</a>
+                <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
             </nav>
         </div>
     </header>
@@ -105,83 +101,88 @@
         <div class="max-w-3xl mx-auto px-6 bg-white rounded-2xl shadow-sm border border-dr-slate-100 p-8 md:p-12">
             <h1 class="text-3xl font-black text-dr-slate-900 mb-2">Política de Privacidad y Seguridad</h1>
             <p class="text-sm text-dr-slate-500 font-medium mb-10">Última actualización: <span
-                    class="text-dr-blue">30 de Octubre de 2026</span></p>
+                    class="text-dr-blue font-semibold">14 de Noviembre de 2026</span></p>
 
-            <div class="space-y-8 text-dr-slate-600 prose prose-slate">
-                <p>En <strong>Impucálculo</strong>, la transparencia y la privacidad son los pilares fundamentales de nuestro servicio. Esta Política de Privacidad y Seguridad describe el procesamiento local de datos, la gestión de consultas financieras y divisas, y las medidas técnicas adoptadas para garantizar un entorno 100% seguro y confidencial para todos nuestros usuarios en República Dominicana, Argentina, México, Colombia, Venezuela y otros países de la región.</p>
+            <div class="space-y-8 text-dr-slate-600 leading-relaxed">
+                <p>En <strong>Impucálculo</strong>, la transparencia y la protección de la privacidad son pilares fundamentales de nuestro servicio. Esta Política de Privacidad y Seguridad describe con exactitud cómo se procesan localmente los datos ingresados en nuestras calculadoras, el funcionamiento de las cookies y servicios de terceros, y las medidas técnicas adoptadas para garantizar un entorno seguro y transparente para nuestros usuarios en República Dominicana.</p>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">1. Procesamiento 100% Local de Cálculos</h3>
-                    <p>Cualquier simulación matemática (cálculos de impuestos sobre la renta, prestaciones laborales por renuncia o despido, o conversiones cambiarias de divisas) ocurre <strong>directamente y en tiempo real en el navegador local de tu dispositivo</strong>. Impucálculo no envía, procesa ni almacena tus ingresos, montos, sueldos ni resultados financieros en servidores externos.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">1. Procesamiento 100% Local de los Datos en las Calculadoras</h2>
+                    <p>Todos los datos numéricos y parámetros ingresados en nuestras calculadoras (tales como salarios brutos, comisiones, bonificaciones, fechas de ingreso y salida laboral, deducciones o dependientes) se procesan <strong>100% localmente en la memoria del navegador web de tu dispositivo</strong> mediante código JavaScript ejecutado del lado del cliente. Impucálculo no transmite, recopila ni almacena estas cifras salariales o laborales en bases de datos ni servidores propios.</p>
+                    <p class="mt-2">De manera independiente a los cálculos matemáticos locales, nuestro sitio web integra servicios analíticos y publicitarios de terceros (específicamente <strong>Google Analytics / Firebase</strong> y <strong>Google AdSense</strong>), los cuales utilizan cookies, almacenamiento web e identificadores estándar de navegación conforme a las políticas de privacidad de Google para medir el tráfico general del sitio y mostrar anuncios relevantes.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">2. Consultas Cambiarias y Tasas de Divisas</h3>
-                    <p>Nuestra plataforma obtiene en tiempo real los tipos de cambio oficiales y del mercado paralelo (tales como tasas de ventanilla de bancos comerciales, TRM de Colombia, tipo FIX del Banco de México, cotizaciones del dólar oficial/blue en Argentina y promedios oficiales del BCV / paralelo en Venezuela). 
-                    Estas solicitudes se realizan de forma anónima a APIs cambiarias públicas. Impucálculo <strong>nunca asocia el monto que deseas convertir ni tus preferencias de divisas con tus datos personales</strong>, garantizando transacciones privadas y confidenciales.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">2. Ausencia de Registro de Cuentas y Tratamiento del Formulario de Contacto</h2>
+                    <p>Impucálculo es una plataforma de consulta abierta y gratuita. No exigimos la creación de cuentas de usuario, contraseñas, números de cédula de identidad y electoral, ni suscripciones por correo electrónico para utilizar nuestras calculadoras de Impuesto Sobre la Renta (ISR), Seguridad Social (TSS) o Prestaciones Laborales.</p>
+                    <p class="mt-2">Únicamente cuando decides escribirnos de forma voluntaria mediante el formulario de nuestra página de <a href="contacto.html" class="text-dr-blue underline font-medium">Contacto</a>, los datos ingresados (nombre, correo de respuesta, asunto y mensaje) se transmiten y procesan externamente de forma cifrada a través del proveedor de entrega <strong>Web3Forms</strong> con la finalidad exclusiva de entregar tu consulta al buzón oficial <code>info@impucalculo.com</code> y responderte. Web3Forms puede conservar registros técnicos temporales y controles anti-spam necesarios para proteger la entrega del formulario; puedes consultar su <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Política de Privacidad de Web3Forms</a>.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">3. Geolocalización Inteligente por Sesión</h3>
-                    <p>Para simplificar el acceso a las cotizaciones de tu moneda local, implementamos un mecanismo pasivo de geolocalización que detecta la zona horaria del dispositivo del usuario. Si resides fuera de República Dominicana, el sistema te redirigirá automáticamente a la versión cambiaria correspondiente en tu primera entrada. En caso de requerirse precisión cuando la zona horaria no es concluyente, el navegador puede consultar una API anónima de geolocalización por IP.</p>
-                    <p class="mt-2">Este proceso utiliza <code>sessionStorage</code> dentro de tu navegador, lo que significa que <strong>los datos expiran y se borran automáticamente al cerrar la pestaña o el navegador</strong>, sin almacenar ningún perfil de usuario ni historial de ubicación en bases de datos externas.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">3. Almacenamiento Local del Navegador (LocalStorage y SessionStorage)</h2>
+                    <p>En particular, la calculadora de Sueldo Neto e ISR (<code>calculadora.html</code>) utiliza la API nativa <code>localStorage</code> de tu navegador para guardar localmente en tu dispositivo el historial de registros ingresados y tu configuración de sueldo fijo entre sesiones, de modo que no pierdas tus simulaciones al recargar la página. Asimismo, empleamos <code>sessionStorage</code> con fines estrictamente técnicos para evitar recargas repetidas al actualizar el <em>Service Worker</em>.</p>
+                    <p class="mt-2">Ninguno de los valores guardados en <code>localStorage</code> o <code>sessionStorage</code> se envía a servidores de Impucálculo; permanecen únicamente en tu navegador y puedes eliminarlos en cualquier momento usando los botones de limpieza de la calculadora o borrando los datos del sitio en la configuración de tu navegador.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">4. PWA (Progressive Web App) y Caché Local</h3>
-                    <p>Nuestra suite cuenta con tecnologías de Service Worker que guardan en el caché estático de tu navegador los archivos de la interfaz para acelerar el tiempo de carga y posibilitar el uso sin conexión a Internet (offline). Ninguna cifra salarial o cambiaria es almacenada dentro de este precaché del sistema.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">4. PWA (Progressive Web App) y Caché de Interfaz</h2>
+                    <p>Nuestra plataforma emplea tecnología de <em>Service Worker</em> para almacenar en la caché local de tu navegador los archivos estáticos de diseño e interfaz (HTML, hojas de estilo e íconos), con el propósito de acelerar los tiempos de carga y permitir el funcionamiento ágil de las calculadoras. Ningún salario ni cálculo personal se envía a servidores externos a través de este mecanismo.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">5. Analíticas de Uso Anónimas (Google Analytics y Firebase)</h3>
-                    <p>Para fines estadísticos y de mejora continua de la experiencia de usuario, utilizamos herramientas analíticas de terceros (como Google Analytics y Firebase Analytics) que recopilan información técnica agregada y disociada (páginas visitadas, tipo de dispositivo, país de red y eventos de interacción genéricos). <strong>Estas herramientas estadísticas tienen prohibido por arquitectura técnica capturar, registrar o transmitir las cifras monetarias, salarios o números ingresados en cualquiera de las calculadoras de la plataforma.</strong></p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">5. Analíticas de Uso (Google Analytics y Firebase Analytics)</h2>
+                    <p>Con el objetivo de comprender el tráfico general y mejorar el rendimiento de nuestras herramientas, integramos <strong>Google Analytics / Firebase Analytics</strong> en la portada (<code>index.html</code>) y en las calculadoras (<code>calculadora.html</code> y <code>prestaciones.html</code>). Estos servicios recopilan métricas estadísticas agregadas de navegación (páginas vistas, duración aproximada de la visita, tipo de dispositivo/navegador y ubicación geográfica general a nivel de país o ciudad). En ningún caso registran los montos salariales, fechas laborales ni cálculos que introduces en los formularios.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">6. Cookies y Almacenamiento Local</h3>
-                    <p>Impucálculo utiliza almacenamiento local (<code>localStorage</code> y <code>sessionStorage</code>) e infraestructura de Service Worker estrictamente para guardar la configuración de navegación, preferencias de país y cachés de interfaz que permiten un rendimiento rápido y funcionamiento offline. Ninguna información sensible o dato ingresado en los formularios es compartido con terceros.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">7. Exención de Responsabilidad Cambiaria y Fiscal</h3>
-                    <p>Los cálculos tributarios e indemnizaciones se apegan a los códigos de trabajo y normativas tributarias (DGII de República Dominicana) vigentes. Las tasas de cambio e indicadores bancarios proporcionados en el comparador de divisas son de carácter referencial e informativo y pueden diferir ligeramente de las cotizaciones finales ofrecidas por las entidades bancarias comerciales al momento de realizar la transacción física. Impucálculo no actúa como intermediario financiero ni constituye asesoría fiscal o contable vinculante.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">8. Publicidad de Terceros y Google AdSense</h3>
-                    <p>Para sostener los costos de servidores e infraestructura tecnológica y mantener a Impucálculo como un servicio 100% gratuito, accesible y actualizado para todos los usuarios en República Dominicana y la región, mostramos publicidad gestionada a través de Google AdSense y sus redes publicitarias certificadas asociadas.</p>
-                    <p class="mt-2">De conformidad con las políticas oficiales de Google AdSense para editores, informamos expresamente que:</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">6. Uso de Cookies</h2>
+                    <p>Las cookies son pequeños archivos de texto que los sitios web y servicios integrados alojan en tu navegador. En Impucálculo se emplean:</p>
                     <ul class="list-disc pl-6 mt-2 space-y-1">
-                        <li>Proveedores externos, incluido <strong>Google</strong>, utilizan cookies (como la cookie de publicidad de Google o identificadores de publicidad) para publicar anuncios basados en las visitas anteriores del usuario a este sitio web o a otros sitios web de Internet.</li>
-                        <li>El uso de cookies de publicidad por parte de Google y sus socios les permite mostrar anuncios relevantes a los usuarios en función de sus visitas a Impucálculo y a otros portales de la red.</li>
-                        <li>Los usuarios pueden inhabilitar voluntariamente la publicidad personalizada accediendo a la <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Configuración de anuncios de Google</a>.</li>
-                        <li>Alternativamente, los usuarios pueden inhabilitar el uso de cookies para publicidad personalizada por parte de terceros proveedores visitando las plataformas internacionales de autorregulación publicitaria: <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">aboutads.info</a>, <a href="https://youradchoices.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">YourAdChoices</a>, la <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Network Advertising Initiative (NAI)</a> o, para usuarios en Europa, <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Your Online Choices (EDAA)</a>.</li>
+                        <li><strong>Cookies técnicas y almacenamiento funcional:</strong> Necesarios para el correcto funcionamiento visual, seguridad y carga rápida del portal.</li>
+                        <li><strong>Cookies analíticas y publicitarias de terceros:</strong> Gestionadas por Google (Google Analytics y Google AdSense) para medición de audiencia y entrega o personalización de anuncios publicitarios.</li>
                     </ul>
-                    <p class="mt-3 text-dr-slate-800 font-semibold bg-dr-slate-100 p-3 rounded-xl border border-dr-slate-200">
-                        🔒 <strong>Garantía Estricta de Protección Financiera:</strong> Los sistemas publicitarios de Google y terceros proveedores <u>no tienen acceso</u>, no leen, no capturan ni pueden registrar bajo ninguna circunstancia los salarios, prestaciones laborales, deducciones fiscales, montos de divisas ni ninguna cifra numérica ingresada en las calculadoras de Impucálculo. Todos los cálculos matemáticos ocurren de forma aislada y confidencial en el procesador local de tu dispositivo.
-                    </p>
-                    <p class="mt-2">Como usuario, conservas en todo momento la libertad de bloquear, gestionar o eliminar las cookies a través de los ajustes de privacidad de tu navegador web.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">9. Cumplimiento de la Política de Consentimiento de Usuarios de la Unión Europea (RGPD / GDPR)</h3>
-                    <p>En estricto apego a la <em>Política de Consentimiento de Usuarios de la Unión Europea de Google</em> y al Reglamento General de Protección de Datos (RGPD):</p>
-                    <p class="mt-2">Para los visitantes que acceden a Impucálculo desde el Espacio Económico Europeo (EEE), el Reino Unido o Suiza, garantizamos que cualquier uso de cookies no esenciales y tecnologías de personalización de anuncios está sujeto a la obtención previa y transparente de su consentimiento mediante herramientas y Plataformas de Gestión de Consentimiento (CMP) certificadas por Google e integradas con el marco IAB TCF (Transparency and Consent Framework). Los usuarios de dichas regiones pueden revocar o modificar sus preferencias de consentimiento en cualquier momento.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">7. Alcance Informativo y Exención de Responsabilidad Fiscal o Laboral</h2>
+                    <p>Los cálculos tributarios (ISR, TSS) y laborales (preaviso, cesantía, vacaciones y regalía pascual) se basan en las fórmulas públicas del Código Tributario (Ley 11-92), la Ley 87-01 de Seguridad Social y el Código de Trabajo de la República Dominicana (Ley 16-92). Los resultados constituyen simulaciones informativas y educativas, y no sustituyen una certificación oficial del Ministerio de Trabajo ni una liquidación auditada ante la DGII.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">10. Privacidad y Protección de Menores de Edad (COPPA)</h3>
-                    <p>Impucálculo es una plataforma de educación financiera, herramientas tributarias y cálculo de prestaciones laborales dirigida exclusivamente a personas adultas, contribuyentes y trabajadores activos en edad laboral. Nuestro sitio web no está dirigido a menores de 13 años (ni a menores de 16 años dentro del territorio de la Unión Europea), y no recopilamos conscientemente ningún tipo de dato personal de menores. Si un padre, madre o tutor legal detecta que un menor ha interactuado suministrando información de contacto, puede comunicarse con nosotros para proceder a su eliminación inmediata.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">8. Publicidad de Terceros y Google AdSense</h2>
+                    <p>Para sostener los costos de infraestructura tecnológica y mantener a Impucálculo como un servicio 100% gratuito para todos los trabajadores en República Dominicana, mostramos publicidad gestionada a través de <strong>Google AdSense</strong>.</p>
+                    <p class="mt-2">De conformidad con las políticas de Google AdSense, informamos de forma transparente que:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li>Proveedores externos, incluido <strong>Google</strong>, utilizan cookies para mostrar anuncios relevantes basados en las visitas anteriores del usuario a este sitio web o a otros sitios de Internet.</li>
+                        <li>El uso de cookies publicitarias permite a Google y a sus socios ofrecer anuncios basados en tus visitas a Impucálculo y a otros sitios web en la red.</li>
+                        <li>Puedes inhabilitar la publicidad personalizada en cualquier momento visitando la <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Configuración de anuncios de Google</a> o el portal <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Mi Centro de Anuncios (My Ad Center)</a>.</li>
+                        <li>Asimismo, puedes gestionar o inhabilitar el uso de cookies de terceros para publicidad personalizada a través de las plataformas internacionales de autorregulación: <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">aboutads.info</a>, <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Network Advertising Initiative (NAI)</a> o <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Your Online Choices (EDAA)</a>.</li>
+                    </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">11. Derechos del Usuario (ARCO y Revocación de Consentimiento)</h3>
-                    <p>Reconocemos y respetamos los derechos de los usuarios sobre su privacidad digital. En cualquier momento puedes solicitar la confirmación de la inexistencia de datos personales almacenados en nuestros servidores, solicitar la revocación del consentimiento para cookies publicitarias o realizar cualquier consulta relacionada con la seguridad de la plataforma escribiendo directamente a nuestro canal oficial de privacidad: <a href="mailto:info@impucalculo.com" class="text-dr-blue underline font-bold hover:text-dr-red transition">info@impucalculo.com</a>.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">9. Controles de Privacidad, Consentimiento y Gestión de Cookies</h2>
+                    <p>Impucálculo no opera un panel propio de gestión de cookies de primera parte. El control sobre cookies analíticas y publicitarias se ejerce directamente a través de los siguientes mecanismos:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                        <li><strong>Configuración de tu navegador web:</strong> Todos los navegadores modernos (Chrome, Safari, Firefox, Edge) te permiten bloquear cookies de terceros, eliminar cookies y datos de <code>localStorage</code> existentes, o navegar en modo privado/incógnito sin afectar el funcionamiento matemático de nuestras calculadoras.</li>
+                        <li><strong>Preferencias de anuncios de Google:</strong> Puedes revisar cómo Google utiliza la información de los sitios que emplean sus servicios en <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Cómo utiliza Google la información de sitios o aplicaciones que utilizan nuestros servicios</a>, y desactivar o ajustar la personalización de anuncios directamente en <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">adssettings.google.com</a> o <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">myadcenter.google.com</a>.</li>
+                        <li><strong>Mensajes de consentimiento de Google AdSense según jurisdicción:</strong> Cuando la normativa regional aplicable (como el RGPD en el Espacio Económico Europeo, el Reino Unido u otras jurisdicciones reguladas) lo exige y según la configuración activa en Google AdSense, se despliegan los avisos de consentimiento oficiales gestionados por Google antes de emitir anuncios personalizados.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">10. Privacidad y Protección de Menores de Edad</h2>
+                    <p>Impucálculo es una plataforma de educación tributaria y laboral dirigida a personas adultas, trabajadores activos, empleadores y estudiantes universitarios o técnicos. No recopilamos conscientemente información personal de menores de edad. Si un padre, madre o tutor considera que un menor nos ha remitido algún dato personal por correo electrónico, puede contactarnos para proceder a su eliminación inmediata.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">11. Derechos del Usuario y Contacto de Privacidad</h2>
+                    <p>De acuerdo con la Ley No. 172-13 sobre Protección de Datos de Carácter Personal de la República Dominicana y las normativas internacionales aplicables, si nos has contactado voluntariamente por correo electrónico tienes derecho a solicitar el acceso, rectificación o supresión de tu comunicación. Para cualquier consulta sobre esta Política de Privacidad, escríbenos directamente a nuestro canal oficial: <a href="mailto:info@impucalculo.com" class="text-dr-blue underline font-bold hover:text-dr-red transition">info@impucalculo.com</a>.</p>
                 </div>
             </div>
 
             <div class="mt-12 pt-8 border-t border-dr-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-dr-slate-500">
-                <p>¿Tienes dudas sobre nuestra seguridad? <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">Escríbenos a info@impucalculo.com</a></p>
+                <p>¿Tienes dudas sobre nuestra política de privacidad? <a href="contacto.html" class="text-dr-blue font-semibold hover:underline">Contáctanos aquí</a> o escribe a <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a></p>
                 <div class="flex gap-4">
                     <a href="terminos.html" class="hover:text-dr-blue transition">Términos de Uso</a>
                     <span>·</span>
@@ -201,28 +202,27 @@
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
-                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                        Plataforma gratuita e independiente para el cálculo de sueldo neto, retenciones de ISR, Seguridad Social (TSS) y prestaciones laborales en República Dominicana.
                     </p>
                     <p class="text-xs text-dr-slate-500">
                         Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="prestaciones.html" class="hover:text-dr-blue transition">Prestaciones Laborales</a></li>
                         <li><a href="calculadora.html" class="hover:text-dr-blue transition">Calculadora de Sueldo e ISR</a></li>
-                        <li><a href="divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas</a></li>
                         <li><a href="blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="sobre-nosotros.html" class="hover:text-dr-blue transition">Sobre Nosotros</a></li>
                         <li><a href="privacidad.html" class="text-dr-blue font-semibold hover:underline">Política de Privacidad</a></li>
                         <li><a href="terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
-                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                        <li><a href="contacto.html" class="hover:text-dr-blue transition">Contacto Directo</a></li>
                     </ul>
                 </div>
             </div>

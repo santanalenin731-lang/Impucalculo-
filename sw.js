@@ -1,30 +1,29 @@
-const CACHE_NAME = 'impucalculo-v121';
-const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v121';
+const CACHE_NAME = 'impucalculo-v123';
+const DYNAMIC_CACHE_NAME = 'impucalculo-dynamic-v123';
 
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/calculadora.html',
     '/prestaciones.html',
-    '/divisas.html',
+    '/blog.html',
     '/sobre-nosotros.html',
+    '/contacto.html',
     '/terminos.html',
     '/privacidad.html',
-    '/divisas/ar/index.html',
-    '/divisas/mx/index.html',
-    '/divisas/co/index.html',
-    '/divisas/ve/index.html',
-    '/js/divisas-engine.js',
-    '/blog.html',
     '/blog/dimision-laboral-rd-prestaciones.html',
-    '/blog/ar/dolar-tarjeta-argentina.html',
-    '/blog/ar/dolar-mep-vs-blue.html',
-    '/blog/ve/como-facturar-bolivares-tasa-bcv.html',
-    '/blog/ve/brecha-cambiaria-oficial-promedio.html',
-    '/blog/co/que-es-trm-colombia.html',
-    '/blog/co/enviar-remesas-colombia.html',
-    '/blog/mx/mejor-opcion-remesas-mexico-eeuu.html',
-    '/blog/mx/calcular-tipo-cambio-dolar-mexico.html',
+    '/blog/liquidacion-renuncia-derechos-adquiridos.html',
+    '/blog/gastos-educativos-dgii-ley-179-09.html',
+    '/blog/isr-dominicano-guia.html',
+    '/blog/prestaciones-laborales-guia.html',
+    '/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html',
+    '/blog/calculo-prestaciones-empleadas-domesticas-rd.html',
+    '/blog/regalia-pascual-rd.html',
+    '/blog/bonificacion-beneficios-rd.html',
+    '/blog/tss-afp-ars-guia.html',
+    '/blog/guia-uso-v2.html',
+    '/css/tailwind.min.css',
+    '/js/firebase-analytics.js',
     '/manifest.json',
     '/logo_new.webp',
     '/icon-192.png',
@@ -78,31 +77,35 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
     if (!url.protocol.startsWith('http')) return;
 
-    // Bypass third-party analytics & ad networks so they never block page load or pollute cache
+    // Bypass third-party analytics, ad networks, consent tools, and root crawl/ads metadata files
     if (
         url.hostname.includes('googlesyndication.com') ||
         url.hostname.includes('google-analytics.com') ||
         url.hostname.includes('googletagmanager.com') ||
         url.hostname.includes('doubleclick.net') ||
-        url.hostname.includes('googleadservices.com')
+        url.hostname.includes('googleadservices.com') ||
+        url.hostname.includes('gstatic.com') ||
+        url.hostname.includes('googleapis.com') ||
+        url.hostname.includes('adtrafficquality.google') ||
+        url.hostname.includes('fundingchoicesmessages.google.com') ||
+        url.pathname === '/ads.txt' ||
+        url.pathname === '/sitemap.xml' ||
+        url.pathname === '/robots.txt' ||
+        url.pathname === '/google1d19814154dc1b8c.html'
     ) {
         return;
     }
 
-    // 1. HTML Pages & Realtime API Calls -> Network First, fallback to Cache
+    // 1. HTML Pages -> Network First, fallback to Cache (mapping '/' to '/index.html')
     if (
-        event.request.mode === 'navigate' || 
-        url.pathname.endsWith('.html') || 
-        url.hostname.includes('script.google.com') ||
-        url.hostname.includes('dolarapi.com') ||
-        url.hostname.includes('freeipapi.com') ||
-        url.hostname.includes('open.er-api.com')
+        event.request.mode === 'navigate' ||
+        url.pathname === '/' ||
+        url.pathname.endsWith('.html')
     ) {
         event.respondWith(
             fetch(event.request)
                 .then((networkResponse) => {
                     return caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
-                        // Only cache successful GET requests
                         if (event.request.method === 'GET' && networkResponse.status === 200) {
                             cache.put(event.request, networkResponse.clone());
                         }
@@ -111,20 +114,27 @@ self.addEventListener('fetch', (event) => {
                 })
                 .catch(() => {
                     console.log('[Service Worker] Network failed, serving from cache:', event.request.url);
-                    return caches.match(event.request);
+                    return caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
+                        if (cachedResponse) return cachedResponse;
+                        return caches.match('/index.html', { ignoreSearch: true }).then((fallbackResponse) => {
+                            return fallbackResponse || new Response('Sin conexión', {
+                                status: 503,
+                                headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+                            });
+                        });
+                    });
                 })
         );
-    } 
-    // 2. Static Assets (Images, Fonts, etc) -> Cache First, fallback to Network
+    }
+    // 2. Static Assets (Images, CSS, etc.) -> Cache First, fallback to Network
     else {
         event.respondWith(
-            caches.match(event.request).then((cachedResponse) => {
+            caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
                 if (cachedResponse) {
                     return cachedResponse;
                 }
-                
+
                 return fetch(event.request).then((networkResponse) => {
-                    // Cache the fetched asset dynamically
                     if (event.request.method === 'GET' && networkResponse.status === 200) {
                         return caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
                             cache.put(event.request, networkResponse.clone());
@@ -132,6 +142,8 @@ self.addEventListener('fetch', (event) => {
                         });
                     }
                     return networkResponse;
+                }).catch(() => {
+                    return new Response('', { status: 503, statusText: 'Offline' });
                 });
             })
         );

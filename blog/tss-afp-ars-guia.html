@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
+    <!-- Google Consent Mode v2 (EEA/UK/CH pre-consent default) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+      if (!window.__consentDefaultSet) {
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+          wait_for_update: 500
+        });
+      }
+    </script>
     <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
@@ -11,7 +28,10 @@
   <meta name="description" content="Manual completo sobre la Seguridad Social (TSS) en RD 2026. Entiende tus descuentos de AFP y ARS, los topes de cotización y tus derechos como trabajador según la Ley 87-01.">
   <meta name="keywords" content="TSS republica dominicana 2026, calcular TSS rd, AFP rd pensiones, ARS rd salud, ley 87-01 seguridad social rd, topes cotizacion tss 2026">
   <link rel="canonical" href="https://impucalculo.com/blog/tss-afp-ars-guia.html">
-  <link rel="icon" type="image/png" href="../logo_new.webp">
+  <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog/tss-afp-ars-guia.html">
+  <link rel="icon" type="image/webp" href="../logo_new.webp">
+  <link rel="apple-touch-icon" href="../icon-192.png">
+  <link rel="manifest" href="../manifest.json">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
@@ -21,12 +41,14 @@
   <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
   <meta property="og:site_name" content="Impucálculo">
   <meta property="article:published_time" content="2026-04-20">
-  <meta property="article:modified_time" content="2026-04-30">
+  <meta property="article:modified_time" content="2026-11-14">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://impucalculo.com/blog/tss-afp-ars-guia.html">
   <meta name="twitter:title" content="Guía de TSS en República Dominicana 2026: AFP, ARS y SFS Explicados | Impucálculo">
   <meta name="twitter:description" content="Manual completo sobre la Seguridad Social (TSS) en RD 2026. Entiende tus descuentos de AFP y ARS, los topes de cotización y tus derechos como trabajador según la Ley 87-01.">
+  <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,11 +58,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Guía de TSS en República Dominicana 2026: AFP, ARS y SFS Explicados",
+    "headline": "Guía de TSS en República Dominicana 2026: AFP y ARS",
     "description": "Guía definitiva sobre el Sistema Dominicano de Seguridad Social. Incluye porcentajes de AFP, ARS y Riesgos Laborales, además de topes de cotización.",
-    "datePublished": "2026-04-20",
-    "dateModified": "2026-04-30",
-    "author": { "@type": "Organization", "name": "Impucálculo" },
+    "image": "https://impucalculo.com/logo_new.webp",
+    "datePublished": "2026-04-20T09:00:00-04:00",
+    "dateModified": "2026-11-14T18:00:00-04:00",
+    "inLanguage": "es-DO",
+    "author": { "@type": "Person", "name": "Starlin Santana", "url": "https://impucalculo.com/sobre-nosotros.html" },
     "publisher": {
       "@type": "Organization",
       "name": "Impucálculo",
@@ -59,33 +83,53 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "¿Qué porcentaje me descuentan de TSS en RD?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Al trabajador se le descuenta un 5.91% de su salario ordinario. Este se divide en: 2.87% para Pensiones (AFP) y 3.04% para Salud (ARS)." }
+        "name": "¿Puedo retirar mi dinero de la AFP antes de jubilarme?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Por regla general, no. El sistema está diseñado para el retiro a los 60 años con 360 cotizaciones. Sin embargo, existen excepciones por enfermedad terminal o si tienes más de 45 años y estás desempleado (según normativas vigentes)." }
       },
       {
         "@type": "Question",
-        "name": "¿Cuánto aporta el empleador a la TSS?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El empleador aporta aproximadamente un 15.29% adicional al salario. Se divide en: 7.10% para Pensiones, 7.09% para Salud y un promedio de 1.10% para Riesgos Laborales (ARL)." }
+        "name": "¿Qué pasa si mi empleador me descuenta pero no paga a la TSS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Esto es una falta grave y un delito. Puedes verificar tus aportes en la web de la TSS. Si ves que no hay pagos, debes denunciarlo ante la DIDA (Dirección de Información y Defensa de los Afiliados) para que inicien el proceso legal contra la empresa." }
       },
       {
         "@type": "Question",
-        "name": "¿Qué son los topes de cotización de la TSS?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Son límites máximos de salario sobre los cuales se calculan los descuentos. Para Salud (ARS) el tope es de 10 salarios mínimos, y para Pensiones (AFP) y Riesgos Laborales (ARL) el tope es de 20 salarios mínimos." }
+        "name": "¿Tengo que pagar para incluir a mis hijos en el seguro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tus dependientes directos (hijos hasta los 18 años, o 21 si estudian, y cónyuge) están cubiertos por tu descuento del 3.04%. No tienes que pagar extra por ellos. Puedes incluir a tus padres pagando un monto adicional (Per cápita)." }
       },
       {
         "@type": "Question",
-        "name": "¿Cómo puedo saber si mi empresa me tiene registrado en TSS?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Puedes verificarlo registrándote en la oficina virtual de la TSS (tss.gov.do) o descargando la aplicación oficial. Ahí verás tu historial de aportes y el salario reportado por tu empleador." }
+        "name": "¿El sueldo 13 paga TSS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. La Regalía Pascual está totalmente exenta de descuentos de seguridad social por ley." }
       },
       {
         "@type": "Question",
-        "name": "¿El Seguro de Riesgos Laborales lo paga el empleado?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. El Seguro de Riesgos Laborales (ARL) es una contribución 100% a cargo del empleador. El trabajador no recibe ningún descuento por este concepto." }
+        "name": "¿Qué es la CCI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Es tu Cuenta de Capitalización Individual. Es como una cuenta de ahorros a tu nombre donde se depositan tus aportes de pensiones y donde se generan los intereses por las inversiones que hace tu AFP." }
       },
       {
         "@type": "Question",
-        "name": "¿Qué pasa con mi dinero de la AFP si fallezco?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El fondo de pensiones es heredable. En caso de fallecimiento del titular, sus herederos legales pueden solicitar la devolución de los fondos acumulados mediante el proceso de Pensión de Sobrevivencia o Devolución de Saldo." }
+        "name": "¿Qué pasa si tengo dos empleos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ambos empleadores deben cotizar por ti. En el caso de salud, solo una ARS recibirá la dispersión, pero tus aportes se sumarán para fines de pensiones hasta el tope legal." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo cambiarme de AFP?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, una vez al año y siempre que tengas al menos 12 cotizaciones en tu AFP actual. El proceso es gratuito y se solicita directamente en la AFP a la que deseas moverte." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿A qué edad me jubilo en RD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La edad de retiro estándar es a los 60 años, siempre que cumplas con las cotizaciones mínimas. También existe el retiro anticipado a los 55 años si el saldo de tu cuenta permite una pensión superior al 150% de la mínima." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo afectan las vacaciones a mi TSS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El pago de vacaciones es considerado salario ordinario, por lo que está sujeto a los mismos descuentos de AFP y ARS que un mes normal de trabajo." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es la DIDA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Es la Dirección de Información y Defensa de los Afiliados. Es tu principal aliado para reclamar derechos, orientarte sobre coberturas de salud y denunciar irregularidades en tus aportes." }
       }
     ]
   }
@@ -151,6 +195,14 @@
     .badge-blue { background: rgba(0,56,168,0.1); color: var(--blue); }
     .badge-red { background: rgba(206,17,38,0.1); color: var(--red); }
     .info-box { background: rgba(0,56,168,0.05); border: 1px solid rgba(0,56,168,0.15); border-radius: 1rem; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .step-box { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 2rem; padding: 2rem 2.25rem; margin-bottom: 1.25rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.08); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .step-box:hover { transform: translateY(-5px); box-shadow: 0 36px 72px -15px rgba(0,0,0,0.14), 0 50px 90px -20px rgba(0,56,168,0.12); }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--blue); color: #fff; border-radius: 50%; font-weight: 900; font-size: 1rem; margin-bottom: 1rem; }
+    .step-box h3 { margin-top: 0; color: var(--blue); }
+    .formula-box { background: rgba(255,255,255,0.9); border: 1px solid rgba(0,56,168,0.2); border-radius: 1.5rem; padding: 1.75rem 2rem; text-align: center; margin: 1.75rem 0; box-shadow: 0 10px 30px -10px rgba(0,56,168,0.12); }
+    .formula-text { font-size: 1.4rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .formula-sub { font-size: 0.875rem; color: var(--gray); margin-top: 0.5rem; }
+    .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); }
     .cta-block { margin: 3.5rem 0; padding: 3.5rem 2.5rem; border-radius: 2rem; text-align: center; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), 0 30px 60px -20px rgba(0,56,168,0.1); }
     .btn { display: inline-block; background: var(--blue); color: #fff; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 1.1rem 2.5rem; border-radius: 1rem; text-decoration: none; box-shadow: 0 10px 24px rgba(0,56,168,0.25); transition: all 0.3s; }
     .faq-item { border-bottom: 1px solid var(--border); }
@@ -159,32 +211,50 @@
     details[open] .faq-q::after { transform: rotate(45deg); }
     .faq-a { color: var(--gray); padding: 0 0 1.25rem; font-size: 0.9375rem; }
     .art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; }
-    .art-nav-link { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 1.5rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 10px 24px -8px rgba(0,0,0,0.08); transition: all 0.35s; }
+    .art-nav-link { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 1.5rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 10px 24px -8px rgba(0,0,0,0.08); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .art-nav-link:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,56,168,0.15); border-color: rgba(0,56,168,0.2); }
+    .art-nav-link.prev { text-align: left; }
+    .art-nav-link.next { text-align: right; }
+    .nav-dir { font-size: 0.72rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
+    .nav-ttl { font-weight: 700; color: var(--text); font-size: 0.9375rem; }
     footer { margin-top: 5rem; padding: 3rem 1.5rem; border-top: 1px solid var(--border); text-align: center; }
     .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; list-style: none; margin-bottom: 1.5rem; }
     .foot-links a { color: var(--gray); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    @media (max-width: 600px) {
+      .art-nav { grid-template-columns: 1fr; }
+      .step-box { padding: 1.5rem; }
+      .cta-block { padding: 2.5rem 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .navbar { padding: 0 1rem; }
+      .nav-inner { gap: 10px; }
+      .nav-back-text { display: none; }
+      .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="https://impucalculo.com" class="nav-logo">
-        <span>Impu</span><span>cálculo</span>
-      </a>
-      <a href="../blog.html" class="nav-back">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Volver al Blog
-      </a>
-      <a href="../calculadora.html" class="nav-cta">Calcular Ahora</a>
-    </div>
-  </nav>
+  <header style="position: sticky; top: 0; z-index: 100;">
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">
+          <span>Impu</span><span>cálculo</span>
+        </a>
+        <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span class="nav-back-text">Volver al Blog</span>
+        </a>
+        <a href="../calculadora.html" class="nav-cta">Calcular Ahora</a>
+      </div>
+    </nav>
+  </header>
 
   <main>
     <div class="container">
       <nav class="breadcrumb">
-        <a href="https://impucalculo.com">Impucálculo</a>
+        <a href="../index.html">Inicio</a>
         <span class="sep">›</span>
         <a href="../blog.html">Blog</a>
         <span class="sep">›</span>
@@ -194,13 +264,14 @@
       <article>
         <div class="art-meta">Fiscal · Ley 87-01</div>
         <h1>Guía de TSS en <span style="color:var(--blue)">República Dominicana</span> 2026: AFP y ARS</h1>
+        <p style="font-size:0.92rem; color:var(--gray); margin-bottom:1.25rem; font-weight:600;">Por <a href="../sobre-nosotros.html" style="color:var(--blue); text-decoration:none; font-weight:700;">Starlin Santana · Fundador y Responsable Editorial</a> · Actualizado: 14 de noviembre de 2026</p>
         <p class="art-lead">La Tesorería de la Seguridad Social (TSS) es el motor que recauda los aportes para tu pensión y salud. Entender cómo funcionan estos descuentos no solo te ayuda a verificar tu sueldo neto, sino a conocer tus derechos de protección social.</p>
 
         <!-- KEY BOX -->
         <div class="key-box">
           <div class="key-item"><span class="key-val">5.91%</span><span class="key-lbl">Descuento Empleado</span></div>
-          <div class="key-item"><span class="key-val">15.29%</span><span class="key-lbl">Aporte Patronal</span></div>
-          <div class="key-item"><span class="key-val">10/20</span><span class="key-lbl">Topes Salariales</span></div>
+          <div class="key-item"><span class="key-val">~16.29%</span><span class="key-lbl">Carga Patronal (+1% INFOTEP)</span></div>
+          <div class="key-item"><span class="key-val">4 / 10 / 20</span><span class="key-lbl">Topes SMN (ARL/ARS/AFP)</span></div>
           <div class="key-item"><span class="key-val">100%</span><span class="key-lbl">Aporte ARL (Empresa)</span></div>
         </div>
 
@@ -255,19 +326,34 @@
                   <td><strong>10.13%</strong></td>
                 </tr>
                 <tr>
-                  <td>Riesgos Laborales (ARL)</td>
-                  <td>1.10% (promedio)</td>
+                  <td>Riesgos Laborales (SRL / ARL)</td>
+                  <td>1.10% (promedio: ~1.10% a 1.30%)</td>
                   <td>0.00%</td>
                   <td><strong>1.10%</strong></td>
                 </tr>
-                <tr style="background:#F8FAFC; font-weight:800; color:var(--blue);">
-                  <td>TOTAL</td>
+                <tr style="background:#F8FAFC; font-weight:700;">
+                  <td>Subtotal Seguridad Social (TSS · Ley 87-01)</td>
                   <td>15.29%</td>
                   <td>5.91%</td>
                   <td><strong>21.20%</strong></td>
                 </tr>
+                <tr>
+                  <td>INFOTEP Patronal (Ley 116-80)</td>
+                  <td>1.00%</td>
+                  <td>0.00%*</td>
+                  <td><strong>1.00%</strong></td>
+                </tr>
+                <tr style="background:#F8FAFC; font-weight:800; color:var(--blue);">
+                  <td>TOTAL CARGA MENSUAL EN PLANILLA TSS</td>
+                  <td>~16.29%</td>
+                  <td>5.91%</td>
+                  <td><strong>~22.20%</strong></td>
+                </tr>
               </tbody>
             </table>
+          </div>
+          <div class="info-box">
+            <p style="margin-bottom:0;"><strong>Nota sobre INFOTEP (Ley 116-80):</strong> Además del <strong>15.29%</strong> promedio de Seguridad Social (SFS 7.09% + AFP 7.10% + ARL promedio ~1.10% a 1.30%), el empleador también liquida mensualmente en su planilla de la TSS el <strong>1.00% de aporte patronal al INFOTEP</strong>, lo que eleva la carga patronal total aproximada a <strong>~16.29%</strong>. <em>*En cuanto al trabajador, no existe descuento mensual sobre el salario ordinario, pero sí aplica un <strong>0.5% de aporte al INFOTEP</strong> únicamente sobre las utilidades / bonificación anual recibida (Art. 24, Ley 116-80).</em></p>
           </div>
 
           <hr class="divider">
@@ -284,21 +370,25 @@
           <hr class="divider">
 
           <h2 id="topes-cotizacion">Topes de Cotización: Los límites legales 2026</h2>
-          <p>La TSS establece techos salariales sobre los cuales se calculan los descuentos. Si tu salario supera estos montos, el excedente queda libre de descuentos de seguridad social (aunque sí pagará ISR).</p>
+          <p>La TSS establece techos salariales sobre los cuales se calculan los descuentos, tomando como base el <strong>Salario Mínimo Nacional (SMN) Cotizable oficial de RD$ 23,223.00</strong> (Resolución 01-2025 de la TSS, vigente desde febrero de 2026). Si tu salario supera estos montos, el excedente queda libre de cotización en cada seguro correspondiente (aunque sí pagará ISR).</p>
           
           <div class="step-box">
-            <h3>Tope para Salud (ARS)</h3>
-            <p>El límite es de <strong>10 salarios mínimos</strong>. Si ganas más de este monto, solo se te descuenta el 3.04% sobre el valor del tope. El resto de tu sueldo no aporta a salud.</p>
+            <h3>1. Tope para Riesgos Laborales (SRL / ARL): 4 SMN</h3>
+            <p>El límite máximo cotizable para el Seguro de Riesgos Laborales es de <strong>4 salarios mínimos nacionales = RD$ 92,892.00/mes</strong> (100% a cargo del empleador).</p>
           </div>
 
           <div class="step-box">
-            <h3>Tope para Pensiones y Riesgos (AFP/ARL)</h3>
-            <p>El límite es de <strong>20 salarios mínimos</strong>. Es el doble que el de salud, permitiendo que las personas de altos ingresos acumulen un fondo de retiro más robusto.</p>
+            <h3>2. Tope para Salud (SFS / ARS): 10 SMN</h3>
+            <p>El límite máximo cotizable para el Seguro Familiar de Salud es de <strong>10 salarios mínimos nacionales = RD$ 232,230.00/mes</strong>. Si ganas más de este monto, solo se te descuenta el 3.04% sobre RD$ 232,230.00 (máximo RD$ 7,059.79/mes para el trabajador).</p>
           </div>
 
-          <div class="alert-box">
-            <strong>💡 Ejemplo de Tope:</strong>
-            <p>Si el salario mínimo promedio es RD$20,000 y tú ganas RD$300,000, para fines de ARS solo te descontarán sobre RD$200,000 (10 salarios mínimos). Esto protege tus ingresos netos en niveles salariales altos.</p>
+          <div class="step-box">
+            <h3>3. Tope para Pensiones (AFP): 20 SMN</h3>
+            <p>El límite máximo cotizable para el Seguro de Vejez, Discapacidad y Sobrevivencia es de <strong>20 salarios mínimos nacionales = RD$ 464,460.00/mes</strong>. Es el doble que el tope de salud, permitiendo que las personas de altos ingresos acumulen un fondo de retiro más robusto.</p>
+          </div>
+
+          <div class="info-box">
+            <p style="margin-bottom:0;"><strong>💡 Ejemplo práctico con el SMN oficial 2026 (RD$ 23,223.00):</strong> Si ganas <strong>RD$ 300,000.00</strong> al mes, tu descuento de <strong>SFS/ARS (3.04%)</strong> se calcula únicamente hasta el tope de 10 SMN (<strong>RD$ 232,230.00</strong>), por lo que pagas <strong>RD$ 7,059.79</strong> en vez de RD$ 9,120.00. En cambio, para <strong>AFP (2.87%)</strong>, como RD$ 300,000.00 no supera el tope de 20 SMN (RD$ 464,460.00), cotizas sobre tus RD$ 300,000.00 completos (<strong>RD$ 8,610.00</strong>). Por su parte, la empresa solo cotiza <strong>SRL/ARL</strong> hasta el tope de 4 SMN (<strong>RD$ 92,892.00</strong>).</p>
           </div>
 
           <hr class="divider">
@@ -329,46 +419,61 @@
           <hr class="divider">
 
           <h2 id="faq">Preguntas Frecuentes (FAQ) - Seguridad Social</h2>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Puedo retirar mi dinero de la AFP antes de jubilarme?</summary>
             <p class="faq-a">Por regla general, no. El sistema está diseñado para el retiro a los 60 años con 360 cotizaciones. Sin embargo, existen excepciones por enfermedad terminal o si tienes más de 45 años y estás desempleado (según normativas vigentes).</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Qué pasa si mi empleador me descuenta pero no paga a la TSS?</summary>
             <p class="faq-a">Esto es una falta grave y un delito. Puedes verificar tus aportes en la web de la TSS. Si ves que no hay pagos, debes denunciarlo ante la DIDA (Dirección de Información y Defensa de los Afiliados) para que inicien el proceso legal contra la empresa.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Tengo que pagar para incluir a mis hijos en el seguro?</summary>
             <p class="faq-a">Tus dependientes directos (hijos hasta los 18 años, o 21 si estudian, y cónyuge) están cubiertos por tu descuento del 3.04%. No tienes que pagar extra por ellos. Puedes incluir a tus padres pagando un monto adicional (Per cápita).</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿El sueldo 13 paga TSS?</summary>
             <p class="faq-a">No. La Regalía Pascual está totalmente exenta de descuentos de seguridad social por ley.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Qué es la CCI?</summary>
             <p class="faq-a">Es tu Cuenta de Capitalización Individual. Es como una cuenta de ahorros a tu nombre donde se depositan tus aportes de pensiones y donde se generan los intereses por las inversiones que hace tu AFP.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Qué pasa si tengo dos empleos?</summary>
             <p class="faq-a">Ambos empleadores deben cotizar por ti. En el caso de salud, solo una ARS recibirá la dispersión, pero tus aportes se sumarán para fines de pensiones hasta el tope legal.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Puedo cambiarme de AFP?</summary>
             <p class="faq-a">Sí, una vez al año y siempre que tengas al menos 12 cotizaciones en tu AFP actual. El proceso es gratuito y se solicita directamente en la AFP a la que deseas moverte.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿A qué edad me jubilo en RD?</summary>
             <p class="faq-a">La edad de retiro estándar es a los 60 años, siempre que cumplas con las cotizaciones mínimas. También existe el retiro anticipado a los 55 años si el saldo de tu cuenta permite una pensión superior al 150% de la mínima.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Cómo afectan las vacaciones a mi TSS?</summary>
             <p class="faq-a">El pago de vacaciones es considerado salario ordinario, por lo que está sujeto a los mismos descuentos de AFP y ARS que un mes normal de trabajo.</p>
           </details>
-          <details class="faq-item">
+          <details class="faq-item" open>
             <summary class="faq-q">¿Qué es la DIDA?</summary>
             <p class="faq-a">Es la Dirección de Información y Defensa de los Afiliados. Es tu principal aliado para reclamar derechos, orientarte sobre coberturas de salud y denunciar irregularidades en tus aportes.</p>
           </details>
+        </div>
+
+        <!-- FUENTES LEGALES Y OFICIALES -->
+        <section class="info-box" aria-label="Fuentes legales y oficiales consultadas" style="margin-top:2.5rem;">
+          <h2 style="font-size:1.1rem; margin:0 0 0.75rem; color:var(--blue);">Fuentes Legales y Oficiales Consultadas</h2>
+          <ul style="margin-bottom:0; font-size:0.92rem;">
+            <li><strong>Tesorería de la Seguridad Social (TSS):</strong> Ley 87-01, Resolución 01-2025 sobre el Salario Mínimo Nacional Cotizable (RD$ 23,223.00) y topes de cotización vigentes — <a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer" style="color:var(--blue); font-weight:700;">tss.gob.do</a></li>
+            <li><strong>Dirección General de Impuestos Internos (DGII):</strong> Tratamiento fiscal del ISR sobre salario neto tras TSS y Ley 116-80 (INFOTEP) — <a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer" style="color:var(--blue); font-weight:700;">dgii.gov.do</a></li>
+            <li><strong>Ministerio de Trabajo de la República Dominicana:</strong> Normativa laboral y coordinación con el Sistema Dominicano de Seguridad Social — <a href="https://mt.gob.do" target="_blank" rel="noopener noreferrer" style="color:var(--blue); font-weight:700;">mt.gob.do</a></li>
+          </ul>
+        </section>
+
+        <!-- FICHA DE AUTOR E-E-A-T -->
+        <div class="info-box" style="margin-top:2.5rem;">
+          <p><strong>Por <a href="../sobre-nosotros.html" style="color:var(--blue); text-decoration:none; font-weight:700;">Starlin Santana · Fundador y Responsable Editorial</a></strong>.</p>
         </div>
 
         <nav class="art-nav">
@@ -396,12 +501,12 @@
       <div style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; font-size:0.875rem; font-weight:600;">
         <a href="../prestaciones.html" style="color:#475569; text-decoration:none;">Prestaciones</a>
         <a href="../calculadora.html" style="color:#475569; text-decoration:none;">Calculadora ISR</a>
-        <a href="../divisas.html" style="color:#475569; text-decoration:none;">Divisas</a>
         <a href="../blog.html" style="color:#475569; text-decoration:none;">Blog</a>
         <a href="../sobre-nosotros.html" style="color:#475569; text-decoration:none;">Sobre Nosotros</a>
         <a href="../terminos.html" style="color:#475569; text-decoration:none;">Términos</a>
         <a href="../privacidad.html" style="color:#475569; text-decoration:none;">Privacidad</a>
-        <a href="mailto:info@impucalculo.com" style="color:#0038A8; text-decoration:none;">Contacto</a>
+        <a href="../contacto.html" style="color:#0038A8; text-decoration:none;">Contacto</a>
+        <a href="mailto:info@impucalculo.com" style="color:#0038A8; text-decoration:none;">info@impucalculo.com</a>
       </div>
 
       <!-- Disclaimer legal explícito -->

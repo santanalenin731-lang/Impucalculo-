@@ -2,12 +2,8 @@
 <html lang="es-DO">
 
 <head>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
-        crossorigin="anonymous"></script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -26,7 +22,10 @@
             max-width: 100vw;
             position: relative;
             overscroll-behavior-x: none;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
+        }
+        @media (min-width: 640px) {
+            .sm\:gap-5 { gap: 1.25rem; }
         }
     </style>
     <title>Sobre Nosotros y Equipo Editorial | Impucálculo</title>
@@ -34,8 +33,9 @@
         content="Conoce al equipo de Impucálculo, nuestra misión de transparencia fiscal y laboral en República Dominicana, estándares de privacidad y metodología de cálculo.">
     <link rel="canonical" href="https://impucalculo.com/sobre-nosotros.html">
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/sobre-nosotros.html">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+    <link rel="icon" type="image/webp" href="logo_new.webp">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -48,6 +48,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://impucalculo.com/sobre-nosotros.html">
     <meta name="twitter:title" content="Sobre Nosotros y Equipo Editorial | Impucálculo">
     <meta name="twitter:description"
         content="Conoce al equipo de Impucálculo, nuestra misión de transparencia fiscal y laboral en República Dominicana, estándares de privacidad y metodología de cálculo.">
@@ -56,47 +57,37 @@
     <!-- Fonts & Scripts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: {
-                        dr: {
-                            blue: '#0038A8',
-                            red: '#CE1126',
-                            white: '#FFFFFF',
-                            slate: {
-                                50: '#F8FAFC',
-                                100: '#F1F5F9',
-                                200: '#E2E8F0',
-                                800: '#1E293B',
-                                900: '#0F172A'
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="css/tailwind.min.css">
 
     <!-- Structured Data E-E-A-T -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AboutPage",
+      "name": "Sobre Nosotros y Equipo Editorial | Impucálculo",
+      "url": "https://impucalculo.com/sobre-nosotros.html",
+      "inLanguage": "es-DO",
       "mainEntity": {
         "@type": "Organization",
         "name": "Impucálculo",
         "url": "https://impucalculo.com/",
         "logo": "https://impucalculo.com/logo_new.webp",
-        "description": "Plataforma independiente dominicana de cálculo tributario, laboral y conversor de divisas.",
+        "description": "Plataforma tecnológica independiente dominicana especializada en el cálculo tributario (DGII), Seguridad Social (TSS) y liquidación de prestaciones laborales (Código de Trabajo Ley 16-92).",
         "foundingDate": "2025",
+        "founder": {
+          "@type": "Person",
+          "name": "Starlin Santana",
+          "jobTitle": "Fundador, Desarrollador Principal y Responsable Editorial",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Santo Domingo",
+            "addressCountry": "DO"
+          }
+        },
         "email": "info@impucalculo.com",
         "address": {
           "@type": "PostalAddress",
+          "addressLocality": "Santo Domingo",
           "addressCountry": "DO"
         }
       }
@@ -107,16 +98,19 @@
 <body class="bg-dr-slate-50 font-sans text-dr-slate-800 antialiased min-h-screen flex flex-col">
     <!-- Header Simple -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 flex items-center justify-between">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
-            <nav class="flex items-center gap-4 text-sm font-semibold">
+            <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
                 <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
+                <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
-                <a href="privacidad.html" class="text-dr-slate-600 hover:text-dr-blue transition">Privacidad</a>
+                <a href="sobre-nosotros.html" class="text-dr-blue font-bold">Nosotros</a>
+                <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
             </nav>
         </div>
     </header>
@@ -125,20 +119,20 @@
     <main class="flex-grow py-12">
         <div class="max-w-3xl mx-auto px-6 bg-white rounded-2xl shadow-sm border border-dr-slate-100 p-8 md:p-12">
             <h1 class="text-3xl font-black text-dr-slate-900 mb-2">Sobre Nosotros</h1>
-            <p class="text-sm text-dr-slate-500 font-medium mb-10">Misión, equipo y estándares editoriales de <span
+            <p class="text-sm text-dr-slate-500 font-medium mb-10">Misión, dirección técnica y estándares editoriales de <span
                     class="text-dr-blue font-semibold">Impucálculo</span></p>
 
-            <div class="space-y-8 text-dr-slate-600 prose prose-slate">
+            <div class="space-y-8 text-dr-slate-600 leading-relaxed">
                 <p class="text-lg leading-relaxed font-normal">
-                    <strong>Impucálculo</strong> nació en República Dominicana en el año 2025 con un propósito contundente: <strong>democratizar el entendimiento de las finanzas personales, los salarios y los derechos laborales</strong> de cada trabajador dominicano a través de herramientas tecnológicas rápidas, gratuitas y de estricta precisión matemática.
+                    <strong>Impucálculo</strong> nació en República Dominicana en el año 2025 con un propósito contundente: <strong>democratizar el entendimiento de las finanzas personales, los salarios, la tributación y los derechos laborales</strong> de cada trabajador dominicano a través de herramientas tecnológicas rápidas, gratuitas y de estricta precisión matemática y legal.
                 </p>
 
                 <!-- Grid de Valores -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8 not-prose">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
                         <div class="text-2xl font-black text-dr-blue mb-1">100%</div>
                         <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Privado y Local</div>
-                        <p class="text-xs text-dr-slate-600 mt-2">Tus salarios no se envían a ningún servidor externo.</p>
+                        <p class="text-xs text-dr-slate-600 mt-2">Tus salarios y fechas se procesan en tu propio navegador.</p>
                     </div>
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
                         <div class="text-2xl font-black text-dr-red mb-1">0 RD$</div>
@@ -147,52 +141,72 @@
                     </div>
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
                         <div class="text-2xl font-black text-dr-blue mb-1">Rigor</div>
-                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Base Jurídica</div>
-                        <p class="text-xs text-dr-slate-600 mt-2">Alineado a las leyes Ley 11-92, Ley 16-92 y Ley 87-01.</p>
+                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Base Jurídica RD</div>
+                        <p class="text-xs text-dr-slate-600 mt-2">Alineado a la Ley 11-92 (Código Tributario), la Ley 16-92 (Código de Trabajo) y la Ley 87-01 (Seguridad Social).</p>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">1. Por Qué Existimos: La Brecha de Información</h3>
-                    <p>En el mercado laboral de la República Dominicana, comprender una nómina quincenal, anticipar el descuento del Impuesto Sobre la Renta (ISR), auditar las retenciones de AFP y SFS (Seguridad Social), o calcular con exactitud lo correspondiente por cesantía y preaviso tras una terminación de contrato, suele ser un proceso complejo y poco transparente para la mayoría de los ciudadanos.</p>
-                    <p class="mt-2">Muchos trabajadores firman finiquitos o aceptan deducciones salariales sin conocer si las fórmulas aplicadas cumplen con la ley. Impucálculo proporciona las mismas fórmulas rigurosas que maneja un departamento de gestión humana o una firma de contabilidad, condensadas en una interfaz clara, intuitiva y accesible desde cualquier teléfono móvil o computadora.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">1. Nuestra Misión: Cerrar la Brecha de Transparencia Fiscal y Laboral</h2>
+                    <p>En el mercado laboral de la República Dominicana, comprender una nómina quincenal, anticipar el descuento del Impuesto Sobre la Renta (ISR), auditar las retenciones de AFP y SFS (Seguridad Social), o calcular con exactitud lo correspondiente por cesantía, preaviso y derechos adquiridos tras una terminación de contrato, solía ser un proceso opaco para la mayoría de los ciudadanos.</p>
+                    <p class="mt-2">Durante años, miles de trabajadores firmaron recibos de descargo o aceptaron deducciones salariales sin saber si las fórmulas aplicadas cumplían con el Código de Trabajo o las tablas de la DGII. Creamos <strong>Impucálculo</strong> bajo la convicción de que la transparencia fiscal y laboral es un derecho ciudadano: ponemos en manos del trabajador dominicano exactamente las mismas fórmulas rigurosas que utiliza un departamento de nómina o una firma de auditoría contable, en una interfaz clara y accesible desde cualquier celular o computadora.</p>
+                </div>
+
+                <div class="bg-dr-slate-50 p-6 md:p-8 rounded-2xl border border-dr-slate-200">
+                    <h2 class="text-xl font-black text-dr-slate-900 mb-3">2. Fundador, Alcance Técnico y Responsabilidad Editorial</h2>
+                    <div class="space-y-3 text-sm md:text-base text-dr-slate-700 leading-relaxed">
+                        <p>
+                            <strong>Starlin Santana</strong> — <em>Fundador, Desarrollador Principal y Responsable Editorial de Impucálculo</em> (Santo Domingo, República Dominicana).
+                        </p>
+                        <p>
+                            El alcance de Starlin Santana en el proyecto es estrictamente tecnológico, de programación y divulgación educativa: diseña, programa y mantiene las calculadoras web y guías informativas de Impucálculo, contrastando cada fórmula matemática directamente con las leyes y tablas públicas vigentes en la República Dominicana. Impucálculo no es una firma de abogados ni de contadores públicos autorizados, y sus resultados tienen carácter orientativo e informativo.
+                        </p>
+                        <ul class="list-disc pl-5 space-y-1.5 text-dr-slate-600">
+                            <li><strong>Código Tributario (Ley 11-92) y Normas Generales de la DGII:</strong> Verificación anual de los tramos de la escala salarial de Personas Físicas (tasas del 15%, 20% y 25%), deducción de aportes a la Seguridad Social antes del cálculo de la base imponible del ISR, y aplicación de la Ley 179-09 sobre deducción de gastos educativos.</li>
+                            <li><strong>Código de Trabajo de la República Dominicana (Ley 16-92) y Resoluciones del Ministerio de Trabajo:</strong> Aplicación estricta del factor divisor oficial de <code>23.83</code> días laborables promedio mensual para determinar el salario diario, cálculo exacto de escalas de preaviso (Art. 76), auxilio de cesantía (Art. 80), vacaciones (Art. 177), salario de Navidad / regalía pascual exenta de ISR (Art. 219) y participación en los beneficios de la empresa / bonificación (Art. 223).</li>
+                            <li><strong>Ley 87-01 que crea el Sistema Dominicano de Seguridad Social (TSS / CNSS / SISALRIL):</strong> Actualización periódica de las tasas de retención laboral y patronal del Seguro de Vejez, Discapacidad y Sobrevivencia (AFP: 2.87% empleado) y del Seguro Familiar de Salud (SFS/ARS: 3.04% empleado), aplicando automáticamente los topes salariales vigentes de 20, 10 y 4 salarios mínimos nacionales cotizables.</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">2. Metodología y Fuentes Oficiales</h3>
-                    <p>Cada simulador integrado en Impucálculo es auditado y actualizado de acuerdo con las fuentes públicas institucionales:</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">3. Fuentes Oficiales Primarias y Política de Verificación Normativa</h2>
+                    <p>Cada simulador y guía editorial de Impucálculo se verifica contrastando directamente con los portales y publicaciones oficiales de las instituciones competentes de la República Dominicana:</p>
                     <ul class="list-disc pl-6 mt-2 space-y-2">
-                        <li><strong>Calculadora de Sueldo Neto e ISR:</strong> Sincronizada con la escala de retenciones a personas físicas dictada anualmente por la <em>Dirección General de Impuestos Internos (DGII)</em> bajo el Código Tributario (Ley 11-92) y los topes de cotización de la <em>Tesorería de la Seguridad Social (TSS)</em> de acuerdo con la Ley 87-01.</li>
-                        <li><strong>Calculadora de Prestaciones Laborales:</strong> Aplica con exactitud el divisor oficial de <code>23.83</code> días laborables (Artículo 85 y directrices del Ministerio de Trabajo), calculando con precisión los tramos de preaviso, auxilio de cesantía, vacaciones y regalía pascual (sueldo 13).</li>
-                        <li><strong>Comparador de Tasas Cambiarias y Divisas:</strong> Conexión con datos referenciales de cotización del dólar estadounidense y euro en bancos comerciales de República Dominicana, así como indicadores oficiales regionales (TRM en Colombia, FIX de Banxico en México, dólar oficial en Argentina y BCV en Venezuela).</li>
+                        <li><strong>Dirección General de Impuestos Internos (DGII):</strong> Escala anual de retención del ISR para asalariados, formularios y guías tributarias en <a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-semibold">dgii.gov.do</a>.</li>
+                        <li><strong>Tesorería de la Seguridad Social (TSS):</strong> Topes salariales cotizables, resoluciones del CNSS y porcentajes vigentes de AFP y SFS en <a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-semibold">tss.gob.do</a>.</li>
+                        <li><strong>Ministerio de Trabajo de la República Dominicana (MT):</strong> Criterios oficiales de cálculo de prestaciones laborales, derechos adquiridos y Código de Trabajo (Ley 16-92) en <a href="https://mt.gob.do" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-semibold">mt.gob.do</a>.</li>
                     </ul>
+                    <p class="mt-3">
+                        <strong>Política de corrección abierta:</strong> Si algún usuario detecta una discrepancia matemática, una nueva resolución administrativa o un cambio normativo que deba reflejarse en nuestras herramientas o guías, puede reportarlo de inmediato a través de nuestra <a href="contacto.html" class="text-dr-blue underline font-semibold">página de contacto</a> o escribiendo a <a href="mailto:info@impucalculo.com" class="text-dr-blue underline font-semibold">info@impucalculo.com</a> para su revisión y corrección.
+                    </p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">3. Filosofía de Privacidad Absoluta</h3>
-                    <p>A diferencia de otras plataformas web financieras que solicitan registro, correo electrónico o almacenan tus datos financieros en la nube, Impucálculo opera bajo el principio de <strong>Zero-Server Data Storage</strong>: el 100% de la lógica matemática se ejecuta directamente en el procesador local de tu navegador web mediante JavaScript seguro. Nosotros nunca sabemos cuánto ganas, cuánto te liquidaron ni qué moneda convertiste.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">4. Filosofía de Privacidad en tus Cálculos</h2>
+                    <p>A diferencia de plataformas que exigen registro o correo electrónico para mostrar un resultado salarial, las calculadoras de Impucálculo ejecutan el <strong>100% de las operaciones matemáticas localmente en la memoria de tu navegador web</strong> mediante JavaScript. Los montos salariales, fechas de ingreso o deducciones que escribes en nuestras herramientas nunca se envían ni se almacenan en bases de datos propias.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">4. Política Editorial y Revisión de Contenido</h3>
-                    <p>Nuestros artículos y guías informativas del blog son redactados e investigados por analistas dedicados al área contable y del derecho laboral en República Dominicana. Cada contenido pasa por una revisión triple:</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">5. Política Editorial y Revisión de Contenido</h2>
+                    <p>Nuestras guías educativas y artículos de análisis son elaborados y revisados bajo tres principios editoriales innegociables:</p>
                     <ol class="list-decimal pl-6 mt-2 space-y-1">
-                        <li><strong>Contraste con la Ley Vigente:</strong> Cita directa de artículos de leyes, sentencias relevantes de la Suprema Corte de Justicia (SCJ) y circulares de la DGII.</li>
-                        <li><strong>Simulaciones Matemáticas Verificadas:</strong> Ejemplos numéricos reales paso a paso para que cualquier lector pueda reproducir los cálculos con lápiz y papel.</li>
-                        <li><strong>Lenguaje Claro y Humano:</strong> Eliminamos la jerga innecesaria para empoderar verdaderamente al usuario sin tecnicismos impenetrables.</li>
+                        <li><strong>Contraste con la Ley Vigente:</strong> Cita directa de artículos del Código de Trabajo (Ley 16-92), el Código Tributario (Ley 11-92), la Ley 87-01, jurisprudencia laboral de la Suprema Corte de Justicia (SCJ) y resoluciones de la DGII y el CNSS.</li>
+                        <li><strong>Simulaciones Matemáticas Verificadas:</strong> Ejemplos numéricos reales paso a paso en pesos dominicanos (RD$) para que cualquier lector pueda comprobar los cálculos por su cuenta.</li>
+                        <li><strong>Lenguaje Claro y Ciudadano:</strong> Traducimos la técnica jurídica y contable a explicaciones prácticas y comprensibles sin perder rigor normativo.</li>
                     </ol>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">5. Cómo Nos Sostenemos</h3>
-                    <p>Para asegurar que Impucálculo permanezca como un recurso gratuito para todos los trabajadores y pequeños empresarios dominicanos, mostramos publicidad programática no invasiva a través de plataformas certificadas como Google AdSense. Esta publicidad sufraga los costos de dominio, servidores de entrega de contenido (CDN) y horas continuas de desarrollo y actualización técnica.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">6. Cómo Nos Sostenemos</h2>
+                    <p>Para asegurar que Impucálculo permanezca como un recurso 100% gratuito y de libre acceso para todos los trabajadores, estudiantes y profesionales en República Dominicana, financiamos nuestros costos de infraestructura, dominio y desarrollo continuo mediante espacios publicitarios gestionados por redes certificadas como Google AdSense, manteniendo siempre una separación estricta entre la publicidad y la exactitud objetiva de nuestras herramientas y guías.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-bold text-dr-slate-800 mb-3">6. Contáctanos Directamente</h3>
-                    <p>Valoramos profundamente la retroalimentación de nuestros usuarios. Si detectas alguna inconsistencia en un cálculo, tienes dudas sobre una guía o deseas sugerir una nueva función, comunícate con nosotros:</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">7. Contáctanos Directamente</h2>
+                    <p>Valoramos profundamente la retroalimentación de nuestra comunidad. Si detectas algún cambio normativo reciente, tienes dudas sobre una guía o deseas enviar una sugerencia técnica o editorial, escríbenos mediante nuestro <a href="contacto.html" class="text-dr-blue underline font-semibold">formulario de contacto</a> o directamente por correo electrónico:</p>
                     
-                    <div class="bg-dr-slate-50 p-6 rounded-xl border border-dr-slate-200 mt-4 not-prose space-y-2">
+                    <div class="bg-dr-slate-50 p-6 rounded-xl border border-dr-slate-200 mt-4 space-y-2">
                         <div class="flex items-center gap-3">
                             <span class="text-lg">✉️</span>
                             <div>
@@ -201,10 +215,10 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-3 pt-2">
-                            <span class="text-lg">📍</span>
+                            <span class="text-lg">👤</span>
                             <div>
-                                <span class="text-xs uppercase font-bold text-dr-slate-400 block">Ubicación</span>
-                                <span class="text-sm font-semibold text-dr-slate-700">Santo Domingo, República Dominicana</span>
+                                <span class="text-xs uppercase font-bold text-dr-slate-400 block">Dirección Técnica y Editorial</span>
+                                <span class="text-sm font-semibold text-dr-slate-700">Starlin Santana · Santo Domingo, República Dominicana</span>
                             </div>
                         </div>
                         <div class="flex items-center gap-3 pt-2">
@@ -219,7 +233,7 @@
             </div>
 
             <div class="mt-12 pt-8 border-t border-dr-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-dr-slate-500">
-                <p>Impucálculo · Plataforma independiente</p>
+                <p>Impucálculo · Plataforma independiente dominicana</p>
                 <div class="flex gap-4">
                     <a href="terminos.html" class="hover:text-dr-blue transition">Términos de Uso</a>
                     <span>·</span>
@@ -239,28 +253,27 @@
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
-                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                        Plataforma gratuita e independiente para el cálculo de sueldo neto, retenciones de ISR, Seguridad Social (TSS) y prestaciones laborales en República Dominicana.
                     </p>
                     <p class="text-xs text-dr-slate-500">
                         Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="prestaciones.html" class="hover:text-dr-blue transition">Prestaciones Laborales</a></li>
                         <li><a href="calculadora.html" class="hover:text-dr-blue transition">Calculadora de Sueldo e ISR</a></li>
-                        <li><a href="divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas</a></li>
                         <li><a href="blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="sobre-nosotros.html" class="text-dr-blue font-semibold hover:underline">Sobre Nosotros</a></li>
                         <li><a href="privacidad.html" class="hover:text-dr-blue transition">Política de Privacidad</a></li>
                         <li><a href="terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
-                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                        <li><a href="contacto.html" class="hover:text-dr-blue transition">Contacto Directo</a></li>
                     </ul>
                 </div>
             </div>

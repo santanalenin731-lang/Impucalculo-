@@ -3,11 +3,26 @@
 
 <head>
     <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = window.gtag || gtag;
+      window.__consentDefaultSet = true;
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+        wait_for_update: 500
+      });
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Calculadora de Prestaciones Laborales RD 2026 | Preaviso y Cesantía</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/prestaciones.html">
 
@@ -15,8 +30,7 @@
     <!-- Meta/SEO -->
     <meta name="description"
         content="Calcula tu liquidación y prestaciones laborales en República Dominicana al instante. Verifica tu preaviso, cesantía, vacaciones y regalía pascual.">
-    <link rel="icon" type="image/png" href="logo_new.webp">
-    <link rel="apple-touch-icon" href="logo_new.webp">
+    <link rel="icon" type="image/webp" href="logo_new.webp">
 
     <meta name="keywords"
         content="prestaciones laborales, cesantia, preaviso, vacaciones, regalia pascual, codigo de trabajo, republica dominicana, calculo finiquito">
@@ -30,56 +44,20 @@
     <meta property="og:description"
         content="Calcula tu liquidación y prestaciones laborales en República Dominicana al instante. Verifica tu preaviso, cesantía, vacaciones y regalía pascual.">
     <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
+    <meta property="og:site_name" content="Impucálculo">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://impucalculo.com/prestaciones.html">
-    <meta property="twitter:title" content="Calculadora de Prestaciones Laborales | Impucálculo RD">
-    <meta property="twitter:description"
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://impucalculo.com/prestaciones.html">
+    <meta name="twitter:title" content="Calculadora de Prestaciones Laborales | Impucálculo RD">
+    <meta name="twitter:description"
         content="Calculadora de prestaciones laborales para República Dominicana. Calcula cesantía, preaviso, vacaciones y regalía al salir de tu empresa.">
-    <meta property="twitter:image" content="https://impucalculo.com/logo_new.webp">
+    <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: {
-                        dr: {
-                            blue: '#0038A8',
-                            red: '#CE1126',
-                            slate: {
-                                50: '#F8FAFC',
-                                100: '#F1F5F9',
-                                200: '#E2E8F0',
-                                800: '#1E293B',
-                                900: '#0F172A'
-                            }
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                        'slide-up': 'slideUpCustom 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
-                        'ticker-scroll': 'infinite-scroll 80s linear infinite',
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUpCustom: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        'infinite-scroll': {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-100%)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="css/tailwind.min.css">
 
     <style>
         *, *::before, *::after {
@@ -96,8 +74,26 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        #top-ticker-container:hover .animate-ticker-scroll {
-            animation-play-state: paused;
+        .header-pad {
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
+        }
+
+        .header-logo {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-pad {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+
+            .header-logo {
+                width: 4rem;
+                height: 4rem;
+            }
         }
 
         body {
@@ -110,7 +106,11 @@
             max-width: 100vw;
             position: relative;
             overscroll-behavior-x: none;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
+        }
+
+        .peer:checked ~ div .peer-checked-title {
+            color: #0038A8;
         }
 
         .glass {
@@ -178,16 +178,23 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebApplication",
   "name": "Calculadora de Prestaciones Laborales | Impucálculo RD",
+  "url": "https://impucalculo.com/prestaciones.html",
+  "inLanguage": "es-DO",
   "operatingSystem": "Web Browser",
   "applicationCategory": "FinanceApplication",
+  "author": {
+    "@type": "Person",
+    "name": "Starlin Santana",
+    "url": "https://impucalculo.com/sobre-nosotros.html"
+  },
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "DOP"
   },
-  "description": "Herramienta gratuita para cálculo fiscal, laboral y de divisas en República Dominicana."
+  "description": "Herramienta gratuita para el cálculo de prestaciones laborales, preaviso, auxilio de cesantía, vacaciones y salario de navidad en República Dominicana."
 }
     </script>
 </head>
@@ -196,236 +203,93 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 flex flex-col shadow-sm">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between w-full">
+        <div class="max-w-6xl mx-auto px-6 header-pad flex items-center justify-between w-full">
             <a href="index.html"
-                class="flex items-center gap-4 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                class="flex items-center gap-3 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
-                <div class="w-[100px] h-[100px] flex items-center justify-center">
-                    <img src="logo_new.webp" alt="Calculadora de Prestaciones Laborales RD - Impucálculo" class="w-[100px] h-[100px] object-contain drop-shadow-md"
-                        onerror="this.src='https://img.icons8.com/ios-filled/100/0038A8/calculator.png'">
+                <div class="header-logo flex items-center justify-center flex-shrink-0">
+                    <img src="logo_new.webp" alt="Calculadora de Prestaciones Laborales RD - Impucálculo" class="header-logo object-contain drop-shadow-md"
+                        onerror="this.style.display='none'">
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold tracking-tight leading-none">
+                    <span class="block text-xl font-extrabold tracking-tight leading-none">
                         <span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span> <span
                             class="text-dr-slate-800">Prestaciones</span>
-                    </h1>
+                    </span>
                     <p class="text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
                         <span class="text-dr-red">República Dominicana</span> <span
-                            class="text-dr-blue">2025-2026</span>
+                            class="text-dr-blue">2026</span>
                     </p>
                 </div>
             </a>
-            <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
+            <nav class="hidden md:flex items-center gap-5 text-sm font-semibold" aria-label="Navegación principal">
+                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
-                <a href="divisas.html" class="text-dr-slate-600 hover:text-dr-blue transition">Divisas</a>
+                <a href="prestaciones.html" class="text-dr-blue font-bold">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+                <a href="sobre-nosotros.html" class="text-dr-slate-600 hover:text-dr-blue transition">Nosotros</a>
+                <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
             </nav>
         </div>
 
-        <!-- Top Legal Parameters Ticker Banner -->
-        <div id="top-ticker-container" class="w-full bg-white/70 backdrop-blur-md border-t border-dr-slate-200 overflow-hidden relative z-40">
-            <div class="w-full flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                <div id="ticker-track-1" class="flex items-center justify-start flex-shrink-0 min-w-full [&>div]:mx-6 animate-ticker-scroll py-2">
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Factor Diario</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">23.83 Días</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Base Legal · MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Plazo de Pago</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">10 Días Calendario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 86 · Sanción x Día</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Regalía Pascual</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">0% ISR / 0% TSS</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">100% Inembargable</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tope Cesantía</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Hasta 23 Años</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 80 Código Trabajo</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Preaviso (+1 Año)</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">28 Días de Salario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Notificación Previa</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Renuncia Voluntaria</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Vacaciones + Regalía</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Derechos Adquiridos</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Horas Extras Diurnas</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+35% Recargo</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 203 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Días Feriados</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+100% Salario Doble</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 205 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Factor Diario</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">23.83 Días</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Base Legal · MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Plazo de Pago</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">10 Días Calendario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 86 · Sanción x Día</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Regalía Pascual</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">0% ISR / 0% TSS</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">100% Inembargable</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tope Cesantía</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Hasta 23 Años</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 80 Código Trabajo</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Preaviso (+1 Año)</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">28 Días de Salario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Notificación Previa</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Renuncia Voluntaria</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Vacaciones + Regalía</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Derechos Adquiridos</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Horas Extras Diurnas</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+35% Recargo</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 203 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Días Feriados</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+100% Salario Doble</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 205 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                </div>
-                <div id="ticker-track-2" class="flex items-center justify-start flex-shrink-0 min-w-full [&>div]:mx-6 animate-ticker-scroll py-2" aria-hidden="true">
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Factor Diario</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">23.83 Días</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Base Legal · MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Plazo de Pago</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">10 Días Calendario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 86 · Sanción x Día</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Regalía Pascual</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">0% ISR / 0% TSS</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">100% Inembargable</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tope Cesantía</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Hasta 23 Años</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 80 Código Trabajo</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Preaviso (+1 Año)</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">28 Días de Salario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Notificación Previa</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Renuncia Voluntaria</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Vacaciones + Regalía</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Derechos Adquiridos</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Horas Extras Diurnas</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+35% Recargo</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 203 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Días Feriados</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+100% Salario Doble</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 205 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Factor Diario</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">23.83 Días</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Base Legal · MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Plazo de Pago</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">10 Días Calendario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 86 · Sanción x Día</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Regalía Pascual</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">0% ISR / 0% TSS</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">100% Inembargable</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Tope Cesantía</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Hasta 23 Años</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 80 Código Trabajo</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Preaviso (+1 Año)</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">28 Días de Salario</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Notificación Previa</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Renuncia Voluntaria</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">Vacaciones + Regalía</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Derechos Adquiridos</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Horas Extras Diurnas</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+35% Recargo</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(0,56,168,0.08);color:#0038A8;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 203 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                    <div style="display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;">
-                        <span style="font-size:10px;font-weight:800;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;">Días Feriados</span>
-                        <span style="font-size:14px;font-weight:900;color:#1E293B;">+100% Salario Doble</span>
-                        <span style="padding:2px 7px;font-size:9px;font-weight:900;background:rgba(206,17,38,0.08);color:#CE1126;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Art. 205 MT</span>
-                    </div>
-                    <div style="width:6px;height:6px;border-radius:50%;background:#E2E8F0;flex-shrink:0;"></div>
-                </div>
-            </div>
-        </div>
+        <!-- Barra de Navegación Móvil Visible -->
+        <nav class="flex md:hidden items-center justify-center flex-wrap gap-x-4 gap-y-2 px-4 py-2 border-t border-dr-slate-200/70 text-xs font-bold" aria-label="Navegación móvil">
+            <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+            <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo/ISR</a>
+            <a href="prestaciones.html" class="text-dr-blue underline underline-offset-4">Prestaciones</a>
+            <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
+            <a href="sobre-nosotros.html" class="text-dr-slate-600 hover:text-dr-blue transition">Nosotros</a>
+            <a href="contacto.html" class="text-dr-slate-600 hover:text-dr-blue transition">Contacto</a>
+        </nav>
     </header>
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
+
+        <!-- Barra Informativa de Parámetros Legales (Estática) -->
+        <div id="top-ticker-container" class="w-full bg-white rounded-2xl border border-dr-slate-200 mb-8 shadow-sm">
+            <div class="px-4 py-2.5 flex items-center justify-between gap-4 overflow-x-auto text-xs">
+                <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Factor Diario:</span>
+                    <span class="font-black text-dr-slate-900">23.83 Días</span>
+                    <span class="px-1.5 py-0.5 text-[9px] font-black bg-dr-blue/10 text-dr-blue rounded uppercase">Art. 32 Reg. 258-93</span>
+                </div>
+                <span class="text-dr-slate-300 flex-shrink-0">•</span>
+                <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Escala Cesantía:</span>
+                    <span class="font-black text-dr-slate-900">Hasta 23 Días/Año · Art. 80</span>
+                </div>
+                <span class="text-dr-slate-300 flex-shrink-0">•</span>
+                <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Preaviso (≥1 Año):</span>
+                    <span class="font-black text-dr-slate-900">28 Días · Art. 76</span>
+                </div>
+                <span class="text-dr-slate-300 flex-shrink-0">•</span>
+                <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Plazo de Pago:</span>
+                    <span class="font-black text-dr-slate-900">10 Días Calendario</span>
+                    <span class="px-1.5 py-0.5 text-[9px] font-black bg-dr-red/10 text-dr-red rounded uppercase">Art. 86 CT</span>
+                </div>
+                <span class="text-dr-slate-300 flex-shrink-0">•</span>
+                <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Regalía y Liquidación:</span>
+                    <span class="font-black text-emerald-700">0% ISR / 0% TSS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-8 space-y-2">
+            <h1 class="text-3xl md:text-4xl font-black text-dr-slate-900 tracking-tight">
+                Calculadora de Prestaciones Laborales en República Dominicana 2026
+            </h1>
+            <p class="text-sm text-dr-slate-600 font-medium max-w-3xl mx-auto">
+                Herramienta gratuita e independiente para estimar preaviso, auxilio de cesantía, vacaciones y salario de navidad conforme al Código de Trabajo (Ley 16-92).
+            </p>
+            <div class="glass rounded-2xl p-5 border border-dr-slate-200 max-w-4xl mx-auto text-left mt-4">
+                <p class="text-xs sm:text-sm text-dr-slate-700 leading-relaxed">
+                    Este simulador calcula tus prestaciones laborales y derechos adquiridos en la República Dominicana para 2026 bajo el <strong>Código de Trabajo (Ley 16-92)</strong> y el <strong>Artículo 32 del Reglamento núm. 258-93</strong>. A partir de tus fechas de ingreso y salida y tu salario ordinario promedio (mensual, quincenal o semanal), determina el salario diario oficial y calcula el preaviso omitido (<strong>Art. 76</strong>: 7, 14 o 28 días), el auxilio de cesantía según antigüedad (<strong>Art. 80</strong>: 6 a 23 días por año), la compensación por vacaciones no disfrutadas (<strong>Art. 177</strong> y Art. 180) y la regalía pascual o Salario de Navidad proporcional del año en curso (<strong>Art. 219</strong>), exentos de ISR y TSS.
+                </p>
+            </div>
+        </div>
 
         <!-- Calculator Form -->
         <div id="calculator-section" class="glass rounded-[2rem] p-8 neo-shadow">
@@ -462,13 +326,24 @@
                 <!-- Sección 2: Salario -->
                 <div class="space-y-4">
                     <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Salario</h3>
-                    <div>
-                        <label for="salario" class="block text-sm font-bold text-dr-slate-700 mb-2">Salario
-                            Mensual</label>
-                        <div class="relative">
-                            <span class="absolute left-4 top-3.5 text-dr-slate-400 font-bold">RD$</span>
-                            <input type="number" id="salario" step="0.01" min="0" required placeholder="25,000.00"
-                                class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="frecuencia-pago" class="block text-sm font-bold text-dr-slate-700 mb-2">Frecuencia de Pago</label>
+                            <select id="frecuencia-pago"
+                                class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium bg-white text-dr-slate-900 cursor-pointer">
+                                <option value="mensual" selected>Mensual (÷ 23.83)</option>
+                                <option value="quincenal">Quincenal (÷ 11.91)</option>
+                                <option value="semanal">Semanal (÷ 5.5)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label id="salario-label" for="salario" class="block text-sm font-bold text-dr-slate-700 mb-2">Salario Mensual Bruto</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-dr-slate-400 font-bold">RD$</span>
+                                <input type="number" id="salario" step="0.01" min="0.01" required placeholder="25,000.00"
+                                    class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
+                            </div>
+                            <p id="salario-error" class="hidden text-xs font-bold text-dr-red mt-1"></p>
                         </div>
                     </div>
                 </div>
@@ -481,7 +356,7 @@
                             class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
                             <input type="radio" name="terminacion" value="renuncia" class="peer hidden" checked>
                             <div class="flex flex-col gap-2">
-                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Renuncia
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked-title">Renuncia
                                     Voluntaria</span>
                                 <span class="text-xs text-dr-slate-500">Solo derechos adquiridos</span>
                             </div>
@@ -490,7 +365,7 @@
                             class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
                             <input type="radio" name="terminacion" value="despido" class="peer hidden">
                             <div class="flex flex-col gap-2">
-                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Despido sin
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked-title">Despido sin
                                     Causa</span>
                                 <span class="text-xs text-dr-slate-500">Incluye cesantía + preaviso</span>
                             </div>
@@ -499,7 +374,7 @@
                             class="p-4 rounded-xl border-2 border-dr-slate-100 cursor-pointer transition-all has-[:checked]:border-dr-blue has-[:checked]:bg-dr-blue/5">
                             <input type="radio" name="terminacion" value="causa" class="peer hidden">
                             <div class="flex flex-col gap-2">
-                                <span class="text-sm font-bold text-dr-slate-800 peer-checked:text-dr-blue">Despido con
+                                <span class="text-sm font-bold text-dr-slate-800 peer-checked-title">Despido con
                                     Causa</span>
                                 <span class="text-xs text-dr-slate-500">Solo derechos adquiridos</span>
                             </div>
@@ -508,14 +383,13 @@
                 </div>
 
                 <!-- Sección 4: Preaviso (condicional) -->
-                <div id="preaviso-section" class="space-y-4 hidden">
+                <div id="preaviso-section" class="space-y-4">
                     <h3 class="text-sm font-black text-dr-slate-400 uppercase tracking-widest">Preaviso</h3>
                     <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-4 bg-dr-slate-50 rounded-xl">
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input type="checkbox" id="preaviso-dado"
                                 class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
-                            <span id="preaviso-label" class="text-sm font-bold text-dr-slate-700">¿El empleador NO dio
-                                el preaviso?</span>
+                            <span id="preaviso-label" class="text-sm font-bold text-dr-slate-700">¿El empleado NO dio el preaviso?</span>
                         </label>
                         <div class="sm:ml-auto text-xs text-dr-slate-500">
                             (7, 14 o 28 días según antigüedad)
@@ -523,7 +397,12 @@
                     </div>
                     <div id="preaviso-info" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-xl">
                         <p class="text-xs font-semibold text-amber-700">Si no se dio el preaviso, el monto
-                            correspondiente se <span id="preaviso-accion">descontará</span> del total.</p>
+                            correspondiente se <span id="preaviso-accion">descontará del</span> total.</p>
+                    </div>
+                    <div id="preaviso-renuncia-warning" class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                        <p class="text-xs text-amber-700 leading-relaxed">
+                            <strong>Nota legal sobre renuncia (Arts. 79, 201 y 222 CT / Ministerio de Trabajo):</strong> Aunque el Art. 79 contempla una indemnización equivalente al preaviso omitido por el trabajador, conforme a los Arts. 201 y 222 CT el empleador <strong>no puede descontarla unilateralmente</strong> del Salario de Navidad (regalía) ni de tus derechos adquiridos sin acuerdo escrito o sentencia judicial. Este simulador aplica el descuento solo a modo referencial.
+                        </p>
                     </div>
                 </div>
 
@@ -535,7 +414,7 @@
                             <label class="flex items-center gap-3 cursor-pointer">
                                 <input type="checkbox" id="vacaciones-tomadas"
                                     class="w-5 h-5 rounded accent-dr-blue cursor-pointer">
-                                <span class="text-sm font-bold text-dr-slate-700">¿Tomó vacaciones este año?</span>
+                                <span class="text-sm font-bold text-dr-slate-700">¿Tomó las vacaciones de su último año cumplido?</span>
                             </label>
                         </div>
                         <div id="dias-vacaciones-container" class="hidden">
@@ -545,6 +424,9 @@
                                 class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
                         </div>
                     </div>
+                    <p class="text-[11px] text-dr-slate-500 leading-relaxed">
+                        Nota (Arts. 177 y 180 CT): con 1 año o más de antigüedad, el simulador computa el período completo del último año cumplido (14 o 18 días, menos los días ya disfrutados); si además acumulaste 5 meses o más del nuevo año en curso sin disfrutarlos, pueden corresponder días proporcionales opcionales conforme al Art. 180 CT.
+                    </p>
                 </div>
 
                 <!-- Botón Calcular -->
@@ -611,6 +493,9 @@
                 <p>Estos cálculos son aproximaciones basadas en el Código de Trabajo de la República Dominicana (Ley
                     16-92).
                     Para casos específicos, consulte con un abogado laboral o el Ministerio de Trabajo.</p>
+                <p id="result-preaviso-renuncia-note" class="hidden mt-2 text-amber-700 font-semibold leading-relaxed">
+                    Aviso sobre deducción de preaviso en renuncia (Arts. 79, 201 y 222 CT): aunque el Art. 79 contempla una indemnización por omisión del preaviso, el empleador no puede descontarla unilateralmente de la regalía pascual ni de tus vacaciones sin acuerdo escrito o sentencia; el descuento mostrado es únicamente referencial.
+                </p>
             </div>
 
             <!-- Action Buttons -->
@@ -622,41 +507,368 @@
             </div>
         </div>
 
+        <!-- Sección Editorial Estática Completa de Metodología Legal -->
+        <section id="metodologia-legal" class="mt-20 space-y-12">
+            <div class="text-center space-y-4">
+                <div class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full">
+                    Marco Jurídico Laboral · Ley 16-92 y Reglamento 258-93
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-dr-slate-900 tracking-tight">
+                    Metodología Legal para el Cálculo de Prestaciones Laborales en RD
+                </h2>
+                <p class="text-dr-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
+                    Guía técnica y jurídica fundamentada en el Código de Trabajo de la República Dominicana (Ley 16-92) y el Reglamento núm. 258-93 (Artículo 32) para su aplicación sobre la liquidación de indemnizaciones por terminación del contrato de trabajo.
+                </p>
+            </div>
+
+            <!-- Tarjeta de Autoría Humana E-E-A-T -->
+            <div class="glass rounded-2xl p-6 neo-shadow border border-dr-blue/20 bg-white/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-dr-blue text-white flex items-center justify-center font-black text-lg flex-shrink-0 shadow-md">
+                        SS
+                    </div>
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Revisión Técnica y Legal Verificada</p>
+                        <p class="text-sm font-bold text-dr-slate-800">
+                            Metodología desarrollada y verificada por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
+                        </p>
+                        <p class="text-xs text-dr-slate-500 mt-0.5">Algoritmo validado conforme a los artículos 76, 80, 85, 86, 177, 180 y 219 del Código de Trabajo dominicano.</p>
+                    </div>
+                </div>
+                <a href="sobre-nosotros.html" class="px-4 py-2 rounded-xl bg-dr-blue/10 text-dr-blue text-xs font-extrabold uppercase tracking-wider hover:bg-dr-blue hover:text-white transition flex-shrink-0">
+                    Ver Perfil Editorial
+                </a>
+            </div>
+
+            <!-- 1. Marco Legal y Fórmula del Salario Diario Promedio -->
+            <div class="glass rounded-[2rem] p-8 md:p-10 neo-shadow border border-white space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-3 py-1 rounded-full">Art. 85 Ley 16-92 · Art. 32 Reglamento 258-93</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">1. Marco Legal y Fórmula del Salario Diario Promedio</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        En la República Dominicana, el cálculo de las prestaciones laborales (preaviso y auxilio de cesantía) y de las vacaciones no se realiza dividiendo el sueldo mensual entre 30 días calendario. De acuerdo con el <strong>Artículo 85 del Código de Trabajo (Ley 16-92)</strong> y el <strong>Artículo 32 del Reglamento núm. 258-93</strong>, todas las indemnizaciones laborales deben calcularse sobre el promedio de las remuneraciones ordinarias devengadas por el trabajador durante el último año (o fracción de año), utilizando los divisores legales oficiales según la modalidad de pago:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm space-y-2">
+                        <span class="text-xs font-black uppercase tracking-wider text-dr-blue">Sueldo Mensual</span>
+                        <p class="text-3xl font-black text-dr-slate-900">÷ 23.83</p>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Factor oficial de días laborables promedio por mes. Fórmula: <code>Salario Mensual Ordinario ÷ 23.83 = Salario Diario</code>.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm space-y-2">
+                        <span class="text-xs font-black uppercase tracking-wider text-dr-blue">Sueldo Quincenal</span>
+                        <p class="text-3xl font-black text-dr-slate-900">÷ 11.91</p>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Equivalente a la mitad exacta del factor mensual. Fórmula: <code>Salario Quincenal Ordinario ÷ 11.91 = Salario Diario</code>.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm space-y-2">
+                        <span class="text-xs font-black uppercase tracking-wider text-dr-blue">Sueldo Semanal</span>
+                        <p class="text-3xl font-black text-dr-slate-900">÷ 5.5</p>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Basado en la jornada ordinaria semanal de 44 horas (5.5 días). Fórmula: <code>Salario Semanal ÷ 5.5 = Salario Diario</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-xs text-dr-slate-600 leading-relaxed bg-dr-slate-50 p-4 rounded-xl border border-dr-slate-200">
+                    <strong>¿Qué integra el salario ordinario computable?</strong> Conforme a la jurisprudencia constante de la Suprema Corte de Justicia dominicana, se suman al sueldo base todas las comisiones por ventas, incentivos fijos por productividad y bonos regulares percibidos de manera ordinaria en los últimos 12 meses.
+                </p>
+            </div>
+
+            <!-- 2. Tablas Oficiales de Preaviso (Art. 76) y Auxilio de Cesantía (Art. 80) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Tabla Preaviso Art. 76 -->
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-3 py-1 rounded-full">Artículo 76 · Ley 16-92</span>
+                        <h3 class="text-xl font-black text-dr-slate-900">2. Tabla Oficial de Preaviso</h3>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            El desahucio es el acto por el cual una de las partes (empleador o trabajador) pone fin al contrato por tiempo indefinido sin alegar causa. La parte que ejerce el desahucio debe notificarlo con antelación o pagar los días de salario correspondientes:
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-dr-slate-900 text-white">
+                                    <th class="p-3.5 rounded-tl-xl font-black uppercase tracking-wider">Tiempo de Trabajo Continuo</th>
+                                    <th class="p-3.5 rounded-tr-xl font-black uppercase tracking-wider text-right">Plazo / Indemnización</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-dr-slate-200 bg-white">
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">Menos de 3 meses</td>
+                                    <td class="p-3.5 text-right font-bold text-dr-slate-500">0 días (Período de prueba)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 3 meses a menos de 6 meses</td>
+                                    <td class="p-3.5 text-right font-black text-dr-blue">7 días de salario ordinario</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 6 meses a menos de 1 año</td>
+                                    <td class="p-3.5 text-right font-black text-dr-blue">14 días de salario ordinario</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 1 año en adelante (12 meses o más)</td>
+                                    <td class="p-3.5 text-right font-black text-dr-red">28 días de salario ordinario</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[11px] text-dr-slate-500 leading-relaxed">
+                        Si el empleador omite el plazo de preaviso, debe pagar al trabajador una indemnización sustitutiva equivalente a los días indicados (Art. 79 CT). El Art. 76 CT dispone plazos de 7 días (3 a 6 meses), 14 días (más de 6 meses hasta 1 año) y 28 días (a partir de 1 año); la calculadora evalúa los tramos por meses completos cumplidos (3–5, 6–11 y 12 meses o más).
+                    </p>
+                </div>
+
+                <!-- Tabla Cesantía Art. 80 -->
+                <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-dr-red bg-dr-red/10 px-3 py-1 rounded-full">Artículo 80 · Ley 16-92</span>
+                        <h3 class="text-xl font-black text-dr-slate-900">3. Tabla Oficial de Auxilio de Cesantía</h3>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            El empleador que ejerza el desahucio (o sea condenado por despido injustificado o dimisión justificada) debe pagar al trabajador un auxilio de cesantía exento de todo impuesto conforme a los cuatro tramos del Artículo 80:
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-dr-blue text-white">
+                                    <th class="p-3.5 rounded-tl-xl font-black uppercase tracking-wider">Antigüedad del Trabajador</th>
+                                    <th class="p-3.5 rounded-tr-xl font-black uppercase tracking-wider text-right">Días de Cesantía (Art. 80)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-dr-slate-200 bg-white">
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 3 meses a menos de 6 meses</td>
+                                    <td class="p-3.5 text-right font-black text-dr-blue">6 días de salario ordinario</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 6 meses a menos de 1 año</td>
+                                    <td class="p-3.5 text-right font-black text-dr-blue">13 días de salario ordinario</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 1 año a menos de 5 años</td>
+                                    <td class="p-3.5 text-right font-black text-dr-blue">21 días de salario por cada año</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-semibold text-dr-slate-700">De 5 años en adelante</td>
+                                    <td class="p-3.5 text-right font-black text-dr-red">23 días de salario por cada año</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-3 text-[11px] text-dr-red font-semibold leading-relaxed">
+                        <strong>Advertencia sobre Mora Patronal (Art. 86 CT):</strong> Las indemnizaciones por preaviso y auxilio de cesantía deben pagarse en un plazo máximo de <strong>10 días calendario</strong> contados desde la terminación del contrato. En caso de incumplimiento, el empleador deberá abonar en adición <strong>un día de salario por cada día de retardo</strong> hasta su efectivo pago.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Derechos Adquiridos Irrenunciables: Vacaciones (Arts. 177 y 180) y Regalía Pascual (Art. 219) -->
+            <div class="glass rounded-[2rem] p-8 md:p-10 neo-shadow border border-white space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Arts. 177, 180 y 219 · Código de Trabajo</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">4. Derechos Adquiridos Irrenunciables (Vacaciones y Salario de Navidad)</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        A diferencia del preaviso y la cesantía, los <strong>derechos adquiridos</strong> pertenecen al patrimonio del trabajador por el simple hecho de haber prestado sus servicios y <strong>nunca se pierden</strong>, sin importar si la salida ocurre por renuncia voluntaria, desahucio o despido con causa justificada:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h4 class="text-base font-black text-dr-slate-900">A. Compensación por Vacaciones (Arts. 177 a 180 CT)</h4>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Según el <strong>Artículo 177</strong>, tras cumplir un año continuo de labores sin haber disfrutado de su descanso anual, el trabajador recibe <strong>14 días de salario ordinario</strong> (si tiene entre 1 y 5 años en la empresa) o <strong>18 días de salario ordinario</strong> (si tiene 5 años o más de servicio continuo). Si el contrato termina antes de completar el año pero después de haber laborado al menos 5 meses, aplica la escala proporcional del <strong>Artículo 180</strong>:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead>
+                                    <tr class="bg-dr-slate-800 text-white">
+                                        <th class="p-2.5 rounded-tl-lg font-bold">Meses Trabajados (Art. 180)</th>
+                                        <th class="p-2.5 rounded-tr-lg font-bold text-right">Compensación Proporcional</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dr-slate-200 bg-white">
+                                    <tr><td class="p-2.5">Más de 5 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">6 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 6 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">7 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 7 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">8 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 8 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">9 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 9 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">10 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 10 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">11 días de salario</td></tr>
+                                    <tr><td class="p-2.5">Más de 11 meses</td><td class="p-2.5 text-right font-bold text-dr-blue">12 días de salario</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-[11px] text-dr-slate-600 leading-relaxed bg-dr-slate-50 p-3 rounded-xl border border-dr-slate-200">
+                            <strong>Criterio del formulario (Arts. 177 y 180 CT):</strong> Si el empleado tiene <strong>1 año o más de servicio</strong> y no tomó las vacaciones de su último año cumplido, la calculadora asigna el período completo del Art. 177 (14 o 18 días, descontando días ya tomados). La escala proporcional del Art. 180 se aplica cuando aún <strong>no ha completado el año</strong> (0 años y 5–11 meses). Si el trabajador con ≥ 1 año además acumuló 5 meses o más adicionales del nuevo año en curso, puede corresponderle la proporción adicional según el Art. 180 si no la disfrutó.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-base font-black text-dr-slate-900">B. Salario de Navidad o Regalía Pascual (Art. 219 CT)</h4>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            El <strong>Artículo 219</strong> obliga a todo empleador a pagar en el mes de diciembre el salario de navidad, consistente en la <strong>duodécima parte (1/12)</strong> de la suma de los salarios ordinarios devengados por el trabajador en el año calendario.
+                        </p>
+                        <div class="bg-dr-slate-50 rounded-2xl p-5 border border-dr-slate-200 space-y-3 text-xs text-dr-slate-700">
+                            <p><strong>Fórmula Proporcional de Salida:</strong></p>
+                            <p class="font-mono bg-white p-3 rounded-lg border border-dr-slate-200 text-dr-blue font-bold">
+                                Regalía = (Salario Mensual × Meses Trabajados en el Año) ÷ 12
+                            </p>
+                            <p class="leading-relaxed">
+                                <strong>Inembargabilidad, Tope Legal y Exención Total de Impuestos (Arts. 219 y 222 CT y Art. 48 del Reglamento núm. 139-98):</strong> Conforme al <strong>Artículo 222 del Código de Trabajo</strong> (complementado por el Art. 220 CT sobre fecha de pago y cálculo proporcional) y al <strong>Artículo 48 del Reglamento núm. 139-98 (Ley 11-92)</strong>, el salario de navidad no es susceptible de gravamen, embargo, cesión o venta, y está <strong>100% exento del Impuesto Sobre la Renta (ISR) y de cotizaciones a la TSS</strong> hasta el límite de la duodécima parte del salario anual. Según el <strong>Artículo 219 del Código de Trabajo</strong>, el monto máximo obligatorio legal equivale a cinco (5) salarios mínimos legalmente establecidos, salvo acuerdo o política empresarial más favorable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Dos Casos Prácticos Resueltos Paso a Paso -->
+            <div class="space-y-6">
+                <div class="space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-3 py-1 rounded-full">Simulaciones Verificadas</span>
+                    <h3 class="text-2xl font-black text-dr-slate-900">5. Casos Prácticos de Liquidación Resueltos Paso a Paso</h3>
+                    <p class="text-sm text-dr-slate-600 leading-relaxed">
+                        Revisa estos dos ejemplos detallados para comprobar cómo se aplican los factores legales y los tramos de antigüedad del Código de Trabajo:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Caso 1 -->
+                    <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                        <div class="border-b border-dr-slate-200 pb-4">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-dr-blue bg-dr-blue/10 px-2.5 py-1 rounded-md">Caso Práctico 1 · Tramo 1 a 5 Años</span>
+                            <h4 class="text-lg font-black text-dr-slate-900 mt-2">Desahucio tras 4 años y 3 meses (Salario: RD$ 40,000.00)</h4>
+                        </div>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Trabajador desahuciado sin preaviso previo, con salario mensual de <strong>RD$ 40,000.00</strong>, sin haber tomado las vacaciones de su último año y con 6 meses laborados en el año calendario de salida:
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-dr-slate-700 bg-dr-slate-50 p-5 rounded-2xl border border-dr-slate-200/80">
+                            <li class="flex justify-between"><span>1. Salario Diario (RD$ 40,000.00 ÷ 23.83):</span> <strong>RD$ 1,678.56</strong></li>
+                            <li class="flex justify-between"><span>2. Preaviso (Art. 76: 28 días × RD$ 1,678.56):</span> <strong class="text-dr-blue">RD$ 46,999.58</strong></li>
+                            <li class="flex justify-between"><span>3. Cesantía (4 años × 21 días + 6 días por 3 meses = 90 días):</span> <strong class="text-dr-blue">RD$ 151,070.08</strong></li>
+                            <li class="flex justify-between"><span>4. Vacaciones Anuales (Art. 177: 14 días × RD$ 1,678.56):</span> <strong>RD$ 23,499.79</strong></li>
+                            <li class="flex justify-between"><span>5. Salario de Navidad Proporcional (6 meses / 12):</span> <strong>RD$ 20,000.00</strong></li>
+                            <li class="flex justify-between border-t-2 border-dr-blue/20 pt-2.5 text-sm">
+                                <span class="font-black text-dr-slate-900">Total Liquidación a Recibir:</span>
+                                <strong class="font-black text-dr-blue">RD$ 241,569.45</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Caso 2 -->
+                    <div class="glass rounded-[2rem] p-8 neo-shadow border border-white space-y-5">
+                        <div class="border-b border-dr-slate-200 pb-4">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-dr-red bg-dr-red/10 px-2.5 py-1 rounded-md">Caso Práctico 2 · Tramo +5 Años (23 Días/Año)</span>
+                            <h4 class="text-lg font-black text-dr-slate-900 mt-2">Desahucio tras 7 años de servicio (Salario: RD$ 55,000.00)</h4>
+                        </div>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed">
+                            Trabajador con <strong>7 años cumplidos</strong>, sueldo mensual de <strong>RD$ 55,000.00</strong>, desahuciado sin preaviso tras 9 meses del año en curso y con sus vacaciones anuales pendientes:
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-dr-slate-700 bg-dr-slate-50 p-5 rounded-2xl border border-dr-slate-200/80">
+                            <li class="flex justify-between"><span>1. Salario Diario (RD$ 55,000.00 ÷ 23.83):</span> <strong>RD$ 2,308.02</strong></li>
+                            <li class="flex justify-between"><span>2. Preaviso (Art. 76: 28 días × RD$ 2,308.02):</span> <strong class="text-dr-blue">RD$ 64,624.42</strong></li>
+                            <li class="flex justify-between"><span>3. Cesantía (Art. 80: 7 años × 23 días = 161 días):</span> <strong class="text-dr-blue">RD$ 371,590.43</strong></li>
+                            <li class="flex justify-between"><span>4. Vacaciones (+5 años = 18 días × RD$ 2,308.02):</span> <strong>RD$ 41,544.27</strong></li>
+                            <li class="flex justify-between"><span>5. Salario de Navidad Proporcional (9 meses / 12):</span> <strong>RD$ 41,250.00</strong></li>
+                            <li class="flex justify-between border-t-2 border-dr-blue/20 pt-2.5 text-sm">
+                                <span class="font-black text-dr-slate-900">Total Liquidación a Recibir:</span>
+                                <strong class="font-black text-dr-blue">RD$ 519,009.12</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-[11px] text-dr-slate-500 leading-relaxed bg-white/80 p-3 rounded-xl border border-dr-slate-200">
+                    <strong>Nota sobre precisión de redondeo:</strong> El salario diario mostrado en los ejemplos y resultados se presenta redondeado a 2 decimales por claridad visual, pero los cálculos internos utilizan el cociente exacto sin redondeo intermedio (<code>salario ÷ divisor</code>).
+                </p>
+            </div>
+
+            <!-- Fuentes Oficiales Primarias -->
+            <div class="glass rounded-[2rem] p-8 neo-shadow border border-dr-blue/20 bg-white space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-dr-slate-200 pb-4">
+                    <div>
+                        <h4 class="text-lg font-black text-dr-slate-900 tracking-tight">Fuentes Oficiales Primarias (República Dominicana)</h4>
+                        <p class="text-xs text-dr-slate-500">Parámetros verificados por <a href="sobre-nosotros.html" class="text-dr-blue font-bold hover:underline">Starlin Santana</a> conforme a los portales institucionales vigentes:</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">DGII →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Dirección General de Impuestos Internos (dgii.gov.do)</span>
+                    </a>
+                    <a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">TSS →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Tesorería de la Seguridad Social (tss.gob.do)</span>
+                    </a>
+                    <a href="https://mt.gob.do" target="_blank" rel="noopener noreferrer"
+                        class="p-4 rounded-xl bg-dr-slate-50 border border-dr-slate-200 hover:border-dr-blue/30 transition flex flex-col gap-1">
+                        <span class="text-sm font-black text-dr-blue">Ministerio de Trabajo →</span>
+                        <span class="text-xs text-dr-slate-600 font-medium">Normativa Laboral RD (mt.gob.do)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Preguntas Frecuentes -->
         <section id="faq-section" class="mt-16 w-full space-y-6">
             <div class="glass rounded-[2rem] p-8 neo-shadow space-y-6">
                 <h3 class="text-2xl font-black tracking-tight border-b-2 border-dr-blue/10 pb-4">
-                    <span class="text-dr-blue">Preguntas</span> <span class="text-dr-red">Frecuentes</span> <span class="text-dr-slate-800">sobre Prestaciones</span>
+                    <span class="text-dr-blue">Preguntas</span> <span class="text-dr-red">Frecuentes</span> <span class="text-dr-slate-800">sobre Prestaciones Laborales</span>
                 </h3>
 
                 <div class="space-y-4">
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
                             <span>¿Tengo derecho a cesantía si presento mi renuncia voluntaria?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            No. Al renunciar voluntariamente no aplica el auxilio de cesantía ni el pago de preaviso por parte del empleador. Sin embargo, conservas el 100% de tus <strong>derechos adquiridos</strong>: el Salario de Navidad acumulado y las vacaciones no disfrutadas.
+                            No. Al renunciar voluntariamente no aplica el auxilio de cesantía ni el pago de preaviso por parte del empleador. Sin embargo, conservas el 100% de tus derechos adquiridos: el Salario de Navidad proporcional acumulado y la compensación por vacaciones no disfrutadas.
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
-                            <span>¿Las comisiones y horas extras forman parte del cálculo?</span>
+                            <span>¿Las comisiones y horas extras forman parte del cálculo de prestaciones?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            Sí. Todas las remuneraciones ordinarias (comisiones por ventas, incentivos fijos y horas extraordinarias habituales) devengadas en los últimos 12 meses se promedian para obtener el salario mensual computable según la Ley 16-92.
+                            Solo parcialmente. Conforme al Artículo 85 del Código de Trabajo (Ley 16-92), las comisiones habituales e incentivos regulares devengados en los últimos 12 meses sí forman parte del salario ordinario promediable. Sin embargo, las horas extraordinarias NO se computan para el cálculo de prestaciones, pues la ley dispone que "sólo se tendrán en cuenta los salarios correspondientes a horas ordinarias".
                         </p>
                     </details>
 
-                    <details class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                        <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                            <span>¿Cuál es el plazo máximo que tiene la empresa para pagar mi liquidación?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                        </summary>
+                        <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                            De acuerdo con el Artículo 86 del Código de Trabajo, el empleador dispone de un plazo máximo de 10 días calendario a partir de la fecha de terminación del contrato para pagar el preaviso y el auxilio de cesantía. Si no paga dentro de esos 10 días, debe abonar una penalidad equivalente a un día de salario por cada día de retraso.
+                        </p>
+                    </details>
+
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
+                        <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
+                            <span>¿Se le descuenta Impuesto Sobre la Renta (ISR) o TSS a las prestaciones laborales?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
+                        </summary>
+                        <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
+                            No. Conforme al Artículo 86 del Código de Trabajo (y Artículo 222 CT para el Salario de Navidad), junto con el Artículo 299 literal k) del Código Tributario (Ley 11-92) y el Artículo 48 del Reglamento núm. 139-98, las indemnizaciones laborales por concepto de preaviso y auxilio de cesantía, así como el Salario de Navidad hasta la duodécima parte anual, están 100% exentos del Impuesto Sobre la Renta y de cotizaciones a la TSS.
+                        </p>
+                    </details>
+
+                    <details open class="group bg-white rounded-2xl p-6 border border-dr-slate-200 shadow-sm cursor-pointer">
                         <summary class="font-bold text-lg text-dr-slate-900 list-none flex justify-between items-center">
                             <span>¿Dónde puedo hacer una reclamación formal si la empresa no me paga?</span>
                             <span class="transition-transform duration-300 group-open:rotate-45 text-dr-blue font-semibold text-lg select-none">+</span>
                         </summary>
                         <p class="mt-4 text-sm leading-relaxed text-dr-slate-600">
-                            Puedes acudir a las oficinas de la <strong>Dirección General de Trabajo (Ministerio de Trabajo de la República Dominicana)</strong> o iniciar una mediación con asistencia legal de un abogado especialista en derecho laboral.
+                            Puedes acudir personalmente a la Dirección General de Trabajo del Ministerio de Trabajo de la República Dominicana para solicitar una citación de conciliación administrativa, o incoar una demanda laboral ante el Juzgado de Trabajo correspondiente antes de que venza el plazo de prescripción legal de dos meses (Art. 702 CT).
                         </p>
                     </details>
                 </div>
@@ -667,21 +879,38 @@
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
+              "inLanguage": "es-DO",
               "mainEntity": [
                 {
                   "@type": "Question",
                   "name": "¿Tengo derecho a cesantía si presento mi renuncia voluntaria?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "No. Al renunciar voluntariamente no aplica el auxilio de cesantía ni el pago de preaviso por parte del empleador. Sin embargo, conservas el 100% de tus derechos adquiridos: el Salario de Navidad acumulado y las vacaciones no disfrutadas."
+                    "text": "No. Al renunciar voluntariamente no aplica el auxilio de cesantía ni el pago de preaviso por parte del empleador. Sin embargo, conservas el 100% de tus derechos adquiridos: el Salario de Navidad proporcional acumulado y la compensación por vacaciones no disfrutadas."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "¿Las comisiones y horas extras forman parte del cálculo?",
+                  "name": "¿Las comisiones y horas extras forman parte del cálculo de prestaciones?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Sí. Todas las remuneraciones ordinarias (comisiones por ventas, incentivos fijos y horas extraordinarias habituales) devengadas en los últimos 12 meses se promedian para obtener el salario mensual computable según la Ley 16-92."
+                    "text": "Solo parcialmente. Conforme al Artículo 85 del Código de Trabajo (Ley 16-92), las comisiones habituales e incentivos regulares devengados en los últimos 12 meses sí forman parte del salario ordinario promediable. Sin embargo, las horas extraordinarias NO se computan para el cálculo de prestaciones, pues la ley dispone que \"sólo se tendrán en cuenta los salarios correspondientes a horas ordinarias\"."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Cuál es el plazo máximo que tiene la empresa para pagar mi liquidación?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "De acuerdo con el Artículo 86 del Código de Trabajo, el empleador dispone de un plazo máximo de 10 días calendario a partir de la fecha de terminación del contrato para pagar el preaviso y el auxilio de cesantía. Si no paga dentro de esos 10 días, debe abonar una penalidad equivalente a un día de salario por cada día de retraso."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Se le descuenta Impuesto Sobre la Renta (ISR) o TSS a las prestaciones laborales?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Conforme al Artículo 86 del Código de Trabajo (y Artículo 222 CT para el Salario de Navidad), junto con el Artículo 299 literal k) del Código Tributario (Ley 11-92) y el Artículo 48 del Reglamento núm. 139-98, las indemnizaciones laborales por concepto de preaviso y auxilio de cesantía, así como el Salario de Navidad hasta la duodécima parte anual, están 100% exentos del Impuesto Sobre la Renta y de cotizaciones a la TSS."
                   }
                 },
                 {
@@ -689,7 +918,7 @@
                   "name": "¿Dónde puedo hacer una reclamación formal si la empresa no me paga?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Puedes acudir a las oficinas de la Dirección General de Trabajo (Ministerio de Trabajo de la República Dominicana) o iniciar una mediación con asistencia legal de un abogado especialista en derecho laboral."
+                    "text": "Puedes acudir personalmente a la Dirección General de Trabajo del Ministerio de Trabajo de la República Dominicana para solicitar una citación de conciliación administrativa, o incoar una demanda laboral ante el Juzgado de Trabajo correspondiente antes de que venza el plazo de prescripción legal de dos meses (Art. 702 CT)."
                   }
                 }
               ]
@@ -709,28 +938,33 @@
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
-                        Plataforma líder e independiente para el cálculo de sueldo neto, retenciones de ISR, prestaciones laborales y divisas en República Dominicana.
+                        Herramienta gratuita e independiente para el cálculo de sueldo neto, retenciones de ISR, seguridad social (TSS) y prestaciones laborales en República Dominicana.
                     </p>
                     <p class="text-xs text-dr-slate-500">
                         Contacto: <a href="mailto:info@impucalculo.com" class="text-dr-blue font-semibold hover:underline">info@impucalculo.com</a>
                     </p>
+                    <div id="pwa-install-container" class="pt-2" style="display: none;">
+                        <button type="button" id="pwa-install-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-dr-blue text-white text-xs font-semibold neo-shadow hover:opacity-90 transition cursor-pointer" style="font-family: 'Outfit', sans-serif;">
+                            <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+                            <span>Instalar App</span>
+                        </button>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Herramientas</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="prestaciones.html" class="text-dr-blue font-semibold hover:underline">Prestaciones Laborales</a></li>
                         <li><a href="calculadora.html" class="hover:text-dr-blue transition">Calculadora de Sueldo e ISR</a></li>
-                        <li><a href="divisas.html" class="hover:text-dr-blue transition">Cotización de Divisas</a></li>
                         <li><a href="blog.html" class="hover:text-dr-blue transition">Blog y Guías Fiscales</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h4>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-dr-slate-400 mb-3">Institucional</h3>
                     <ul class="space-y-2 text-sm text-dr-slate-600">
                         <li><a href="sobre-nosotros.html" class="hover:text-dr-blue transition">Sobre Nosotros</a></li>
                         <li><a href="privacidad.html" class="hover:text-dr-blue transition">Política de Privacidad</a></li>
                         <li><a href="terminos.html" class="hover:text-dr-blue transition">Términos y Condiciones</a></li>
-                        <li><a href="mailto:info@impucalculo.com" class="hover:text-dr-blue transition">Contacto Directo</a></li>
+                        <li><a href="contacto.html" class="hover:text-dr-blue transition">Contacto Directo</a></li>
                     </ul>
                 </div>
             </div>
@@ -749,11 +983,16 @@
     </footer>
 
     <script>
-        // Constants
+        // Constants (Artículo 32 del Reglamento núm. 258-93)
         const DIVISORES = {
             mensual: 23.83,
             quincenal: 11.91,
             semanal: 5.5
+        };
+        const FACTOR_MENSUAL = {
+            mensual: 1,
+            quincenal: 2,
+            semanal: 52 / 12
         };
 
         // Format currency
@@ -796,31 +1035,77 @@
             return { years, months, totalMonths, days };
         }
 
-        // Show/hide conditional sections
-        document.querySelectorAll('[name="terminacion"]').forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                const preavisoSection = document.getElementById('preaviso-section');
-                const preavisoLabel = document.getElementById('preaviso-label');
-                const preavisoInfo = document.getElementById('preaviso-info');
-                const preavisoAccion = document.getElementById('preaviso-accion');
+        // Sync preaviso section state based on selected termination type
+        function syncPreavisoState() {
+            const checked = document.querySelector('[name="terminacion"]:checked');
+            const value = checked ? checked.value : 'renuncia';
+            const preavisoSection = document.getElementById('preaviso-section');
+            const preavisoLabel = document.getElementById('preaviso-label');
+            const preavisoInfo = document.getElementById('preaviso-info');
+            const preavisoAccion = document.getElementById('preaviso-accion');
+            const preavisoDado = document.getElementById('preaviso-dado');
+            const preavisoRenunciaWarning = document.getElementById('preaviso-renuncia-warning');
 
-                if (e.target.value === 'despido') {
-                    preavisoSection.classList.remove('hidden');
-                    preavisoLabel.textContent = '¿El empleador NO dio el preaviso?';
-                    preavisoAccion.textContent = 'sumará al';
-                    preavisoInfo.classList.add('hidden');
-                } else if (e.target.value === 'renuncia') {
-                    preavisoSection.classList.remove('hidden');
-                    preavisoLabel.textContent = '¿El empleado NO dio el preaviso?';
-                    preavisoAccion.textContent = 'descontará del';
-                    preavisoInfo.classList.add('hidden');
-                } else {
-                    preavisoSection.classList.add('hidden');
-                    document.getElementById('preaviso-dado').checked = false;
-                    preavisoInfo.classList.add('hidden');
-                }
-            });
+            if (value === 'despido') {
+                preavisoSection.classList.remove('hidden');
+                preavisoLabel.textContent = '¿El empleador NO dio el preaviso?';
+                preavisoAccion.textContent = 'sumará al';
+                preavisoInfo.classList.toggle('hidden', !preavisoDado.checked);
+                if (preavisoRenunciaWarning) preavisoRenunciaWarning.classList.add('hidden');
+            } else if (value === 'renuncia') {
+                preavisoSection.classList.remove('hidden');
+                preavisoLabel.textContent = '¿El empleado NO dio el preaviso?';
+                preavisoAccion.textContent = 'descontará del';
+                preavisoInfo.classList.toggle('hidden', !preavisoDado.checked);
+                if (preavisoRenunciaWarning) preavisoRenunciaWarning.classList.remove('hidden');
+            } else {
+                preavisoSection.classList.add('hidden');
+                preavisoDado.checked = false;
+                preavisoInfo.classList.add('hidden');
+                if (preavisoRenunciaWarning) preavisoRenunciaWarning.classList.add('hidden');
+            }
+        }
+
+        // Sync salary input label and placeholder based on payment frequency
+        function syncFrecuenciaUI() {
+            const frecuenciaEl = document.getElementById('frecuencia-pago');
+            const salarioLabel = document.getElementById('salario-label');
+            const salarioInput = document.getElementById('salario');
+            if (!frecuenciaEl || !salarioLabel || !salarioInput) return;
+
+            const labels = {
+                mensual: { text: 'Salario Mensual Bruto', placeholder: '25,000.00' },
+                quincenal: { text: 'Salario Quincenal Bruto', placeholder: '12,500.00' },
+                semanal: { text: 'Salario Semanal Bruto', placeholder: '6,000.00' }
+            };
+            const cfg = labels[frecuenciaEl.value] || labels.mensual;
+            salarioLabel.textContent = cfg.text;
+            salarioInput.placeholder = cfg.placeholder;
+        }
+
+        document.querySelectorAll('[name="terminacion"]').forEach(radio => {
+            radio.addEventListener('change', syncPreavisoState);
         });
+
+        const frecuenciaSelect = document.getElementById('frecuencia-pago');
+        if (frecuenciaSelect) {
+            frecuenciaSelect.addEventListener('change', syncFrecuenciaUI);
+        }
+
+        const salarioInputEl = document.getElementById('salario');
+        if (salarioInputEl) {
+            salarioInputEl.addEventListener('input', () => {
+                const salarioError = document.getElementById('salario-error');
+                if (salarioError) salarioError.classList.add('hidden');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            syncPreavisoState();
+            syncFrecuenciaUI();
+        });
+        syncPreavisoState();
+        syncFrecuenciaUI();
 
         // Show info when checkbox changes
         document.getElementById('preaviso-dado').addEventListener('change', (e) => {
@@ -920,7 +1205,22 @@
                 return;
             }
 
-            const salario = parseFloat(document.getElementById('salario').value);
+            const salarioInput = document.getElementById('salario');
+            const salarioError = document.getElementById('salario-error');
+            const salario = parseFloat(salarioInput.value);
+            if (!Number.isFinite(salario) || salario <= 0) {
+                if (salarioError) {
+                    salarioError.textContent = 'Por favor introduce un salario válido mayor a RD$ 0.00.';
+                    salarioError.classList.remove('hidden');
+                }
+                salarioInput.focus();
+                return;
+            }
+            if (salarioError) salarioError.classList.add('hidden');
+
+            const frecuencia = (document.getElementById('frecuencia-pago') && document.getElementById('frecuencia-pago').value) || 'mensual';
+            const divisor = DIVISORES[frecuencia] || DIVISORES.mensual;
+            const salarioMensualEquivalente = salario * (FACTOR_MENSUAL[frecuencia] || 1);
             const tipoTerminacion = document.querySelector('[name="terminacion"]:checked').value;
             const preavisoDado = document.getElementById('preaviso-dado').checked;
             const vacacionesTomadas = document.getElementById('vacaciones-tomadas').checked;
@@ -929,8 +1229,8 @@
             // Calculate antiguedad
             const ant = calculateAntiguedad(fechaIngreso, fechaSalida);
 
-            // Calculate salario diario (always monthly)
-            const salarioDiario = salario / 23.83;
+            // Calculate salario diario using official divisor for the selected payment frequency
+            const salarioDiario = salario / divisor;
 
             // Calculate preaviso
             let diasPreaviso = 0;
@@ -968,11 +1268,10 @@
                 montoCesantia = diasCesantia * salarioDiario;
             }
 
-            // Calculate vacaciones (Art. 177 y Art. 180)
-            let diasVacacionesAnuales = 0;
-            if (ant.years >= 1) {
-                diasVacacionesAnuales = ant.years >= 5 ? 18 : 14;
-            }
+            // Calculate vacaciones (Arts. 177-180 del Código de Trabajo):
+            // - Si tiene >= 1 año de servicio: período completo del último año cumplido según Art. 177 (14 o 18 días).
+            // - Si tiene 0 años cumplidos y 5-11 meses: escala proporcional del Art. 180 (6 a 12 días).
+            //   (Nota: si con >= 1 año ya disfrutó su período vencido y acumula >= 5 meses del año en curso, ver nota metodológica).
             const fraccionMesesVac = ant.totalMonths % 12;
             let diasVacacionesProporcionales = 0;
             if (fraccionMesesVac >= 11) diasVacacionesProporcionales = 12;
@@ -983,8 +1282,14 @@
             else if (fraccionMesesVac >= 6) diasVacacionesProporcionales = 7;
             else if (fraccionMesesVac >= 5) diasVacacionesProporcionales = 6;
 
-            const diasVacacionesTotales = diasVacacionesAnuales + diasVacacionesProporcionales;
-            const diasVacacionesPendientes = Math.max(0, diasVacacionesTotales - diasVacacionesTomados);
+            let diasVacacionesTotales = 0;
+            if (ant.years >= 1) {
+                diasVacacionesTotales = ant.years >= 5 ? 18 : 14;
+            } else {
+                diasVacacionesTotales = diasVacacionesProporcionales;
+            }
+
+            const diasVacacionesPendientes = Math.max(0, diasVacacionesTotales - (vacacionesTomadas ? diasVacacionesTomados : 0));
             const montoVacaciones = diasVacacionesPendientes * salarioDiario;
 
             // Calculate regalia (proportional to time worked in current calendar year - Art. 219)
@@ -996,18 +1301,25 @@
             let monthsRegalia = fechaSalida.getMonth() - regaliaStart.getMonth();
             let daysRegalia = fechaSalida.getDate() - regaliaStart.getDate() + 1; // Inclusivo
 
-            if (daysRegalia < 0) {
+            let borrowOffset = 0;
+            while (daysRegalia < 0) {
                 monthsRegalia--;
-                const prevMonthDate = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth(), 0);
-                daysRegalia += prevMonthDate.getDate();
+                const prevMonthDays = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth() - borrowOffset, 0).getDate();
+                daysRegalia += prevMonthDays;
+                borrowOffset++;
+            }
+            const closingMonthDays = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth() + 1, 0).getDate();
+            if (daysRegalia >= closingMonthDays) {
+                monthsRegalia += Math.floor(daysRegalia / closingMonthDays);
+                daysRegalia = daysRegalia % closingMonthDays;
             }
             if (monthsRegalia < 0) {
                 yearsRegalia--;
                 monthsRegalia += 12;
             }
-            const totalMonthsRegalia = yearsRegalia * 12 + monthsRegalia;
-            const mesesTrabajadosAnio = Math.min(12, totalMonthsRegalia + (daysRegalia / 30));
-            const montoRegalia = (salario * mesesTrabajadosAnio) / 12;
+            const totalMonthsRegalia = Math.max(0, yearsRegalia * 12 + monthsRegalia);
+            const mesesTrabajadosAnio = Math.min(12, totalMonthsRegalia + (daysRegalia / closingMonthDays));
+            const montoRegalia = (salarioMensualEquivalente * mesesTrabajadosAnio) / 12;
 
             // Total
             const totalPreaviso = preavisoEsDeduccion ? -montoPreaviso : montoPreaviso;
@@ -1093,6 +1405,11 @@
             // Update total
             document.getElementById('result-total').textContent = fmt(data.total);
 
+            const renunciaNote = document.getElementById('result-preaviso-renuncia-note');
+            if (renunciaNote) {
+                renunciaNote.classList.toggle('hidden', !(data.preaviso.esDeduccion && data.preaviso.monto > 0));
+            }
+
             // Show results section
             document.getElementById('results-section').classList.remove('hidden');
         }
@@ -1101,8 +1418,13 @@
             document.getElementById('prestaciones-form').reset();
             document.getElementById('results-section').classList.add('hidden');
             document.getElementById('antiguedad-display').classList.add('hidden');
-            document.getElementById('preaviso-section').classList.add('hidden');
             document.getElementById('dias-vacaciones-container').classList.add('hidden');
+            const salarioError = document.getElementById('salario-error');
+            if (salarioError) salarioError.classList.add('hidden');
+            const renunciaNote = document.getElementById('result-preaviso-renuncia-note');
+            if (renunciaNote) renunciaNote.classList.add('hidden');
+            syncPreavisoState();
+            syncFrecuenciaUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
@@ -1122,18 +1444,10 @@
             });
         }
     </script>
-    <!-- PWA Install Button & Service Worker Registration -->
-    <div id="pwa-install-container" class="neo-shadow" style="display: none; position: fixed; bottom: 85px; right: 20px; background: #0038A8; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; z-index: 1000; align-items: center; gap: 10px; font-weight: 600; font-family: 'Outfit', sans-serif;">
-        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
-        <span>Instalar App</span>
-    </div>
-
+    <!-- Service Worker Registration & PWA Install Logic -->
     <script>
-        // PWA Service Worker Registration (Canonical URL + Loop Protection)
+        // PWA Service Worker Registration (No auto-reload to preserve active calculations)
         if ('serviceWorker' in navigator) {
-            const hadController = Boolean(navigator.serviceWorker.controller);
-            let refreshing = false;
-
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
                     .then(registration => {
@@ -1146,33 +1460,32 @@
             });
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!hadController || refreshing) return;
-                const now = Date.now();
-                const lastReload = parseInt(sessionStorage.getItem('impucalculo_sw_reload') || '0', 10);
-                if (now - lastReload < 5000) return;
-                sessionStorage.setItem('impucalculo_sw_reload', String(now));
-                refreshing = true;
-                window.location.reload();
+                sessionStorage.removeItem('impucalculo_sw_reload');
+                console.info('ServiceWorker actualizado; los cambios se aplicarán en la próxima navegación.');
             });
         }
         
         // PWA Install Prompt Logic
         let deferredPrompt;
-        const installBtn = document.getElementById('pwa-install-container');
+        const installContainer = document.getElementById('pwa-install-container');
+        const installBtn = document.getElementById('pwa-install-btn') || installContainer;
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'flex';
-        });
-
-        installBtn.addEventListener('click', (e) => {
-            installBtn.style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                deferredPrompt = null;
+        if (installContainer && installBtn) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installContainer.style.display = 'inline-flex';
             });
-        });
+
+            installBtn.addEventListener('click', () => {
+                if (!deferredPrompt) return;
+                installContainer.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            });
+        }
     </script>
 </body>
 

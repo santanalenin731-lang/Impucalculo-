@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
+    <!-- Google Consent Mode v2 (strict pre-consent for EEA/UK/CH) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+      window.__consentDefaultSet = true;
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+        wait_for_update: 500
+      });
+    </script>
     <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cómo Calcular el Preaviso y la Cesantía en RD 2026 | Código de Trabajo (Ley 16-92)</title>
-  <meta name="description" content="Guía legal paso a paso para calcular el preaviso y la cesantía en República Dominicana según la Ley 16-92. Tablas oficiales, fórmula del divisor 23.83, ejemplos con salarios dominicanos y sanciones por mora.">
-  <meta name="keywords" content="como calcular cesantia rd, calcular preaviso republica dominicana, codigo de trabajo dominicano ley 16-92, art 80 cesantia rd, art 76 preaviso rd, liquidacion por despido republica dominicana, factor 23.83 salario diario">
+  <title>Fórmula de Cesantía, Preaviso, Salario Promedio (Art. 85) y Mora (Art. 86) en RD | Ley 16-92</title>
+  <meta name="description" content="Manual técnico-matemático para calcular el preaviso (Art. 76), el auxilio de cesantía (Art. 80), el salario promedio de 12 meses con comisiones (Art. 85), divisores del Artículo 32 del Reglamento núm. 258-93 (23.83, 11.91 y 5.5) y la mora patronal del Art. 86 en República Dominicana.">
+  <meta name="keywords" content="como calcular cesantia rd, calcular preaviso republica dominicana, art 85 salario promedio codigo de trabajo rd, art 86 mora patronal un dia de salario, reglamento 258-93 divisor 23.83 11.91 5.5, art 80 cesantia rd, art 76 preaviso rd">
   <link rel="canonical" href="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
-  <link rel="icon" type="image/png" href="../logo_new.webp">
+  <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
+  <link rel="icon" type="image/webp" href="../logo_new.webp">
+  <link rel="apple-touch-icon" href="../icon-192.png">
+  <link rel="manifest" href="../manifest.json">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Cómo Calcular el Preaviso y la Cesantía en RD 2026 | Ley 16-92">
-  <meta property="og:description" content="Aprende a calcular exactamente el preaviso y la cesantía en República Dominicana según los Artículos 76 y 80 del Código de Trabajo con el divisor 23.83 y ejemplos reales.">
+  <meta property="og:title" content="Fórmula de Cesantía, Preaviso, Salario Promedio (Art. 85) y Mora (Art. 86) en RD">
+  <meta property="og:description" content="Aprende la ingeniería matemática exacta detrás del preaviso y la cesantía en República Dominicana: divisores oficiales 23.83, 11.91 y 5.5, integración de comisiones y cálculo de recargos por mora del Art. 86.">
   <meta property="og:url" content="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
   <meta property="og:image" content="https://impucalculo.com/logo_new.webp">
   <meta property="og:site_name" content="Impucálculo">
-  <meta property="article:published_time" content="2026-07-20">
+  <meta property="article:published_time" content="2026-03-15">
+  <meta property="article:modified_time" content="2026-11-14">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cómo Calcular el Preaviso y la Cesantía en RD 2026 | Ley 16-92">
-  <meta name="twitter:description" content="Guía completa del cálculo de cesantía y preaviso en República Dominicana con la fórmula oficial del salario diario y tablas de indemnización.">
+  <meta name="twitter:url" content="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
+  <meta name="twitter:title" content="Fórmula de Cesantía, Preaviso, Salario Promedio (Art. 85) y Mora (Art. 86) en RD">
+  <meta name="twitter:description" content="Guía técnica del cálculo de cesantía y preaviso en República Dominicana con divisores del Reglamento 258-93, salario variable y mora patronal.">
+  <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,10 +56,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Cómo Calcular el Preaviso y la Cesantía en República Dominicana según el Código de Trabajo",
-    "description": "Explicación práctica de las reglas para calcular la cesantía y el preaviso bajo la Ley 16-92 en la República Dominicana.",
-    "datePublished": "2026-07-20",
-    "author": { "@type": "Organization", "name": "Impucálculo" },
+    "headline": "Cálculo de Cesantía y Preaviso en RD 2026: Guía del Código de Trabajo",
+    "description": "Explicación técnico-matemática de las reglas para calcular la cesantía y el preaviso bajo la Ley 16-92 y el Reglamento 258-93 en la República Dominicana.",
+    "image": "https://impucalculo.com/logo_new.webp",
+    "datePublished": "2026-03-15T09:00:00-04:00",
+    "dateModified": "2026-11-14T18:00:00-04:00",
+    "inLanguage": "es-DO",
+    "author": { "@type": "Person", "name": "Starlin Santana", "jobTitle": "Fundador y Responsable Editorial", "url": "https://impucalculo.com/sobre-nosotros.html" },
     "publisher": {
       "@type": "Organization",
       "name": "Impucálculo",
@@ -57,18 +81,28 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "¿Cuál es la diferencia entre el Preaviso y la Cesantía en RD?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El Preaviso (Art. 76) es la notificación anticipada de terminación del contrato, o su equivalente en dinero si se omite. La Cesantía (Art. 80) es un auxilio económico obligatorio por desahucio proporcional al tiempo laborado." }
+        "name": "¿Cuál es la diferencia técnica entre el Preaviso (Art. 76) y la Cesantía (Art. 80) en RD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El Preaviso (Art. 76) es una obligación recíproca de notificación anticipada de terminación del contrato por desahucio (7, 14 o 28 días), que solo se convierte en indemnización pecuniaria cuando la parte que ejerce el desahucio omite otorgar el plazo. El Auxilio de Cesantía (Art. 80) es una indemnización patrimonial exclusiva a favor del trabajador desahuciado o que dimite justificadamente, proporcional a toda su antigüedad acumulada." }
       },
       {
         "@type": "Question",
-        "name": "¿Por qué se utiliza el número 23.83 para calcular el salario diario?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El divisor 23.83 representa el promedio de días laborables efectivos al mes en la legislación dominicana (365 días menos domingos y feriados divididos entre 12 meses)." }
+        "name": "¿Cuáles son los divisores oficiales para calcular el salario diario según el Reglamento 258-93?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Conforme al Artículo 32 del Reglamento núm. 258-93 para la aplicación del Código de Trabajo, para obtener el salario diario se divide la remuneración ordinaria entre 23.83 cuando el pago es mensual, entre 11.91 cuando el pago es quincenal y entre 5.5 cuando el pago es semanal." }
       },
       {
         "@type": "Question",
-        "name": "¿Cuánto tiempo tiene el empleador para pagar la cesantía en RD?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El empleador tiene 10 días laborables tras el desahucio. Si se excede, el Art. 86 establece una sanción de un día de salario adicional por cada día de mora." }
+        "name": "¿Qué pagos entran y cuáles se excluyen del salario ordinario computable según el Artículo 85?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El Artículo 85 establece que el preaviso y la cesantía se calculan tomando el promedio de los salarios devengados en el último año o fracción de año, incluyendo el sueldo fijo, las comisiones regulares por ventas o cobros y las bonificaciones habituales de producción. Quedan excluidos expresamente los pagos por horas extraordinarias, las propinas legales (Art. 197), los viáticos sujetos a liquidación y la bonificación anual de utilidades." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se calcula la mora patronal del Artículo 86 cuando la empresa se retrasa más de 10 días?",
+        "acceptedAnswer": { "@type": "Answer", "text": "El Artículo 86 del Código de Trabajo otorga un plazo perentorio de diez (10) días contados desde la fecha de terminación por desahucio para pagar el preaviso y el auxilio de cesantía. A partir del día 11, el empleador debe pagar al trabajador una suma igual a un (1) día del último salario ordinario devengado por cada día de retardo hasta la fecha del pago efectivo y total." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Si me aumentaron el sueldo hace 4 meses, mis prestaciones se calculan con el sueldo nuevo o con el promedio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Por mandato del Artículo 85 del Código de Trabajo, cuando el salario ha variado durante los últimos 12 meses (ya sea por un aumento salarial o por comisiones variables), se suman todos los salarios ordinarios brutos devengados durante esos 12 meses completos, se divide el total entre 12 para obtener el salario mensual promedio y luego se divide entre 23.83 para hallar el salario diario promedio." }
       }
     ]
   }
@@ -96,13 +130,6 @@
       color: var(--text);
       line-height: 1.8;
       font-size: 17px;
-    }
-
-    .glass {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.5);
     }
 
     .navbar {
@@ -152,6 +179,7 @@
     }
     .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--blue); }
+    .breadcrumb .sep { color: var(--light); }
 
     .art-meta {
       font-size: 0.825rem; font-weight: 700; letter-spacing: 0.1em;
@@ -167,8 +195,15 @@
 
     .art-lead {
       font-size: 1.15rem; color: var(--gray);
-      max-width: 700px; margin-bottom: 2.5rem; line-height: 1.7;
+      max-width: 720px; margin-bottom: 1.5rem; line-height: 1.7;
     }
+
+    .art-byline {
+      font-size: 0.88rem; color: var(--gray); font-weight: 600;
+      margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .art-byline a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .art-byline a:hover { text-decoration: underline; }
 
     .key-box {
       display: grid; grid-template-columns: repeat(4,1fr);
@@ -183,7 +218,7 @@
       padding: 1.5rem 1rem; text-align: center;
     }
     .key-val {
-      display: block; font-size: 1.75rem; font-weight: 900;
+      display: block; font-size: 1.55rem; font-weight: 900;
       color: var(--blue); line-height: 1; margin-bottom: 0.4rem;
     }
     .key-lbl {
@@ -194,6 +229,8 @@
     .content { font-size: 1.05rem; }
     .content p { margin-bottom: 1.4rem; color: var(--text); }
     .content p strong { color: var(--text); font-weight: 700; }
+    .content a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .content a:hover { text-decoration: underline; }
 
     h2 {
       font-size: clamp(1.4rem, 3vw, 1.9rem);
@@ -226,6 +263,36 @@
       margin: 2rem 0; font-size: 0.95rem; font-weight: 500;
     }
 
+    .ex-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.07);
+    }
+    .ex-label {
+      font-size: 0.75rem; font-weight: 800; color: var(--red);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;
+    }
+    .ex-title {
+      font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 0.75rem;
+    }
+    .calc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; gap: 1rem;
+    }
+    .calc-row:last-of-type { border-bottom: none; }
+    .calc-lbl { color: var(--gray); }
+    .calc-val { color: var(--text); font-weight: 700; text-align: right; }
+    .calc-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.25rem; border-radius: 1rem; margin-top: 1rem;
+      background: rgba(0,56,168,0.06); border: 1px solid rgba(0,56,168,0.15);
+    }
+    .total-lbl { font-weight: 800; color: var(--blue); font-size: 0.95rem; }
+    .total-val { font-size: 1.4rem; font-weight: 900; color: var(--blue); }
+
     .cta-banner {
       background: linear-gradient(135deg, #0038A8, #002673);
       border-radius: 2rem; padding: 2.5rem; color: var(--white);
@@ -235,30 +302,68 @@
     .cta-banner h3 { color: var(--white); font-size: 1.75rem; font-weight: 900; margin-bottom: 0.75rem; }
     .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 1.5rem; }
     .cta-btn {
-      display: inline-block; background: var(--white); color: var(--blue);
+      display: inline-block; background: var(--white); color: var(--blue) !important;
       font-weight: 800; padding: 14px 32px; border-radius: 1rem;
-      text-decoration: none; font-size: 1rem; text-transform: uppercase;
+      text-decoration: none !important; font-size: 1rem; text-transform: uppercase;
       letter-spacing: 0.05em; transition: all 0.3s;
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(0,0,0,0.25); }
 
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      padding: 1.2rem 0; cursor: pointer; list-style: none;
+      font-weight: 700; color: var(--text); font-size: 1rem;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q:hover { color: var(--blue); }
+    .faq-q::after {
+      content: '+'; font-size: 1.6rem; font-weight: 300;
+      color: var(--blue); flex-shrink: 0; line-height: 1;
+      transition: transform 0.3s;
+    }
+    details[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      color: var(--gray); padding: 0 0 1.25rem;
+      line-height: 1.78; font-size: 0.95rem;
+    }
+
+    .author-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 1.5rem; padding: 1.5rem 1.75rem;
+      margin-top: 3rem; display: flex; flex-direction: column; gap: 0.4rem;
+      box-shadow: 0 10px 24px -10px rgba(0,0,0,0.06);
+    }
+    .author-box a { color: var(--blue); font-weight: 800; text-decoration: none; }
+    .author-box a:hover { text-decoration: underline; }
+
     footer { background: #F8FAFC; border-top: 1px solid var(--border); padding: 3rem 1.5rem; text-align: center; }
+
+    @media (max-width: 640px) {
+      .navbar { padding: 0 1rem; }
+      .nav-inner { gap: 10px; }
+      .nav-back-text, .nav-back span { display: none; }
+      .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="../blog.html" class="nav-back">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-        <span>Volver al Blog</span>
-      </a>
-      <a href="../index.html" class="nav-logo"><span>Impu</span><span>cálculo</span></a>
-      <a href="../prestaciones.html" class="nav-cta">Calcular Gratis</a>
-    </div>
-  </nav>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" aria-label="Impucálculo inicio"><span>Impu</span><span>cálculo</span></a>
+        <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span class="nav-back-text">Volver al Blog</span>
+        </a>
+        <a href="../prestaciones.html" class="nav-cta" aria-label="Calcular prestaciones ahora">Calcular Ahora</a>
+      </div>
+    </nav>
+  </header>
 
   <main class="container">
     <div class="breadcrumb">
@@ -269,130 +374,340 @@
       <span>República Dominicana</span>
     </div>
 
-    <div class="art-meta">Laboral · República Dominicana</div>
-    <h1>Cómo Calcular el Preaviso y la Cesantía en RD (Ley 16-92)</h1>
+    <div class="art-meta">Ingeniería Laboral · Arts. 76, 80, 85 y 86 (Ley 16-92)</div>
+    <h1>Cálculo de Cesantía y Preaviso en RD 2026: Guía del Código de Trabajo</h1>
     <p class="art-lead">
-      Descubre la fórmula legal oficial para calcular las indemnizaciones por desahucio en República Dominicana, la aplicación del divisor 23.83 y los plazos legales para recibir tu dinero.
+      Manual técnico-matemático para auditar paso a paso las indemnizaciones por desahucio en la República Dominicana: los divisores exactos del Reglamento 258-93 (23.83, 11.91 y 5.5), el promedio de los últimos 12 meses con comisiones o aumentos salariales y la penalidad de un día de salario por cada día de retraso del Artículo 86.
     </p>
+    <div class="art-byline">
+      <span>Por <a href="../sobre-nosotros.html">Starlin Santana — Fundador y Responsable Editorial</a></span>
+      <span>·</span>
+      <span>Actualizado: 14 de noviembre de 2026</span>
+    </div>
 
     <!-- Key Stats Box -->
     <div class="key-box">
       <div class="key-item">
-        <span class="key-val">23.83</span>
-        <span class="key-lbl">Factor Salario Diario</span>
+        <span class="key-val">23.83 / 5.5</span>
+        <span class="key-lbl">Divisores Regl. 258-93</span>
       </div>
       <div class="key-item">
-        <span class="key-val">28 Días</span>
-        <span class="key-lbl">Preaviso Máximo</span>
+        <span class="key-val">Art. 85</span>
+        <span class="key-lbl">Promedio 12 Meses</span>
       </div>
       <div class="key-item">
         <span class="key-val">23 Días</span>
-        <span class="key-lbl">Cesantía/Año (>5 Años)</span>
+        <span class="key-lbl">Cesantía/Año (≥5 Años)</span>
       </div>
       <div class="key-item">
-        <span class="key-val">10 Días</span>
-        <span class="key-lbl">Plazo de Pago (Art. 86)</span>
+        <span class="key-val">+1 Día/Mora</span>
+        <span class="key-lbl">Sanción Art. 86 (&gt;10d)</span>
       </div>
     </div>
 
     <article class="content">
       <p>
-        El término de una relación laboral por decisión de la empresa en la República Dominicana se conoce legalmente como <strong>Desahucio</strong>. Cuando un empleador ejerce el desahucio, el <strong>Código de Trabajo (Ley 16-92)</strong> establece la obligación ineludible de indemnizar al trabajador mediante dos conceptos principales: el <strong>Preaviso</strong> y el <strong>Auxilio de Cesantía</strong>.
+        Cuando una empresa en la República Dominicana decide poner término a un contrato por tiempo indefinido sin alegar causa disciplinaria —figura jurídica denominada <strong>Desahucio</strong> en el <strong>Artículo 75 del Código de Trabajo (Ley 16-92)</strong>—, se activa una estructura matemática estricta para cuantificar el <strong>Preaviso</strong> y el <strong>Auxilio de Cesantía</strong>. Aunque las tablas de días por antigüedad son conocidas, la mayoría de las discrepancias en las hojas de cálculo de Recursos Humanos surgen en tres puntos técnicos: el divisor según la frecuencia de pago, el cómputo del salario promedio anual cuando existen comisiones o aumentos (Art. 85) y la cuantificación del recargo por mora patronal (Art. 86).
+      </p>
+      <p>
+        Si buscas un panorama introductorio sobre todos los componentes de un finiquito (incluyendo vacaciones y regalía), puedes consultar nuestra <a href="prestaciones-laborales-guia.html">Guía General de Prestaciones Laborales</a>. En este artículo técnico profundizamos exclusivamente en la <strong>fórmula aritmética y jurisprudencial de los Artículos 76 al 86 del Código de Trabajo y el Artículo 32 del Reglamento núm. 258-93</strong>.
       </p>
 
-      <h2>1. El Preaviso (Artículos 76 al 79)</h2>
+      <h2>1. El Preaviso (Artículos 76 al 79 CT): Plazo vs. Indemnización Sustitutiva</h2>
       <p>
-        El <strong>Preaviso</strong> es el plazo de aviso previo que una parte debe dar a la otra antes de rescindir un contrato por tiempo indefinido. Si el empleador no le permite al trabajador cumplir este plazo laborando, deberá pagarle el importe correspondiente en dinero:
+        El <strong>Preaviso</strong> es una obligación recíproca: tanto el empleador como el trabajador que ejerza el desahucio debe dar aviso previo a la otra parte con la anticipación graduada en el <strong>Artículo 76</strong>. Durante el transcurso del preaviso trabajado, las obligaciones del contrato subsisten íntegramente y, conforme al <strong>Artículo 78</strong>, el trabajador tiene derecho a <strong>dos (2) medias jornadas semanales remuneradas</strong> para gestionar un nuevo empleo.
+      </p>
+      <p>
+        En la práctica corporativa dominicana, más del 90% de las empresas prefieren prescindir de los servicios del empleado el mismo día de la notificación. Cuando se omite el plazo en tiempo, el <strong>Artículo 79</strong> lo transforma automáticamente en una <strong>indemnización sustitutiva en dinero</strong> libre de Impuesto Sobre la Renta (ISR) y de retenciones de Seguridad Social (TSS):
       </p>
 
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Antigüedad de Servicio</th>
-              <th>Plazo de Preaviso a Pagar</th>
+              <th>Antigüedad Continua de Servicio (Art. 76 CT)</th>
+              <th>Plazo o Días de Salario Ordinario a Pagar</th>
+              <th>Fórmula Matemática</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>De 3 a 6 meses de trabajo continuo</td>
+              <td>Después de un trabajo continuo no menor de 3 meses ni mayor de 6 meses</td>
               <td><strong>7 días de salario ordinario</strong></td>
+              <td>Salario Diario Promedio × 7</td>
             </tr>
             <tr>
-              <td>De 6 meses a 1 año de trabajo continuo</td>
+              <td>Después de un trabajo continuo que exceda de 6 meses y no sea mayor de 1 año</td>
               <td><strong>14 días de salario ordinario</strong></td>
+              <td>Salario Diario Promedio × 14</td>
             </tr>
             <tr>
-              <td>Más de 1 año de trabajo continuo</td>
+              <td>Después de un año de trabajo continuo</td>
               <td><strong>28 días de salario ordinario</strong></td>
+              <td>Salario Diario Promedio × 28</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>2. El Auxilio de Cesantía (Artículos 80 al 86)</h2>
+      <h2>2. El Auxilio de Cesantía (Artículos 80 al 84 CT) y el Cálculo de Fracciones Mixtas</h2>
       <p>
-        El <strong>Auxilio de Cesantía</strong> es el pago protector otorgado al trabajador desahuciado para garantizar su estabilidad económica mientras encuentra un nuevo puesto de trabajo. Los días a liquidar varían en función de la antigüedad:
+        El <strong>Auxilio de Cesantía</strong> es el núcleo patrimonial de la liquidación por desahucio patronal (o por <a href="dimision-laboral-rd-prestaciones.html">dimisión justificada del trabajador</a>). El <strong>Artículo 80</strong> establece cuatro tramos progresivos que aplican sin límite máximo de años para todo el tiempo laborado bajo la vigencia de la Ley 16-92:
       </p>
 
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Antigüedad en la Empresa</th>
-              <th>Días de Cesantía a Liquidar</th>
+              <th>Antigüedad en la Empresa (Art. 80 CT)</th>
+              <th>Días de Auxilio de Cesantía a Liquidar</th>
+              <th>Regla de Aplicación para Fracciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>De 3 a 6 meses de servicio</td>
-              <td><strong>6 días de salario promedio</strong></td>
+              <td>De 3 meses a 6 meses de servicio</td>
+              <td><strong>6 días de salario ordinario</strong></td>
+              <td>Aplica como tramo inicial o como fracción adicional de año</td>
             </tr>
             <tr>
-              <td>De 6 meses a 1 año de servicio</td>
-              <td><strong>13 días de salario promedio</strong></td>
+              <td>Más de 6 meses hasta 1 año de servicio</td>
+              <td><strong>13 días de salario ordinario</strong></td>
+              <td>Aplica como tramo inicial o como fracción adicional de año</td>
             </tr>
             <tr>
-              <td>De 1 a 5 años de servicio continuo</td>
-              <td><strong>21 días por cada año laborado</strong></td>
+              <td>De 1 año a menos de 5 años de servicio continuo</td>
+              <td><strong>21 días por cada año de servicio</strong></td>
+              <td>Se suman 6 o 13 días si existe fracción adicional ≥ 3 meses</td>
             </tr>
             <tr>
-              <td>Más de 5 años de servicio continuo</td>
-              <td><strong>23 días por cada año laborado</strong></td>
+              <td>5 años o más de servicio continuo ("no menor de 5 años", Art. 80 ord. 4to)</td>
+              <td><strong>23 días por cada año de servicio</strong></td>
+              <td>Los 23 días se multiplican por TODOS los años + fracción (6 o 13d)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>3. La Fórmula del Salario Diario Promedio: El Divisor 23.83</h2>
       <p>
-        Para convertir el sueldo mensual computable en el valor por día laborable, la legislación dominicana establece divisores oficiales obligatorios:
+        <strong>Detalle técnico sobre antigüedad mixta (años + meses):</strong> Cuando un empleado tiene, por ejemplo, <strong>3 años y 7 meses</strong> de servicio continuo, la cesantía no se calcula por regla de tres decimal sobre el cuarto año, sino combinando los ordinales del Artículo 80: le corresponden <strong>3 años × 21 días (63 días)</strong> más <strong>13 días por la fracción superior a 6 meses</strong>, para un total exacto de <strong>76 días de salario ordinario</strong>. Asimismo, una vez superada la barrera de los 5 años (por ejemplo, 5 años y 1 mes), el factor de <strong>23 días por año se aplica retroactivamente a la totalidad de los años servidos</strong> (5 × 23 = 115 días).
+      </p>
+
+      <h2>3. Los Divisores Oficiales del Salario Diario (Art. 32 del Reglamento 258-93)</h2>
+      <p>
+        Para convertir el salario ordinario en el valor de un (1) día laborable, está prohibido dividir el sueldo mensual entre 30 días calendario. El <strong>Artículo 32 del Reglamento núm. 258-93 para la aplicación del Código de Trabajo</strong> fija de manera imperativa los tres divisores oficiales según la modalidad de pago del trabajador:
       </p>
       <ul>
-        <li><strong>Cobro Mensual:</strong> Salario Mensual Ordinario ÷ <strong>23.83</strong></li>
-        <li><strong>Cobro Quincenal:</strong> Salario Quincenal Ordinario ÷ <strong>11.91</strong></li>
-        <li><strong>Cobro Semanal:</strong> Salario Semanal Ordinario ÷ <strong>5.95</strong></li>
+        <li><strong>Trabajadores con salario mensual:</strong> Salario Mensual Ordinario ÷ <strong>23.83</strong></li>
+        <li><strong>Trabajadores con salario quincenal:</strong> Salario Quincenal Ordinario ÷ <strong>11.91</strong></li>
+        <li><strong>Trabajadores con salario semanal:</strong> Salario Semanal Ordinario ÷ <strong>5.5</strong></li>
       </ul>
+      <p>
+        ¿De dónde provienen exactamente estos factores? En la jornada ordinaria dominicana de 44 horas semanales (5 días y medio de labor por semana), un trabajador semanal divide su paga entre <strong>5.5 días</strong>; multiplicado por las 52 semanas del año y dividido entre 12 meses arroja el promedio legal de <strong>23.83 días laborables por mes</strong> (y su mitad exacta de <strong>11.91 días por quincena</strong>).
+      </p>
 
-      <div class="alert-box">
-        ⚠️ <strong>Importante:</strong> El salario computable incluye el sueldo base más comisiones fijas e incentivos regulares devengados en los últimos 12 meses.
+      <h2>4. Integración del Salario Computable y Promedio de 12 Meses (Artículo 85 CT)</h2>
+      <p>
+        El <strong>Artículo 85 del Código de Trabajo</strong> establece que el importe del preaviso y del auxilio de cesantía se calcula tomando como base el <strong>promedio de los salarios devengados por el trabajador durante el último año o fracción de año</strong> que tenga de vigencia el contrato. Para evitar errores contables o litigios, es vital distinguir qué partidas salariales integran la base:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Partida Remunerativa</th>
+              <th>¿Entra al Promedio del Art. 85?</th>
+              <th>Fundamento Legal y Jurisprudencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sueldo base fijo (bruto, sin descontar TSS ni ISR)</strong></td>
+              <td><strong>SÍ (100%)</strong></td>
+              <td>Art. 192 y Art. 85 del Código de Trabajo</td>
+            </tr>
+            <tr>
+              <td><strong>Comisiones regulares por ventas o cobros</strong></td>
+              <td><strong>SÍ (100%)</strong></td>
+              <td>Art. 192 y Art. 311 CT (son salario ordinario por naturaleza)</td>
+            </tr>
+            <tr>
+              <td><strong>Incentivos o primas periódicas de producción</strong></td>
+              <td><strong>SÍ (100%)</strong></td>
+              <td>Jurisprudencia constante SCJ cuando se pagan de forma permanente</td>
+            </tr>
+            <tr>
+              <td><strong>Horas extraordinarias (horas extras)</strong></td>
+              <td><strong>NO (Excluidas)</strong></td>
+              <td>Párrafo expreso del Art. 85 CT: "Para estos cálculos sólo se tendrán en cuenta los salarios correspondientes a horas ordinarias"</td>
+            </tr>
+            <tr>
+              <td><strong>Propina legal del 10% (hoteles y restaurantes)</strong></td>
+              <td><strong>NO (Excluida)</strong></td>
+              <td>Art. 197 CT: en ningún caso se considera parte del salario para prestaciones</td>
+            </tr>
+            <tr>
+              <td><strong>Viáticos con liquidación de gastos y Bonificación Anual</strong></td>
+              <td><strong>NO (Excluidos)</strong></td>
+              <td>No tienen carácter de retribución ordinaria mensual</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <h2>4. Ejemplo Práctico de Cálculo</h2>
+      <h3>Cómo se calcula el promedio cuando hubo un aumento salarial o comisiones variables</h3>
       <p>
-        Imaginemos un empleado con un sueldo de <strong>RD$ 40,000 mensuales</strong> y una antigüedad de <strong>3 años completos</strong> desahuciado sin preaviso:
+        Si un trabajador tenía un sueldo fijo de RD$ 40,000 durante los primeros 8 meses de su último año y recibió un aumento a RD$ 52,000 durante los últimos 4 meses antes de ser desahuciado, la empresa no liquida con RD$ 40,000 ni tampoco exclusivamente con RD$ 52,000: debe aplicar la media ponderada del <strong>Artículo 85</strong> sumando los 12 meses reales: <code>[(40,000 × 8) + (52,000 × 4)] ÷ 12 = RD$ 44,000.00</code> de salario promedio mensual computable. Lo mismo ocurre cuando el empleado devenga sueldo base más comisiones variables mes a mes.
+      </p>
+
+      <h2>5. La Mora Patronal del Artículo 86: Un Día de Salario por Cada Día de Retardo</h2>
+      <p>
+        El <strong>Artículo 86 del Código de Trabajo</strong> constituye el mecanismo coercitivo más poderoso del derecho laboral dominicano para garantizar el pago oportuno de las indemnizaciones. La norma dispone dos reglas de oro:
       </p>
       <ol>
-        <li><strong>Salario Diario Promedio:</strong> RD$ 40,000 / 23.83 = <strong>RD$ 1,678.55</strong></li>
-        <li><strong>Preaviso (28 días):</strong> 28 × RD$ 1,678.55 = <strong>RD$ 46,999.40</strong></li>
-        <li><strong>Cesantía (21 días × 3 años = 63 días):</strong> 63 × RD$ 1,678.55 = <strong>RD$ 105,748.65</strong></li>
-        <li><strong>Total Indemnización Preaviso + Cesantía:</strong> <strong>RD$ 152,748.05</strong></li>
+        <li><strong>Exención total e inembargabilidad:</strong> Las indemnizaciones por omisión del preaviso y por el auxilio de cesantía <strong>no están sujetas al pago del Impuesto Sobre la Renta (ISR)</strong> ni son susceptibles de gravamen, embargo, compensación, traspaso o venta (con excepción de los créditos otorgados o garantizados por el empleador o cooperativas autorizadas).</li>
+        <li><strong>Plazo fatal de 10 días y penalidad diaria:</strong> Dichas indemnizaciones deben ser pagadas al trabajador en un plazo de <strong>diez (10) días</strong>, a contar de la fecha de la terminación del contrato por desahucio. Si el empleador no efectúa el pago dentro de esos 10 días, <strong>debe pagar una suma igual a un (1) día del último salario devengado por el trabajador por cada día de retardo</strong> hasta que se produzca el pago completo.</li>
       </ol>
+
+      <div class="alert-box">
+        ⚠️ <strong>Fórmula de la Sanción del Art. 86:</strong> A partir del día 11 posterior a la fecha de efectividad del desahucio, cada día calendario de atraso suma <code>1 × Salario Diario Ordinario</code> a la deuda patronal. Si una empresa retrasa el pago 45 días en total, los primeros 10 días son el plazo de gracia legal y los <strong>35 días restantes generan 35 días completos de salario adicional</strong> como penalidad acumulativa.
+      </div>
+
+      <h2>6. Dos Ejemplos Numéricos Avanzados Paso a Paso</h2>
+      <p>
+        Apliquemos estas reglas legales en dos escenarios técnicos reales que suelen presentarse en auditorías de liquidación laboral:
+      </p>
+
+      <!-- EJEMPLO AVANZADO 1 -->
+      <div class="ex-box">
+        <div class="ex-label">Ejemplo Avanzado 1 · Salario Variable con Comisiones y Fracción de Antigüedad (Arts. 80 y 85)</div>
+        <div class="ex-title">Ejecutivo Comercial — 4 años y 8 meses de servicio · Sueldo Base + Comisiones</div>
+        <p style="font-size:0.94rem; color:var(--gray); margin-bottom:1.2rem;">
+          El trabajador percibe un sueldo base fijo de <strong>RD$ 30,000.00/mes</strong>. Durante sus últimos 12 meses devengó un total acumulado de <strong>RD$ 300,000.00 en comisiones por ventas</strong> y además cobró <strong>RD$ 24,000.00 en horas extras</strong>. Es desahuciado sin preaviso tras 4 años y 8 meses continuos:
+        </p>
+        <div class="calc-row">
+          <span class="calc-lbl">1. Total sueldos base últimos 12 meses (RD$ 30,000 × 12)</span>
+          <span class="calc-val">RD$ 360,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">2. Más total comisiones ordinarias últimos 12 meses (Art. 85 y 311 CT)</span>
+          <span class="calc-val">+ RD$ 300,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">3. Exclusión de horas extras cobradas (RD$ 24,000 excluidos por Art. 85 CT)</span>
+          <span class="calc-val">RD$ 0.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">4. Salario Mensual Promedio Computable (RD$ 660,000 ÷ 12 meses)</span>
+          <span class="calc-val">RD$ 55,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">5. Salario Diario Promedio (RD$ 55,000.00 ÷ 23.83)</span>
+          <span class="calc-val">RD$ 2,308.02</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">6. Preaviso omitido (&gt;1 año = 28 días × RD$ 2,308.02)</span>
+          <span class="calc-val">RD$ 64,624.56</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">7. Cesantía por 4 años completos (4 × 21 días = 84 días × RD$ 2,308.02)</span>
+          <span class="calc-val">RD$ 193,873.68</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">8. Cesantía por fracción de 8 meses (&gt;6 meses = 13 días × RD$ 2,308.02)</span>
+          <span class="calc-val">RD$ 30,004.26</span>
+        </div>
+        <div class="calc-total">
+          <span class="total-lbl">TOTAL INDEMNIZACIÓN PREAVISO + CESANTÍA (97d + 28d)</span>
+          <span class="total-val">RD$ 288,502.50</span>
+        </div>
+      </div>
+
+      <!-- EJEMPLO AVANZADO 2 -->
+      <div class="ex-box">
+        <div class="ex-label">Ejemplo Avanzado 2 · Cálculo de la Penalidad por Mora Patronal (Artículo 86 CT)</div>
+        <div class="ex-title">Analista de Operaciones — 6 años exactos de servicio · Salario: RD$ 47,660.00/mes · Pago a los 40 días</div>
+        <p style="font-size:0.94rem; color:var(--gray); margin-bottom:1.2rem;">
+          La empresa ejerce el desahucio el día 1 del mes sin preaviso. El plazo legal de 10 días del Artículo 86 vence el día 11, pero la empresa retiene el cheque y recién realiza el pago el <strong>día 40 tras la terminación</strong> (acumulando <strong>30 días netos de retardo</strong> después del décimo día):
+        </p>
+        <div class="calc-row">
+          <span class="calc-lbl">1. Salario Diario Ordinario (RD$ 47,660.00 ÷ 23.83)</span>
+          <span class="calc-val">RD$ 2,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">2. Preaviso (28 días × RD$ 2,000.00)</span>
+          <span class="calc-val">RD$ 56,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">3. Auxilio de Cesantía (&gt;5 años: 6 años × 23 días = 138 días × RD$ 2,000.00)</span>
+          <span class="calc-val">RD$ 276,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">Subtotal Original al Día 10 (Preaviso + Cesantía)</span>
+          <span class="calc-val">RD$ 332,000.00</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">4. Sanción por Mora del Art. 86 (40 días transcurridos - 10 días de plazo = 30 días × RD$ 2,000.00)</span>
+          <span class="calc-val" style="color:var(--red);">+ RD$ 60,000.00</span>
+        </div>
+        <div class="calc-total">
+          <span class="total-lbl">TOTAL EXIGIBLE AL DÍA 40 CON RECARGO DEL ART. 86</span>
+          <span class="total-val">RD$ 392,000.00</span>
+        </div>
+      </div>
 
       <div class="cta-banner">
         <h3>Calcula tus Prestaciones en Segundos</h3>
-        <p>Utiliza nuestra calculadora oficial adaptada al Código de Trabajo de República Dominicana.</p>
+        <p>Utiliza nuestra calculadora oficial adaptada al Código de Trabajo de República Dominicana y al Reglamento 258-93.</p>
         <a href="../prestaciones.html" class="cta-btn">Ir a la Calculadora</a>
+      </div>
+
+      <!-- SECCIÓN DE PREGUNTAS FRECUENTES VISIBLES EN HTML -->
+      <h2 id="faq">Preguntas Frecuentes sobre el Cálculo de Preaviso y Cesantía en RD</h2>
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Cuál es la diferencia técnica entre el Preaviso (Art. 76) y la Cesantía (Art. 80) en RD?</summary>
+        <p class="faq-a">El Preaviso (Art. 76) es una obligación recíproca de notificación anticipada de terminación del contrato por desahucio (7, 14 o 28 días), que solo se convierte en indemnización pecuniaria cuando la parte que ejerce el desahucio omite otorgar el plazo. El Auxilio de Cesantía (Art. 80) es una indemnización patrimonial exclusiva a favor del trabajador desahuciado o que dimite justificadamente, proporcional a toda su antigüedad acumulada.</p>
+      </details>
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Cuáles son los divisores oficiales para calcular el salario diario según el Reglamento 258-93?</summary>
+        <p class="faq-a">Conforme al Artículo 32 del Reglamento núm. 258-93 para la aplicación del Código de Trabajo, para obtener el salario diario se divide la remuneración ordinaria entre 23.83 cuando el pago es mensual, entre 11.91 cuando el pago es quincenal y entre 5.5 cuando el pago es semanal.</p>
+      </details>
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Qué pagos entran y cuáles se excluyen del salario ordinario computable según el Artículo 85?</summary>
+        <p class="faq-a">El Artículo 85 establece que el preaviso y la cesantía se calculan tomando el promedio de los salarios devengados en el último año o fracción de año, incluyendo el sueldo fijo, las comisiones regulares por ventas o cobros y las bonificaciones habituales de producción. Quedan excluidos expresamente los pagos por horas extraordinarias, las propinas legales (Art. 197), los viáticos sujetos a liquidación y la bonificación anual de utilidades.</p>
+      </details>
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Cómo se calcula la mora patronal del Artículo 86 cuando la empresa se retrasa más de 10 días?</summary>
+        <p class="faq-a">El Artículo 86 del Código de Trabajo otorga un plazo perentorio de diez (10) días contados desde la fecha de terminación por desahucio para pagar el preaviso y el auxilio de cesantía. A partir del día 11, el empleador debe pagar al trabajador una suma igual a un (1) día del último salario ordinario devengado por cada día de retardo hasta la fecha del pago efectivo y total.</p>
+      </details>
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Si me aumentaron el sueldo hace 4 meses, mis prestaciones se calculan con el sueldo nuevo o con el promedio?</summary>
+        <p class="faq-a">Por mandato del Artículo 85 del Código de Trabajo, cuando el salario ha variado durante los últimos 12 meses (ya sea por un aumento salarial o por comisiones variables), se suman todos los salarios ordinarios brutos devengados durante esos 12 meses completos, se divide el total entre 12 para obtener el salario mensual promedio y luego se divide entre 23.83 para hallar el salario diario promedio.</p>
+      </details>
+
+      <!-- FUENTES OFICIALES -->
+      <div style="background: rgba(0,56,168,0.05); border: 1px solid rgba(0,56,168,0.15); border-radius: 1.25rem; padding: 1.25rem 1.5rem; margin-top: 2.5rem;" aria-label="Fuentes legales y oficiales consultadas">
+        <h3 style="margin-top:0; margin-bottom:0.75rem; color:var(--blue); font-size:1.05rem;">Fuentes Legales y Oficiales Consultadas</h3>
+        <ul style="margin-bottom:0; padding-left:1.25rem; font-size:0.92rem;">
+          <li><a href="https://mt.gob.do" target="_blank" rel="noopener noreferrer">Ministerio de Trabajo de la República Dominicana (mt.gob.do)</a> — Código de Trabajo (Ley 16-92), Arts. 75–86, 192, 197 y 311; Reglamento núm. 258-93 (Art. 32 sobre divisores 23.83, 11.91 y 5.5).</li>
+          <li><a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer">Dirección General de Impuestos Internos (dgii.gov.do)</a> — Normativa fiscal de exención del ISR para las indemnizaciones por preaviso y auxilio de cesantía (Art. 86 CT y Código Tributario).</li>
+          <li><a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer">Tesorería de la Seguridad Social (tss.gob.do)</a> — Exclusión de preaviso y cesantía de las retenciones de AFP y SFS/ARS, y base salarial ordinaria bruta (Ley 87-01).</li>
+        </ul>
+      </div>
+
+      <!-- FICHA DE AUTOR E-E-A-T -->
+      <div class="author-box" style="margin-top: 2rem;">
+        <p style="margin:0; font-size:0.95rem;">
+          <strong>Por <a href="../sobre-nosotros.html">Starlin Santana — Fundador y Responsable Editorial</a></strong>
+        </p>
+        <p style="margin:0; font-size:0.86rem; color:var(--gray);">
+          Especialista en el análisis práctico del Código de Trabajo de la República Dominicana (Ley 16-92), el Reglamento 258-93 y la modelación matemática de liquidaciones laborales e impuestos.
+        </p>
       </div>
     </article>
   </main>
@@ -408,12 +723,12 @@
       <div style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; font-size:0.875rem; font-weight:600;">
         <a href="../prestaciones.html" style="color:#475569; text-decoration:none;">Prestaciones</a>
         <a href="../calculadora.html" style="color:#475569; text-decoration:none;">Calculadora ISR</a>
-        <a href="../divisas.html" style="color:#475569; text-decoration:none;">Divisas</a>
         <a href="../blog.html" style="color:#475569; text-decoration:none;">Blog</a>
         <a href="../sobre-nosotros.html" style="color:#475569; text-decoration:none;">Sobre Nosotros</a>
         <a href="../terminos.html" style="color:#475569; text-decoration:none;">Términos</a>
         <a href="../privacidad.html" style="color:#475569; text-decoration:none;">Privacidad</a>
-        <a href="mailto:info@impucalculo.com" style="color:#0038A8; text-decoration:none;">Contacto</a>
+        <a href="../contacto.html" style="color:#0038A8; text-decoration:none;">Contacto</a>
+        <a href="mailto:info@impucalculo.com" style="color:#0038A8; text-decoration:none;">info@impucalculo.com</a>
       </div>
 
       <!-- Disclaimer legal explícito -->
