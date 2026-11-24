@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -92,6 +93,21 @@
             opacity: 0.65;
             cursor: not-allowed;
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <title>Contacto Directo y Correcciones Normativas | Impucálculo</title>
     <meta name="description"
@@ -156,13 +172,13 @@
     <!-- Responsive Header -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
+            <a href="/" class="flex items-center gap-3">
+                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain" width="562" height="444">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
             <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
                 <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -216,7 +232,7 @@
                         Completa el formulario para enviar tu mensaje directamente a <code>info@impucalculo.com</code> sin salir de esta página (los datos se transmiten cifrados vía Web3Forms únicamente para responder tu consulta).
                     </p>
 
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="bg-dr-slate-50 p-6 rounded-2xl border border-dr-slate-200 space-y-4" novalidate>
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="bg-dr-slate-50 p-6 rounded-2xl border border-dr-slate-200 space-y-4">
                         <input type="hidden" name="access_key" value="6389e168-57c3-45a2-b175-36d2839497e7">
                         <input type="hidden" name="from_name" value="Impucálculo - Contacto Web">
                         <input type="checkbox" id="contact-botcheck" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -264,8 +280,11 @@
                             <button type="submit" id="submit-btn" class="btn-primary text-sm">
                                 Enviar Mensaje
                             </button>
-                            <span class="text-xs text-dr-slate-500">Se enviará automáticamente a <code>info@impucalculo.com</code>.</span>
+                            <span class="text-xs text-dr-slate-600">Se enviará a <code>info@impucalculo.com</code>.</span>
                         </div>
+                        <p class="text-xs text-dr-slate-600 leading-relaxed pt-1">
+                            Al enviar este formulario aceptas el tratamiento de tu consulta conforme a nuestra <a href="privacidad.html" class="text-dr-blue underline font-semibold">Política de Privacidad</a> (Ley 172-13 RD) y el envío cifrado a través de <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-semibold">Web3Forms</a>.
+                        </p>
 
                         <div id="form-result" class="hidden p-4 rounded-xl space-y-3" aria-live="polite">
                             <p id="form-result-title" class="text-sm font-bold"></p>
@@ -330,7 +349,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
@@ -417,6 +436,7 @@
             }
 
             if (form) {
+                form.setAttribute('novalidate', '');
                 const submitBtn = document.getElementById('submit-btn');
                 const resultTitle = document.getElementById('form-result-title');
                 const resultDesc = document.getElementById('form-result-desc');

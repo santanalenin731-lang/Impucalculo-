@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -27,6 +28,21 @@
         @media (min-width: 640px) {
             .sm\:gap-5 { gap: 1.25rem; }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <title>Términos y Condiciones de Uso | Impucálculo</title>
     <meta name="description"
@@ -80,13 +96,13 @@
     <!-- Header Simple -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
+            <a href="/" class="flex items-center gap-3">
+                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain" width="562" height="444">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
             <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
                 <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -104,12 +120,12 @@
                     class="text-dr-blue font-semibold">14 de Noviembre de 2026</span></p>
 
             <div class="space-y-8 text-dr-slate-600 leading-relaxed">
-                <p>Bienvenido a <strong>Impucálculo</strong> (en adelante, "la Plataforma" o "el Sitio", accesible en <code>https://impucalculo.com</code>). Al acceder, navegar o utilizar nuestras calculadoras tributarias, laborales y recursos educativos, aceptas de forma íntegra y sin reservas los presentes Términos y Condiciones de Uso. Si no estás de acuerdo con alguna de las disposiciones aquí establecidas, te solicitamos abstenerte de utilizar la plataforma.</p>
+                <p>Bienvenido a <strong>Impucálculo</strong> (en adelante, "la Plataforma" o "el Sitio", proyecto tecnológico independiente operado por <strong>Starlin Santana</strong> desde Santo Domingo, República Dominicana, accesible en <code>https://impucalculo.com</code>). Al acceder, navegar o utilizar nuestras calculadoras tributarias, laborales y recursos educativos, aceptas de forma íntegra los presentes Términos y Condiciones de Uso. Si no estás de acuerdo con alguna de las disposiciones aquí establecidas, te solicitamos abstenerte de utilizar la plataforma.</p>
 
                 <div>
                     <h2 class="text-xl font-bold text-dr-slate-800 mb-3">1. Naturaleza del Servicio y Propósito Educativo</h2>
                     <p>Impucálculo es una plataforma web independiente cuyo propósito exclusivo es la <strong>educación financiera, la divulgación laboral y la simulación matemática de cálculos impositivos, aportes a la Seguridad Social y prestaciones laborales</strong> en la República Dominicana.</p>
-                    <p class="mt-2">Nuestras calculadoras de Sueldo Neto, Impuesto Sobre la Renta (ISR), Seguridad Social (TSS/AFP/ARS) y liquidaciones laborales (preaviso, cesantía, vacaciones, regalía pascual y bonificación) son herramientas didácticas basadas en leyes y normativas públicas vigentes (tales como la Ley 11-92 - Código Tributario, la Ley 87-01 - Sistema Dominicano de Seguridad Social y la Ley 16-92 - Código de Trabajo de la República Dominicana).</p>
+                    <p class="mt-2">Nuestras calculadoras de Sueldo Neto, Impuesto Sobre la Renta (ISR), Seguridad Social (TSS/AFP/ARS) y prestaciones laborales (preaviso, cesantía, vacaciones y regalía pascual), junto con nuestras guías educativas del blog (incluyendo gastos educativos y bonificación anual), son herramientas didácticas basadas en leyes y normativas públicas vigentes (Ley 11-92 - Código Tributario, Ley 87-01 - Sistema Dominicano de Seguridad Social y Ley 16-92 - Código de Trabajo de la República Dominicana).</p>
                 </div>
 
                 <div>
@@ -149,7 +165,7 @@
 
                 <div>
                     <h2 class="text-xl font-bold text-dr-slate-800 mb-3">6. Actualización Normativa y Parámetros Legales</h2>
-                    <p>Aunque nuestro equipo técnico y editorial revisa periódicamente las resoluciones de la DGII, la TSS y el Ministerio de Trabajo para mantener al día los topes salariales cotizables y tramos de exención del ISR, las normativas pueden experimentar modificaciones o interpretaciones particulares según el sector económico o régimen especial aplicable.</p>
+                    <p>Aunque el responsable editorial revisa periódicamente las resoluciones de la DGII, la TSS y el Ministerio de Trabajo para mantener al día los topes salariales cotizables y tramos de exención del ISR, las normativas pueden experimentar modificaciones o interpretaciones particulares según el sector económico o régimen especial aplicable.</p>
                 </div>
 
                 <div>
@@ -159,8 +175,8 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">8. Limitación de Responsabilidad</h2>
-                    <p>En la máxima medida permitida por la legislación aplicable en la República Dominicana, el fundador, desarrolladores y colaboradores de Impucálculo no serán responsables por pérdidas financieras, lucro cesante, decisiones empresariales, acuerdos de desahucio o daños directos o indirectos derivados del uso o interpretación de las simulaciones de esta plataforma.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">8. Limitación de Responsabilidad y Ley Aplicable</h2>
+                    <p>En la máxima medida permitida por la legislación aplicable en la República Dominicana, Starlin Santana como titular y desarrollador de Impucálculo no será responsable por pérdidas financieras, lucro cesante, decisiones empresariales, acuerdos de desahucio o daños directos o indirectos derivados del uso o interpretación de las simulaciones de esta plataforma. Estos Términos se rigen por las leyes de la República Dominicana y cualquier controversia se someterá a la jurisdicción competente de Santo Domingo, Distrito Nacional.</p>
                 </div>
 
                 <div>
@@ -174,8 +190,8 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">11. Canal Oficial de Contacto</h2>
-                    <p>Para cualquier duda, comentario, propuesta de mejora o aclaración relacionada con estos Términos y Condiciones, puedes ponerte en contacto con nuestro equipo editorial y técnico a través de nuestra <a href="contacto.html" class="text-dr-blue font-bold underline">página de contacto</a> o nuestro correo oficial:</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">11. Contacto Directo</h2>
+                    <p>Para cualquier duda, comentario, propuesta de mejora o aclaración relacionada con estos Términos y Condiciones, puedes escribirnos a través de nuestra <a href="contacto.html" class="text-dr-blue font-bold underline">página de contacto</a> o al correo de Impucálculo:</p>
                     <p class="mt-2">
                         ✉️ <a href="mailto:info@impucalculo.com" class="text-dr-blue font-bold underline hover:text-dr-red transition">info@impucalculo.com</a>
                     </p>
@@ -199,7 +215,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">

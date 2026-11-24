@@ -2,27 +2,36 @@
 <html lang="es-DO">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
+    </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1230372815450080">
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ window.dataLayer.push(arguments); }
-      window.gtag = window.gtag || gtag;
-      window.__consentDefaultSet = true;
-      window.gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
-        wait_for_update: 500
-      });
-    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Calculadora de Sueldo Neto e ISR RD 2026 | Impucálculo</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/calculadora.html">
 
@@ -34,7 +43,7 @@
 
     <meta name="keywords"
         content="calculadora fiscal, impuestos rd, retenciones de ley, isr, afp, ars, nomina, salario neto, republica dominicana">
-    <meta name="author" content="Impucálculo">
+    <meta name="author" content="Starlin Santana">
     <link rel="canonical" href="https://impucalculo.com/calculadora.html">
 
     <!-- Open Graph / Facebook -->
@@ -55,7 +64,7 @@
     <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts & Scripts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/tailwind.min.css">
 
@@ -194,12 +203,30 @@
                 height: 4rem;
             }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        input.peer:checked ~ .text-dr-slate-400 { color: #FFFFFF !important; }
+        .delete-btn:hover { color: #CE1126 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
     <!-- PWA Settings -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0038A8">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -232,12 +259,12 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 header-pad">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
-            <a href="index.html"
+            <a href="/"
                 class="flex items-center gap-3 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
                 <div class="header-logo flex items-center justify-center flex-shrink-0">
                     <img src="logo_new.webp" alt="Calculadora de ISR y Sueldo Neto RD - Impucálculo" class="header-logo object-contain drop-shadow-md"
-                        onerror="this.style.display='none'">
+                        onerror="this.style.display='none'" width="562" height="444">
                 </div>
                 <div>
                     <span class="block text-2xl font-extrabold tracking-tight leading-none">
@@ -250,7 +277,7 @@
             </a>
             <div class="flex items-center gap-3 md:gap-5">
                 <nav class="hidden md:flex items-center gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                    <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                    <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                     <a href="calculadora.html" class="text-dr-blue font-bold">Sueldo e ISR</a>
                     <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                     <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -259,6 +286,7 @@
                 </nav>
                 <!-- Botón de Ajustes (Sueldo Fijo) -->
                 <button onclick="openFixedSalaryModal()"
+                    aria-label="Configurar Sueldo Fijo"
                     class="flex-shrink-0 p-2 bg-dr-blue/5 rounded-xl border border-dr-blue/10 hover:bg-dr-blue/10 transition-colors group"
                     title="Configurar Sueldo Fijo">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -273,7 +301,7 @@
         </div>
         <!-- Barra de Navegación Móvil Visible -->
         <nav class="flex md:hidden items-center justify-center flex-wrap gap-x-4 gap-y-2 px-4 pt-2 mt-2 border-t border-dr-slate-200/70 text-xs font-bold" aria-label="Navegación móvil">
-            <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+            <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
             <a href="calculadora.html" class="text-dr-blue underline underline-offset-4">Sueldo/ISR</a>
             <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
             <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -302,8 +330,18 @@
             <div id="block-registro" class="md:col-span-5 space-y-8 parallax-block">
                 <div class="glass rounded-[2rem] p-8 neo-shadow border border-white tilt-card">
                     <div class="tilt-content">
-                        <div class="flex items-center gap-3 mb-8">
+                        <div class="flex items-center justify-between gap-3 mb-6">
                             <h2 class="text-xl font-extrabold tracking-tight"><span class="text-dr-blue">Registro de</span> <span class="text-dr-red">Ingreso</span></h2>
+                        </div>
+
+                        <div id="fixed-salary-indicator" class="hidden mb-6 p-3.5 rounded-xl bg-dr-blue/5 border border-dr-blue/20 flex items-center justify-between gap-3">
+                            <div class="text-xs font-bold text-dr-blue leading-snug">
+                                Sueldo fijo TSS activo: <span id="fixed-salary-indicator-amount" class="font-black">RD$ 0.00</span>/mes
+                            </div>
+                            <button type="button" onclick="deleteFixedSalary()"
+                                class="text-xs font-extrabold text-dr-red hover:underline flex-shrink-0">
+                                Desactivar
+                            </button>
                         </div>
 
                         <form id="tax-form" class="space-y-8">
@@ -548,24 +586,23 @@
                 <div
                     class="inline-flex px-3 py-1 bg-dr-blue/10 text-dr-blue text-[10px] font-black uppercase tracking-widest rounded-full mb-2">
                     Transparencia Fiscal · Normativa DGII y TSS 2026</div>
-                <h2 class="text-3xl md:text-4xl font-black text-dr-slate-800 tracking-tight">Metodología Oficial de Cálculo Fiscal y Seguridad Social</h2>
+                <h2 class="text-3xl md:text-4xl font-black text-dr-slate-800 tracking-tight">Metodología de Cálculo Fiscal y Seguridad Social (DGII y TSS)</h2>
                 <p class="text-dr-slate-600 font-medium max-w-3xl mx-auto leading-relaxed">
                     Guía técnica y normativa sobre el cálculo del salario neto, las cotizaciones obligatorias al Sistema Dominicano de Seguridad Social (Ley 87-01) y la retención mensual del Impuesto Sobre la Renta de Personas Físicas (Ley 11-92 / Código Tributario de la República Dominicana).
                 </p>
             </div>
 
-            <!-- Tarjeta de Autoría E-E-A-T -->
             <div class="glass rounded-2xl p-6 neo-shadow border border-dr-blue/20 bg-white/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-xl bg-dr-blue text-white flex items-center justify-center font-black text-lg flex-shrink-0 shadow-md">
                         SS
                     </div>
                     <div>
-                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Revisión Técnica y Legal Verificada</p>
+                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Metodología Contrastada con Normativa Pública</p>
                         <p class="text-sm font-bold text-dr-slate-800">
-                            Metodología desarrollada y verificada por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
+                            Simulador desarrollado y mantenido por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
                         </p>
-                        <p class="text-xs text-dr-slate-500 mt-0.5">Parámetros auditados conforme a las resoluciones vigentes del CNSS, la TSS y la Dirección General de Impuestos Internos (DGII).</p>
+                        <p class="text-xs text-dr-slate-600 mt-0.5">Fórmulas programadas conforme a las resoluciones públicas vigentes del CNSS, la TSS y la DGII (orientativo; no sustituye asesoría contable o fiscal).</p>
                     </div>
                 </div>
                 <a href="sobre-nosotros.html" class="px-4 py-2 rounded-xl bg-dr-blue/10 text-dr-blue text-xs font-extrabold uppercase tracking-wider hover:bg-dr-blue hover:text-white transition flex-shrink-0">
@@ -969,7 +1006,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
@@ -1046,8 +1083,8 @@
                         <span class="px-2 py-0.5 bg-dr-blue/10 text-dr-blue text-[8px] font-black uppercase rounded">Mes
                             Acumulado</span>
                     </div>
-                    <button class="delete-btn p-2 text-dr-slate-300 hover:text-dr-red transition-colors"
-                        title="Borrar registro">
+                    <button class="delete-btn p-2 text-dr-slate-400 hover:text-dr-red transition-colors"
+                        aria-label="Borrar registro" title="Borrar registro">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
@@ -1098,14 +1135,14 @@
         }
 
         const fmt = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' });
-        const fmtDate = (d) => {
-            const date = new Date(d + 'T00:00:00');
-            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
-        };
-
         const parseSafeDate = (d) => {
             const parsed = d ? new Date(d + 'T00:00:00') : new Date();
             return isNaN(parsed.getTime()) ? new Date() : parsed;
+        };
+
+        const fmtDate = (d) => {
+            const date = parseSafeDate(d);
+            return date.toLocaleDateString('es-DO', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
         };
 
         const getMonthYear = (d) => {
@@ -1166,6 +1203,19 @@
             }
         }
 
+        function updateFixedSalaryIndicator() {
+            const indicator = document.getElementById('fixed-salary-indicator');
+            const amtEl = document.getElementById('fixed-salary-indicator-amount');
+            const fixedAmt = parseFloat(fixedSalaryConfig.amount) || 0;
+            if (!indicator || !amtEl) return;
+            if (fixedSalaryConfig.enabled && fixedAmt > 0) {
+                amtEl.textContent = fmt.format(fixedAmt);
+                indicator.classList.remove('hidden');
+            } else {
+                indicator.classList.add('hidden');
+            }
+        }
+
         function saveFixedSalary() {
             const input = document.getElementById('modal-fixed-salary-input');
             const amount = parseFloat(input.value);
@@ -1174,13 +1224,9 @@
                 fixedSalaryConfig = { enabled: true, amount: amount };
                 localStorage.setItem(FIXED_SALARY_KEY, JSON.stringify(fixedSalaryConfig));
 
-                // Actualizar interfaz principal
-                // indicator removed
-
-                // Cerrar modal
+                updateFixedSalaryIndicator();
                 closeFixedSalaryModal();
 
-                // Recalcular si hay datos
                 if (elements.weeklyIncomeInput.value) {
                     updatePreview();
                 }
@@ -1196,72 +1242,30 @@
         function deleteFixedSalary() {
             fixedSalaryConfig = { enabled: false, amount: '' };
             localStorage.setItem(FIXED_SALARY_KEY, JSON.stringify(fixedSalaryConfig));
-            // indicator removed
+            updateFixedSalaryIndicator();
             closeFixedSalaryModal();
-            if (elements.weeklyIncomeInput.value) {
-                updatePreview();
-            }
+            updatePreview();
         }
 
 
-        // Cálculo correcto de TSS según ley dominicana (Resolución 72-03 CNSS)
-        // Las horas extras NO se gravan con AFP/ARS
-        // freq: solo se usa para prorratear cuando hay sueldo fijo mensual
+        // Cálculo de TSS conforme a la Ley 87-01 y Resolución 01-2025 TSS (topes 10 SMN SFS y 20 SMN AFP)
+        // Las horas extras NO cotizan TSS cuando se define sueldo fijo base; nunca excede el ingreso bruto ingresado.
         const calculateTSS = (grossIncome, fixedSalary = null, freq = 'MENSUAL') => {
-            // Aplicar topes mensuales
             const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS;
             const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP;
+            const safeGross = Math.max(0, Number(grossIncome) || 0);
 
-            if (fixedSalary !== null) {
-                // Sueldo fijo es MENSUAL → prorratear usando la fórmula anualizada para precisión
-                // Semanal: (Mensual * 12) / 52
-                // Quincenal: (Mensual * 12) / 24
-
-                // Calcular TSS mensual completo
-                const monthlySfs = Math.min(fixedSalary, sfsCap) * CONFIG.TSS_RATES.SFS;
-                const monthlyAfp = Math.min(fixedSalary, afpCap) * CONFIG.TSS_RATES.AFP;
-
-                let sfs, afp, tssBase;
-
-                if (freq === 'SEMANAL') {
-                    sfs = (monthlySfs * 12) / 52;
-                    afp = (monthlyAfp * 12) / 52;
-                    tssBase = (fixedSalary * 12) / 52;
-                } else if (freq === 'QUINCENAL') {
-                    sfs = (monthlySfs * 12) / 24;
-                    afp = (monthlyAfp * 12) / 24;
-                    tssBase = (fixedSalary * 12) / 24;
-                } else {
-                    // Mensual
-                    sfs = monthlySfs;
-                    afp = monthlyAfp;
-                    tssBase = fixedSalary;
-                }
-
-                return { sfs, afp, tssBase };
-            } else {
-                // Sin sueldo fijo → el ingreso bruto ya es del período (semanal/quincenal/mensual)
-                const tssBase = grossIncome;
-                // Nota: Sin sueldo fijo, los topes se aplican directamente al periodo actual, 
-                // lo cual es una aproximación si el ingreso varía mucho. 
-                // Pero es el comportamiento estándar si no hay sueldo base definido.
-                // Ajustamos los topes a la frecuencia para ser consistentes
-
-                let sfsCapAdj = sfsCap;
-                let afpCapAdj = afpCap;
-
-                if (freq === 'SEMANAL') {
-                    sfsCapAdj = (sfsCap * 12) / 52;
-                    afpCapAdj = (afpCap * 12) / 52;
-                } else if (freq === 'QUINCENAL') {
-                    sfsCapAdj = (sfsCap * 12) / 24;
-                    afpCapAdj = (afpCap * 12) / 24;
-                }
-
-                const sfs = Math.min(tssBase, sfsCapAdj) * CONFIG.TSS_RATES.SFS;
-                const afp = Math.min(tssBase, afpCapAdj) * CONFIG.TSS_RATES.AFP;
-                return { sfs, afp, tssBase };
+            let tssBase = safeGross;
+            if (fixedSalary !== null && fixedSalary > 0) {
+                let proratedFixed = fixedSalary;
+                if (freq === 'SEMANAL') proratedFixed = (fixedSalary * 12) / 52;
+                else if (freq === 'QUINCENAL') proratedFixed = (fixedSalary * 12) / 24;
+                tssBase = safeGross > 0 ? Math.min(proratedFixed, safeGross) : proratedFixed;
             }
+
+            const sfs = Math.min(tssBase, sfsCap) * CONFIG.TSS_RATES.SFS;
+            const afp = Math.min(tssBase, afpCap) * CONFIG.TSS_RATES.AFP;
+            return { sfs, afp, tssBase };
         };
 
         const calculateMonthlyISR = (monthlyTaxable) => {
@@ -1273,6 +1277,9 @@
 
         const recalculateMonthlyLedger = () => {
             if (!Array.isArray(state.records) || state.records.length === 0) return;
+
+            const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS;
+            const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP;
 
             const byMonth = new Map();
             state.records.forEach((record, index) => {
@@ -1287,20 +1294,39 @@
                     return dateDiff !== 0 ? dateDiff : a.index - b.index;
                 });
 
+                let acumuladoTssBase = 0;
+                let prevSfs = 0;
+                let prevAfp = 0;
                 let acumuladoGravable = 0;
                 let prevIsr = 0;
 
                 entries.forEach(({ record }) => {
-                    const gross = Number(record.gross) || 0;
-                    const tss = (Number(record.afp) || 0) + (Number(record.ars) || 0);
-                    acumuladoGravable += (gross - tss);
+                    const gross = Math.max(0, Number(record.gross) || 0);
+                    const rawTssBase = record.tssBase !== undefined ? Number(record.tssBase) : gross;
+                    const effectiveTssBase = Math.max(0, Math.min(rawTssBase || 0, gross));
+
+                    acumuladoTssBase += effectiveTssBase;
+                    const totalSfsMonth = Math.min(acumuladoTssBase, sfsCap) * CONFIG.TSS_RATES.SFS;
+                    const totalAfpMonth = Math.min(acumuladoTssBase, afpCap) * CONFIG.TSS_RATES.AFP;
+
+                    const ars = Math.max(0, totalSfsMonth - prevSfs);
+                    const afp = Math.max(0, totalAfpMonth - prevAfp);
+                    prevSfs += ars;
+                    prevAfp += afp;
+
+                    record.tssBase = effectiveTssBase;
+                    record.ars = ars;
+                    record.afp = afp;
+
+                    const tss = afp + ars;
+                    acumuladoGravable += Math.max(0, gross - tss);
 
                     const totalIsrFullMonth = calculateMonthlyISR(acumuladoGravable);
                     const isr = Math.max(0, totalIsrFullMonth - prevIsr);
                     prevIsr += isr;
 
                     record.isr = isr;
-                    record.net = gross - tss - isr;
+                    record.net = Math.max(0, gross - tss - isr);
                 });
             });
         };
@@ -1388,16 +1414,27 @@
             return radio ? radio.value.toUpperCase() : 'SEMANAL';
         };
 
-        // Preview en tiempo real
+        // Preview en tiempo real (respetando tope mensual acumulado del mes seleccionado)
         const updatePreview = () => {
             const income = parseFloat(elements.weeklyIncomeInput.value) || 0;
             const fixedAmt = parseFloat(fixedSalaryConfig.amount) || 0;
-            // Si el monto es 0 o inválido, tratamos como si no hubiera sueldo fijo (usando null para fallback)
             const fixedSalary = (fixedSalaryConfig.enabled && fixedAmt > 0) ? fixedAmt : null;
             const freq = getSelectedFreq();
-            const { afp, sfs, tssBase } = calculateTSS(income, fixedSalary, freq);
+            const { tssBase } = calculateTSS(income, fixedSalary, freq);
 
-            elements.tssBasePreview.innerText = fmt.format(tssBase);
+            const sfsCap = CONFIG.SMN * CONFIG.TSS_CAPS.SFS;
+            const afpCap = CONFIG.SMN * CONFIG.TSS_CAPS.AFP;
+            const selectedMonth = getMonthYear(elements.dateInput.value);
+            const monthRecords = state.records.filter(r => getMonthYear(r.date) === selectedMonth);
+            const usedBase = monthRecords.reduce((sum, r) => sum + (Number(r.tssBase ?? r.gross) || 0), 0);
+            const prevSfs = Math.min(usedBase, sfsCap) * CONFIG.TSS_RATES.SFS;
+            const prevAfp = Math.min(usedBase, afpCap) * CONFIG.TSS_RATES.AFP;
+
+            const effectivePreviewBase = income > 0 ? tssBase : 0;
+            const sfs = Math.max(0, Math.min(usedBase + effectivePreviewBase, sfsCap) * CONFIG.TSS_RATES.SFS - prevSfs);
+            const afp = Math.max(0, Math.min(usedBase + effectivePreviewBase, afpCap) * CONFIG.TSS_RATES.AFP - prevAfp);
+
+            elements.tssBasePreview.innerText = fmt.format(effectivePreviewBase);
             elements.afpPreview.innerText = fmt.format(afp);
             elements.arsPreview.innerText = fmt.format(sfs);
         };
@@ -1408,16 +1445,18 @@
             updatePreview();
         });
 
-
-
         // Update labels when frequency changes
         const freqLabels = { semanal: 'Semanal', quincenal: 'Quincenal', mensual: 'Mensual' };
+        const syncFreqLabels = () => {
+            const checked = Array.from(document.getElementsByName('freq')).find(r => r.checked);
+            const selected = freqLabels[checked ? checked.value : 'semanal'] || 'Semanal';
+            document.getElementById('income-label').textContent = `Ingreso ${selected} Bruto`;
+            document.getElementById('income-help').textContent = `Monto total ${selected.toLowerCase()} según tu volante de pago.`;
+        };
         document.querySelectorAll('input[name="freq"]').forEach(radio => {
             radio.addEventListener('change', () => {
-                const selected = freqLabels[radio.value] || 'Semanal';
-                document.getElementById('income-label').textContent = `Ingreso ${selected} Bruto`;
-                document.getElementById('income-help').textContent = `Monto total ${selected.toLowerCase()} según tu volante de pago.`;
-                updatePreview(); // Recalcular TSS con nueva frecuencia
+                syncFreqLabels();
+                updatePreview();
             });
         });
 
@@ -1479,21 +1518,30 @@
             clearHistory();
         });
 
-        // Init
+        // Init (ejecuta sin esperar window.onload para evitar retardo por recursos externos)
         const initMain = () => {
             const now = new Date();
             const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-            elements.dateInput.value = localDate;
+            if (!elements.dateInput.value) {
+                elements.dateInput.value = localDate;
+            }
             if (elements.labelMesActual) {
-                elements.labelMesActual.innerText = now.toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
+                elements.labelMesActual.innerText = parseSafeDate(elements.dateInput.value).toLocaleDateString('es-DO', { month: 'long', year: 'numeric' }).toUpperCase();
             }
 
+            syncFreqLabels();
+            updateFixedSalaryIndicator();
             recalculateMonthlyLedger();
             updateDashboard();
             renderHistory();
+            updatePreview();
         };
 
-        window.onload = initMain;
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMain);
+        } else {
+            initMain();
+        }
     </script>
 
 
@@ -1556,18 +1604,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                        registration.update();
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
+                    .then(registration => registration.update())
+                    .catch(() => {});
             });
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                sessionStorage.removeItem('impucalculo_sw_reload');
-                console.info('ServiceWorker actualizado; los cambios se aplicarán en la próxima navegación.');
+                try { sessionStorage.removeItem('impucalculo_sw_reload'); } catch (e) {}
             });
         }
         

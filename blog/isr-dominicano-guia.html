@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
-    <!-- Google Consent Mode v2 (EEA/UK/CH pre-consent default) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-      if (!window.__consentDefaultSet) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.__consentDefaultSet = true;
         window.gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: 'denied',
-          region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
-          wait_for_update: 500
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
         });
-      }
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
     </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISR República Dominicana 2026: Tabla Oficial DGII y Cómo Calcularlo | Impucálculo</title>
+    <title>ISR República Dominicana 2026: Tabla Oficial DGII y Cómo Calcularlo | Impucálculo</title>
   <meta name="description" content="Guía completa del ISR en República Dominicana 2026. Tabla oficial DGII actualizada, escala progresiva, ejemplos reales con salarios dominicanos y calculadora gratuita de sueldo neto.">
   <meta name="keywords" content="ISR republica dominicana 2026, tabla ISR DGII 2026, calcular ISR RD, impuesto sobre la renta dominicano, sueldo neto republica dominicana, exento ISR RD 34685">
+  <meta name="author" content="Starlin Santana">
   <link rel="canonical" href="https://impucalculo.com/blog/isr-dominicano-guia.html">
   <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog/isr-dominicano-guia.html">
   <link rel="icon" type="image/webp" href="../logo_new.webp">
@@ -68,7 +76,7 @@
     "publisher": {
       "@type": "Organization",
       "name": "Impucálculo",
-      "url": "https://impucalculo.com",
+      "url": "https://impucalculo.com/",
       "logo": { "@type": "ImageObject", "url": "https://impucalculo.com/logo_new.webp" }
     },
     "mainEntityOfPage": "https://impucalculo.com/blog/isr-dominicano-guia.html"
@@ -313,6 +321,21 @@
       .step-box, .ex-box { padding: 1.5rem; }
       .cta-block { padding: 2.5rem 1.5rem; }
     }
+  
+    /* Correcciones UX móvil, sticky header, contraste WCAG AA y anti-overflow 320px */
+    header:not(.art-lead-box) { position: sticky; top: 0; z-index: 100; }
+    .nav-back { min-width: 44px; min-height: 44px; padding: 0 8px; justify-content: center; }
+    .nav-cta { min-height: 40px; display: inline-flex; align-items: center; }
+    .content, .formula-box, .ex-box, .ejemplo-box, .alert-box, .info-box { min-width: 0; overflow-wrap: anywhere; }
+    .art-byline, .breadcrumb { color: #475569; }
+    .art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; }
+    .art-nav-link { background: rgba(255,255,255,0.9); border: 1px solid #E2E8F0; border-radius: 1.25rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.08); transition: transform 0.25s, border-color 0.25s; display: block; }
+    .art-nav-link:hover { transform: translateY(-2px); border-color: rgba(0,56,168,0.3); }
+    .art-nav-link.prev { text-align: left; }
+    .art-nav-link.next { text-align: right; }
+    .art-nav-link .nav-dir { font-size: 0.78rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .art-nav-link .nav-ttl { font-size: 0.95rem; font-weight: 800; color: #0038A8; line-height: 1.35; }
+    @media (max-width: 640px) { .art-nav { grid-template-columns: 1fr; } .art-nav-link.next { text-align: left; } }
   </style>
 </head>
 <body>
@@ -321,7 +344,7 @@
   <header style="position: sticky; top: 0; z-index: 100;">
     <nav class="navbar" role="navigation" aria-label="Navegación principal">
       <div class="nav-inner">
-        <a href="../index.html" class="nav-logo" aria-label="Impucálculo inicio">
+        <a href="/" class="nav-logo" aria-label="Impucálculo inicio">
           <span>Impu</span><span>cálculo</span>
         </a>
         <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
@@ -338,7 +361,7 @@
 
       <!-- BREADCRUMB -->
       <nav class="breadcrumb" aria-label="Ruta de navegación">
-        <a href="../index.html">Inicio</a>
+        <a href="/">Inicio</a>
         <span class="sep">›</span>
         <a href="../blog.html">Blog</a>
         <span class="sep">›</span>
@@ -439,12 +462,12 @@
             <h3>Paso 1 — Descontar la TSS del salario bruto</h3>
             <p>Antes de que el ISR entre en el cálculo, se descuentan obligatoriamente los aportes a la Seguridad Social (TSS). Estos son:</p>
             <ul>
-              <li><strong>AFP (Administradora de Fondos de Pensiones):</strong> 2.87% del salario bruto</li>
-              <li><strong>ARS (Administradora de Riesgos de Salud):</strong> 3.04% del salario bruto</li>
+              <li><strong>AFP (Administradora de Fondos de Pensiones):</strong> 2.87% del salario cotizable (tope legal de <strong>20 SMN = RD$464,460.00/mes</strong>, descuento máximo RD$13,330.00)</li>
+              <li><strong>ARS / SFS (Seguro Familiar de Salud):</strong> 3.04% del salario cotizable (tope legal de <strong>10 SMN = RD$232,230.00/mes</strong>, descuento máximo RD$7,059.79)</li>
             </ul>
             <div class="formula-box">
-              <div class="formula-text">Salario Bruto × 5.91% = TSS total</div>
-              <p class="formula-sub">TSS = AFP (2.87%) + ARS (3.04%) — sobre el salario bruto mensual</p>
+              <div class="formula-text">TSS = min(Salario, 20 SMN) × 2.87% + min(Salario, 10 SMN) × 3.04%</div>
+              <p class="formula-sub">Para salarios hasta RD$232,230/mes equivale a Salario Bruto × 5.91% (Resolución 01-2025 TSS · SMN RD$23,223.00)</p>
             </div>
             <p>El resultado de restar la TSS al salario bruto se llama <strong>Base Imponible Mensual</strong>. Es el punto de partida real para el ISR.</p>
           </div>
@@ -513,18 +536,18 @@
 
           <!-- EJEMPLO 3 -->
           <div class="ex-box" id="ejemplo-3">
-            <div class="ex-label">Ejemplo 3 · Tramo 25%</div>
-            <div class="ex-title">Franklyn — Salario RD$80,000 brutos</div>
-            <p class="ex-note">Franklyn es gerente de operaciones. Con RD$80,000 brutos, su renta anual supera el tramo del 20% y entra en el tramo del 25%, el más alto de la escala.</p>
-            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$80,000.00</span></div>
-            <div class="calc-row"><span class="calc-lbl">TSS total (80,000 × 5.91%)</span><span class="calc-val">− RD$4,728.00</span></div>
-            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$75,272.00</span></div>
-            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$903,264.00</span></div>
-            <div class="calc-row"><span class="calc-lbl">Cuota fija (tramo 25%)</span><span class="calc-val">RD$79,776.00</span></div>
-            <div class="calc-row"><span class="calc-lbl">Excedente sobre RD$867,123 × 25%</span><span class="calc-val">RD$9,035.25</span></div>
-            <div class="calc-row"><span class="calc-lbl">ISR anual total</span><span class="calc-val">RD$88,811.25</span></div>
-            <div class="calc-total"><span class="total-lbl">ISR MENSUAL (÷ 12)</span><span class="total-val">RD$7,400.94</span></div>
-            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL (80,000 − TSS − ISR)</span><span class="net-val">RD$67,871.06</span></div>
+            <div class="ex-label">Ejemplo 3 · Tramo 20%</div>
+            <div class="ex-title">Franklyn — Salario RD$65,000 brutos</div>
+            <p class="ex-note">Franklyn es coordinador de operaciones. Con RD$65,000 brutos, su renta anual supera RD$624,329.00 y cae en el tramo intermedio del 20%.</p>
+            <div class="calc-row"><span class="calc-lbl">Salario bruto</span><span class="calc-val">RD$65,000.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">TSS total (65,000 × 5.91%)</span><span class="calc-val">− RD$3,841.50</span></div>
+            <div class="calc-row"><span class="calc-lbl">Base imponible mensual</span><span class="calc-val">RD$61,158.50</span></div>
+            <div class="calc-row"><span class="calc-lbl">Renta anual proyectada (× 12)</span><span class="calc-val">RD$733,902.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Cuota fija (tramo 20%)</span><span class="calc-val">RD$31,216.00</span></div>
+            <div class="calc-row"><span class="calc-lbl">Excedente sobre RD$624,329 × 20%</span><span class="calc-val">RD$21,914.60</span></div>
+            <div class="calc-row"><span class="calc-lbl">ISR anual total</span><span class="calc-val">RD$53,130.60</span></div>
+            <div class="calc-total"><span class="total-lbl">ISR MENSUAL (÷ 12)</span><span class="total-val">RD$4,427.55</span></div>
+            <div class="net-row"><span class="net-lbl">SUELDO NETO FINAL (65,000 − TSS − ISR)</span><span class="net-val">RD$56,730.95</span></div>
           </div>
 
           <!-- EJEMPLO 4 -->
@@ -583,8 +606,8 @@
           <p>El impacto es directo: un trabajador con salario de RD$42,000 brutos que en 2017 era marginal en el pago del ISR, hoy está firmemente en el tramo del 15%. No porque su poder adquisitivo haya crecido, sino porque la inflación elevó su salario nominal sin que el exento siguiera el mismo camino.</p>
 
           <div class="alert-box">
-            <strong>⚖️ Estado del Debate:</strong>
-            <p>En el Congreso Nacional se han presentado propuestas para elevar el exento a RD$52,000 mensuales, incluyendo iniciativas legislativas que han sido debatidas pero no aprobadas al cierre de esta guía. Te recomendamos verificar el estado actual en la <a href="https://dgii.gov.do" target="_blank" rel="noopener" style="color:#92400E;font-weight:700">web oficial de la DGII</a>.</p>
+            <strong>⚖️ Reforma Aprobada (Ley 30-26):</strong>
+            <p>Durante todo el ejercicio fiscal <strong>2026</strong> continúa vigente la escala de <strong>RD$416,220.00 anuales (RD$34,685.00/mes)</strong>. Sin embargo, la <strong>Ley 30-26</strong> (promulgada en junio de 2026) aprobó modificar el Art. 296 del Código Tributario a partir del ejercicio fiscal 2027, elevando el exento a RD$480,000.00 anuales (RD$40,000.00/mes). Te recomendamos verificar siempre las resoluciones vigentes en la <a href="https://dgii.gov.do" target="_blank" rel="noopener noreferrer" style="color:#92400E;font-weight:700">web oficial de la DGII</a>.</p>
           </div>
 
           <hr class="divider">
@@ -596,7 +619,7 @@
           <h3>Deducción por Gastos Educativos (Ley 179-09 y Ley 30-26)</h3>
           <p>Esta ley permite a los trabajadores que superan el exento del ISR deducir ciertos gastos educativos de su base imponible, reduciendo el impuesto a pagar. El proceso funciona así:</p>
           <ol>
-            <li><strong>Conserva tus facturas con NCF:</strong> Solo aplican <strong>inscripciones y cuotas/mensualidades (colegiaturas)</strong> —tuyas o de tus dependientes— con comprobante fiscal válido para crédito fiscal (NCF B01 o e-NCF E31, Serie B). Quedan excluidos libros de texto, útiles escolares, uniformes, transporte y tecnología.</li>
+            <li><strong>Conserva tus facturas con NCF:</strong> Solo aplican <strong>inscripciones y cuotas/mensualidades (colegiaturas)</strong> —tuyas o de tus hijos dependientes directos no asalariados— con comprobante fiscal válido para crédito fiscal (NCF Serie B: B01 o comprobante electrónico e-CF Serie E: E31). Quedan excluidos libros de texto, útiles escolares, uniformes, transporte y tecnología.</li>
             <li><strong>Regístralas en la Oficina Virtual DGII:</strong> A través del portal dgii.gov.do, en la sección de Gastos Educativos.</li>
             <li><strong>Fecha límite:</strong> Generalmente durante febrero del año siguiente al que corresponden los gastos.</li>
             <li><strong>Resultado:</strong> La DGII valida el crédito en el formulario <strong>IR-18</strong> y tu empleador reembolsa el saldo a favor al empleado (compensándolo luego en su <strong>IR-3</strong> de marzo en adelante).</li>
@@ -606,14 +629,14 @@
             <p>La deducción no puede exceder el <strong>10% de tu ingreso neto gravable</strong> anual ni el tope general de la <strong>Ley 30-26</strong> equivalente al <strong>30% de la exención contributiva anual (RD$ 124,866.00)</strong>, ampliándose hasta el <strong>50% (RD$ 208,110.00)</strong> para dependientes con discapacidad o trastornos del neurodesarrollo certificados y validados ante CONADIS y la DGII.</p>
           </div>
 
-          <h3>Intereses de Préstamos Hipotecarios</h3>
-          <p>Para personas físicas con declaración jurada anual (que van más allá del régimen de nómina estándar), los intereses de préstamos hipotecarios para vivienda propia pueden ser deducibles bajo ciertas condiciones. Sin embargo, este mecanismo no aplica directamente en la retención mensual de nómina — es un beneficio que se materializa en la declaración anual ante la DGII.</p>
-          <p>Si tienes ingresos adicionales aparte de tu nómina (alquileres, freelance, negocios), considera consultar con un contador certificado para planificar tu declaración anual y maximizar tus deducciones legales.</p>
+          <h3>Gastos Deducibles en Declaración Jurada Anual (IR-1) — Aclaración sobre Hipotecas</h3>
+          <p>A diferencia de otros países, en la República Dominicana el <strong>Artículo 287 del Código Tributario (Ley 11-92)</strong> <strong>no permite deducir del ISR los intereses de préstamos hipotecarios de vivienda propia de uso personal</strong>. Únicamente las personas físicas que declaran rentas comerciales, profesionales o alquileres en su formulario anual <strong>IR-1</strong> pueden deducir gastos financieros y operativos debidamente sustentados en comprobantes fiscales (B01/E31 y Formato 606) que estén <strong>directamente vinculados a obtener, mantener o conservar rentas gravadas</strong>.</p>
+          <p>Si tienes ingresos adicionales aparte de tu nómina (alquileres, servicios profesionales, negocios), consulta con un contador público autorizado (CPA) para planificar tu declaración anual y aprovechar las deducciones previstas en la ley.</p>
 
           <!-- CTA -->
           <div class="cta-block glass" id="cta">
             <h2>¿Cuánto ISR te Descuentan a Ti Exactamente?</h2>
-            <p>Ingresa tu salario y <strong>Impucálculo</strong> calcula tu ISR, AFP y ARS en segundos. Gratis, sin registro, 100% privado.</p>
+            <p>Ingresa tu salario y <strong>Impucálculo</strong> calcula tu ISR, AFP y ARS en segundos. Gratis, sin registro y con cálculo local en tu navegador.</p>
             <a href="../calculadora.html" class="btn btn-red" aria-label="Ir a la calculadora de sueldo neto">CALCULAR MI SUELDO NETO →</a>
           </div>
 
@@ -679,15 +702,27 @@
           </ul>
         </section>
 
-        <!-- FICHA DE AUTOR E-E-A-T -->
-        <div class="info-box" style="margin-top:2.5rem;">
-          <p><strong>Por <a href="../sobre-nosotros.html">Starlin Santana · Fundador y Responsable Editorial</a></strong>.</p>
-        </div>
+        
+                  <div class="comp-card" style="margin-top:2rem; padding:1.5rem 1.75rem; background:#ffffff; border:1px solid #E2E8F0; border-radius:1rem;">
+            <p style="margin-bottom:0.35rem; font-size:0.95rem; color:#0F172A;">
+              <strong>Por <a href="../sobre-nosotros.html" style="color:#0038A8; text-decoration:none;">Starlin Santana — Fundador y Responsable Editorial</a></strong>
+            </p>
+            <p style="margin-bottom:0; font-size:0.86rem; color:#475569; line-height:1.6;">
+              Desarrollador y editor técnico de Impucálculo. Dedicado a la divulgación educativa y programación de herramientas informativas basadas en la normativa pública fiscal y laboral de la República Dominicana (contenido orientativo; no sustituye asesoría contable ni legal).
+            </p>
+          </div>
 
         <!-- NAVEGACIÓN ENTRE ARTÍCULOS -->
-        <nav class="art-nav" aria-label="Navegación entre artículos del blog">
-          <a href="guia-uso-v2.html" class="art-nav-link prev">
-            <div class="nav-dir">← Artículo Anterior</div>
+        <nav class="art-nav" aria-label="Navegación entre artículos">
+          <a href="../blog.html" class="art-nav-link prev">
+            <div class="nav-dir">← Índice Editorial</div>
+            <div class="nav-ttl">Ver Todas las Guías del Blog</div>
+          </a>
+          <a href="tss-afp-ars-guia.html" class="art-nav-link next">
+            <div class="nav-dir">Siguiente Artículo →</div>
+            <div class="nav-ttl">AFP, ARS y Seguridad Social (TSS 2026)</div>
+          </a>
+        </nav>
             <div class="nav-ttl">Auditoría de Nómina y Horas Extras en RD</div>
           </a>
           <a href="prestaciones-laborales-guia.html" class="art-nav-link next">
@@ -722,7 +757,7 @@
       <!-- Disclaimer legal explícito -->
       <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; padding-bottom:1.5rem; font-size:0.75rem; color:#64748B; line-height:1.6; text-align:left;">
         <p style="margin:0;">
-          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII) ni el Ministerio de Trabajo de la República Dominicana.
+          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII), la Tesorería de la Seguridad Social (TSS) ni el Ministerio de Trabajo de la República Dominicana. Los cálculos y guías son orientativos y no sustituyen asesoría contable ni legal profesional.
         </p>
       </div>
 

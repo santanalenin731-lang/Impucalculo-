@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -27,6 +28,21 @@
         @media (min-width: 640px) {
             .sm\:gap-5 { gap: 1.25rem; }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <title>Política de Privacidad y Seguridad | Impucálculo</title>
     <meta name="description"
@@ -80,13 +96,13 @@
     <!-- Header Simple -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
+            <a href="/" class="flex items-center gap-3">
+                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain" width="562" height="444">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
             <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
                 <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -104,12 +120,12 @@
                     class="text-dr-blue font-semibold">14 de Noviembre de 2026</span></p>
 
             <div class="space-y-8 text-dr-slate-600 leading-relaxed">
-                <p>En <strong>Impucálculo</strong>, la transparencia y la protección de la privacidad son pilares fundamentales de nuestro servicio. Esta Política de Privacidad y Seguridad describe con exactitud cómo se procesan localmente los datos ingresados en nuestras calculadoras, el funcionamiento de las cookies y servicios de terceros, y las medidas técnicas adoptadas para garantizar un entorno seguro y transparente para nuestros usuarios en República Dominicana.</p>
+                <p>En <strong>Impucálculo</strong> (proyecto independiente operado por <strong>Starlin Santana</strong> desde Santo Domingo, República Dominicana, accesible en <code>https://impucalculo.com</code>), la transparencia y la protección de la privacidad son pilares fundamentales de nuestro servicio. Esta Política de Privacidad describe con exactitud cómo se procesan localmente los datos ingresados en nuestras calculadoras, qué servicios de terceros se integran (cookies, analítica, fuentes web y alojamiento) y qué derechos te asisten conforme a la Ley No. 172-13 de la República Dominicana.</p>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">1. Procesamiento 100% Local de los Datos en las Calculadoras</h2>
-                    <p>Todos los datos numéricos y parámetros ingresados en nuestras calculadoras (tales como salarios brutos, comisiones, bonificaciones, fechas de ingreso y salida laboral, deducciones o dependientes) se procesan <strong>100% localmente en la memoria del navegador web de tu dispositivo</strong> mediante código JavaScript ejecutado del lado del cliente. Impucálculo no transmite, recopila ni almacena estas cifras salariales o laborales en bases de datos ni servidores propios.</p>
-                    <p class="mt-2">De manera independiente a los cálculos matemáticos locales, nuestro sitio web integra servicios analíticos y publicitarios de terceros (específicamente <strong>Google Analytics / Firebase</strong> y <strong>Google AdSense</strong>), los cuales utilizan cookies, almacenamiento web e identificadores estándar de navegación conforme a las políticas de privacidad de Google para medir el tráfico general del sitio y mostrar anuncios relevantes.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">1. Procesamiento Local de los Datos en las Calculadoras</h2>
+                    <p>Todos los datos numéricos y parámetros ingresados en nuestras calculadoras (salarios brutos, frecuencias de pago, fechas de ingreso y salida laboral y días de vacaciones tomados) se procesan <strong>localmente en el navegador web de tu dispositivo</strong> mediante JavaScript del lado del cliente. Impucálculo no transmite ni almacena estas cifras salariales o laborales en servidores propios.</p>
+                    <p class="mt-2">De manera independiente a los cálculos matemáticos locales, nuestro sitio web integra servicios de terceros: <strong>Google Analytics 4 (gtag.js)</strong>, <strong>Google AdSense</strong>, <strong>Google Fonts</strong> (tipografía web) y alojamiento estático en <strong>GitHub Pages</strong>, los cuales pueden registrar datos técnicos estándar de conexión (como dirección IP, navegador o cookies de analítica/publicidad) conforme a sus respectivas políticas de privacidad.</p>
                 </div>
 
                 <div>
@@ -130,8 +146,9 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">5. Analíticas de Uso (Google Analytics y Firebase Analytics)</h2>
-                    <p>Con el objetivo de comprender el tráfico general y mejorar el rendimiento de nuestras herramientas, integramos <strong>Google Analytics / Firebase Analytics</strong> en la portada (<code>index.html</code>) y en las calculadoras (<code>calculadora.html</code> y <code>prestaciones.html</code>). Estos servicios recopilan métricas estadísticas agregadas de navegación (páginas vistas, duración aproximada de la visita, tipo de dispositivo/navegador y ubicación geográfica general a nivel de país o ciudad). En ningún caso registran los montos salariales, fechas laborales ni cálculos que introduces en los formularios.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">5. Analíticas de Uso (Google Analytics 4) y Recursos Externos</h2>
+                    <p>Con el objetivo de comprender el tráfico general y mejorar el rendimiento de nuestras herramientas, integramos <strong>Google Analytics 4 (gtag.js)</strong> con <strong>Google Consent Mode v2</strong> en la portada (<code>/</code>) y en las calculadoras (<code>calculadora.html</code> y <code>prestaciones.html</code>). Este servicio recopila métricas estadísticas agregadas de navegación (páginas vistas, duración aproximada de la visita, tipo de dispositivo/navegador y ubicación geográfica general a nivel de país o ciudad). En ningún caso registra los montos salariales, fechas laborales ni cálculos que introduces en los formularios.</p>
+                    <p class="mt-2">Adicionalmente, el sitio carga la tipografía web <strong>Outfit</strong> a través de <strong>Google Fonts</strong> (<code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code>) y se sirve mediante la infraestructura estática de <strong>GitHub Pages</strong>, cuyos servidores pueden generar registros técnicos de acceso (IP y cabeceras HTTP) por motivos de seguridad y disponibilidad.</p>
                 </div>
 
                 <div>
@@ -156,7 +173,7 @@
                         <li>Proveedores externos, incluido <strong>Google</strong>, utilizan cookies para mostrar anuncios relevantes basados en las visitas anteriores del usuario a este sitio web o a otros sitios de Internet.</li>
                         <li>El uso de cookies publicitarias permite a Google y a sus socios ofrecer anuncios basados en tus visitas a Impucálculo y a otros sitios web en la red.</li>
                         <li>Puedes inhabilitar la publicidad personalizada en cualquier momento visitando la <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Configuración de anuncios de Google</a> o el portal <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Mi Centro de Anuncios (My Ad Center)</a>.</li>
-                        <li>Asimismo, puedes gestionar o inhabilitar el uso de cookies de terceros para publicidad personalizada a través de las plataformas internacionales de autorregulación: <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">aboutads.info</a>, <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Network Advertising Initiative (NAI)</a> o <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Your Online Choices (EDAA)</a>.</li>
+                        <li>Asimismo, puedes gestionar o inhabilitar el uso de cookies de terceros para publicidad personalizada a través de las plataformas internacionales de autorregulación: <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">aboutads.info</a>, <a href="https://thenai.org/how-to-opt-out/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Network Advertising Initiative (NAI)</a> o <a href="https://youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" class="text-dr-blue underline font-medium">Your Online Choices (EDAA)</a>.</li>
                     </ul>
                 </div>
 
@@ -176,8 +193,8 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">11. Derechos del Usuario y Contacto de Privacidad</h2>
-                    <p>De acuerdo con la Ley No. 172-13 sobre Protección de Datos de Carácter Personal de la República Dominicana y las normativas internacionales aplicables, si nos has contactado voluntariamente por correo electrónico tienes derecho a solicitar el acceso, rectificación o supresión de tu comunicación. Para cualquier consulta sobre esta Política de Privacidad, escríbenos directamente a nuestro canal oficial: <a href="mailto:info@impucalculo.com" class="text-dr-blue underline font-bold hover:text-dr-red transition">info@impucalculo.com</a>.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">11. Responsable del Tratamiento, Derechos del Usuario y Contacto</h2>
+                    <p>El responsable del sitio y del tratamiento de las comunicaciones recibidas es <strong>Starlin Santana</strong> (Impucálculo, Santo Domingo, República Dominicana). De acuerdo con la Ley No. 172-13 sobre Protección de Datos de Carácter Personal de la República Dominicana y las normativas internacionales aplicables, si nos has contactado voluntariamente tienes derecho a solicitar el acceso, rectificación o supresión de tu comunicación escribiendo a: <a href="mailto:info@impucalculo.com" class="text-dr-blue underline font-bold hover:text-dr-red transition">info@impucalculo.com</a>.</p>
                 </div>
             </div>
 
@@ -198,7 +215,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">

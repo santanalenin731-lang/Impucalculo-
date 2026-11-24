@@ -2,11 +2,20 @@
 <html lang="es-DO">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
     <script>
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
         window.gtag('consent', 'default', {
             ad_storage: 'denied',
             ad_user_data: 'denied',
@@ -15,6 +24,7 @@
             region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
             wait_for_update: 500
         });
+        window.gtag('set', 'ads_data_redaction', true);
     </script>
 
     <!-- Google AdSense -->
@@ -22,14 +32,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Impucálculo | Cálculo de Sueldo Neto, ISR y Prestaciones RD 2026</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/">
-
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="google1d19814154dc1b8c" />
-
 
     <!-- Meta/SEO -->
     <meta name="description"
@@ -38,7 +42,7 @@
 
     <meta name="keywords"
         content="impuestos, calculo, prestaciones laborales, republica dominicana, isr, afp, ars, tss, salario, nomina, calculadora fiscal, regalia pascual, bonificacion">
-    <meta name="author" content="Starlin Santana - Impucálculo">
+    <meta name="author" content="Starlin Santana">
     <link rel="canonical" href="https://impucalculo.com/">
 
     <!-- Open Graph / Facebook -->
@@ -1234,12 +1238,28 @@
             .all-guides-box { padding: 0 1rem; }
             .all-guides-card { padding: 1.25rem; }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
     <!-- PWA Settings -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0038A8">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -1268,7 +1288,7 @@
       "founder": {
         "@type": "Person",
         "name": "Starlin Santana",
-        "jobTitle": "Fundador, Desarrollador Principal y Responsable Editorial"
+        "jobTitle": "Fundador y Responsable Editorial"
       },
       "address": {
         "@type": "PostalAddress",
@@ -1286,8 +1306,8 @@
     <!-- Header -->
     <header class="site-header">
         <div class="site-header-inner">
-            <a href="index.html" class="site-brand" aria-label="Ir a Inicio">
-                <img src="logo_new.webp" alt="Impucálculo - Calculadora Laboral y Fiscal RD">
+            <a href="/" class="site-brand" aria-label="Ir a Inicio">
+                <img src="logo_new.webp" alt="Impucálculo - Calculadora Laboral y Fiscal RD" width="562" height="444">
                 <div>
                     <div class="site-brand-title">
                         <span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo</span>
@@ -1298,7 +1318,7 @@
                 </div>
             </a>
             <nav class="site-nav-desktop" aria-label="Navegación principal">
-                <a href="index.html" class="nav-active">Inicio</a>
+                <a href="/" class="nav-active">Inicio</a>
                 <a href="calculadora.html">Sueldo e ISR</a>
                 <a href="prestaciones.html">Prestaciones</a>
                 <a href="blog.html">Blog</a>
@@ -1307,7 +1327,7 @@
             </nav>
         </div>
         <nav class="site-nav-mobile" aria-label="Navegación móvil">
-            <a href="index.html" class="nav-active">Inicio</a>
+            <a href="/" class="nav-active">Inicio</a>
             <a href="calculadora.html">Sueldo/ISR</a>
             <a href="prestaciones.html">Prestaciones</a>
             <a href="blog.html">Blog</a>
@@ -1327,7 +1347,7 @@
                             style="color: #0038A8;">igente</span></span>
                 </h1>
                 <p class="hero-subtitle">
-                    Determina al centavo tu cesantía, preaviso y derechos adquiridos según el Código de Trabajo dominicano. También incluye cálculo exacto de sueldo neto, ISR y deducciones de la TSS al instante.
+                    Estima con precisión tu cesantía, preaviso y derechos adquiridos según el Código de Trabajo dominicano. También incluye calculadora de sueldo neto, ISR y deducciones de la TSS al instante.
                 </p>
             </div>
 
@@ -1367,17 +1387,17 @@
                         <!-- Sliding Track with Infinite Forward Loop -->
                         <div class="hero-carousel-track" id="heroTrack" style="display: flex; width: 100%; height: 100%; will-change: transform;">
                             <div class="hero-slide" style="flex: 0 0 100%; width: 100%; height: 100%;">
-                                <img src="hero-images/hero-1.jpg?v=124" alt="Impucálculo en tu móvil - Vista 1" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                <img src="hero-images/hero-1.jpg?v=124" alt="Vista previa de Impucálculo en dispositivo móvil" width="954" height="1984" loading="eager" fetchpriority="high" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <div class="hero-slide" style="flex: 0 0 100%; width: 100%; height: 100%;">
-                                <img src="hero-images/hero-2.jpg?v=124" alt="Impucálculo en tu móvil - Vista 2" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                <img src="hero-images/hero-2.jpg?v=124" alt="Simulación laboral y salarial en dispositivo móvil" width="918" height="1908" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <div class="hero-slide" style="flex: 0 0 100%; width: 100%; height: 100%;">
-                                <img src="hero-images/hero-3.jpg?v=124" alt="Impucálculo en tu móvil - Vista 3" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                <img src="hero-images/hero-3.jpg?v=124" alt="Consulta fiscal y laboral de Impucálculo en computadora portátil" width="946" height="1914" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <!-- Clon de Imagen 1 para deslizamiento infinito hacia adelante sin rebobinar -->
                             <div class="hero-slide" aria-hidden="true" data-nosnippet style="flex: 0 0 100%; width: 100%; height: 100%;">
-                                <img src="hero-images/hero-1.jpg?v=124" alt="Impucálculo en tu móvil - Vista 1 (Loop)" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                <img src="hero-images/hero-1.jpg?v=124" alt="" width="954" height="1984" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                         </div>
 
@@ -1460,10 +1480,10 @@
                     <p>Calcula exactamente cuánto recibirás en mano después de todos los descuentos</p>
                 </div>
 
-                <!-- Card 7: Regalía Pascual y Bonificación -->
+                <!-- Card 7: Regalía Pascual y Guías de Bonificación -->
                 <div class="service-card" data-scroll-reveal style="transition-delay: 0.4s;">
-                    <h3>Regalía Pascual y Bonificación</h3>
-                    <p>Cálculo exacto de tu doble sueldo navideño (Art. 219) y participación en las utilidades anuales de la empresa (Art. 223)</p>
+                    <h3>Regalía Pascual y Guías de Bonificación</h3>
+                    <p>Cálculo proporcional de tu Salario de Navidad (Art. 219) y guía detallada de participación en los beneficios de la empresa (Art. 223)</p>
                 </div>
             </div>
         </div>
@@ -1481,7 +1501,7 @@
                 Respecto a la protección social, la <strong>Ley 87-01</strong> y la <strong>Resolución 01-2025 de la Tesorería de la Seguridad Social (TSS)</strong> regulan las retenciones obligatorias sobre el salario cotizable: <strong>2.87%</strong> para el Seguro de Vejez, Discapacidad y Sobrevivencia (AFP) y <strong>3.04%</strong> para el Seguro Familiar de Salud (ARS/SFS), aplicando topes máximos de 20 y 10 salarios mínimos cotizables vigentes en 2026 (sobre un Salario Mínimo Nacional Cotizable de RD$23,223.00).
             </p>
             <p style="color: #475569; font-size: 1rem; line-height: 1.78; margin: 0;">
-                Por su parte, la <strong>Ley 16-92 (Código de Trabajo)</strong> establece el divisor oficial de <strong>23.83 días</strong> para determinar el salario diario ordinario y calcular el preaviso (Art. 76), el auxilio de cesantía (Art. 80), las vacaciones no disfrutadas (Art. 177), la regalía pascual o salario de Navidad (Art. 219) y la participación en los beneficios de la empresa (Art. 223). En Impucálculo ejecutamos todas estas fórmulas localmente en tu navegador y contrastamos cada parámetro con las fuentes oficiales de la <a href="https://dgii.gov.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">DGII</a>, la <a href="https://www.tss.gob.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">TSS</a> y el <a href="https://mt.gob.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">Ministerio de Trabajo</a>, así como en nuestra <a href="sobre-nosotros.html" style="color: #CE1126; font-weight: 700; text-decoration: underline;">sección de metodología</a>.
+                Por su parte, la <strong>Ley 16-92 (Código de Trabajo)</strong> establece el divisor oficial de <strong>23.83 días</strong> para determinar el salario diario ordinario y calcular el preaviso (Art. 76), el auxilio de cesantía (Art. 80), las vacaciones no disfrutadas (Art. 177), la regalía pascual o salario de Navidad (Art. 219) y la participación en los beneficios de la empresa (Art. 223). En Impucálculo ejecutamos todas estas fórmulas localmente en tu navegador y contrastamos cada parámetro con las fuentes oficiales de la <a href="https://dgii.gov.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">DGII</a>, la <a href="https://tss.gob.do" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">TSS</a> y el <a href="https://mt.gob.do/" target="_blank" rel="noopener noreferrer" style="color: #0038A8; font-weight: 700; text-decoration: underline;">Ministerio de Trabajo</a>, así como en nuestra <a href="sobre-nosotros.html" style="color: #CE1126; font-weight: 700; text-decoration: underline;">sección de metodología</a>.
             </p>
         </div>
     </section>
@@ -1497,14 +1517,14 @@
             <div class="trust-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem;">
                 <!-- Trust 1: Precision -->
                 <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.1s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(0,56,168,0.12); box-shadow: 0 12px 32px -8px rgba(0,56,168,0.08);">
-                    <h3 style="font-size: 1.35rem; font-weight: 800; color: #0038A8; margin-bottom: 0.75rem;">Precisión Total</h3>
-                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Algoritmos actualizados con las normativas fiscales vigentes de la DGII y el Código de Trabajo dominicano.</p>
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: #0038A8; margin-bottom: 0.75rem;">Rigor Normativo</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Fórmulas actualizadas con las tablas y resoluciones públicas vigentes de la DGII, la TSS y el Código de Trabajo dominicano.</p>
                 </div>
 
                 <!-- Trust 2: Ease of Use -->
                 <div class="trust-card glass" data-scroll-reveal style="transition-delay: 0.2s; text-align:center; padding: 2.25rem 1.75rem; border-radius: 1.75rem; background: #ffffff; border: 1px solid rgba(206,17,38,0.12); box-shadow: 0 12px 32px -8px rgba(206,17,38,0.08);">
                     <h3 style="font-size: 1.35rem; font-weight: 800; color: #CE1126; margin-bottom: 0.75rem;">En 30 segundos</h3>
-                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Ingresa tu salario y obtén tu desglose completo de ISR, AFP, ARS y neto al instante. Sin fórmulas, sin errores.</p>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;">Ingresa tu salario y obtén tu desglose orientativo de ISR, AFP, ARS y neto al instante, sin hojas de cálculo complejas.</p>
                 </div>
 
                 <!-- Trust 3: Adaptado a RD -->
@@ -1536,30 +1556,27 @@
                     dominicana que te diga exactamente a dónde va tu dinero.
                 </p>
                 <p style="color:#475569; line-height:1.8; font-size:1rem; margin:0 0 1rem;">Fundado y desarrollado por
-                    <strong>Starlin Santana</strong> en Santo Domingo, República Dominicana, con los lineamientos
-                    oficiales de la <strong>DGII</strong> (Ley 11-92), la <strong>TSS</strong> (Ley 87-01) y el
-                    <strong>Código de Trabajo</strong> (Ley 16-92). Auditado y actualizado cada año fiscal.</p>
-                <p style="margin:0;"><a href="sobre-nosotros.html" style="color:#0038A8; font-weight:700; font-size:0.92rem; text-decoration:underline;">Conoce nuestra metodología y equipo editorial →</a></p>
+                    <strong>Starlin Santana</strong> en Santo Domingo, República Dominicana, contrastando las tablas
+                    públicas vigentes de la <strong>DGII</strong> (Ley 11-92), la <strong>TSS</strong> (Ley 87-01) y el
+                    <strong>Código de Trabajo</strong> (Ley 16-92). Actualizado cada año fiscal.</p>
+                <p style="margin:0;"><a href="sobre-nosotros.html" style="color:#0038A8; font-weight:700; font-size:0.92rem; text-decoration:underline;">Conoce nuestra metodología y alcance editorial →</a></p>
             </div>
             <!-- Derecha: vs Alternativas -->
             <div style="display:flex; flex-direction:column; gap:1.25rem;">
                 <p
                     style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; margin:0 0 0.5rem;">
-                    <span style="color:#0038A8;">¿Por qué otras opciones</span> <span style="color:#CE1126;">no bastan?</span></p>
+                    <span style="color:#0038A8;">Ventajas para tu</span> <span style="color:#CE1126;">simulación diaria</span></p>
                 <div>
-                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Una hoja de Excel</p>
-                    <p style="color:#64748B; font-size:0.9rem; margin:0;">Las fórmulas de Excel se desactualizan.
-                        Impucálculo se actualiza automáticamente con los topes y escalas vigentes cada año.</p>
+                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Frente a hojas de Excel manuales</p>
+                    <p style="color:#475569; font-size:0.9rem; margin:0;">Las hojas de cálculo manuales suelen desactualizarse. Impucálculo incorpora los topes TSS y escalas ISR vigentes de 2026 listos para usar.</p>
                 </div>
                 <div>
-                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Preguntarle a un contador</p>
-                    <p style="color:#64748B; font-size:0.9rem; margin:0;">Un contador no está disponible a las 11pm de
-                        un domingo. Impucálculo sí. Y no te cobra consultoría.</p>
+                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Complemento ágil antes de tu consulta profesional</p>
+                    <p style="color:#475569; font-size:0.9rem; margin:0;">Te permite estimar tus números en segundos a cualquier hora para llegar mejor informado a tu contador (CPA), departamento de nómina o abogado laboral.</p>
                 </div>
                 <div>
-                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Otras calculadoras online</p>
-                    <p style="color:#64748B; font-size:0.9rem; margin:0;">La mayoría no aplican los topes correctos de
-                        TSS, ni están al día con la DGII. Impucálculo sí.</p>
+                    <p style="font-weight:800; color:#1E293B; margin:0 0 0.35rem;">Enfocado 100% en República Dominicana</p>
+                    <p style="color:#475569; font-size:0.9rem; margin:0;">Aplica los topes legales de la TSS (10 y 20 SMN), el divisor 23.83 del Reglamento 258-93 y la escala DGII vigente sin mezclar fórmulas extranjeras.</p>
                 </div>
             </div>
         </div>
@@ -1582,7 +1599,7 @@
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
-                        ¿Es gratis usar Impucálculo? <span style="color:#0038A8; font-size:1.25rem;">+</span></summary>
+                        ¿Es gratis usar Impucálculo? <span class="faq-toggle" style="color:#0038A8; font-size:1.25rem;" aria-hidden="true"></span></summary>
                     <p style="color:#64748B; line-height:1.7;">Sí, completamente gratis. No necesitas
                         crear una cuenta, no hay versión de pago oculta, ni tienes que dejar tu correo. Solo entras y
                         calculas.</p>
@@ -1591,8 +1608,7 @@
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
-                        ¿Está actualizado con las normativas DGII 2026? <span
-                            style="color:#0038A8; font-size:1.25rem;">+</span></summary>
+                        ¿Está actualizado con las normativas DGII 2026? <span class="faq-toggle" style="color:#0038A8; font-size:1.25rem;" aria-hidden="true"></span></summary>
                     <p style="color:#64748B; line-height:1.7;">Sí. Todos los topes de TSS, escalas del
                         ISR y porcentajes de AFP/ARS están actualizados con la normativa vigente publicada por la DGII y
                         la TSS para el año fiscal vigente 2026.</p>
@@ -1602,17 +1618,14 @@
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
                         ¿Mis datos salariales son enviados a algún servidor? <span
-                            style="color:#0038A8; font-size:1.25rem;">+</span></summary>
-                    <p style="color:#64748B; line-height:1.7;">No. Todo el procesamiento ocurre
-                        directamente en tu navegador. Tu salario nunca sale de tu computadora. No guardamos ni
-                        transmitimos ningún dato financiero tuyo.</p>
+                            class="faq-toggle" style="color:#0038A8; font-size:1.25rem;"></span></summary>
+                    <p style="color:#475569; line-height:1.7;">No enviamos tus salarios ni fechas laborales a servidores propios: todo cálculo ocurre localmente en tu navegador (la calculadora de sueldo neto guarda un historial local borrable en <code>localStorage</code> de tu dispositivo). De forma independiente, el sitio usa cookies de terceros para analítica (Google Analytics 4) y publicidad (Google AdSense); consulta nuestra <a href="privacidad.html" style="color:#0038A8; text-decoration:underline;">Política de Privacidad</a>.</p>
                 </details>
                 <details open
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
-                        ¿Funciona para cualquier tipo de empleado dominicano? <span
-                            style="color:#0038A8; font-size:1.25rem;">+</span></summary>
+                        ¿Funciona para cualquier tipo de empleado dominicano? <span class="faq-toggle" style="color:#0038A8; font-size:1.25rem;" aria-hidden="true"></span></summary>
                     <p style="color:#64748B; line-height:1.7;">Sí. Funciona para empleados asalariados
                         bajo el régimen de contribuyente del sector privado. Aplica los topes de la TSS y las escalas
                         del ISR según las tablas oficiales dominicanas. La calculadora aplica principalmente al régimen general del sector privado; los servidores públicos pueden estar sujetos a regímenes o deducciones especiales (ej. INABIMA o leyes especiales).</p>
@@ -1621,7 +1634,7 @@
                     style="background:#fff; border:1px solid #E2E8F0; border-radius:1rem; padding:1.25rem 1.5rem; cursor:pointer;">
                     <summary
                         style="font-weight:700; color:#1E293B; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
-                        ¿Puedo usarlo desde el celular? <span style="color:#0038A8; font-size:1.25rem;">+</span>
+                        ¿Puedo usarlo desde el celular? <span class="faq-toggle" style="color:#0038A8; font-size:1.25rem;" aria-hidden="true"></span>
                     </summary>
                     <p style="color:#64748B; line-height:1.7;">Sí. Impucálculo es completamente
                         responsive y funciona en cualquier dispositivo: teléfono, tablet o computadora, desde cualquier
@@ -1753,8 +1766,8 @@
                     </li>
                     <li>
                         <a href="blog/guia-uso-v2.html">
-                            <span class="all-guides-tag">Tutorial · Nómina e ISR</span>
-                            <span class="all-guides-title">Guía Práctica para Calcular tu Sueldo Neto en RD</span>
+                            <span class="all-guides-tag">Auditoría · Nómina y Horas Extras</span>
+                            <span class="all-guides-title">Cómo Auditar tu Volante de Nómina y Horas Extras en RD</span>
                         </a>
                     </li>
                 </ul>
@@ -1811,7 +1824,7 @@
                 <!-- Col 1: Marca y descripción -->
                 <div style="grid-column: span 1;">
                     <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" style="width:36px; height:36px; object-fit:contain;">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" style="width:36px; height:36px; object-fit:contain;" width="562" height="444">
                         <span style="font-size:1.35rem; font-weight:900; letter-spacing:0.02rem;"><span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo</span></span>
                     </div>
                     <p style="font-size:0.875rem; color:#64748B; line-height:1.6; margin-bottom:1rem;">
@@ -2066,30 +2079,16 @@
     </script>
     <!-- PWA Service Worker Registration & Install Prompt -->
     <script>
-        // PWA Service Worker Registration (Canonical URL + Loop Protection)
+        // PWA Service Worker Registration (sin recarga automática para no duplicar peticiones de anuncios)
         if ('serviceWorker' in navigator) {
-            const hadController = Boolean(navigator.serviceWorker.controller);
-            let refreshing = false;
-
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
-                    .then(registration => {
-                        console.log('ServiceWorker registered with scope: ', registration.scope);
-                        registration.update();
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
+                    .then(registration => registration.update())
+                    .catch(() => {});
             });
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!hadController || refreshing) return;
-                const now = Date.now();
-                const lastReload = parseInt(sessionStorage.getItem('impucalculo_sw_reload') || '0', 10);
-                if (now - lastReload < 5000) return;
-                sessionStorage.setItem('impucalculo_sw_reload', String(now));
-                refreshing = true;
-                window.location.reload();
+                try { sessionStorage.removeItem('impucalculo_sw_reload'); } catch (e) {}
             });
         }
         
@@ -2097,31 +2096,22 @@
         let deferredPrompt;
         const installBtn = document.getElementById('pwa-install-container');
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later.
-            deferredPrompt = e;
-            // Update UI to notify the user they can add to home screen
-            installBtn.style.display = 'flex';
-        });
-
-        installBtn.addEventListener('click', (e) => {
-            if (!deferredPrompt) return;
-            // Hide our user interface that shows our A2HS button
-            installBtn.style.display = 'none';
-            // Show the prompt
-            deferredPrompt.prompt();
-            // Wait for the user to respond to the prompt
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                } else {
-                    console.log('User dismissed the A2HS prompt');
-                }
-                deferredPrompt = null;
+        if (installBtn) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBtn.style.display = 'flex';
             });
-        });
+
+            installBtn.addEventListener('click', () => {
+                if (!deferredPrompt) return;
+                installBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            });
+        }
     </script>
 </body>
 

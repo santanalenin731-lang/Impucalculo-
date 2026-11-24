@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
-    <!-- Google Consent Mode v2 (EEA/UK/CH pre-consent default) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-      if (!window.__consentDefaultSet) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.__consentDefaultSet = true;
         window.gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: 'denied',
-          region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
-          wait_for_update: 500
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
         });
-      }
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
     </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gastos Educativos DGII 2026: Cómo Solicitar la Devolución de ISR | Impucálculo</title>
+    <title>Gastos Educativos DGII 2026: Cómo Solicitar la Devolución de ISR | Impucálculo</title>
   <meta name="description" content="Guía completa sobre la Ley 179-09 de Gastos Educativos en República Dominicana. Aprende a reportar facturas con NCF, requisitos y cómo calcular tu devolución de ISR.">
   <meta name="keywords" content="gastos educativos dgii 2026, ley 179-09 gastos educativos, devolucion de impuestos por educacion rd, oficina virtual dgii gastos educativos, declarar gastos educativos rd">
+  <meta name="author" content="Starlin Santana">
   <link rel="canonical" href="https://impucalculo.com/blog/gastos-educativos-dgii-ley-179-09.html">
   <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog/gastos-educativos-dgii-ley-179-09.html">
   <link rel="icon" type="image/webp" href="../logo_new.webp">
@@ -68,7 +76,7 @@
     "publisher": {
       "@type": "Organization",
       "name": "Impucálculo",
-      "url": "https://impucalculo.com",
+      "url": "https://impucalculo.com/",
       "logo": { "@type": "ImageObject", "url": "https://impucalculo.com/logo_new.webp" }
     },
     "mainEntityOfPage": "https://impucalculo.com/blog/gastos-educativos-dgii-ley-179-09.html"
@@ -104,7 +112,7 @@
       {
         "@type": "Question",
         "name": "¿Qué tipo de factura debo solicitar al centro educativo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Debes solicitar un Comprobante con Valor de Crédito Fiscal (NCF B01 o comprobante electrónico e-NCF E31, Serie B) emitido a nombre de tu cédula para que la DGII pueda validar el gasto en su plataforma." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Debes solicitar un Comprobante con Valor de Crédito Fiscal (NCF Serie B: B01 o comprobante electrónico e-CF Serie E: E31) emitido a nombre de tu cédula para que la DGII pueda validar el gasto en su plataforma." }
       },
       {
         "@type": "Question",
@@ -302,6 +310,21 @@
       .step-box, .ex-box { padding: 1.5rem; }
       .cta-block { padding: 2.5rem 1.5rem; }
     }
+  
+    /* Correcciones UX móvil, sticky header, contraste WCAG AA y anti-overflow 320px */
+    header:not(.art-lead-box) { position: sticky; top: 0; z-index: 100; }
+    .nav-back { min-width: 44px; min-height: 44px; padding: 0 8px; justify-content: center; }
+    .nav-cta { min-height: 40px; display: inline-flex; align-items: center; }
+    .content, .formula-box, .ex-box, .ejemplo-box, .alert-box, .info-box { min-width: 0; overflow-wrap: anywhere; }
+    .art-byline, .breadcrumb { color: #475569; }
+    .art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; }
+    .art-nav-link { background: rgba(255,255,255,0.9); border: 1px solid #E2E8F0; border-radius: 1.25rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.08); transition: transform 0.25s, border-color 0.25s; display: block; }
+    .art-nav-link:hover { transform: translateY(-2px); border-color: rgba(0,56,168,0.3); }
+    .art-nav-link.prev { text-align: left; }
+    .art-nav-link.next { text-align: right; }
+    .art-nav-link .nav-dir { font-size: 0.78rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .art-nav-link .nav-ttl { font-size: 0.95rem; font-weight: 800; color: #0038A8; line-height: 1.35; }
+    @media (max-width: 640px) { .art-nav { grid-template-columns: 1fr; } .art-nav-link.next { text-align: left; } }
   </style>
 </head>
 <body>
@@ -310,7 +333,7 @@
   <header style="position: sticky; top: 0; z-index: 100;">
     <nav class="navbar" role="navigation" aria-label="Navegación principal">
       <div class="nav-inner">
-        <a href="../index.html" class="nav-logo" aria-label="Impucálculo inicio">
+        <a href="/" class="nav-logo" aria-label="Impucálculo inicio">
           <span>Impu</span><span>cálculo</span>
         </a>
         <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
@@ -327,7 +350,7 @@
 
       <!-- BREADCRUMB -->
       <nav class="breadcrumb" aria-label="Ruta de navegación">
-        <a href="../index.html">Inicio</a>
+        <a href="/">Inicio</a>
         <span class="sep">›</span>
         <a href="../blog.html">Blog</a>
         <span class="sep">›</span>
@@ -382,8 +405,8 @@
 
           <div class="step-box">
             <div class="step-num">2</div>
-            <h3>Comprobantes Fiscales Válidos para Crédito Fiscal (NCF / e-NCF)</h3>
-            <p>Cada vez que pagues inscripción o mensualidades en tu centro educativo, debes solicitar un <strong>Comprobante con Valor de Crédito Fiscal (NCF B01 o comprobante electrónico e-NCF E31, Serie B)</strong> emitido a tu nombre (donde conste tu número de Cédula como adquiriente del servicio). Las facturas de consumo simple no son válidas para deducir impuestos.</p>
+            <h3>Comprobantes Fiscales Válidos para Crédito Fiscal (NCF / e-CF)</h3>
+            <p>Cada vez que pagues inscripción o mensualidades en tu centro educativo, debes solicitar un <strong>Comprobante con Valor de Crédito Fiscal (NCF Serie B: B01 o comprobante electrónico e-CF Serie E: E31)</strong> emitido a tu nombre (donde conste tu número de Cédula como adquiriente del servicio). Las facturas de consumo simple no son válidas para deducir impuestos.</p>
           </div>
 
           <hr class="divider">
@@ -404,12 +427,12 @@
           </div>
 
           <h3>¿A quiénes puedes declarar como dependientes?</h3>
-          <p>Puedes deducir los gastos educativos de las siguientes personas:</p>
+          <p>Conforme a la <strong>Ley 179-09</strong> y las normas vigentes de la DGII, solo puedes deducir gastos educativos de las siguientes personas:</p>
           <ol>
-            <li><strong>Tú mismo:</strong> Gastos de tu propia educación técnica o universitaria.</li>
-            <li><strong>Tus hijos:</strong> Educación de tus dependientes directos que no perciban ingresos gravados (no asalariados).</li>
-            <li><strong>Cónyuge:</strong> Educación de tu esposo/a que dependa económicamente de ti y no declare de forma independiente.</li>
+            <li><strong>Tú mismo:</strong> Gastos de tu propia educación técnica, universitaria o de posgrado.</li>
+            <li><strong>Tus hijos/as (dependientes directos no asalariados):</strong> Educación de tus hijos dependientes que no perciban ingresos gravados por cuenta propia o nómina.</li>
           </ol>
+          <p><strong>Aclaración importante sobre el cónyuge:</strong> La Ley 179-09 <strong>no permite</strong> registrar ni deducir gastos educativos del cónyuge (esposo/a); cada persona solo puede deducir su propia educación y la de sus hijos dependientes directos no asalariados.</p>
 
           <hr class="divider">
 
@@ -420,7 +443,7 @@
           <div class="step-box">
             <div class="step-num">1</div>
             <h3>Registrar Dependientes</h3>
-            <p>En el Panel de Gastos Educativos de la Oficina Virtual, ingresa las cédulas o actas de nacimiento de tus hijos y cónyuge para darlos de alta como dependientes autorizados.</p>
+            <p>En el Panel de Gastos Educativos de la Oficina Virtual, ingresa las cédulas o actas de nacimiento de tus hijos dependientes directos no asalariados para darlos de alta como dependientes autorizados.</p>
           </div>
 
           <div class="step-box">
@@ -531,7 +554,7 @@
           <div class="faq-item">
             <details open>
               <summary class="faq-q">¿Qué tipo de factura debo solicitar al centro educativo?</summary>
-              <div class="faq-a">Debes solicitar un Comprobante con Valor de Crédito Fiscal (NCF B01 o comprobante electrónico e-NCF E31, Serie B) emitido a nombre de tu cédula para que la DGII pueda validar el gasto en su plataforma.</div>
+              <div class="faq-a">Debes solicitar un Comprobante con Valor de Crédito Fiscal (NCF Serie B: B01 o comprobante electrónico e-CF Serie E: E31) emitido a nombre de tu cédula para que la DGII pueda validar el gasto en su plataforma.</div>
             </details>
           </div>
 
@@ -553,15 +576,27 @@
           </ul>
         </section>
 
-        <!-- FICHA DE AUTOR E-E-A-T -->
-        <div class="info-box" style="margin-top:2.5rem;">
-          <p><strong>Por <a href="../sobre-nosotros.html">Starlin Santana · Fundador y Responsable Editorial</a></strong>.</p>
-        </div>
+        
+                  <div class="comp-card" style="margin-top:2rem; padding:1.5rem 1.75rem; background:#ffffff; border:1px solid #E2E8F0; border-radius:1rem;">
+            <p style="margin-bottom:0.35rem; font-size:0.95rem; color:#0F172A;">
+              <strong>Por <a href="../sobre-nosotros.html" style="color:#0038A8; text-decoration:none;">Starlin Santana — Fundador y Responsable Editorial</a></strong>
+            </p>
+            <p style="margin-bottom:0; font-size:0.86rem; color:#475569; line-height:1.6;">
+              Desarrollador y editor técnico de Impucálculo. Dedicado a la divulgación educativa y programación de herramientas informativas basadas en la normativa pública fiscal y laboral de la República Dominicana (contenido orientativo; no sustituye asesoría contable ni legal).
+            </p>
+          </div>
 
         <!-- ARTICLE NAV -->
-        <div class="art-nav">
-          <a href="liquidacion-renuncia-derechos-adquiridos.html" class="art-nav-link prev">
-            <div class="nav-dir">« Anterior</div>
+        <nav class="art-nav" aria-label="Navegación entre artículos">
+          <a href="tss-afp-ars-guia.html" class="art-nav-link prev">
+            <div class="nav-dir">← Artículo Anterior</div>
+            <div class="nav-ttl">AFP, ARS y Seguridad Social (TSS 2026)</div>
+          </a>
+          <a href="guia-uso-v2.html" class="art-nav-link next">
+            <div class="nav-dir">Siguiente Artículo →</div>
+            <div class="nav-ttl">Cómo Auditar tu Volante de Nómina y Horas Extras</div>
+          </a>
+        </nav>
             <div class="nav-ttl">Guía de Liquidación por Renuncia en RD</div>
           </a>
           <a href="tss-afp-ars-guia.html" class="art-nav-link next">
@@ -597,7 +632,7 @@
       <!-- Disclaimer legal explícito -->
       <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; padding-bottom:1.5rem; font-size:0.75rem; color:#64748B; line-height:1.6; text-align:left;">
         <p style="margin:0;">
-          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII) ni el Ministerio de Trabajo de la República Dominicana.
+          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII), la Tesorería de la Seguridad Social (TSS) ni el Ministerio de Trabajo de la República Dominicana. Los cálculos y guías son orientativos y no sustituyen asesoría contable ni legal profesional.
         </p>
       </div>
 

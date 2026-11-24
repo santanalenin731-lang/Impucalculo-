@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
-    <!-- Google Consent Mode v2 (strict pre-consent for EEA/UK/CH) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-      window.__consentDefaultSet = true;
-      window.gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
-        wait_for_update: 500
-      });
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
     </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fórmula de Cesantía, Preaviso, Salario Promedio (Art. 85) y Mora (Art. 86) en RD | Ley 16-92</title>
+    <title>Fórmula de Cesantía, Preaviso, Salario Promedio (Art. 85) y Mora (Art. 86) en RD | Ley 16-92</title>
   <meta name="description" content="Manual técnico-matemático para calcular el preaviso (Art. 76), el auxilio de cesantía (Art. 80), el salario promedio de 12 meses con comisiones (Art. 85), divisores del Artículo 32 del Reglamento núm. 258-93 (23.83, 11.91 y 5.5) y la mora patronal del Art. 86 en República Dominicana.">
   <meta name="keywords" content="como calcular cesantia rd, calcular preaviso republica dominicana, art 85 salario promedio codigo de trabajo rd, art 86 mora patronal un dia de salario, reglamento 258-93 divisor 23.83 11.91 5.5, art 80 cesantia rd, art 76 preaviso rd">
+  <meta name="author" content="Starlin Santana">
   <link rel="canonical" href="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
   <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html">
   <link rel="icon" type="image/webp" href="../logo_new.webp">
@@ -66,7 +76,7 @@
     "publisher": {
       "@type": "Organization",
       "name": "Impucálculo",
-      "url": "https://impucalculo.com",
+      "url": "https://impucalculo.com/",
       "logo": { "@type": "ImageObject", "url": "https://impucalculo.com/logo_new.webp" }
     },
     "mainEntityOfPage": "https://impucalculo.com/blog/calculo-cesantia-preaviso-codigo-trabajo-rd.html"
@@ -347,6 +357,21 @@
       .nav-back-text, .nav-back span { display: none; }
       .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
     }
+  
+    /* Correcciones UX móvil, sticky header, contraste WCAG AA y anti-overflow 320px */
+    header:not(.art-lead-box) { position: sticky; top: 0; z-index: 100; }
+    .nav-back { min-width: 44px; min-height: 44px; padding: 0 8px; justify-content: center; }
+    .nav-cta { min-height: 40px; display: inline-flex; align-items: center; }
+    .content, .formula-box, .ex-box, .ejemplo-box, .alert-box, .info-box { min-width: 0; overflow-wrap: anywhere; }
+    .art-byline, .breadcrumb { color: #475569; }
+    .art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; }
+    .art-nav-link { background: rgba(255,255,255,0.9); border: 1px solid #E2E8F0; border-radius: 1.25rem; padding: 1.25rem 1.5rem; text-decoration: none; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.08); transition: transform 0.25s, border-color 0.25s; display: block; }
+    .art-nav-link:hover { transform: translateY(-2px); border-color: rgba(0,56,168,0.3); }
+    .art-nav-link.prev { text-align: left; }
+    .art-nav-link.next { text-align: right; }
+    .art-nav-link .nav-dir { font-size: 0.78rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .art-nav-link .nav-ttl { font-size: 0.95rem; font-weight: 800; color: #0038A8; line-height: 1.35; }
+    @media (max-width: 640px) { .art-nav { grid-template-columns: 1fr; } .art-nav-link.next { text-align: left; } }
   </style>
 </head>
 <body>
@@ -355,7 +380,7 @@
   <header>
     <nav class="navbar" role="navigation" aria-label="Navegación principal">
       <div class="nav-inner">
-        <a href="../index.html" class="nav-logo" aria-label="Impucálculo inicio"><span>Impu</span><span>cálculo</span></a>
+        <a href="/" class="nav-logo" aria-label="Impucálculo inicio"><span>Impu</span><span>cálculo</span></a>
         <a href="../blog.html" class="nav-back" aria-label="Volver al Blog">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span class="nav-back-text">Volver al Blog</span>
@@ -366,13 +391,13 @@
   </header>
 
   <main class="container">
-    <div class="breadcrumb">
-      <a href="../index.html">Inicio</a>
-      <span class="sep">/</span>
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="/">Impucálculo</a>
+      <span class="sep">›</span>
       <a href="../blog.html">Blog</a>
-      <span class="sep">/</span>
-      <span>República Dominicana</span>
-    </div>
+      <span class="sep">›</span>
+      <span>Cesantía y Preaviso 2026</span>
+    </nav>
 
     <div class="art-meta">Ingeniería Laboral · Arts. 76, 80, 85 y 86 (Ley 16-92)</div>
     <h1>Cálculo de Cesantía y Preaviso en RD 2026: Guía del Código de Trabajo</h1>
@@ -658,7 +683,7 @@
 
       <div class="cta-banner">
         <h3>Calcula tus Prestaciones en Segundos</h3>
-        <p>Utiliza nuestra calculadora oficial adaptada al Código de Trabajo de República Dominicana y al Reglamento 258-93.</p>
+        <p>Utiliza nuestra calculadora gratuita e independiente basada en el Código de Trabajo de República Dominicana y el Reglamento 258-93.</p>
         <a href="../prestaciones.html" class="cta-btn">Ir a la Calculadora</a>
       </div>
 
@@ -700,16 +725,27 @@
         </ul>
       </div>
 
-      <!-- FICHA DE AUTOR E-E-A-T -->
-      <div class="author-box" style="margin-top: 2rem;">
-        <p style="margin:0; font-size:0.95rem;">
-          <strong>Por <a href="../sobre-nosotros.html">Starlin Santana — Fundador y Responsable Editorial</a></strong>
-        </p>
-        <p style="margin:0; font-size:0.86rem; color:var(--gray);">
-          Especialista en el análisis práctico del Código de Trabajo de la República Dominicana (Ley 16-92), el Reglamento 258-93 y la modelación matemática de liquidaciones laborales e impuestos.
-        </p>
-      </div>
-    </article>
+      
+                <div class="comp-card" style="margin-top:2rem; padding:1.5rem 1.75rem; background:#ffffff; border:1px solid #E2E8F0; border-radius:1rem;">
+            <p style="margin-bottom:0.35rem; font-size:0.95rem; color:#0F172A;">
+              <strong>Por <a href="../sobre-nosotros.html" style="color:#0038A8; text-decoration:none;">Starlin Santana — Fundador y Responsable Editorial</a></strong>
+            </p>
+            <p style="margin-bottom:0; font-size:0.86rem; color:#475569; line-height:1.6;">
+              Desarrollador y editor técnico de Impucálculo. Dedicado a la divulgación educativa y programación de herramientas informativas basadas en la normativa pública fiscal y laboral de la República Dominicana (contenido orientativo; no sustituye asesoría contable ni legal).
+            </p>
+          </div>
+    
+        <nav class="art-nav" aria-label="Navegación entre artículos">
+          <a href="prestaciones-laborales-guia.html" class="art-nav-link prev">
+            <div class="nav-dir">← Artículo Anterior</div>
+            <div class="nav-ttl">Guía Completa de Prestaciones Laborales 2026</div>
+          </a>
+          <a href="dimision-laboral-rd-prestaciones.html" class="art-nav-link next">
+            <div class="nav-dir">Siguiente Artículo →</div>
+            <div class="nav-ttl">Dimisión Laboral Justificada en RD (Arts. 96-102)</div>
+          </a>
+        </nav>
+      </article>
   </main>
 
     <!-- UNIFIED RICH FOOTER -->
@@ -734,7 +770,7 @@
       <!-- Disclaimer legal explícito -->
       <div style="border-top:1px solid #E2E8F0; padding-top:1.5rem; padding-bottom:1.5rem; font-size:0.75rem; color:#64748B; line-height:1.6; text-align:left;">
         <p style="margin:0;">
-          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII) ni el Ministerio de Trabajo de la República Dominicana.
+          <strong>Descargo de Responsabilidad:</strong> Impucálculo es una iniciativa tecnológica independiente con fines estrictamente informativos y educativos. No forma parte, no representa ni tiene vinculación oficial con la Dirección General de Impuestos Internos (DGII), la Tesorería de la Seguridad Social (TSS) ni el Ministerio de Trabajo de la República Dominicana. Los cálculos y guías son orientativos y no sustituyen asesoría contable ni legal profesional.
         </p>
       </div>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html {
@@ -27,6 +28,21 @@
         @media (min-width: 640px) {
             .sm\:gap-5 { gap: 1.25rem; }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <title>Sobre Nosotros y Equipo Editorial | Impucálculo</title>
     <meta name="description"
@@ -77,7 +93,7 @@
         "founder": {
           "@type": "Person",
           "name": "Starlin Santana",
-          "jobTitle": "Fundador, Desarrollador Principal y Responsable Editorial",
+          "jobTitle": "Fundador y Responsable Editorial",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Santo Domingo",
@@ -99,13 +115,13 @@
     <!-- Header Simple -->
     <header class="bg-white border-b border-dr-slate-200 py-4 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain">
+            <a href="/" class="flex items-center gap-3">
+                <img src="logo_new.webp" alt="Impucálculo Logo" class="w-10 h-10 object-contain" width="562" height="444">
                 <span class="font-bold text-lg"><span class="text-dr-red">Impu</span><span
                         class="text-dr-blue">cálculo</span></span>
             </a>
             <nav class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
                 <a href="prestaciones.html" class="text-dr-slate-600 hover:text-dr-blue transition">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -124,24 +140,24 @@
 
             <div class="space-y-8 text-dr-slate-600 leading-relaxed">
                 <p class="text-lg leading-relaxed font-normal">
-                    <strong>Impucálculo</strong> nació en República Dominicana en el año 2025 con un propósito contundente: <strong>democratizar el entendimiento de las finanzas personales, los salarios, la tributación y los derechos laborales</strong> de cada trabajador dominicano a través de herramientas tecnológicas rápidas, gratuitas y de estricta precisión matemática y legal.
+                    <strong>Impucálculo</strong> nació en República Dominicana en el año 2025 con un propósito claro: <strong>democratizar el entendimiento de las finanzas personales, los salarios, la tributación y los derechos laborales</strong> de cada trabajador dominicano a través de herramientas tecnológicas rápidas, gratuitas y contrastadas con la normativa pública vigente.
                 </p>
 
                 <!-- Grid de Valores -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
-                        <div class="text-2xl font-black text-dr-blue mb-1">100%</div>
-                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Privado y Local</div>
-                        <p class="text-xs text-dr-slate-600 mt-2">Tus salarios y fechas se procesan en tu propio navegador.</p>
+                        <div class="text-2xl font-black text-dr-blue mb-1">Local</div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-600">Cálculo en tu Navegador</div>
+                        <p class="text-xs text-dr-slate-600 mt-2">Tus salarios y fechas se procesan localmente, sin crear cuentas.</p>
                     </div>
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
                         <div class="text-2xl font-black text-dr-red mb-1">0 RD$</div>
-                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Gratuito Siempre</div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-600">Gratuito Siempre</div>
                         <p class="text-xs text-dr-slate-600 mt-2">Sin suscripciones, cobros ocultos ni barreras de acceso.</p>
                     </div>
                     <div class="bg-dr-slate-50 p-5 rounded-xl border border-dr-slate-200 text-center">
                         <div class="text-2xl font-black text-dr-blue mb-1">Rigor</div>
-                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-500">Base Jurídica RD</div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-dr-slate-600">Base Jurídica RD</div>
                         <p class="text-xs text-dr-slate-600 mt-2">Alineado a la Ley 11-92 (Código Tributario), la Ley 16-92 (Código de Trabajo) y la Ley 87-01 (Seguridad Social).</p>
                     </div>
                 </div>
@@ -163,7 +179,7 @@
                         </p>
                         <ul class="list-disc pl-5 space-y-1.5 text-dr-slate-600">
                             <li><strong>Código Tributario (Ley 11-92) y Normas Generales de la DGII:</strong> Verificación anual de los tramos de la escala salarial de Personas Físicas (tasas del 15%, 20% y 25%), deducción de aportes a la Seguridad Social antes del cálculo de la base imponible del ISR, y aplicación de la Ley 179-09 sobre deducción de gastos educativos.</li>
-                            <li><strong>Código de Trabajo de la República Dominicana (Ley 16-92) y Resoluciones del Ministerio de Trabajo:</strong> Aplicación estricta del factor divisor oficial de <code>23.83</code> días laborables promedio mensual para determinar el salario diario, cálculo exacto de escalas de preaviso (Art. 76), auxilio de cesantía (Art. 80), vacaciones (Art. 177), salario de Navidad / regalía pascual exenta de ISR (Art. 219) y participación en los beneficios de la empresa / bonificación (Art. 223).</li>
+                            <li><strong>Código de Trabajo de la República Dominicana (Ley 16-92) y Resoluciones del Ministerio de Trabajo:</strong> Aplicación del factor divisor de <code>23.83</code> días laborables promedio mensual (Art. 32 Reglamento 258-93) para determinar el salario diario y estimar preaviso (Art. 76), auxilio de cesantía (Art. 80), vacaciones (Arts. 177 y 180) y salario de Navidad / regalía pascual proporcional (Art. 219), además de guías educativas sobre participación en los beneficios / bonificación (Art. 223).</li>
                             <li><strong>Ley 87-01 que crea el Sistema Dominicano de Seguridad Social (TSS / CNSS / SISALRIL):</strong> Actualización periódica de las tasas de retención laboral y patronal del Seguro de Vejez, Discapacidad y Sobrevivencia (AFP: 2.87% empleado) y del Seguro Familiar de Salud (SFS/ARS: 3.04% empleado), aplicando automáticamente los topes salariales vigentes de 20, 10 y 4 salarios mínimos nacionales cotizables.</li>
                         </ul>
                     </div>
@@ -183,8 +199,8 @@
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">4. Filosofía de Privacidad en tus Cálculos</h2>
-                    <p>A diferencia de plataformas que exigen registro o correo electrónico para mostrar un resultado salarial, las calculadoras de Impucálculo ejecutan el <strong>100% de las operaciones matemáticas localmente en la memoria de tu navegador web</strong> mediante JavaScript. Los montos salariales, fechas de ingreso o deducciones que escribes en nuestras herramientas nunca se envían ni se almacenan en bases de datos propias.</p>
+                    <h2 class="text-xl font-bold text-dr-slate-800 mb-3">4. Privacidad en tus Cálculos y Uso de Terceros</h2>
+                    <p>A diferencia de plataformas que exigen registro o correo electrónico para mostrar un resultado salarial, las calculadoras de Impucálculo ejecutan las <strong>operaciones matemáticas localmente en tu navegador web</strong> mediante JavaScript (con historial local borrable en <code>localStorage</code> para la calculadora de sueldo neto). Los montos salariales o fechas que introduces nunca se envían a bases de datos propias. De manera independiente, el sitio utiliza servicios de terceros como Google Analytics 4 y Google AdSense sujetos a sus políticas de cookies (ver <a href="privacidad.html" class="text-dr-blue underline font-semibold">Política de Privacidad</a>).</p>
                 </div>
 
                 <div>
@@ -249,7 +265,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">

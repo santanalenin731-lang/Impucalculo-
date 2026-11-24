@@ -4,6 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
+    </script>
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-1230372815450080">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
+        crossorigin="anonymous"></script>
+
     <title>Blog Financiero, Laboral y Fiscal RD | Impucálculo 2026</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/blog.html">
 
@@ -16,7 +44,7 @@
 
     <meta name="keywords"
         content="blog finanzas rd, impuestos rd, prestaciones laborales, educacion financiera dominicana, isr rd, tss rd, codigo de trabajo rd">
-    <meta name="author" content="Starlin Santana - Impucálculo">
+    <meta name="author" content="Starlin Santana">
     <link rel="canonical" href="https://impucalculo.com/blog.html">
 
     <!-- Open Graph / Facebook -->
@@ -335,6 +363,21 @@
             .container { padding: 2rem 1rem; }
             .hero-title h1 { font-size: 2.25rem; }
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
 <script type="application/ld+json">
 {
@@ -346,7 +389,7 @@
   "author": {
     "@type": "Person",
     "name": "Starlin Santana",
-    "jobTitle": "Fundador y Desarrollador Principal"
+    "jobTitle": "Fundador y Responsable Editorial"
   },
   "publisher": {
     "@type": "Organization",
@@ -365,14 +408,14 @@
     <!-- Header -->
     <header class="header glass">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
-            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.85rem;">
-                <img src="logo_new.webp" alt="Blog Finanzas e Impuestos RD - Impucálculo" style="width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,56,168,0.22));">
+            <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.85rem;">
+                <img src="logo_new.webp" alt="Blog Finanzas e Impuestos RD - Impucálculo" style="width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,56,168,0.22));" width="562" height="444">
                 <span style="font-size: 1.35rem; font-weight: 900; color: #1E293B; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));">
                     <span style="color: #CE1126;">Impu</span><span style="color: #0038A8;">cálculo</span>
                 </span>
             </a>
             <nav class="desktop-nav" aria-label="Navegación principal">
-                <a href="index.html">Inicio</a>
+                <a href="/">Inicio</a>
                 <a href="calculadora.html">Sueldo e ISR</a>
                 <a href="prestaciones.html">Prestaciones</a>
                 <a href="blog.html" class="nav-active">Blog</a>
@@ -381,7 +424,7 @@
             </nav>
         </div>
         <nav class="mobile-nav" aria-label="Navegación móvil">
-            <a href="index.html">Inicio</a>
+            <a href="/">Inicio</a>
             <a href="calculadora.html">Sueldo e ISR</a>
             <a href="prestaciones.html">Prestaciones</a>
             <a href="blog.html" class="nav-active">Blog</a>
@@ -539,12 +582,12 @@
                 </div>
             </a>
 
-            <!-- 11. Guía de Uso para tus Finanzas -->
+            <!-- 11. Auditoría de Volante de Nómina y Horas Extras -->
             <a href="blog/guia-uso-v2.html" class="blog-card glass" data-category="fiscal">
                 <div class="blog-card-content">
-                    <span class="blog-card-tag">Tutorial · Nómina e ISR</span>
-                    <h2>Guía Práctica para Calcular tu Sueldo Neto en RD</h2>
-                    <p>Aprende a sacar el máximo provecho de nuestras calculadoras de sueldo neto, retenciones de ISR, aportes a la TSS y liquidación laboral.</p>
+                    <span class="blog-card-tag">Auditoría · Nómina y Horas Extras</span>
+                    <h2>Cómo Auditar tu Volante de Nómina y Horas Extras en RD</h2>
+                    <p>Aprende a verificar tu volante de pago quincenal o mensual, calcular horas extras (35% y 100%), comisiones y validar descuentos de TSS e ISR.</p>
                     <div class="read-more">
                         <span>Leer más</span>
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -561,7 +604,7 @@
                 <!-- Col 1: Marca y descripción -->
                 <div style="grid-column: span 1;">
                     <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" style="width:36px; height:36px; object-fit:contain;">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" style="width:36px; height:36px; object-fit:contain;" width="562" height="444">
                         <span style="font-size:1.35rem; font-weight:900; letter-spacing:0.02rem;"><span style="color:#CE1126;">Impu</span><span style="color:#0038A8;">cálculo</span></span>
                     </div>
                     <p style="font-size:0.875rem; color:#64748B; line-height:1.6; margin-bottom:1rem;">
@@ -655,30 +698,16 @@
             }
         });
 
-        // PWA Service Worker Registration (Canonical URL + Loop Protection)
+        // PWA Service Worker Registration (sin recarga automática)
         if ('serviceWorker' in navigator) {
-            const hadController = Boolean(navigator.serviceWorker.controller);
-            let refreshing = false;
-
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
-                    .then(registration => {
-                        console.log('ServiceWorker registered with scope: ', registration.scope);
-                        registration.update();
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
+                    .then(registration => registration.update())
+                    .catch(() => {});
             });
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!hadController || refreshing) return;
-                const now = Date.now();
-                const lastReload = parseInt(sessionStorage.getItem('impucalculo_sw_reload') || '0', 10);
-                if (now - lastReload < 5000) return;
-                sessionStorage.setItem('impucalculo_sw_reload', String(now));
-                refreshing = true;
-                window.location.reload();
+                try { sessionStorage.removeItem('impucalculo_sw_reload'); } catch (e) {}
             });
         }
     </script>

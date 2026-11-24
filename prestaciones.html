@@ -2,27 +2,36 @@
 <html lang="es-DO">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Google Consent Mode v2 (sync default before AdSense & Analytics) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.__consentDefaultSet = true;
+        window.gtag('consent', 'default', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'],
+            wait_for_update: 500
+        });
+        window.gtag('set', 'ads_data_redaction', true);
+    </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-1230372815450080">
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ window.dataLayer.push(arguments); }
-      window.gtag = window.gtag || gtag;
-      window.__consentDefaultSet = true;
-      window.gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
-        wait_for_update: 500
-      });
-    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1230372815450080"
         crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Calculadora de Prestaciones Laborales RD 2026 | Preaviso y Cesantía</title>
     <link rel="alternate" hreflang="es-do" href="https://impucalculo.com/prestaciones.html">
 
@@ -34,7 +43,7 @@
 
     <meta name="keywords"
         content="prestaciones laborales, cesantia, preaviso, vacaciones, regalia pascual, codigo de trabajo, republica dominicana, calculo finiquito">
-    <meta name="author" content="Impucálculo">
+    <meta name="author" content="Starlin Santana">
     <link rel="canonical" href="https://impucalculo.com/prestaciones.html">
 
     <!-- Open Graph / Facebook -->
@@ -55,7 +64,7 @@
     <meta name="twitter:image" content="https://impucalculo.com/logo_new.webp">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/tailwind.min.css">
 
@@ -166,12 +175,28 @@
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 10px 22px -4px rgba(0, 56, 168, 0.4);
         }
+    
+        /* Mejoras de UX móvil, objetivos táctiles >=44px y contraste WCAG AA */
+        @media (max-width: 767px) {
+            header, .navbar { position: static !important; }
+            header nav a, .navbar nav a, nav[aria-label="Navegación móvil"] a {
+                min-height: 40px;
+                padding: 8px 10px !important;
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem !important;
+            }
+        }
+        .text-dr-slate-400 { color: #475569 !important; }
+        details > summary .faq-toggle::before { content: "+"; }
+        details[open] > summary .faq-toggle::before { content: "−"; }
     </style>
     <!-- Firebase Analytics -->
     <script type="module" src="js/firebase-analytics.js"></script>
     <!-- PWA Settings -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0038A8">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -204,12 +229,12 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 glass border-b border-dr-slate-100 flex flex-col shadow-sm">
         <div class="max-w-6xl mx-auto px-6 header-pad flex items-center justify-between w-full">
-            <a href="index.html"
+            <a href="/"
                 class="flex items-center gap-3 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                 aria-label="Ir a Inicio">
                 <div class="header-logo flex items-center justify-center flex-shrink-0">
                     <img src="logo_new.webp" alt="Calculadora de Prestaciones Laborales RD - Impucálculo" class="header-logo object-contain drop-shadow-md"
-                        onerror="this.style.display='none'">
+                        onerror="this.style.display='none'" width="562" height="444">
                 </div>
                 <div>
                     <span class="block text-xl font-extrabold tracking-tight leading-none">
@@ -223,7 +248,7 @@
                 </div>
             </a>
             <nav class="hidden md:flex items-center gap-5 text-sm font-semibold" aria-label="Navegación principal">
-                <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+                <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
                 <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo e ISR</a>
                 <a href="prestaciones.html" class="text-dr-blue font-bold">Prestaciones</a>
                 <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -234,7 +259,7 @@
 
         <!-- Barra de Navegación Móvil Visible -->
         <nav class="flex md:hidden items-center justify-center flex-wrap gap-x-4 gap-y-2 px-4 py-2 border-t border-dr-slate-200/70 text-xs font-bold" aria-label="Navegación móvil">
-            <a href="index.html" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
+            <a href="/" class="text-dr-slate-600 hover:text-dr-blue transition">Inicio</a>
             <a href="calculadora.html" class="text-dr-slate-600 hover:text-dr-blue transition">Sueldo/ISR</a>
             <a href="prestaciones.html" class="text-dr-blue underline underline-offset-4">Prestaciones</a>
             <a href="blog.html" class="text-dr-slate-600 hover:text-dr-blue transition">Blog</a>
@@ -271,7 +296,7 @@
                 </div>
                 <span class="text-dr-slate-300 flex-shrink-0">•</span>
                 <div class="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
-                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Regalía y Liquidación:</span>
+                    <span class="text-[10px] font-extrabold text-dr-slate-500 uppercase tracking-wider">Preaviso, Cesantía y Regalía:</span>
                     <span class="font-black text-emerald-700">0% ISR / 0% TSS</span>
                 </div>
             </div>
@@ -286,7 +311,7 @@
             </p>
             <div class="glass rounded-2xl p-5 border border-dr-slate-200 max-w-4xl mx-auto text-left mt-4">
                 <p class="text-xs sm:text-sm text-dr-slate-700 leading-relaxed">
-                    Este simulador calcula tus prestaciones laborales y derechos adquiridos en la República Dominicana para 2026 bajo el <strong>Código de Trabajo (Ley 16-92)</strong> y el <strong>Artículo 32 del Reglamento núm. 258-93</strong>. A partir de tus fechas de ingreso y salida y tu salario ordinario promedio (mensual, quincenal o semanal), determina el salario diario oficial y calcula el preaviso omitido (<strong>Art. 76</strong>: 7, 14 o 28 días), el auxilio de cesantía según antigüedad (<strong>Art. 80</strong>: 6 a 23 días por año), la compensación por vacaciones no disfrutadas (<strong>Art. 177</strong> y Art. 180) y la regalía pascual o Salario de Navidad proporcional del año en curso (<strong>Art. 219</strong>), exentos de ISR y TSS.
+                    Este simulador calcula tus prestaciones laborales y derechos adquiridos en la República Dominicana para 2026 bajo el <strong>Código de Trabajo (Ley 16-92)</strong> y el <strong>Artículo 32 del Reglamento núm. 258-93</strong>. A partir de tus fechas de ingreso y salida y tu salario ordinario promedio (mensual, quincenal o semanal), determina el salario diario y estima el preaviso omitido (<strong>Art. 76</strong>: 7, 14 o 28 días), el auxilio de cesantía según antigüedad (<strong>Art. 80</strong>: 6 a 23 días por año) y la regalía pascual o Salario de Navidad proporcional del año en curso (<strong>Art. 219</strong>) —exentos de ISR y TSS—, junto con la compensación por vacaciones no disfrutadas (<strong>Arts. 177 y 180</strong>, sujeta a retención de TSS e ISR conforme a la normativa vigente).
                 </p>
             </div>
         </div>
@@ -319,7 +344,7 @@
                         </div>
                     </div>
                     <div id="antiguedad-display" class="p-4 bg-dr-blue/5 rounded-xl hidden">
-                        <p class="text-sm font-bold text-dr-blue">Antigüedad: <span id="antiguedad-text"></span></p>
+                        <p id="antiguedad-text" class="text-sm font-bold text-dr-blue"></p>
                     </div>
                 </div>
 
@@ -396,12 +421,11 @@
                         </div>
                     </div>
                     <div id="preaviso-info" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-xl">
-                        <p class="text-xs font-semibold text-amber-700">Si no se dio el preaviso, el monto
-                            correspondiente se <span id="preaviso-accion">descontará del</span> total.</p>
+                        <p id="preaviso-info-text" class="text-xs font-semibold text-amber-700">Si no se dio el preaviso, el monto correspondiente se <span id="preaviso-accion">mostrará como nota referencial (Art. 79 CT) sin descontarse del</span> total.</p>
                     </div>
                     <div id="preaviso-renuncia-warning" class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
                         <p class="text-xs text-amber-700 leading-relaxed">
-                            <strong>Nota legal sobre renuncia (Arts. 79, 201 y 222 CT / Ministerio de Trabajo):</strong> Aunque el Art. 79 contempla una indemnización equivalente al preaviso omitido por el trabajador, conforme a los Arts. 201 y 222 CT el empleador <strong>no puede descontarla unilateralmente</strong> del Salario de Navidad (regalía) ni de tus derechos adquiridos sin acuerdo escrito o sentencia judicial. Este simulador aplica el descuento solo a modo referencial.
+                            <strong>Nota legal sobre renuncia (Arts. 79, 201 y 222 CT / Ministerio de Trabajo):</strong> Aunque el Art. 79 contempla una indemnización equivalente al preaviso omitido por el trabajador, conforme a los Arts. 201 y 222 CT el empleador <strong>no puede descontarla unilateralmente</strong> del Salario de Navidad (regalía) ni de tus vacaciones sin acuerdo escrito o sentencia judicial. Por ello, este simulador la muestra aparte a título informativo y mantiene íntegros tus derechos adquiridos.
                         </p>
                     </div>
                 </div>
@@ -424,8 +448,8 @@
                                 class="w-full px-4 py-3 rounded-xl border-2 border-dr-slate-200 focus:border-dr-blue focus:outline-none transition-colors font-medium">
                         </div>
                     </div>
-                    <p class="text-[11px] text-dr-slate-500 leading-relaxed">
-                        Nota (Arts. 177 y 180 CT): con 1 año o más de antigüedad, el simulador computa el período completo del último año cumplido (14 o 18 días, menos los días ya disfrutados); si además acumulaste 5 meses o más del nuevo año en curso sin disfrutarlos, pueden corresponder días proporcionales opcionales conforme al Art. 180 CT.
+                    <p class="text-xs text-dr-slate-600 leading-relaxed">
+                        Nota (Arts. 177 y 180 CT): con 1 año o más de antigüedad, el simulador computa los días pendientes de tu último año cumplido (14 o 18 días, menos los ya disfrutados) <strong>más</strong> los días proporcionales del ciclo en curso cuando acumulas 5 meses o más (escala del Art. 180: 6 a 12 días).
                     </p>
                 </div>
 
@@ -494,7 +518,10 @@
                     16-92).
                     Para casos específicos, consulte con un abogado laboral o el Ministerio de Trabajo.</p>
                 <p id="result-preaviso-renuncia-note" class="hidden mt-2 text-amber-700 font-semibold leading-relaxed">
-                    Aviso sobre deducción de preaviso en renuncia (Arts. 79, 201 y 222 CT): aunque el Art. 79 contempla una indemnización por omisión del preaviso, el empleador no puede descontarla unilateralmente de la regalía pascual ni de tus vacaciones sin acuerdo escrito o sentencia; el descuento mostrado es únicamente referencial.
+                    Aviso sobre preaviso omitido en renuncia (Arts. 79, 201 y 222 CT): aunque el Art. 79 contempla una indemnización por omisión del preaviso, el empleador no puede descontarla unilateralmente de la regalía pascual ni de tus vacaciones sin acuerdo escrito o sentencia. Por eso se muestra aparte como referencia y NO se resta del TOTAL A RECIBIR.
+                </p>
+                <p id="result-regalia-tope-note" class="hidden mt-2 text-amber-700 font-semibold leading-relaxed">
+                    Aviso sobre tope de Regalía Pascual (Art. 219 CT): el Salario de Navidad legalmente exigible tiene un tope obligatorio de cinco (5) salarios mínimos legalmente establecidos según el tamaño de la empresa, aunque muchos empleadores optan por pagar el mes completo sin aplicar el tope.
                 </p>
             </div>
 
@@ -521,18 +548,17 @@
                 </p>
             </div>
 
-            <!-- Tarjeta de Autoría Humana E-E-A-T -->
             <div class="glass rounded-2xl p-6 neo-shadow border border-dr-blue/20 bg-white/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-xl bg-dr-blue text-white flex items-center justify-center font-black text-lg flex-shrink-0 shadow-md">
                         SS
                     </div>
                     <div>
-                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Revisión Técnica y Legal Verificada</p>
+                        <p class="text-xs font-black uppercase tracking-wider text-dr-blue">Metodología Contrastada con Normativa Pública</p>
                         <p class="text-sm font-bold text-dr-slate-800">
-                            Metodología desarrollada y verificada por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
+                            Simulador desarrollado y mantenido por <a href="sobre-nosotros.html" class="text-dr-blue underline hover:text-dr-red transition">Starlin Santana — Fundador y Responsable Editorial de Impucálculo</a>
                         </p>
-                        <p class="text-xs text-dr-slate-500 mt-0.5">Algoritmo validado conforme a los artículos 76, 80, 85, 86, 177, 180 y 219 del Código de Trabajo dominicano.</p>
+                        <p class="text-xs text-dr-slate-600 mt-0.5">Fórmulas programadas conforme a los artículos 76, 80, 85, 86, 177, 180 y 219 del Código de Trabajo dominicano (orientativo; no sustituye asesoría legal).</p>
                     </div>
                 </div>
                 <a href="sobre-nosotros.html" class="px-4 py-2 rounded-xl bg-dr-blue/10 text-dr-blue text-xs font-extrabold uppercase tracking-wider hover:bg-dr-blue hover:text-white transition flex-shrink-0">
@@ -934,7 +960,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-2">
-                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain">
+                        <img src="logo_new.webp" alt="Impucálculo Logo" class="w-8 h-8 object-contain" width="562" height="444">
                         <span class="text-xl font-black"><span class="text-dr-red">Impu</span><span class="text-dr-blue">cálculo</span></span>
                     </div>
                     <p class="text-sm text-dr-slate-600 leading-relaxed max-w-md">
@@ -1002,22 +1028,25 @@
             minimumFractionDigits: 2
         }).format(n);
 
-        // Calculate age in years and months
+        // Formateo legible singular/plural de antigüedad
+        function formatAntiguedad(ant) {
+            const yLabel = ant.years === 1 ? 'año' : 'años';
+            const mLabel = ant.months === 1 ? 'mes' : 'meses';
+            return `${ant.years} ${yLabel}, ${ant.months} ${mLabel}`;
+        }
+
+        // Calculate antigüedad de forma inclusiva (ej. 01/01/2025 a 31/12/2025 = 1 año, 0 meses)
         function calculateAntiguedad(inicio, fin) {
-            // Calculate years
-            let years = fin.getFullYear() - inicio.getFullYear();
+            const finInclusivo = new Date(fin.getFullYear(), fin.getMonth(), fin.getDate() + 1);
+            let years = finInclusivo.getFullYear() - inicio.getFullYear();
+            let months = finInclusivo.getMonth() - inicio.getMonth();
 
-            // Calculate months
-            let months = fin.getMonth() - inicio.getMonth();
-
-            // Adjust if months is negative
             if (months < 0) {
                 years--;
                 months += 12;
             }
 
-            // If the day of exit is before the day of entry in the same month, subtract one month
-            if (fin.getDate() < inicio.getDate()) {
+            if (finInclusivo.getDate() < inicio.getDate()) {
                 months--;
                 if (months < 0) {
                     years--;
@@ -1025,14 +1054,32 @@
                 }
             }
 
-            // Calculate total months
+            years = Math.max(0, years);
+            months = Math.max(0, months);
             const totalMonths = years * 12 + months;
-
-            // Calculate total days
-            const diff = fin - inicio;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const diff = finInclusivo - inicio;
+            const days = Math.max(1, Math.round(diff / (1000 * 60 * 60 * 24)));
 
             return { years, months, totalMonths, days };
+        }
+
+        // Prorrateo exacto de Regalía Pascual (Art. 219 CT: suma mes a mes de días trabajados / días del mes)
+        function calculateMesesRegalia(regaliaStart, fechaSalida) {
+            let meses = 0;
+            let cursor = new Date(regaliaStart.getFullYear(), regaliaStart.getMonth(), regaliaStart.getDate());
+            const end = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth(), fechaSalida.getDate());
+
+            while (cursor <= end) {
+                const y = cursor.getFullYear();
+                const m = cursor.getMonth();
+                const daysInMonth = new Date(y, m + 1, 0).getDate();
+                const lastDayOfMonth = new Date(y, m, daysInMonth);
+                const segmentEnd = end < lastDayOfMonth ? end : lastDayOfMonth;
+                const workedDays = segmentEnd.getDate() - cursor.getDate() + 1;
+                meses += workedDays / daysInMonth;
+                cursor = new Date(y, m + 1, 1);
+            }
+            return Math.min(12, meses);
         }
 
         // Sync preaviso section state based on selected termination type
@@ -1055,7 +1102,7 @@
             } else if (value === 'renuncia') {
                 preavisoSection.classList.remove('hidden');
                 preavisoLabel.textContent = '¿El empleado NO dio el preaviso?';
-                preavisoAccion.textContent = 'descontará del';
+                preavisoAccion.textContent = 'mostrará como nota referencial (Art. 79 CT) sin descontarse del';
                 preavisoInfo.classList.toggle('hidden', !preavisoDado.checked);
                 if (preavisoRenunciaWarning) preavisoRenunciaWarning.classList.remove('hidden');
             } else {
@@ -1131,9 +1178,22 @@
         const fechaIngresoInput = document.getElementById('fecha-ingreso');
         const fechaSalidaInput = document.getElementById('fecha-salida');
 
-        function updateAntiguedad() {
+        function showAntiguedadMsg(message, isError = false) {
             const display = document.getElementById('antiguedad-display');
             const text = document.getElementById('antiguedad-text');
+            if (!display || !text) return;
+            display.className = isError
+                ? 'p-4 bg-red-50 border border-red-200 rounded-xl'
+                : 'p-4 bg-dr-blue/5 rounded-xl';
+            text.className = isError
+                ? 'text-sm font-bold text-dr-red'
+                : 'text-sm font-bold text-dr-blue';
+            text.textContent = message;
+            display.classList.remove('hidden');
+        }
+
+        function updateAntiguedad() {
+            const display = document.getElementById('antiguedad-display');
 
             if (fechaIngresoInput.value && fechaSalidaInput.value) {
                 const inicio = new Date(fechaIngresoInput.value + 'T00:00:00');
@@ -1145,16 +1205,12 @@
                 }
 
                 if (fin <= inicio) {
-                    display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
-                    text.innerHTML = '<span class="text-dr-red font-bold">La fecha de salida debe ser posterior a la fecha de ingreso.</span>';
-                    display.classList.remove('hidden');
+                    showAntiguedadMsg('La fecha de salida debe ser posterior a la fecha de ingreso.', true);
                     return;
                 }
 
                 const ant = calculateAntiguedad(inicio, fin);
-                display.className = 'p-4 bg-dr-blue/5 rounded-xl';
-                text.innerHTML = `<span class="text-dr-blue font-bold">Antigüedad: ${ant.years} años, ${ant.months} meses</span>`;
-                display.classList.remove('hidden');
+                showAntiguedadMsg(`Antigüedad: ${formatAntiguedad(ant)}`, false);
             } else {
                 display.classList.add('hidden');
             }
@@ -1176,13 +1232,8 @@
         document.getElementById('prestaciones-form').addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const display = document.getElementById('antiguedad-display');
-            const text = document.getElementById('antiguedad-text');
-
             if (!fechaIngresoInput.value || !fechaSalidaInput.value) {
-                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
-                text.innerHTML = '<span class="text-dr-red font-bold">Por favor completa ambas fechas de ingreso y salida.</span>';
-                display.classList.remove('hidden');
+                showAntiguedadMsg('Por favor completa ambas fechas de ingreso y salida.', true);
                 return;
             }
 
@@ -1191,17 +1242,13 @@
             const fechaSalida = new Date(fechaSalidaInput.value + 'T00:00:00');
 
             if (isNaN(fechaIngreso.getTime()) || isNaN(fechaSalida.getTime())) {
-                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
-                text.innerHTML = '<span class="text-dr-red font-bold">Por favor introduce fechas válidas.</span>';
-                display.classList.remove('hidden');
+                showAntiguedadMsg('Por favor introduce fechas válidas.', true);
                 return;
             }
 
             // Validate dates
             if (fechaSalida <= fechaIngreso) {
-                display.className = 'p-4 bg-red-50 border border-red-200 rounded-xl';
-                text.innerHTML = '<span class="text-dr-red font-bold">La fecha de salida debe ser posterior a la fecha de ingreso.</span>';
-                display.classList.remove('hidden');
+                showAntiguedadMsg('La fecha de salida debe ser posterior a la fecha de ingreso.', true);
                 return;
             }
 
@@ -1268,10 +1315,10 @@
                 montoCesantia = diasCesantia * salarioDiario;
             }
 
-            // Calculate vacaciones (Arts. 177-180 del Código de Trabajo):
-            // - Si tiene >= 1 año de servicio: período completo del último año cumplido según Art. 177 (14 o 18 días).
-            // - Si tiene 0 años cumplidos y 5-11 meses: escala proporcional del Art. 180 (6 a 12 días).
-            //   (Nota: si con >= 1 año ya disfrutó su período vencido y acumula >= 5 meses del año en curso, ver nota metodológica).
+            // Calculate vacaciones (Arts. 177 y 180 del Código de Trabajo):
+            // - Con >= 1 año: período vencido del último año cumplido (14 o 18 días, menos los ya disfrutados)
+            //   MÁS los días proporcionales del nuevo año en curso si acumula >= 5 meses (escala Art. 180).
+            // - Con < 1 año y 5-11 meses: escala proporcional del Art. 180 (6 a 12 días).
             const fraccionMesesVac = ant.totalMonths % 12;
             let diasVacacionesProporcionales = 0;
             if (fraccionMesesVac >= 11) diasVacacionesProporcionales = 12;
@@ -1282,58 +1329,36 @@
             else if (fraccionMesesVac >= 6) diasVacacionesProporcionales = 7;
             else if (fraccionMesesVac >= 5) diasVacacionesProporcionales = 6;
 
-            let diasVacacionesTotales = 0;
-            if (ant.years >= 1) {
-                diasVacacionesTotales = ant.years >= 5 ? 18 : 14;
-            } else {
-                diasVacacionesTotales = diasVacacionesProporcionales;
-            }
-
-            const diasVacacionesPendientes = Math.max(0, diasVacacionesTotales - (vacacionesTomadas ? diasVacacionesTomados : 0));
+            const diasUltimoAnio = ant.years >= 1 ? (ant.years >= 5 ? 18 : 14) : 0;
+            const diasPendientesUltimoAnio = Math.max(0, diasUltimoAnio - (vacacionesTomadas ? diasVacacionesTomados : 0));
+            const diasVacacionesPendientes = diasPendientesUltimoAnio + diasVacacionesProporcionales;
             const montoVacaciones = diasVacacionesPendientes * salarioDiario;
 
-            // Calculate regalia (proportional to time worked in current calendar year - Art. 219)
+            // Calculate regalia (Art. 219 CT: 1/12 de salarios ordinarios devengados en el año calendario)
             const yearOfDeparture = fechaSalida.getFullYear();
             const startOfDepartureYear = new Date(yearOfDeparture, 0, 1);
             const regaliaStart = fechaIngreso > startOfDepartureYear ? fechaIngreso : startOfDepartureYear;
-
-            let yearsRegalia = fechaSalida.getFullYear() - regaliaStart.getFullYear();
-            let monthsRegalia = fechaSalida.getMonth() - regaliaStart.getMonth();
-            let daysRegalia = fechaSalida.getDate() - regaliaStart.getDate() + 1; // Inclusivo
-
-            let borrowOffset = 0;
-            while (daysRegalia < 0) {
-                monthsRegalia--;
-                const prevMonthDays = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth() - borrowOffset, 0).getDate();
-                daysRegalia += prevMonthDays;
-                borrowOffset++;
-            }
-            const closingMonthDays = new Date(fechaSalida.getFullYear(), fechaSalida.getMonth() + 1, 0).getDate();
-            if (daysRegalia >= closingMonthDays) {
-                monthsRegalia += Math.floor(daysRegalia / closingMonthDays);
-                daysRegalia = daysRegalia % closingMonthDays;
-            }
-            if (monthsRegalia < 0) {
-                yearsRegalia--;
-                monthsRegalia += 12;
-            }
-            const totalMonthsRegalia = Math.max(0, yearsRegalia * 12 + monthsRegalia);
-            const mesesTrabajadosAnio = Math.min(12, totalMonthsRegalia + (daysRegalia / closingMonthDays));
+            const mesesTrabajadosAnio = calculateMesesRegalia(regaliaStart, fechaSalida);
             const montoRegalia = (salarioMensualEquivalente * mesesTrabajadosAnio) / 12;
+            const superaTopeRegalia = salarioMensualEquivalente > (5 * 23223);
 
-            // Total
-            const totalPreaviso = preavisoEsDeduccion ? -montoPreaviso : montoPreaviso;
-            const total = totalPreaviso + montoCesantia + montoVacaciones + montoRegalia;
+            // Total: en renuncia sin preaviso NO se descuenta unilateralmente de regalía ni vacaciones (Arts. 201 y 222 CT)
+            const total = (preavisoEsDeduccion ? 0 : montoPreaviso) + montoCesantia + montoVacaciones + montoRegalia;
 
             // Display results
             displayResults({
-                antiguedad: `${ant.years} años, ${ant.months} meses`,
+                antiguedad: formatAntiguedad(ant),
                 salarioDiario,
                 tipoTerminacion,
                 preaviso: { dias: diasPreaviso, monto: montoPreaviso, esDeduccion: preavisoEsDeduccion },
                 cesantia: { dias: diasCesantia, monto: montoCesantia },
-                vacaciones: { dias: diasVacacionesPendientes, monto: montoVacaciones },
-                regalia: { monto: montoRegalia },
+                vacaciones: {
+                    dias: diasVacacionesPendientes,
+                    diasAnio: diasPendientesUltimoAnio,
+                    diasProp: diasVacacionesProporcionales,
+                    monto: montoVacaciones
+                },
+                regalia: { monto: montoRegalia, meses: mesesTrabajadosAnio, superaTope: superaTopeRegalia },
                 total
             });
 
@@ -1359,45 +1384,60 @@
 
             const rows = [];
 
-            if (data.preaviso.monto > 0) {
+            if (data.preaviso.monto > 0 && !data.preaviso.esDeduccion) {
                 rows.push({
-                    concepto: data.preaviso.esDeduccion ? 'Preaviso (Deducción)' : 'Preaviso',
+                    concepto: 'Preaviso (Art. 76)',
                     dias: `${data.preaviso.dias} días`,
-                    monto: data.preaviso.esDeduccion ? -data.preaviso.monto : data.preaviso.monto,
-                    esDeduccion: data.preaviso.esDeduccion
+                    monto: data.preaviso.monto
                 });
             }
 
             if (data.cesantia.monto > 0) {
                 rows.push({
-                    concepto: 'Cesantía (Auxilio)',
+                    concepto: 'Cesantía (Auxilio · Art. 80)',
                     dias: `${data.cesantia.dias} días`,
                     monto: data.cesantia.monto
                 });
             }
 
             if (data.vacaciones.monto > 0) {
+                const detalleVac = (data.vacaciones.diasAnio > 0 && data.vacaciones.diasProp > 0)
+                    ? `${data.vacaciones.dias} días (${data.vacaciones.diasAnio} año + ${data.vacaciones.diasProp} prop.)`
+                    : `${data.vacaciones.dias} días`;
                 rows.push({
-                    concepto: 'Vacaciones',
-                    dias: `${data.vacaciones.dias} días`,
+                    concepto: 'Vacaciones (Arts. 177/180)',
+                    dias: detalleVac,
                     monto: data.vacaciones.monto
                 });
             }
 
             rows.push({
-                concepto: 'Regalía Pascual (Proporcional)',
-                dias: 'Año parcial',
+                concepto: 'Regalía Pascual (Art. 219)',
+                dias: `${data.regalia.meses.toFixed(2)} meses`,
                 monto: data.regalia.monto
             });
 
+            if (data.preaviso.esDeduccion && data.preaviso.monto > 0) {
+                rows.push({
+                    concepto: 'Preaviso omitido (Art. 79 · solo informativo, no descontado)',
+                    dias: `${data.preaviso.dias} días`,
+                    monto: data.preaviso.monto,
+                    esInformativo: true
+                });
+            }
+
             rows.forEach(row => {
                 const tr = document.createElement('tr');
-                tr.className = 'border-b border-dr-slate-100';
-                const esDeduccion = row.esDeduccion || false;
+                tr.className = row.esInformativo
+                    ? 'border-b border-amber-200 bg-amber-50/70'
+                    : 'border-b border-dr-slate-100';
+                const conceptoCls = row.esInformativo ? 'text-amber-800' : 'text-dr-slate-700';
+                const montoCls = row.esInformativo ? 'text-amber-800' : 'text-dr-slate-900';
+                const montoTexto = row.esInformativo ? `Ref. ${fmt(row.monto)}` : fmt(row.monto);
                 tr.innerHTML = `
-                    <td class="py-3 font-semibold ${esDeduccion ? 'text-dr-red' : 'text-dr-slate-700'}">${row.concepto}</td>
+                    <td class="py-3 font-semibold ${conceptoCls}">${row.concepto}</td>
                     <td class="py-3 text-right text-dr-slate-600">${row.dias}</td>
-                    <td class="py-3 text-right font-bold ${esDeduccion ? 'text-dr-red' : 'text-dr-slate-900'}">${esDeduccion ? '-' : ''}${fmt(Math.abs(row.monto))}</td>
+                    <td class="py-3 text-right font-bold ${montoCls}">${montoTexto}</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -1408,6 +1448,10 @@
             const renunciaNote = document.getElementById('result-preaviso-renuncia-note');
             if (renunciaNote) {
                 renunciaNote.classList.toggle('hidden', !(data.preaviso.esDeduccion && data.preaviso.monto > 0));
+            }
+            const regaliaTopeNote = document.getElementById('result-regalia-tope-note');
+            if (regaliaTopeNote) {
+                regaliaTopeNote.classList.toggle('hidden', !data.regalia.superaTope);
             }
 
             // Show results section
@@ -1450,18 +1494,12 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
-                    .then(registration => {
-                        console.log('ServiceWorker registered with scope: ', registration.scope);
-                        registration.update();
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
+                    .then(registration => registration.update())
+                    .catch(() => {});
             });
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                sessionStorage.removeItem('impucalculo_sw_reload');
-                console.info('ServiceWorker actualizado; los cambios se aplicarán en la próxima navegación.');
+                try { sessionStorage.removeItem('impucalculo_sw_reload'); } catch (e) {}
             });
         }
         
